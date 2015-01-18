@@ -74,35 +74,35 @@ $gridDataProvider = new CArrayDataProvider(array(
           <ul>
           	<li>
           		<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/credit.png" width="36" height="36" alt="Monthly Income">
+                	<img src="<?php echo $baseUrl ;?>/img/credit.png" width="36" height="36" alt="Monthly Income"/>
                 </span>
                 <span class="summary-number">$78,245</span>
                 <span class="summary-title"> Monthly Income</span>
             </li>
             <li>
             	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/page_white_edit.png" width="36" height="36" alt="Open Invoices">
+                	<img src="<?php echo $baseUrl ;?>/img/page_white_edit.png" width="36" height="36" alt="Open Invoices"/>
                 </span>
                 <span class="summary-number">125</span>
                 <span class="summary-title"> Open Invoices</span>
             </li>
             <li>
             	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/page_white_excel.png" width="36" height="36" alt="Open Quotes<">
+                	<img src="<?php echo $baseUrl ;?>/img/page_white_excel.png" width="36" height="36" alt="Open Quotes"/>
                 </span>
                 <span class="summary-number">53</span>
                 <span class="summary-title"> Open Quotes</span>
             </li>
             <li>
             	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
+                	<img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members"/>
                 </span>
                 <span class="summary-number">654,321</span>
                 <span class="summary-title"> Active Members</span>
             </li>
             <li>
             	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/folder_page.png" width="36" height="36" alt="Recent Conversions">
+                	<img src="<?php echo $baseUrl ;?>/img/folder_page.png" width="36" height="36" alt="Recent Conversions"/>
                 </span>
                 <span class="summary-number">630</span>
                 <span class="summary-title"> Recent Conversions</span></li>
