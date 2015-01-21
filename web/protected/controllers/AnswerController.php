@@ -47,7 +47,7 @@ class AnswerController extends Controller
                 $this->_involved[$activeRecord->getAttribute('id_involved_person')] = $activeRecord->getAttribute('name');
             }
             
-            $dataProvider = new CActiveDataProvider('AnswerTeacher');
+            $dataProvider = new CActiveDataProvider('Teacher');
             
             foreach ($dataProvider->data as $answerTeacher)
             {
@@ -73,7 +73,7 @@ class AnswerController extends Controller
         
         public function actionDelete($id)
         {
-            $model =  AnswerTeacher::model()->findByPk($id);
+            $model =  Teacher::model()->findByPk($id);
             if($model===null)
                 throw new CHttpException(404,'The requested page does not exist.');
             

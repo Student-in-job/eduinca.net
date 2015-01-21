@@ -54,7 +54,7 @@
  * @property PersonType $personType
  * @property University $university
  */
-class AnswerTeacher extends CActiveRecord
+class Teacher extends CActiveRecord
 {
         public $university_name;
         public $person_type_name;

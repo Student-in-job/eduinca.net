@@ -1,6 +1,6 @@
 <?php
 
-class AnswerTeacherController extends Controller
+class TeacherController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -92,13 +92,13 @@ class AnswerTeacherController extends Controller
 	 */
 	public function actionCreate($involved = null)
 	{
-		$model=new AnswerTeacher;
+		$model=new Teacher;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-                if(isset($_POST['AnswerTeacher']))
+                if(isset($_POST['Teacher']))
 		{
-			$model->attributes=$_POST['AnswerTeacher'];
+			$model->attributes=$_POST['Teacher'];
 			if($model->save())
 				$this->redirect(array('answer/index'));
 		}
@@ -123,10 +123,10 @@ class AnswerTeacherController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['AnswerTeacher']))
+		if(isset($_POST['Teacher']))
 		{
                     var_dump($_POST);
-			$model->attributes=$_POST['AnswerTeacher'];
+			$model->attributes=$_POST['Teacher'];
 			if($model->save())
 				$this->redirect(array('answer/index'));
 		}
@@ -157,7 +157,7 @@ class AnswerTeacherController extends Controller
 
         public function loadModel($id)
 	{
-		$model =  AnswerTeacher::model()->findByPk($id);
+		$model =  Teacher::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -165,7 +165,7 @@ class AnswerTeacherController extends Controller
         
 	/**
 	 * Performs the AJAX validation.
-	 * @param AnswerTeacher $model the model to be validated
+	 * @param Teacher $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
@@ -188,7 +188,7 @@ class AnswerTeacherController extends Controller
         
         public function actionIndex()
         {
-                $dataProvider=new CActiveDataProvider('AnswerTeacher');
+                $dataProvider=new CActiveDataProvider('Teacher');
 		$this->render('index',array(
 			'dataProvider' => $dataProvider,
 		));
