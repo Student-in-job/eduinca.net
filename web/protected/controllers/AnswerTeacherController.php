@@ -185,4 +185,12 @@ class AnswerTeacherController extends Controller
                         $model->involved_name = $activeRecord->getAttribute('name');
                 }
         }
+        
+        public function actionIndex()
+        {
+                $dataProvider=new CActiveDataProvider('AnswerTeacher');
+		$this->render('index',array(
+			'dataProvider' => $dataProvider,
+		));
+        }
 }

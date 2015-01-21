@@ -11,8 +11,7 @@ $this->menu=array(
 	array('label'=>Yii::t('answerteacher','notmember'), 'url'=>array('answerteacher/create', 'involved' => 2)),
         //array('label'=>Yii::t('answerstudent','member'), 'url'=>array('answerstudent/create')),
 	//array('label'=>Yii::t('answerstudent','notmember'), 'url'=>array('answerteacher/create')),
-);
-?>
+);?>
 
 <h1>Answer Teachers</h1>
 <?php
