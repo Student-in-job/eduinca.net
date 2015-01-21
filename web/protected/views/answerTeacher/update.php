@@ -18,4 +18,9 @@ $this->menu=array(
 
 <h1>Update AnswerTeacher <?php echo $model->id_answer; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array(
+                                'model'=>$model,
+                                'view' => $view,
+                                'involved' => $involved,
+                                'university' => $university,
+                                'year' => 2014)); ?>

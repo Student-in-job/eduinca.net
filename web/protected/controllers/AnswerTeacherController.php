@@ -6,12 +6,20 @@ class AnswerTeacherController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/column1';
+        
+        private $_university;
 
 	public function init(){
             if(isset($_GET['lang']))
                 Yii::app()->setLanguage($_GET['lang']);
             Yii::app()->name = Yii::t('site', 'sitename');
+            
+            $dataProvider = new CActiveDataProvider('University');
+            foreach($dataProvider->getData() as $activeRecord)
+            {
+                $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name');
+            }            
             parent::init();
         }
         /**
@@ -55,10 +63,26 @@ class AnswerTeacherController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($id, $involved = null)
 	{
+                /*
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		));
+                 * 
+                 */
+                $model=$this->loadModel($id);
+                
+                $this->initInvolved($model, $involved);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		
+		$this->render('update',array(
+			'model'=>$model,
+                        'view'=>true,
+                        'university' => $this->_university,
+                        'involved' => $involved,
 		));
 	}
 
@@ -66,22 +90,25 @@ class AnswerTeacherController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($involved = null)
 	{
 		$model=new AnswerTeacher;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['AnswerTeacher']))
+                if(isset($_POST['AnswerTeacher']))
 		{
 			$model->attributes=$_POST['AnswerTeacher'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_answer));
+				$this->redirect(array('answer/index'));
 		}
-
+                
+                $this->initInvolved($model, $involved);
+                
 		$this->render('create',array(
 			'model'=>$model,
+                        'involved' => $involved,
+                        'university' => $this->_university,
 		));
 	}
 
@@ -90,22 +117,27 @@ class AnswerTeacherController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate($id, $involved = null)
 	{
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['AnswerTeacher']))
 		{
+                    var_dump($_POST);
 			$model->attributes=$_POST['AnswerTeacher'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_answer));
+				$this->redirect(array('answer/index'));
 		}
+                
+                $this->initInvolved($model ,$involved);
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'view'=>false,
+                        'involved' => $involved,
+                        'university' => $this->_university,
 		));
 	}
 
@@ -120,9 +152,17 @@ class AnswerTeacherController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('answer/index'));
 	}
 
+        public function loadModel($id)
+	{
+		$model =  AnswerTeacher::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+        
 	/**
 	 * Performs the AJAX validation.
 	 * @param AnswerTeacher $model the model to be validated
@@ -135,4 +175,14 @@ class AnswerTeacherController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        private function initInvolved($model, $involved)
+        {
+                $dataProvider = new CActiveDataProvider('InvolvedPerson');
+                foreach($dataProvider->getData() as $activeRecord)
+                {
+                    if($activeRecord->getAttribute('id_involved_person') == $involved)
+                        $model->involved_name = $activeRecord->getAttribute('name');
+                }
+        }
 }

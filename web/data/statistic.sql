@@ -92,3 +92,8 @@ INSERT INTO `tbl_university_type` VALUES(1, '01', 'универсистет');
 INSERT INTO `tbl_university_type` VALUES(2, '02', 'колледж');
 
 ALTER TABLE tbl_university MODIFY name NVARCHAR(200);
+ALTER TABLE tbl_answer_teacher MODIFY id_answer INTEGER NOT NULL AUTO_INCREMENT;
+
+--Second day
+ALTER TABLE tbl_answer_teacher ADD year INTEGER;
+ALTER TABLE tbl_answer_teacher MODIFY private_papers NVARCHAR(500) DEFAULT 'Нет';

@@ -24,7 +24,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'id_university',
 		'code',
-		'university','name',
+		'name',
 		array('name' => 'university_type_id', 'value' => $type[$model->university_type_id]),
 		array('name' => 'country_id','value' => $country[$model->country_id])
 	),
