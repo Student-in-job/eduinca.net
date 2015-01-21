@@ -39,7 +39,6 @@
                             array('label' => Yii::t('country', 'countries'), 'url' => array('country/index')),
                             array('label' => Yii::t('university', 'universities'), 'url' => array('university/index')),
                             array('label' => Yii::t('answerteacher', 'answerteacher'), 'url' => array('answer/index')),
-                            array('label' => 'test', 'url' => array('teacher/index')),
                             //array('label' => Yii::t('site', 'about'), 'url' => array('/site/page', 'view'=>'about')),
                             //array('label' => Yii::t('site', 'contact'), 'url' => array('/site/contact')),
                             array('label' => Yii::t('site', 'login'), 'url' => array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

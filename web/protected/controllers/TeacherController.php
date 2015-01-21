@@ -185,7 +185,8 @@ class TeacherController extends Controller
                         $model->involved_name = $activeRecord->getAttribute('name');
                 }
         }
-        
+
+        /*
         public function actionIndex()
         {
                 $dataProvider=new CActiveDataProvider('Teacher');
@@ -193,4 +194,5 @@ class TeacherController extends Controller
 			'dataProvider' => $dataProvider,
 		));
         }
+         */
 }

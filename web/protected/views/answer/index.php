@@ -47,10 +47,10 @@ $this->menu=array(
                 'template' => '{view}{update}{delete}',
                 'buttons' => array(
                     'view' => array(
-                        'url' => 'Yii::app()->createUrl("answerteacher/view",array("id" => $data->id_answer,"involved" => $data->involved_person_id))'
+                        'url' => 'Yii::app()->createUrl("teacher/view",array("id" => $data->id_answer,"involved" => $data->involved_person_id))'
                     ),
                     'update' => array(
-                        'url' => 'Yii::app()->createUrl("answerteacher/update",array("id"=>$data->id_answer, "involved" => $data->involved_person_id))'
+                        'url' => 'Yii::app()->createUrl("teacher/update",array("id"=>$data->id_answer, "involved" => $data->involved_person_id))'
                     ),
                     
                 )
