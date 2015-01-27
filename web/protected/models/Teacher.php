@@ -125,7 +125,7 @@ class Teacher extends CActiveRecord
 			'common_q7' => Yii::t('answerteacher','common_7'),
 			'common_q8' => Yii::t('answerteacher','common_8'),
 			'common_q9' => Yii::t('answerteacher','common_9'),
-			'common_comment' => Yii::t('answerteacher','common_comment'),
+			'common_comment' => Yii::t('answerteacher','common_comment') . ':',
 			'methodic_q1' => Yii::t('answerteacher','methodic_1'),
 			'methodic_q2' => Yii::t('answerteacher','methodic_2'),
 			'methodic_q3' => Yii::t('answerteacher','methodic_3'),

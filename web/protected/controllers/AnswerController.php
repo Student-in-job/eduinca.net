@@ -68,7 +68,32 @@ class AnswerController extends Controller
                     $answerTeacher->involved_name = 'n/a';
             }
             
-            $this->render('index', array('dataProvider' => $dataProvider));
+            $studentDataProvider = new CActiveDataProvider('Student');
+            
+            foreach ($studentDataProvider->data as $answerStudent)
+            {
+                $id_university = $answerStudent->university_id;
+                if($id_university!='')
+                    $answerStudent->university_name = $this->_university[$id_university];
+                else
+                    $answerStudent->university_name = 'n/a';
+                $id_person = $answerStudent->person_type_id;
+                if($id_person!='')
+                    $answerStudent->person_type_name = $this->_persontype[$id_person];
+                else
+                    $answerStudent->person_type_name = 'n/a';
+                $id_involved_type = $answerStudent->involved_person_id;
+                if($id_involved_type!='')
+                    $answerStudent->involved_name = $this->_involved[$id_involved_type];
+                else
+                    $answerStudent->involved_name = 'n/a';
+            }
+            
+            
+            $this->render('index', array(
+                'dataProvider' => $dataProvider,
+                'studentDataProvider' => $studentDataProvider,
+                ));
         }
         
         public function actionDelete($id)

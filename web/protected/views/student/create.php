@@ -1,19 +1,20 @@
 <?php
-/* @var $this AnswerTeacherController */
-/* @var $model AnswerTeacher */
+/* @var $this StudentController */
+/* @var $model Student */
 
 $this->breadcrumbs=array(
-	'Answer Teachers'=>array('answer/index'),
+	'Students'=>array('answer/index'),
 	'Create',
 );
 
-/*$this->menu=array(
-	array('label'=>'List AnswerTeacher', 'url'=>array('index')),
-	array('label'=>'Manage AnswerTeacher', 'url'=>array('admin')),
+/*
+$this->menu=array(
+	array('label'=>'List Student', 'url'=>array('index')),
+	array('label'=>'Manage Student', 'url'=>array('admin')),
 );*/
 ?>
 
-<h1><?php echo Yii::t('answerteacher', 'interview');?></h1>
+<h1><?php echo Yii::t('answerstudent', 'interview');?></h1>
 
 <?php $this->renderPartial('_form', array(
                                 'model'=>$model,

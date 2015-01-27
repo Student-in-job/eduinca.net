@@ -1,6 +1,6 @@
 <?php
 
-class TeacherController extends Controller
+class StudentController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -9,8 +9,8 @@ class TeacherController extends Controller
 	public $layout='//layouts/column1';
         
         private $_university;
-
-	public function init(){
+        
+        public function init(){
             if(isset($_GET['lang']))
                 Yii::app()->setLanguage($_GET['lang']);
             Yii::app()->name = Yii::t('site', 'sitename');
@@ -22,7 +22,8 @@ class TeacherController extends Controller
             }            
             parent::init();
         }
-        /**
+
+	/**
 	 * @return array action filters
 	 */
 	public function filters()
@@ -65,24 +66,11 @@ class TeacherController extends Controller
 	 */
 	public function actionView($id, $involved = null)
 	{
-                /*
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-                 * 
-                 */
-                $model=$this->loadModel($id);
-                
-                $this->initInvolved($model, $involved);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-		
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$this->loadModel($id),
                         'view'=>true,
-                        'university' => $this->_university,
                         'involved' => $involved,
+                        'university' => $this->_university,
 		));
 	}
 
@@ -92,17 +80,18 @@ class TeacherController extends Controller
 	 */
 	public function actionCreate($involved = null)
 	{
-		$model=new Teacher;
+		$model=new Student;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-                if(isset($_POST['Teacher']))
+
+		if(isset($_POST['Student']))
 		{
-			$model->attributes=$_POST['Teacher'];
+			$model->attributes=$_POST['Student'];
 			if($model->save())
 				$this->redirect(array('answer/index'));
 		}
-                
+
                 $this->initInvolved($model, $involved);
                 
 		$this->render('create', array(
@@ -123,16 +112,16 @@ class TeacherController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['Teacher']))
+
+		if(isset($_POST['Student']))
 		{
-                    var_dump($_POST);
-			$model->attributes=$_POST['Teacher'];
+			$model->attributes=$_POST['Student'];
 			if($model->save())
 				$this->redirect(array('answer/index'));
 		}
                 
-                $this->initInvolved($model ,$involved);
-
+                $this->initInvolved($model, $involved);
+                
 		$this->render('update',array(
 			'model'=>$model,
                         'view'=>false,
@@ -152,24 +141,57 @@ class TeacherController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('answer/index'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-        public function loadModel($id)
+	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
 	{
-		$model =  Teacher::model()->findByPk($id);
+		$dataProvider=new CActiveDataProvider('Student');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+
+	/**
+	 * Manages all models.
+	 */
+	public function actionAdmin()
+	{
+		$model=new Student('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Student']))
+			$model->attributes=$_GET['Student'];
+
+		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return Student the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadModel($id)
+	{
+		$model=Student::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-        
+
 	/**
 	 * Performs the AJAX validation.
-	 * @param Teacher $model the model to be validated
+	 * @param Student $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='answer-teacher-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='student-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
@@ -185,14 +207,4 @@ class TeacherController extends Controller
                         $model->involved_name = $activeRecord->getAttribute('name');
                 }
         }
-
-        /*
-        public function actionIndex()
-        {
-                $dataProvider=new CActiveDataProvider('Teacher');
-		$this->render('index',array(
-			'dataProvider' => $dataProvider,
-		));
-        }
-         */
 }
