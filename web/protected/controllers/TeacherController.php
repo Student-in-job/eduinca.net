@@ -100,7 +100,7 @@ class TeacherController extends Controller
 		{
 			$model->attributes=$_POST['Teacher'];
 			if($model->save())
-				$this->redirect(array('answer/index'));
+				$this->redirect(array('answer/index', 'person' => 1));
 		}
                 
                 $this->initInvolved($model, $involved);
@@ -127,7 +127,7 @@ class TeacherController extends Controller
 		{
 			$model->attributes=$_POST['Teacher'];
 			if($model->save())
-				$this->redirect(array('answer/index'));
+				$this->redirect(array('answer/index', 'person' => 1));
 		}
                 
                 $this->initInvolved($model ,$involved);
@@ -151,7 +151,7 @@ class TeacherController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('answer/index'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('answer/index', 'person' => 1));
 	}
 
         public function loadModel($id)

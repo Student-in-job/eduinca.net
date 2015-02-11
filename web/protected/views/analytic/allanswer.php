@@ -18,7 +18,6 @@ $this->breadcrumbs=array(
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.pieRenderer.js"></script>
 
 <?php
-/*
     $this->widget('zii.widgets.grid.CGridView', array(
         'dataProvider' => $dataProvider,
         'columns' => array(
@@ -34,19 +33,20 @@ $this->breadcrumbs=array(
             ),
         )
         )
-    );*/
-$outputString = '';
-foreach ($students as $row)
-{
-    $sex =($row['sex']==1)?Yii::t('analytic','Man'):Yii::t('analytic','Woman');
-    $outputString .= '[\'' . $sex  . '\',' . $row['num'] . '],';
-}
-$this->renderPartial('_pieChart', array('data' => $outputString, 'id' => 'student', 'title' => Yii::t('analytic', 'Students')));
+    );
 
-$outputString = '';
-foreach ($teachers as $row)
-{
-    $sex =($row['sex']==1)?Yii::t('analytic','Man'):Yii::t('analytic','Woman');
-    $outputString .= '[\'' . $sex  . '\',' . $row['num'] . '],';
-}
-$this->renderPartial('_pieChart', array('data' => $outputString, 'id' => 'teacher', 'title' => Yii::t('analytic', 'Teachers')));
+    $outputString = '';
+    foreach ($students as $row)
+    {
+        $sex =($row['sex']==1)?Yii::t('analytic','Man'):Yii::t('analytic','Woman');
+        $outputString .= '[\'' . $sex  . '\',' . $row['num'] . '],';
+    }
+    $this->renderPartial('_pieChart', array('data' => $outputString, 'id' => 'student', 'title' => Yii::t('analytic', 'Students')));
+
+    $outputString = '';
+    foreach ($teachers as $row)
+    {
+        $sex =($row['sex']==1)?Yii::t('analytic','Man'):Yii::t('analytic','Woman');
+        $outputString .= '[\'' . $sex  . '\',' . $row['num'] . '],';
+    }
+    $this->renderPartial('_pieChart', array('data' => $outputString, 'id' => 'teacher', 'title' => Yii::t('analytic', 'Teachers')));

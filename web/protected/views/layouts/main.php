@@ -47,7 +47,7 @@
                             array('label' => Yii::t('site','home'), 'url' => array('/site/index')),
                             array('label' => Yii::t('country', 'countries'), 'url' => array('country/index')),
                             array('label' => Yii::t('university', 'universities'), 'url' => array('university/index')),
-                            array('label' => Yii::t('answerteacher', 'answerteacher'), 'url' => array('answer/index')),
+                            array('label' => Yii::t('answerteacher', 'answerteacher'), 'url' => array('answer/index', 'person' => '1')),
                             array('label' => Yii::t('analytic', 'Analytic'), 'url' => array('analytic/index')),
                             //array('label' => Yii::t('site', 'about'), 'url' => array('/site/page', 'view'=>'about')),
                             //array('label' => Yii::t('site', 'contact'), 'url' => array('/site/contact')),

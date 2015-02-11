@@ -34,7 +34,7 @@ class AnswerController extends Controller
             );
         }
 
-        public function actionIndex()
+        public function actionIndex($person)
         {
             $dataProvider = new CActiveDataProvider('PersonType');
             foreach($dataProvider->getData() as $activeRecord)
@@ -47,55 +47,60 @@ class AnswerController extends Controller
                 $this->_involved[$activeRecord->getAttribute('id_involved_person')] = $activeRecord->getAttribute('name');
             }
             
-            $dataProvider = new CActiveDataProvider('Teacher');
-            
-            foreach ($dataProvider->data as $answerTeacher)
+            switch ($person)
             {
-                $id_university = $answerTeacher->university_id;
-                if($id_university!='')
-                    $answerTeacher->university_name = $this->_university[$id_university];
-                else
-                    $answerTeacher->university_name = 'n/a';
-                $id_person = $answerTeacher->person_type_id;
-                if($id_person!='')
-                    $answerTeacher->person_type_name = $this->_persontype[$id_person];
-                else
-                    $answerTeacher->person_type_name = 'n/a';
-                $id_involved_type = $answerTeacher->involved_person_id;
-                if($id_involved_type!='')
-                    $answerTeacher->involved_name = $this->_involved[$id_involved_type];
-                else
-                    $answerTeacher->involved_name = 'n/a';
+                case 1:
+                    $dataProvider = new CActiveDataProvider('Teacher');
+                    
+                    foreach ($dataProvider->data as $answerTeacher)
+                    {
+                        $id_university = $answerTeacher->university_id;
+                        if($id_university!='')
+                            $answerTeacher->university_name = $this->_university[$id_university];
+                        else
+                            $answerTeacher->university_name = 'n/a';
+                        $id_person = $answerTeacher->person_type_id;
+                        if($id_person!='')
+                            $answerTeacher->person_type_name = $this->_persontype[$id_person];
+                        else
+                            $answerTeacher->person_type_name = 'n/a';
+                        $id_involved_type = $answerTeacher->involved_person_id;
+                        if($id_involved_type!='')
+                            $answerTeacher->involved_name = $this->_involved[$id_involved_type];
+                        else
+                            $answerTeacher->involved_name = 'n/a';
+                    }
+                    break;
+                case 2:
+                    $dataProvider = new CActiveDataProvider('Student');
+                    
+                    foreach ($dataProvider->data as $answerStudent)
+                    {
+                        $id_university = $answerStudent->university_id;
+                        if($id_university!='')
+                            $answerStudent->university_name = $this->_university[$id_university];
+                        else
+                            $answerStudent->university_name = 'n/a';
+                        $id_person = $answerStudent->person_type_id;
+                        if($id_person!='')
+                            $answerStudent->person_type_name = $this->_persontype[$id_person];
+                        else
+                            $answerStudent->person_type_name = 'n/a';
+                        $id_involved_type = $answerStudent->involved_person_id;
+                        if($id_involved_type!='')
+                            $answerStudent->involved_name = $this->_involved[$id_involved_type];
+                        else
+                            $answerStudent->involved_name = 'n/a';
+                    }
+                    break;
             }
-            
-            $studentDataProvider = new CActiveDataProvider('Student');
-            
-            foreach ($studentDataProvider->data as $answerStudent)
-            {
-                $id_university = $answerStudent->university_id;
-                if($id_university!='')
-                    $answerStudent->university_name = $this->_university[$id_university];
-                else
-                    $answerStudent->university_name = 'n/a';
-                $id_person = $answerStudent->person_type_id;
-                if($id_person!='')
-                    $answerStudent->person_type_name = $this->_persontype[$id_person];
-                else
-                    $answerStudent->person_type_name = 'n/a';
-                $id_involved_type = $answerStudent->involved_person_id;
-                if($id_involved_type!='')
-                    $answerStudent->involved_name = $this->_involved[$id_involved_type];
-                else
-                    $answerStudent->involved_name = 'n/a';
-            }
-            
             
             $this->render('index', array(
                 'dataProvider' => $dataProvider,
-                'studentDataProvider' => $studentDataProvider,
+                'person' => $person,
                 ));
         }
-        
+/*        
         public function actionDelete($id)
         {
             $model =  Teacher::model()->findByPk($id);
@@ -109,4 +114,6 @@ class AnswerController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('answer/index'));
 		
         }
+ * 
+ */
 }
