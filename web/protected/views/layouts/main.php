@@ -22,14 +22,11 @@
         <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.css" />
         <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.min.js"></script>
         
+        <!-- my own css -->
+        <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/my.css" />
+        
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <?php Yii::app()->name = Yii::t('site', 'sitename');?>
-        
-        <style type="text/css">
-            table.jqplot-table-legend {
-                width: auto !important;
-            }
-        </style>
 </head>
 
 <body>

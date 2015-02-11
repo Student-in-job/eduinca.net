@@ -25,10 +25,10 @@ class AnalyticController extends Controller
     
     function actionView($type=null)
     {
-        $student = new StudentStatistic();
-        $teacher = new TeacherStatistic();
         switch ($type) {
             case 1:
+                $student = new StudentStatistic();
+                $teacher = new TeacherStatistic();
                 $student->setCount();
                 $teacher->setCount();
                 $data = array_merge($student->getData(true), $teacher->getData(true));
@@ -54,8 +54,42 @@ class AnalyticController extends Controller
                 ));
                 break;
             case 2:
-                $student->setCountBySex();
-                $data = $student->getData(true);
+                $dataTeacher = array();
+                $dataStudent = array();
+                $columns = array('common_q2', 'common_q3', 'common_q4', 'common_q7', 'common_q9');
+                foreach($columns as $column)
+                {
+                    $teacher = new TeacherStatistic();
+                    $dataTeacher[$column] = $teacher->getMethodic($column, true);
+                    $student = new StudentStatistic();
+                    $dataStudent[$column] = $student->getMethodic($column, true);
+                }
+                $header = array('', '5 (%)', '4 (%)', '3 (%)', '2 (%)', '1 (%)', 'n/a (%)');
+                
+                $this->render('methodic', array(
+                    'dataTeacher' => $dataTeacher,
+                    'dataStudent' => $dataStudent,
+                    'header' => $header,
+                ));
+                break;
+            case 3:
+                $dataTeacher = array();
+                $dataStudent = array();
+                $columns = array('methodic_q1', 'methodic_q5', 'methodic_q8', 'methodic_q9', 'methodic_q13');
+                foreach($columns as $column)
+                {
+                    $teacher = new TeacherStatistic();
+                    $dataTeacher[$column] = $teacher->getFrequency($column, true, false);
+                    $student = new StudentStatistic();
+                    $dataStudent[$column] = $student->getMethodic($column, true);
+                }
+                $header = array('', '5 (%)', '4 (%)', '3 (%)', '2 (%)', '1 (%)', 'n/a (%)');
+                
+                $this->render('frequency', array(
+                    'dataTeacher' => $dataTeacher,
+                    'dataStudent' => $dataStudent,
+                    'header' => $header,
+                ));
                 break;
 
             default:
