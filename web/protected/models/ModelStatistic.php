@@ -169,10 +169,10 @@ class ModelStatistic
             }
         }
         if($persentage){
-            return $this->ToArray($this->ToPersentage($data, $sum));
+            return $this->ToPersentage($data, $sum);
         }
         else{
-            return $this->ToArray($data);
+            return $data;
         }
     }
     
@@ -197,10 +197,10 @@ class ModelStatistic
             }
         }
         if($persentage){
-            return $this->ToPersentage($data, $sum);
+            return $this->ToArray($this->ToPersentage($data, $sum));
         }
         else{
-            return $data;
+            return $this->ToArray($data);
         }
     }
 }
