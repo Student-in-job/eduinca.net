@@ -15,7 +15,7 @@ class TeacherController extends Controller
                 Yii::app()->setLanguage($_GET['lang']);
             Yii::app()->name = Yii::t('site', 'sitename');
             
-            $dataProvider = new CActiveDataProvider('University');
+            $dataProvider = new CActiveDataProvider('University', array('pagination' => false));
             foreach($dataProvider->getData() as $activeRecord)
             {
                 $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name');
@@ -125,7 +125,6 @@ class TeacherController extends Controller
 		// $this->performAjaxValidation($model);
 		if(isset($_POST['Teacher']))
 		{
-                    var_dump($_POST);
 			$model->attributes=$_POST['Teacher'];
 			if($model->save())
 				$this->redirect(array('answer/index'));

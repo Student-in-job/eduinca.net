@@ -12,7 +12,6 @@ $this->menu=array(
         array('label'=>Yii::t('answerstudent','member'), 'url'=>array('student/create', 'involved' => 1)),
 	array('label'=>Yii::t('answerstudent','notmember'), 'url'=>array('student/create', 'involved' => 2)),
 );?>
-
 <h1>Answer Teachers</h1>
 <?php
     $this->widget('zii.widgets.grid.CGridView', array(

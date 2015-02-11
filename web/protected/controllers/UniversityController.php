@@ -150,6 +150,7 @@ class UniversityController extends Controller
 			'dataProvider' => $dataProvider,
                         'data' => $this->_country,
                         'type' => $this->_universityType,
+                        'active' => $id,
 		));
 	}
 

@@ -8,19 +8,28 @@
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-	<!-- bootstrap CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.min.css" media="screen, projection">
-        <a href="../../../index.php"></a>
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection">
 	<![endif]-->
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+        
+        <!-- bootstrap -->
         <?php Yii::app()->bootstrap->register(); ?>
+        
+        <!-- jqplot -->
+        <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.css" />
+        <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.min.js"></script>
+        
+	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <?php Yii::app()->name = Yii::t('site', 'sitename');?>
+        
+        <style type="text/css">
+            table.jqplot-table-legend {
+                width: auto !important;
+            }
+        </style>
 </head>
 
 <body>
@@ -39,6 +48,7 @@
                             array('label' => Yii::t('country', 'countries'), 'url' => array('country/index')),
                             array('label' => Yii::t('university', 'universities'), 'url' => array('university/index')),
                             array('label' => Yii::t('answerteacher', 'answerteacher'), 'url' => array('answer/index')),
+                            array('label' => Yii::t('analytic', 'Analytic'), 'url' => array('analytic/index')),
                             //array('label' => Yii::t('site', 'about'), 'url' => array('/site/page', 'view'=>'about')),
                             //array('label' => Yii::t('site', 'contact'), 'url' => array('/site/contact')),
                             array('label' => Yii::t('site', 'login'), 'url' => array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

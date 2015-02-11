@@ -11,10 +11,27 @@ $this->menu=array(
 //	array('label'=>'Manage University', 'url'=>array('admin')),
 );
 ?>
-<?php echo CHtml::link('<div style="max-width: 50px;height: 30px; padding: 5px; background-color: #FFF6BF; text-align: center; float: left">Все</div>', array('index'));?>
-<?php echo CHtml::link('<div style="max-width: 150px;height: 30px; padding: 5px; background-color: #FFF6BF; text-align: center; float: left">Колледжы</div>', array('index', 'id' => 2));?>
-<?php echo CHtml::link('<div style="max-width: 150px;height: 30px; padding: 5px; background-color: #FFF6BF; text-align: center; float: left">Университеты</div>', array('index', 'id' => 1));?>
-<div style="clear: both"></div>
+<?php
+    $active1 ='';
+    $active2 ='';
+    $active3 ='';
+    switch ($active){
+        case 1:
+            $active3 = 'active';
+            break;
+        case 2:
+            $active2 = 'active';
+            break;
+        default :
+            $active1 = 'active';
+            break;
+    }
+?>
+<ul class="nav nav-pills">
+  <li role="presentation" class="<?php echo $active1;?>"><?php echo CHtml::link('Все', array('index'));?></li>
+  <li role="presentation" class="<?php echo $active2;?>"><?php echo CHtml::link('Колледжы', array('index', 'id' => 2));?></li>
+  <li role="presentation" class="<?php echo $active3;?>"><?php echo CHtml::link('Университеты', array('index', 'id' => 1));?></li>
+</ul>
 
 <h1>Universities</h1>
 <table class="table table-striped">

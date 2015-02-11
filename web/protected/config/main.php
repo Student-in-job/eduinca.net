@@ -23,14 +23,14 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-        'bootstrap.helpers.TbHtml',
+                'bootstrap.helpers.TbHtml',
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		
 		'gii'=>array(
-            'generatorPaths' => array('bootstrap.gii'),
+                        'generatorPaths' => array('bootstrap.gii'),
 			'class'=>'system.gii.GiiModule',
 			'password'=>'pw',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
