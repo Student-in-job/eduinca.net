@@ -90,6 +90,32 @@ class ModelStatistic
         }
         return $data;
     }
+    
+    protected function ToArrayInverse($array, $column = null)
+    {
+        $data = array();
+        foreach ($array as $item)
+        {
+            $bool = true;
+            $newkey;
+            foreach ($item as $key => $value)
+            {
+                if($bool){
+                    $newkey = $value;
+                    $bool = !$bool;
+                }
+                else{
+                    if($column != null){
+                        $data[$newkey] = array($column => $value);
+                    }
+                    else{
+                        $data[$newkey] = $value;
+                    }
+                }
+            }
+        }
+        return $data;
+    }
             
     function __construct($attributes = null, $tables = null) {
         $this->init();
@@ -203,5 +229,27 @@ class ModelStatistic
         else{
             return $this->ToArray($data);
         }
+    }
+    
+    public function getPracticeParticipation($column, $default = 'Нет')
+    {
+        $attributes = 'c.name, count(id_answer) as num';
+        $tables = array(
+                        'tbl_university u' => 'university_id = u.id_university',
+                        'tbl_country c' => 'u.country_id = c.id_country',
+        );
+        $group = array('c.name');
+        if($default == 'Нет'){
+            $where = array(
+                $column . '=:value and involved_person_id = :id' => array(':value' => $default, ':id' => 1)
+            );
+        }
+        else{
+            $where = array(
+                $column . '<>:value and involved_person_id = :id' => array(':value' => $default, ':id' => 1)
+            );
+        }
+        $this->buildCommand($attributes, $tables, $group, $where);
+        return $this->ToArrayInverse($this->_command->queryAll());
     }
 }
