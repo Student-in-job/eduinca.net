@@ -22,6 +22,10 @@ and open the template in the editor.
     font-size: 14px;
     color: #149BDF;
 }
+.tab th span
+{
+    margin-left: 42px;
+}
 
 table.jqplot-table-legend {
                 width: auto !important;

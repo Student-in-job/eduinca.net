@@ -73,21 +73,30 @@ class AnalyticController extends Controller
                 ));
                 break;
             case 3:
+                $this->layout='//layouts/column3';
                 $dataTeacher = array();
+                $dataTeacherNot = array();
                 $dataStudent = array();
+                $dataStudentNot = array();
                 $columns = array('methodic_q1', 'methodic_q5', 'methodic_q8', 'methodic_q9', 'methodic_q13');
                 foreach($columns as $column)
                 {
                     $teacher = new TeacherStatistic();
-                    $dataTeacher[$column] = $teacher->getFrequency($column, true, false);
+                    $dataTeacher[$column] = $teacher->getFrequency($column, false, false);
+                    $teacherNot = new TeacherStatistic();
+                    $dataTeacherNot[$column] = $teacherNot->getFrequency($column, false);
                     $student = new StudentStatistic();
-                    $dataStudent[$column] = $student->getMethodic($column, true);
+                    $dataStudent[$column] = $student->getFrequency($column, false, false);
+                    $studentNot = new TeacherStatistic();
+                    $dataStudentNot[$column] = $studentNot->getFrequency($column, false);
                 }
                 $header = array('', '5 (%)', '4 (%)', '3 (%)', '2 (%)', '1 (%)', 'n/a (%)');
                 
                 $this->render('frequency', array(
                     'dataTeacher' => $dataTeacher,
                     'dataStudent' => $dataStudent,
+                    'dataTeacherNot' => $dataTeacherNot,
+                    'dataStudentNot' => $dataStudentNot,
                     'header' => $header,
                 ));
                 break;

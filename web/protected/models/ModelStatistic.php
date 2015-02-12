@@ -70,7 +70,7 @@ class ModelStatistic
                 else{
                     $temp = $value;
                 }
-                $data[$ikey][$key] = round($temp*100);
+                $data[$ikey][$key] = round($temp*100, 1);
             }
         }
         return $data;
@@ -79,15 +79,16 @@ class ModelStatistic
     protected function ToArray($assosiative)
     {
         $data = array();
-        $index = 0;
+        $index = 1;
         foreach($assosiative as $ikey => $ivalue)
         {
             foreach ($ivalue as $key => $value)
             {
                 $data[$index] = $value;
+                $index++;
             }
-            $index++;
         }
+        return $data;
     }
             
     function __construct($attributes = null, $tables = null) {

@@ -9,42 +9,48 @@
 ?>
 
 <span id='info3'></span>
-<div id="<?php echo $id;?>" style="margin-top:20px; margin-left:20px; width:600px; height:300px;">1</div>
-
+<div id="<?php echo $id;?>" style="margin-top:20px; margin-left:20px; width:300px; height:300px;"></div>
+<?php
+    $temp = '';
+    if (is_array($data)){
+        foreach($data as $item){
+            $temp = $item . ',';
+        }
+    }
+    else{
+        $temp = $data;
+    }
+?>
 <script>
 $(document).ready(function(){
-        var s1 = [2, 6, 7, 10, 1];
-        var s2 = [7, 5, 3, 2, 12];
-        var s3 = [14, 9, 3, 8, 3];
-        plot3 = $.jqplot('<?php echo $id;?>', [s1, s2, s3], {
+        plot3 = $.jqplot('<?php echo $id;?>', [<?php echo $temp;?>], {
             stackSeries: true,
             captureRightClick: true,
+            title: '<?php echo Yii::t('analytic', $title);?>',
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
                 rendererOptions: {
-                    groups: 2,
                     highlightMouseDown: true   
                 },
                 pointLabels: {show: true}
             },
-            series:[
-                {label:'Hotel'},
-                {label:'Event Regristration'},
-                {label:'Airfare'}
-            ],
-            /*
+            series:[<?php echo $series;?>],
+            
             axes: {
                 xaxis: {
-                    renderer: $.jqplot.CategoryAxisRenderer
+                    min: 6,      // minimum numerical value of the axis.  Determined automatically.
+                    max: 0,
+                    ticks: ['6','5','4','3','2','1','0'],
+                    //renderer: $.jqplot.CategoryAxisRenderer
                 },
                 yaxis: {
                   // Don't pad out the bottom of the data range.  By default,
                   // axes scaled as if data extended 10% above and below the
                   // actual range to prevent data points right on grid boundaries.
                   // Don't want to do that here.
-                  padMin: 0
+                  padMin: 0,
                 }
-            },*/
+            },
             legend: {
                 show: true,
                 location: 'e',
@@ -52,7 +58,7 @@ $(document).ready(function(){
             }     
         });
      
-        $('#bar-chart').bind('jqplotDataClick', 
+        $('#<?php echo $id;?>').bind('jqplotDataClick', 
             function (ev, seriesIndex, pointIndex, data) {
               $('#info3').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
             }

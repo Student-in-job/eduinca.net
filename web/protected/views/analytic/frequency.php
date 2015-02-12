@@ -14,57 +14,84 @@
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.barRenderer.js"></script>
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.pointLabels.js"></script>
 
-<span id='info3'></span>
-<div id="bar-chart" style="margin-top:20px; margin-left:20px; width:600px; height:300px;"></div>
-<!--
-<script>
-$(document).ready(function(){
-        var s1 = [2, 6, 7, 10, 1];
-        var s2 = [7, 5, 3, 2, 12];
-        var s3 = [14, 9, 3, 8, 3];
-        var data = [s1, s2, s3]
-        plot3 = $.jqplot('bar-chart', data, {
-            stackSeries: true,
-            captureRightClick: true,
-            seriesDefaults:{
-                renderer:$.jqplot.BarRenderer,
-                rendererOptions: {
-                    groups: 2,
-                    highlightMouseDown: true   
-                },
-                pointLabels: {show: true}
-            },
-            series:[
-                {label:'Hotel'},
-                {label:'Event Regristration'},
-                {label:'Airfare'}
-            ],
-            /*
-            axes: {
-                xaxis: {
-                    renderer: $.jqplot.CategoryAxisRenderer
-                },
-                yaxis: {
-                  // Don't pad out the bottom of the data range.  By default,
-                  // axes scaled as if data extended 10% above and below the
-                  // actual range to prevent data points right on grid boundaries.
-                  // Don't want to do that here.
-                  padMin: 0
-                }
-            },*/
-            legend: {
-                show: true,
-                location: 'e',
-                placement: 'outside'
-            }     
-        });
-     
-        $('#bar-chart').bind('jqplotDataClick', 
-            function (ev, seriesIndex, pointIndex, data) {
-              $('#info3').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
-            }
-        ); 
-    });
-</script>
--->
-<?php var_dump($dataTeacher);?>
+<table>
+    <thead class="tab">
+        <tr>
+            <th><span><?php echo Yii::t('analytic', 'Teachers');?></span></th>
+            <th><span><?php echo Yii::t('analytic', 'Students');?></span></th>
+        </tr>
+    </thead>
+    <tbody>
+<?php //var_dump($dataTeacher);?>
+<?php
+    $stringArray = array();
+    foreach ($dataTeacher as $key => $data){
+        $stringArray[$key] ='[';
+        foreach ($data as $item){
+            $stringArray[$key] .= $item;
+            $stringArray[$key] .= ',';
+        }
+        $stringArray[$key] .= '0';
+        $stringArray[$key] .=']';
+    }
+    $stringArray1 = array();
+    foreach ($dataTeacherNot as $key => $data){
+        $stringArray1[$key] ='[';
+        foreach ($data as $item){
+            $stringArray1[$key] .= $item;
+            $stringArray1[$key] .= ',';
+        }
+        $stringArray1[$key] .= '0';
+        $stringArray1[$key] .=']';
+    }
+    $stringArray3 = array();
+    foreach ($dataStudent as $key => $data){
+        $stringArray3[$key] ='[';
+        foreach ($data as $item){
+            $stringArray3[$key] .= $item;
+            $stringArray3[$key] .= ',';
+        }
+        $stringArray3[$key] .= '0';
+        $stringArray3[$key] .=']';
+    }
+    $stringArray4 = array();
+    foreach ($dataStudentNot as $key => $data){
+        $stringArray4[$key] ='[';
+        foreach ($data as $item){
+            $stringArray4[$key] .= $item;
+            $stringArray4[$key] .= ',';
+        }
+        $stringArray4[$key] .= '0';
+        $stringArray4[$key] .=']';
+    }
+    //$stringArray .= ']';
+    //var_dump($stringArray);
+    foreach($stringArray as $key => $value){
+        echo '<tr>';
+        echo '<td>';
+            $this->renderPartial(
+                '_barSeveral',
+                array(
+                    'id' => 'T' . $key,
+                    'data' => $stringArray[$key] . ',' . $stringArray1[$key],
+                    'title' => $key,
+                    'series' => '{label:\'' . Yii::t('analytic','involved') . '\'},{label: \'' . Yii::t('analytic','notinvolved') . '\'}'
+                    )
+            );
+        echo '</td>';
+        echo '<td>';
+            $this->renderPartial(
+                '_barSeveral',
+                array(
+                    'id' => 'S' . $key,
+                    'data' => $stringArray3[$key] . ',' . $stringArray4[$key],
+                    'title' => $key,
+                    'series' => '{label:\'' . Yii::t('analytic','involved') . '\'},{label: \'' . Yii::t('analytic','notinvolved') . '\'}'
+                    )
+            );
+        echo '</td>';
+        echo '<tr>';
+    }
+?>
+    </tbody>
+</table>
