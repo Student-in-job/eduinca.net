@@ -8,7 +8,7 @@
 ?>
 
 
-<div id="<?php echo $id;?>" style="height:300px;width:400px;"></div>
+<div id="<?php echo $id;?>" style="float: left; height:300px; width:350px;"></div>
 <script class="code" type="text/javascript">
       $(document).ready(function(){
       var data = [<?php echo $data; ?>];
