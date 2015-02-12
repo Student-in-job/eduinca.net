@@ -15,7 +15,7 @@ class TeacherStatistic extends ModelStatistic
         $this->_id = 'answer';
         parent::__construct();
     }
-    
+    /*
     public function setCount()
     {
         $this->_keys = array('id', 'name', 'num');
@@ -28,7 +28,7 @@ class TeacherStatistic extends ModelStatistic
         $where = array('involved_person_id = :id' => array(':id' => '1'));
         $this->buildCommand($attributes, $tables, $group, $where);
     }
-    
+    */
     public function setCountBySex()
     {
         $this->_keys = array('num','sex');
