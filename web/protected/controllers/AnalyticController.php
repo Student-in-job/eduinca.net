@@ -46,7 +46,7 @@ class AnalyticController extends Controller
                 $teacherBySex = new TeacherStatistic();
                 $teacherBySex->setCountBySex();
                 //var_dump($dataProvider->getData());
-
+                
                 $this->render('allanswer', array(
                     'dataProvider' => $dataProvider,
                     'students' => $studentBySex->getData(true),
@@ -100,7 +100,13 @@ class AnalyticController extends Controller
                     'header' => $header,
                 ));
                 break;
-
+            case 4:
+                $data = '[[5,1], [1,2], [3,3], [4,4]], [[4,1], [7,2], [1,3], [2,4]]';
+ 
+                $this->render('HBars', array(
+                    'data' => $data,
+                ));
+                break;
             default:
                 break;
         }

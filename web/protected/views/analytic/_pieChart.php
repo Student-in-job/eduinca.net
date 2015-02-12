@@ -14,7 +14,7 @@
       var data = [<?php echo $data; ?>];
       var plot1 = jQuery.jqplot('<?php echo $id;?>', [data], 
         { 
-          title: '<?php echo $title; ?>',  
+          title: '<?php echo $title; ?>',
           seriesDefaults: {
             // Make this a pie chart.
             renderer: jQuery.jqplot.PieRenderer,

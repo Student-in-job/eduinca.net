@@ -34,12 +34,7 @@ $this->breadcrumbs=array(
         )
         )
     );
-    
-/* start new grid*/
-
-    
-/*end new grid */
-
+    /* */
     $outputString = '';
     foreach ($students as $row)
     {
