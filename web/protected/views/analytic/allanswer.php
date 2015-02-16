@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>Statistic</h1>
-
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/excanvas.js"></script><![endif]-->
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.js"></script>
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.pieRenderer.js"></script>
 
@@ -34,7 +34,8 @@ $this->breadcrumbs=array(
         )
         )
     );
-    /* */
+
+    
     $outputString = '';
     foreach ($students as $row)
     {

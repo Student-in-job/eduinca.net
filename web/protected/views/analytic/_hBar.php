@@ -8,11 +8,14 @@
 ?>
 
 
-<div id="hbar-chart"></div>
+<div id="<?php echo $id; ?>"></div>
 <script>
 $(document).ready(function(){
         var data = [<?php echo $data; ?>];
-        $.jqplot('hbar-chart', data, {
+        $.jqplot('<?php echo $id; ?>', data, {
+            title: '<?php echo $title; ?>',
+            animate : true,
+            animateReplot : true,
             seriesDefaults: {
                 renderer:$.jqplot.BarRenderer,
                 pointLabels: { show: true, location: 'e', edgeTolerance: -15 },
@@ -22,13 +25,17 @@ $(document).ready(function(){
                 }
             },
             axes: {
+                xaxis:{
+                  label:'',
+                },                
                 yaxis: {
-                    renderer: $.jqplot.CategoryAxisRenderer
-                }
+                    label:'',
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                },
             },
-            legend: { 
-                show:true,
-            }
+            //legend: { 
+            //    show:true,
+            //}
         });
     });
 </script>
