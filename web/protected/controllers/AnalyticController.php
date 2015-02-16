@@ -102,11 +102,20 @@ class AnalyticController extends Controller
                 break;
             case 4:
                 $data = '[[5,1], [1,2], [3,3], [4,4]], [[4,1], [7,2], [1,3], [2,4]]';
- 
+                
                 $this->render('HBars', array(
                     'data' => $data,
                 ));
                 break;
+            case 5:
+                $teacher = new TeacherStatistic();
+                $dataY = $teacher->getPracticeParticipation('private_papers');
+                $teacher = new TeacherStatistic();
+                $dataN = $teacher->getPracticeParticipation('private_papers', 'ANY');
+                $this->render('private_papers', array(
+                    'dataY' => $dataY,
+                    'dataN' => $dataN,
+                ));
             default:
                 break;
         }

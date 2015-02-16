@@ -429,11 +429,11 @@ table tbody tr {height: 45px; }
 
 	<div class="row buttons">
                 <?php if (!$view) {?>
-		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save'),array('class'=>'btn btn-primary')); ?>
                 <?php
                     }
                     else
-                        echo CHtml::link(Yii::t('site','back'),array('answer/index'))
+                        echo CHtml::link(Yii::t('site','back'),Yii::app()->request->urlReferrer, array('class'=>'btn btn-primary'));
                 ?>
 	</div>
 
