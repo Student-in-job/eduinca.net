@@ -18,7 +18,7 @@ $(document).ready(function(){
             animateReplot : true,
             seriesDefaults: {
                 renderer:$.jqplot.BarRenderer,
-                pointLabels: { show: true, location: 'e', edgeTolerance: -15 },
+				pointLabels: { show: true, formatString: '%d', location: 'e', edgeTolerance: -15 },
                 shadowAngle: 135,
                 rendererOptions: {
                     barDirection: 'horizontal'
