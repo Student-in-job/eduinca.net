@@ -11,17 +11,12 @@ class techstud_table extends CWidget
     /**
      * @var string имя пользователя
      */
-    public $username = '';
+    //public $username = '';
     /**
      * Запуск виджета
      */
     public function run()
     {
-        $this->render('index', array(
-            'username' => $this->username,
-             /*'dataProvider' => 'dataProvider',
-             'students' => 'studentBySex',
-             'teachers' => 'teacherBySex',*/
-        ));
+        $this->render('index', array());
     }
 }

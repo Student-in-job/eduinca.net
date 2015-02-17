@@ -33,9 +33,12 @@ $(document).ready(function(){
                     renderer: $.jqplot.CategoryAxisRenderer,
                 },
             },
-            //legend: { 
-            //    show:true,
-            //}
+            legend: { 
+                show:true,
+                placement: "outsideGrid",
+                location: 'e',
+                labels: ["Участвовали", "Не участвовали"],
+            }
         });
     });
 </script>

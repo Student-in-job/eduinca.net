@@ -46,7 +46,7 @@ div #st-table td.empty, tr.odd td.empty, tr.even td.empty{background:#fff;}
                                     $teacher = new TeacherStatistic();
                                     $teacher->setCount();
                                     $student->setCount();
-                                    $data = array_merge($student->getData(true), $teacher->getData(true));
+//                                    $data = array_merge($student->getData(true), $teacher->getData(true));
                                     $stud = $student->getData(true);
                                     $teach = $teacher->getData(true);
                                     foreach ($stud as $st){

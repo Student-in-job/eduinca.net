@@ -30,20 +30,20 @@ $element = new Student;
 $table_name = $element->tableName();
 $count_students = Student::model()->count();
 /* start: count student who have the first variant by 12 question at the test */
-$personal_work = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=1');
-$res_personal_work = $count_students - $personal_work;
+$personal_work = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=1 AND involved_person_id=1');
+$res_personal_work = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=1 AND involved_person_id=2');
 /* stop */
 /* start: count student who have second variant by 12 question at the test */
-$tech_together = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=2');
-$res_tech_together = $count_students - $tech_together;
+$tech_together = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=2 AND involved_person_id=1');
+$res_tech_together = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=2 AND involved_person_id=2');
 /* stop */
 /* start: count student who have the third variant by 12 question at the test */
-$observe = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=3');
-$res_observe = $count_students - $observe;
+$observe = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=3 AND involved_person_id=1');
+$res_observe = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=3 AND involved_person_id=2');
 /* stop */
 /* start: count student who have the fours variant by 12 question at the test */
-$other = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=4');
-$res_other = $count_students - $other;
+$other = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=4 AND involved_person_id=1');
+$res_other = Student::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_student WHERE labs_comment=4 AND involved_person_id=2');
 /* stop */
 $outputString = '[';
 $outputString .= '['.$personal_work.',"Самостоятельная работа"], ['.$tech_together.',"C помощью перподавателя"], ['.$observe.',"Наблюдение"], ['.$other.',"Другое"]], [['.$res_personal_work.',"Самостоятельная работа"], ['.$res_tech_together.',"C помощью перподавателя"], ['.$res_observe.',"Наблюдение"], ['.$res_other.',"Другое"]';
@@ -56,20 +56,20 @@ $element = new Teacher;
 $table_name = $element->tableName();
 $count_teachers = Teacher::model()->count();
 /* start: count student who have the first variant by 12 question at the test */
-$personal_work = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=1');
-$res_personal_work = $count_students - $personal_work;
+$personal_work = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=1 AND involved_person_id=1');
+$res_personal_work = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=1 AND involved_person_id=2');
 /* stop */
 /* start: count student who have second variant by 12 question at the test */
-$tech_together = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=2');
-$res_tech_together = $count_teachers - $tech_together;
+$tech_together = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=2 AND involved_person_id=1');
+$res_tech_together = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=2 AND involved_person_id=2');
 /* stop */
 /* start: count student who have the third variant by 12 question at the test */
-$observe = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=3');
-$res_observe = $count_teachers - $observe;
+$observe = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=3 AND involved_person_id=1');
+$res_observe = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=3 AND involved_person_id=2');
 /* stop */
 /* start: count student who have the fours variant by 12 question at the test */
-$other = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=4');
-$res_other = $count_teachers - $other;
+$other = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=4 AND involved_person_id=1');
+$res_other = Teacher::model()->countBySql('SELECT COUNT(id_answer) FROM tbl_answer_teacher WHERE labs_comment=4 AND involved_person_id=2');
 /* stop */
 $outputString = '[';
 $outputString .= '['.$personal_work.',"Самостоятельная работа"], ['.$tech_together.',"C помощью перподавателя"], ['.$observe.',"Наблюдение"], ['.$other.',"Другое"]], [['.$res_personal_work.',"Самостоятельная работа"], ['.$res_tech_together.',"C помощью перподавателя"], ['.$res_observe.',"Наблюдение"], ['.$res_other.',"Другое"]';
