@@ -17,7 +17,9 @@ $this->breadcrumbs=array(
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.js"></script>
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.pieRenderer.js"></script>
 
+
 <?php
+/*
     $this->widget('zii.widgets.grid.CGridView', array(
         'dataProvider' => $dataProvider,
         'columns' => array(
@@ -34,7 +36,9 @@ $this->breadcrumbs=array(
         )
         )
     );
-
+ */
+  
+$this->widget('application.extensions.extrawidgets.techstud_table.techstud_table', array());
     
     $outputString = '';
     foreach ($students as $row)

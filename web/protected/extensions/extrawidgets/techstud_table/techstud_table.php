@@ -18,10 +18,10 @@ class techstud_table extends CWidget
     public function run()
     {
         $this->render('index', array(
-            /*'username' => $this->username,*/
-             'dataProvider' => 'dataProvider',
+            'username' => $this->username,
+             /*'dataProvider' => 'dataProvider',
              'students' => 'studentBySex',
-             'teachers' => 'teacherBySex',
+             'teachers' => 'teacherBySex',*/
         ));
     }
 }

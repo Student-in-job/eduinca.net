@@ -91,7 +91,6 @@ class AnalyticController extends Controller
                     $dataStudentNot[$column] = $studentNot->getFrequency($column, false);
                 }
                 $header = array('', '5 (%)', '4 (%)', '3 (%)', '2 (%)', '1 (%)', 'n/a (%)');
-                
                 $this->render('frequency', array(
                     'dataTeacher' => $dataTeacher,
                     'dataStudent' => $dataStudent,
@@ -101,8 +100,7 @@ class AnalyticController extends Controller
                 ));
                 break;
             case 4:
-                $data = '[[5,1], [1,2], [3,3], [4,4]], [[4,1], [7,2], [1,3], [2,4]]';
-                
+                $data = '';
                 $this->render('HBars', array(
                     'data' => $data,
                 ));
