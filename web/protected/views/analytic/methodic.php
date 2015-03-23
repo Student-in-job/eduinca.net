@@ -7,7 +7,7 @@
  */
 $this->breadcrumbs=array(
 	Yii::t('analytic', 'Analytic') => array('index'),
-        Yii::t('analitic', 'Total'),
+        Yii::t('analitic', 'Methodic'),
 );
 
 ?>
