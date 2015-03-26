@@ -36,6 +36,13 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
+        
+        <div  id="language-selector" style="float:right; margin:5px;">
+            <?php 
+                $this->widget('application.extensions.widgets.LanguageSelector');
+            ?>
+        </div>
+        
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
                         'activateParents'=>true,

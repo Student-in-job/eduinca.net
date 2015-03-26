@@ -23,8 +23,8 @@ switch ($person)
 
 
 <ul class="nav nav-pills">
-    <li class="<?php echo $active1;?>"><?php echo CHtml::link('Преподаватели', array('index', 'person' => 1));?></li>
-    <li class="<?php echo $active2;?>"><?php echo CHtml::link('Студенты', array('index', 'person' => 2));?></li>
+    <li class="<?php echo $active1;?>"><?php echo CHtml::link(Yii::t('answer','teachers'), array('index', 'person' => 1));?></li>
+    <li class="<?php echo $active2;?>"><?php echo CHtml::link(Yii::t('answer','students'), array('index', 'person' => 2));?></li>
 </ul>
 
 <h1>Answer</h1>

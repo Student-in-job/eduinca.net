@@ -28,9 +28,9 @@ $this->menu=array(
     }
 ?>
 <ul class="nav nav-pills">
-  <li role="presentation" class="<?php echo $active1;?>"><?php echo CHtml::link('Все', array('index'));?></li>
-  <li role="presentation" class="<?php echo $active2;?>"><?php echo CHtml::link('Колледжы', array('index', 'id' => 2));?></li>
-  <li role="presentation" class="<?php echo $active3;?>"><?php echo CHtml::link('Университеты', array('index', 'id' => 1));?></li>
+  <li role="presentation" class="<?php echo $active1;?>"><?php echo CHtml::link(Yii::t('university','all'), array('index'));?></li>
+  <li role="presentation" class="<?php echo $active2;?>"><?php echo CHtml::link(Yii::t('university','colleges'), array('index', 'id' => 2));?></li>
+  <li role="presentation" class="<?php echo $active3;?>"><?php echo CHtml::link(Yii::t('university','universities'), array('index', 'id' => 1));?></li>
 </ul>
 
 <h1>Universities</h1>

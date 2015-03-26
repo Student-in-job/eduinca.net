@@ -11,16 +11,12 @@ class TeacherController extends Controller
         private $_university;
 
 	public function init(){
-            if(isset($_GET['lang']))
-                Yii::app()->setLanguage($_GET['lang']);
-            Yii::app()->name = Yii::t('site', 'sitename');
-            
+            parent::init();
             $dataProvider = new CActiveDataProvider('University', array('pagination' => false));
             foreach($dataProvider->getData() as $activeRecord)
             {
                 $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name');
-            }            
-            parent::init();
+            }
         }
         /**
 	 * @return array action filters

@@ -11,7 +11,7 @@ return array(
 	'name' => Yii::t('site', 'sitename'),
         'theme' => 'classic',
         'defaultController' => 'site',
-	'sourceLanguage' => 'en',
+	//'sourceLanguage' => 'en',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -38,7 +38,17 @@ return array(
 		),
 		
 	),
-
+        
+        /*
+        // Associates a behavior-class with the onBeginRequest event.
+        // By placing this within the primary array, it applies to the application as a whole
+        'behaviors'=>array(
+                'onBeginRequest' => array(
+                        'class' => 'application.components.behaviors.BeginRequest'
+                    ),
+                ),
+        */
+    
 	// application components
 	'components'=>array(
 
@@ -67,7 +77,6 @@ return array(
                          */
 		),
 		
-
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
 
@@ -95,7 +104,13 @@ return array(
                 'bootstrap' => array(
                         'class' => 'bootstrap.components.TbApi',
                 ),
-
+                /*
+                'request'=>array(
+                        'enableCookieValidation'=>true,
+                        'enableCsrfValidation'=>true,
+                ),
+                 * 
+                 */
 	),
 
 	// application-level parameters that can be accessed
@@ -103,5 +118,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'vitalik.pak@gmail.com',
+                'languages'=>array('ru'=>'Русский', 'en'=>'English'),
 	),
 );
