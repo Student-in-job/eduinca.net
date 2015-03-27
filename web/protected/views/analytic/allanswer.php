@@ -55,3 +55,21 @@ $this->widget('application.extensions.extrawidgets.techstud_table.techstud_table
         $outputString .= '[\'' . $sex  . '\',' . $row['num'] . '],';
     }
     $this->renderPartial('_pieChart', array('data' => $outputString, 'id' => 'teacher', 'title' => Yii::t('analytic', 'Teachers')));
+
+    
+    /* PDF */
+/*
+$pdf = Yii::createComponent('application.extensions.tcpdf.ETcPdf', 'P', 'cm', 'A4', true, 'UTF-8');
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor("GiZ");
+$pdf->SetTitle("Statistics");
+$pdf->SetSubject("Total Statistics");
+$pdf->SetKeywords("GIZ, GiZ, PDF, statistics");
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+$pdf->AliasNbPages();
+$pdf->AddPage();
+$pdf->SetFont("times", "BI", 20);
+$pdf->Cell(0,10,"Example 002",1,1,'C');
+$pdf->Output("002.pdf", "I");    
+*/
