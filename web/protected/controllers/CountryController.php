@@ -7,13 +7,6 @@ class CountryController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
-        
-        public function init(){
-            if(isset($_GET['lang']))
-                Yii::app()->setLanguage($_GET['lang']);
-            Yii::app()->name = Yii::t('site', 'sitename');
-            parent::init();
-        }
 
 	/**
 	 * @return array action filters

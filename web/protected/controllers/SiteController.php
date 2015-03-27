@@ -2,17 +2,7 @@
 
 class SiteController extends Controller
 {
-	/**
-	 * Declares class-based actions.
-	 */
-        public function init(){
-            if(isset($_GET['lang']))
-                Yii::app()->setLanguage($_GET['lang']);
-            Yii::app()->name = Yii::t('site', 'sitename');
-            parent::init();
-        }
-    
-	public function actions()
+        public function actions()
 	{
 		return array(
 			// captcha action renders the CAPTCHA image displayed on the contact page

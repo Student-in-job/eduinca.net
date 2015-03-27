@@ -5,6 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$this->breadcrumbs=array(
+	Yii::t('analytic', 'Analytic') => array('index'),
+        Yii::t('analitic', 'Papers'),
+);
 
 $data = array_merge($dataN,$dataY);
 $index = 0;

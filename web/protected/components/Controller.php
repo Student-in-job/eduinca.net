@@ -20,4 +20,23 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+        public function init()
+        {    
+            if (!empty($_GET['language']))
+                Yii::app()->language = $_GET['language'];
+            Yii::app()->name = Yii::t('site', 'sitename');
+            parent::init();
+        }
+        
+        public function createMultilanguageReturnUrl($lang='en'){
+            if (count($_GET)>0){
+                $arr = $_GET;
+                $arr['language']= $lang;
+            }
+            else 
+                $arr = array('language'=>$lang);
+            return $this->createUrl('', $arr);
+        }
+
 }

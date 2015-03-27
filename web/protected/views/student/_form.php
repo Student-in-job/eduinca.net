@@ -85,7 +85,7 @@ table tbody tr {height: 45px; }
 		<?php echo $form->labelEx($model,'sex'); ?>
 	</div>
 
-        <table style="width: 200px;">
+        <table style="width: 250px;">
             <tr>
                 <td><?php echo $form->radioButton($model, 'sex', array('value' => '1', 'uncheckValue' => null)); echo Yii::t('answer', 'man')?></td>
                 <td><?php echo $form->radioButton($model, 'sex', array('value' => '0', 'uncheckValue' => null)); echo Yii::t('answer', 'woman');?></td>
@@ -121,7 +121,7 @@ table tbody tr {height: 45px; }
                 <?php echo CHtml::label('6. ' . Yii::t('answerstudent','study'),'');?>
         </div>
         
-        <table style="max-width: 250px;">
+        <table style="max-width: 300px;">
             <tr>
                 <td>
                     <?php echo $form->labelEx($model,'study_from'); ?>
@@ -293,34 +293,12 @@ table tbody tr {height: 45px; }
 	<table class='table-bordered'>
             <thead>
                 <tr>
-                    <td style="width: 500px;padding: 15px;"><b>Метод преподавания</b></td>
+                    <td style="width: 500px;padding: 15px;"><b><?php echo Yii::t('answerstudent','methodic_teach'); ?></b></td>
                     <td style="width: 300px;padding: 15px;">
-                        <b>Как часто используете?</b>
-                        <br/>
-                        <b>5</b> = очень часто, практически на каждом занятии;
-                        <br/>
-                        <b>4</b> = часто, несколько раз в месяц;
-                        <br/>
-                        <b>3</b> = нечасто, несколько раз в семестр;
-                        <br/>
-                        <b>2</b> = один или два раза за весь курс;
-                        <br/>
-                        <b>1</b> = никогда
-                        <br/>
-                        Если при ответе на данный вопрос вы используете вариант 1 (никогда), то на вопрос в следующей графе не отвечайте. 
+                        <?php echo Yii::t('answerstudent', 'methodic_answers1'); ?> 
                     </td>
                     <td style="width: 300px;padding: 15px;">
-                        <b>Насколько эффективен для студентов?</b>
-                        <br/>
-                        <b>5</b> = очень эффективен,  каждый раз студенты узнают что-то новое;
-                        <br/>
-                        <b>4</b> = эффективен, они часто узнают что-то новое;
-                        <br/>
-                        <b>3</b> = частично эффективен, они получают новую информацию, но не знают, как ее применять;
-                        <br/>
-                        <b>2</b> = скорее неэффективен, они узнают немногое;
-                        <br/>
-                        <b>1</b> = совершенно неэффективен, ничего не дает
+                        <?php echo Yii::t('answerstudent', 'methodic_answers2'); ?> 
                     </td>
                 </tr>
             </thead>

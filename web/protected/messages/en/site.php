@@ -21,4 +21,10 @@ return array(
     'password' => 'Password',
     'rememberme' => 'Remember me next time',
     'errlogin' => 'Incorrect username or password',
+    'operations' => 'Actions',
+    'create' => 'Create',
+    'save' => 'Save',
+    'back' => 'Back',
+    'program' => '«Professional education in Central Asia»',
+    'year' => 'Year',
 );

@@ -252,4 +252,10 @@ class ModelStatistic
         $this->buildCommand($attributes, $tables, $group, $where);
         return $this->ToArrayInverse($this->_command->queryAll());
     }
+    
+    public function getDiploma($column)
+    {
+        $this->setCommonCount($column);
+        
+    }
 }

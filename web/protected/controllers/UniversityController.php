@@ -10,17 +10,15 @@ class UniversityController extends Controller
         private $_country;
         private $_universityType;
         
-        public function init(){
-            if(isset($_GET['lang']))
-                Yii::app()->setLanguage($_GET['lang']);
-                Yii::app()->name = Yii::t('site', 'sitename');
-                $dataProvider = new CActiveDataProvider('Country');
-                $this->_universityType = array(1=>Yii::t('university','university'), 2=>Yii::t('university','college'));
-                foreach($dataProvider->getData() as $activeRecord)
-                {
-                    $this->_country[$activeRecord->getAttribute('id_country')] = $activeRecord->getAttribute('name');
-                }
+        public function init()
+        {
             parent::init();
+            $dataProvider = new CActiveDataProvider('Country');
+            $this->_universityType = array(1=>Yii::t('university','university'), 2=>Yii::t('university','college'));
+            foreach($dataProvider->getData() as $activeRecord)
+            {
+                $this->_country[$activeRecord->getAttribute('id_country')] = $activeRecord->getAttribute('name');
+            }      
         }
 	/**
 	 * @return array action filters

@@ -2106,6 +2106,7 @@ Stack trace:
 REQUEST_URI=/eduinca.net/web/index.php/ru/analytic/view?type=4
 HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/ru/analytic/index
 ---
+<<<<<<< HEAD
 2015/03/02 05:39:12 [error] [php] require_once(C:\xampp\htdocs\eduinca.net\web\protected\extensions\tcpdf/tcpdf/tcpdf.php): failed to open stream: No such file or directory (C:\xampp\htdocs\eduinca.net\web\protected\extensions\tcpdf\ETcPdf.php:38)
 Stack trace:
 #0 C:\xampp\htdocs\eduinca.net\framework\YiiBase.php(196): import()
@@ -2607,3 +2608,71 @@ REQUEST_URI=/eduinca.net/web/index.php/ru/analytic/view?type=1
 in C:\xampp\htdocs\eduinca.net\web\protected\extensions\tcpdf\ETcPdf.php (86)
 in C:\xampp\htdocs\eduinca.net\web\protected\views\analytic\allanswer.php (61)
 in C:\xampp\htdocs\eduinca.net\web\protected\controllers\AnalyticController.php (54)
+=======
+2015/03/26 14:59:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\Webserver\www\eduinca.net\framework\web\CController.php:336
+Stack trace:
+#0 C:\Webserver\www\eduinca.net\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Webserver\www\eduinca.net\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Webserver\www\eduinca.net\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Webserver\www\eduinca.net\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Webserver\www\eduinca.net\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Webserver\www\eduinca.net\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Webserver\www\eduinca.net\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Webserver\www\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Webserver\www\eduinca.net\framework\web\CWebApplication.php(282): CController->run('index')
+#9 C:\Webserver\www\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('answer/index/la...')
+#10 C:\Webserver\www\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\Webserver\www\eduinca.net\web\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php/answer/index/language/en
+HTTP_REFERER=http://statistic.eduinca.lan:8082/index.php/teacher/create/involved/1/language/en
+---
+2015/03/26 14:59:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\Webserver\www\eduinca.net\framework\web\CController.php:336
+Stack trace:
+#0 C:\Webserver\www\eduinca.net\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Webserver\www\eduinca.net\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Webserver\www\eduinca.net\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Webserver\www\eduinca.net\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Webserver\www\eduinca.net\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Webserver\www\eduinca.net\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Webserver\www\eduinca.net\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Webserver\www\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Webserver\www\eduinca.net\framework\web\CWebApplication.php(282): CController->run('index')
+#9 C:\Webserver\www\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('answer/index/la...')
+#10 C:\Webserver\www\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\Webserver\www\eduinca.net\web\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php/answer/index/language/en
+HTTP_REFERER=http://statistic.eduinca.lan:8082/index.php/teacher/create/involved/1/language/en
+---
+>>>>>>> ad6ed6062763d5b72af21eeb1c7afd129ec1588e
+2015/03/27 08:00:05 [error] [exception.CException] exception 'CException' with message 'Псевдоним "application.extensions.widgets.LanguageSelector" неверен. Убедитесь, что он указывает на существующий PHP файл.' in C:\xampp\htdocs\eduinca.net\framework\YiiBase.php:323
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWidgetFactory.php(146): YiiBase::import('application.ext...', true)
+#1 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'application.ext...', Array)
+#2 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(180): CBaseController->createWidget('application.ext...', Array)
+#3 C:\xampp\htdocs\eduinca.net\web\protected\views\layouts\main.php(42): CBaseController->widget('application.ext...')
+#4 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#5 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(76): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#7 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 C:\xampp\htdocs\eduinca.net\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(214): COutputProcessor->run()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#11 C:\xampp\htdocs\eduinca.net\web\protected\views\layouts\column1.php(6): CBaseController->endContent()
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#13 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#14 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(784): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#15 C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php(29): CController->render('index')
+#16 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#17 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): CController->run('')
+#21 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#22 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/eduinca.net/web/
+HTTP_REFERER=http://localhost:81/eduinca.net/
+---
