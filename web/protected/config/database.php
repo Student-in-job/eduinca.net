@@ -7,7 +7,7 @@ return array(
 	
 	'connectionString' => 'mysql:host=localhost;dbname=statistic',
 	'emulatePrepare' => true,
-	'username' => 'root',
+	'username' => 'user',
 	'password' => 'password',
 	'charset' => 'utf8',
 	

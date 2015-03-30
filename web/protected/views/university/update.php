@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	Yii::t('university', 'universities')=>array('index'),
-	$model->name=>array('view','id'=>$model->id_university),
+        $model->name=>array('view','id'=>$model->id_university),
 	Yii::t('university', 'updating'),
 );
 /*

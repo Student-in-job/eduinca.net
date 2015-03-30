@@ -60,7 +60,8 @@
                             //array('label' => Yii::t('site', 'user'), 'url' => array('/TblUser/index')),
 			),
 		)); ?>
-	</div><!-- mainmenu -->
+	</div>
+        <!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,

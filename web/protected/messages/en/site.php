@@ -27,4 +27,11 @@ return array(
     'back' => 'Back',
     'program' => '«Professional education in Central Asia»',
     'year' => 'Year',
+    'survey' => 'Surveys',
+    'statistics' => 'Statistics',
+    'reports' => 'Reports',
+    'editor' => 'Editor',
+    'help' => 'Help',
+    'sign' => 'Sign Up',
+    'useremail' => 'User or email',
 );

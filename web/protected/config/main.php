@@ -9,7 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'language' => 'ru',
 	'name' => Yii::t('site', 'sitename'),
-        'theme' => 'classic',
+        'theme' => 'giz',
         'defaultController' => 'site',
 	//'sourceLanguage' => 'en',
 	// preloading 'log' component
