@@ -51,9 +51,10 @@ $this->pageTitle=Yii::app()->name;
 		
     <article class="grid col-one-third mq3-col-full">
         <h5>Контакты</h5>
-	<p>Адрес:</p>
-	<p>Телефон:</p>
-	<p>E-mail:</p>
+	<p>Адрес: </p>
+	<p>Телефон: +998 71 140-04-90</p>
+	<p>E-mail: </p>
+	<p>Web: www.eduinca.net</p>
     </article>
 </section>
 <!--main-->

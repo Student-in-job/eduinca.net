@@ -11,30 +11,27 @@
 	
 	<!-- Remove this line if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
 	<meta name="viewport" content="width=device-width">
-	
 	<meta name="description" content="">
 	<meta name="author" content="">
-	
-	
+
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="shortcut icon" type="image/png" href="favicon.png">
 	
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
 	
-        <!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-        
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
         <!-- bootstrap -->
         <?php Yii::app()->bootstrap->register(); ?>
         <!-- jqplot -->
         <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.css" />
         <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.min.js"></script>
         
+		<!-- blueprint CSS framework -->
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
+
         <!-- my own css -->
         <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/my.css" />
 	
