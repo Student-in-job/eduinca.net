@@ -21,7 +21,7 @@ $this->pageTitle=Yii::app()->name;
         <?php 
         if (Yii::app()->user->IsGuest)
         {
-            $this->widget('application.extensions.widgets.Login', array('model' => $model));
+            $this->widget('application.extensions.widgets.Login', array('model' => $model, 'code' => $code));
         }
         else
         {

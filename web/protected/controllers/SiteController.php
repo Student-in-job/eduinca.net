@@ -24,10 +24,14 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-                $model = new LoginForm;
+                $modelLogin = new LoginForm;
+                $modelCode = new CodeForm;
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index', array('model' => $model));
+                $this->render('index', array(
+                        'model' => $modelLogin,
+                        'code' => $modelCode,
+                ));
 	}
 
 	/**
@@ -99,14 +103,12 @@ class SiteController extends Controller
 	public function actionCode()
 	{
 		$model = new CodeForm();
-
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='code-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-                var_dump($_POST['CodeForm']);die();
 		// collect user input data
 		if(isset($_POST['CodeForm']))
 		{
@@ -116,7 +118,7 @@ class SiteController extends Controller
                         {
                             $codeModel = new Code;
                             $dbCriteria = new CDbCriteria();
-                            $dbCriteria->compare('code', $this->password);
+                            $dbCriteria->compare('code', $model->code);
                             $code = $codeModel->find($dbCriteria);
                             if($code != null)
                             {
