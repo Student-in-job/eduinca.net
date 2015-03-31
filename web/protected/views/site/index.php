@@ -13,6 +13,8 @@ $this->pageTitle=Yii::app()->name;
     </header>
     <div class="grid col-one-half mq2-col-full">
         <h1><i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+        
+        <img src="<?php echo Yii::app()->request->baseUrl;?>/images/asia.png"> 
     </div>
 
     <div class="grid col-one-half mq2-col-full">
@@ -61,7 +63,7 @@ $this->pageTitle=Yii::app()->name;
         
         
 <!-- Javascript - jQuery -->
-<script src="http://code.jquery.com/jquery.min.js"></script>
+<!--<script src="http://code.jquery.com/jquery.min.js"></script>-->
 <script>window.jQuery || document.write('<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.7.2.min.js"><\/script>')</script>
 	<script>
 jQuery(document).ready(function($) {

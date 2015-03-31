@@ -39,4 +39,17 @@ class Controller extends CController
             return $this->createUrl('', $arr);
         }
 
+        protected function GetArray($modelName, $key, $value, $dbCriteria = null)
+        {
+            $data = array();
+            $dataProvider = new CActiveDataProvider($modelName);
+            if ($dbCriteria != null)
+                $dataProvider->setCriteria($dbCriteria);
+            foreach($dataProvider->getData() as $activeRecord)
+            {
+                //var_dump($activeRecord);
+                $data[$activeRecord->getAttribute($key)] = $activeRecord->getAttribute($value);
+            }
+            return $data;
+        }
 }

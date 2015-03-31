@@ -15,10 +15,11 @@
 
     <div class="tabs-content">
         <div id="signup-tab-content" class="active">
+            
             <form class="signup-form" action="" method="post">
                 <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Code">
                 <input type="submit" class="button" value="Sign Up">
-            </form><!--.login-form-->
+            </form>
             <div class="help-text">
                 <p>By signing up, you agree to our</p>
                 <p><a href="#">Terms of service</a></p>
@@ -35,7 +36,7 @@
                         ),
                         'htmlOptions' => array('class' => 'login-form')
                 ));
-                echo $form->textField($model,'username', array('class' => 'input', 'autocomplete' => 'off', 'placeholder' => 'Email or Username'));
+                echo $form->textField($model,'username', array('class' => 'input', 'autocomplete' => 'off', 'placeholder' => Yii::t('site', 'useremail')));
                 echo $form->error($model,'username');
                 echo $form->passwordField($model,'password', array('class' => 'input', 'autocomplete' => 'off', 'placeholder' => Yii::t('site', 'password')));
                 echo $form->error($model,'password');

@@ -169,4 +169,53 @@ CREATE TABLE tbl_answer_student(
 ALTER TABLE tbl_answer_student DROP COLUMN methodic_q14;
 ALTER TABLE tbl_answer_student DROP COLUMN methodic_qq14;
 
-DROP TABLE tbl_answer_student;
+DROP TABLE tbl_user;
+
+CREATE TABLE tbl_user(
+	id_user INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name NVARCHAR(100),
+    age INTEGER,
+    email VARCHAR(100),
+    role_id INTEGER,
+    password VARCHAR(15),
+    last_login DATE
+);
+
+CREATE TABLE tbl_survey(
+	id_survey INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name_ru NVARCHAR(200),
+	name_en NVARCHAR(200),
+    year INTEGER,
+    date_till DATE
+);
+
+INSERT INTO tbl_survey VALUES (1, 'Стартовый ввод', 'Start input', 2014, '2015-02-28');
+
+CREATE TABLE tbl_survey_in_university(
+	id_survey_in_university INTEGER PRIMARY KEY AUTO_INCREMENT,
+    survey_id INTEGER,
+    university_id INTEGER,
+    user_id INTEGER,
+    university_type_id INTEGER,
+    teachers_num INTEGER,
+    students_num INTEGER,
+    involved_teachers INTEGER,
+    involved_students INTEGER,
+    CONSTRAINT fk_survey FOREIGN KEY (survey_id) REFERENCES tbl_survey(id_survey),
+    CONSTRAINT fk_university2 FOREIGN KEY (university_id) REFERENCES tbl_university(id_university),
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES tbl_user(id_user),
+    CONSTRAINT fk_university_type1 FOREIGN KEY (university_type_id) REFERENCES tbl_university_type(id_university_type)
+);
+
+CREATE TABLE tbl_code(
+	id_code INTEGER PRIMARY KEY AUTO_INCREMENT,
+    code VARCHAR(20),
+    completed INT,
+    completed_date DATE,
+    survey_in_university_id INTEGER,
+    CONSTRAINT fk_survey_in_university FOREIGN KEY (survey_in_university_id) REFERENCES tbl_survey_in_university(id_survey_in_university)
+);
+
+ALTER TABLE tbl_user ADD COLUMN login VARCHAR(15);
+
+INSERT INTO tbl_user VALUES (1,'Katerina Golubina', null, '', 1, 'katerina', null, 'administrator');

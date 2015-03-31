@@ -93,7 +93,45 @@ class SiteController extends Controller
 				$this->redirect(array('country/index'));
 		}
 		// display the login form
-		$this->render('index',array('model'=>$model));
+		$this->render('login',array('model'=>$model));
+	}
+        
+	public function actionCode()
+	{
+		$model = new CodeForm();
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='code-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+                var_dump($_POST['CodeForm']);die();
+		// collect user input data
+		if(isset($_POST['CodeForm']))
+		{
+			$model->attributes=$_POST['CodeForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login())
+                        {
+                            $codeModel = new Code;
+                            $dbCriteria = new CDbCriteria();
+                            $dbCriteria->compare('code', $this->password);
+                            $code = $codeModel->find($dbCriteria);
+                            if($code != null)
+                            {
+                                $surveyinuniversityModel = new SurveyInUniversity();
+                                $dbCriteria = new CDbCriteria();
+                                $dbCriteria->compare('id_survey_in_university', $code->getAttribute('survey_in_university_id'));
+                                $surveyinuniversity = $surveyinuniversityModel->find($dbCriteria);
+                                $this->redirect(array('teacher/create', array('involved' => 1)));
+                            }
+                        }
+                        else {$this->redirect(array('index'));}
+				
+		}
+		// display the login form
+		$this->render('login',array('model'=>$model));
 	}
 
 	/**

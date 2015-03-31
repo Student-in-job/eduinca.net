@@ -18,7 +18,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="shortcut icon" type="image/png" href="favicon.png">
 	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>-->
 	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
 	
         <!-- bootstrap -->
@@ -63,6 +63,7 @@
                             array('label' => Yii::t('site','statistics'), 'url' => array('/statistics/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label' => Yii::t('site','reports'), 'url' => array('/analytic/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label' => Yii::t('site','editor'), 'url' => array('/editor/index'), 'visible'=>!Yii::app()->user->isGuest),
+                            array('label' => Yii::t('site','settings'), 'url' => array('/settings/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label' => Yii::t('site','help'), 'url' => array('/help/index'), 'visible'=>!Yii::app()->user->isGuest),
                             //array('label' => Yii::t('country', 'countries'), 'url' => array('country/index')),
                             //array('label' => Yii::t('university', 'universities'), 'url' => array('university/index')),

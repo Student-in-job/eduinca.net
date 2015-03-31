@@ -17,19 +17,43 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-			'katerina'=>'katerina',
-                        'operator'=>'Proto4',
-		);
-		if(!isset($users[$this->username]))
+                $user = $this->findUser();
+		
+                if($user === null)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
+		elseif($user->getAttribute('password') !== $this->password)
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
 	}
+        
+        public function findUser()
+        {
+            $model = new User();
+            $dbCriteria = new CDbCriteria();
+            $dbCriteria->compare('login', $this->username);
+            return $user = $model->find($dbCriteria);
+        }
+        
+        public function getaccess()
+        {
+            $user = $this->findCode();
+		
+                if($user === null)
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+		elseif($user->getAttribute('code') !== $this->password)
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		else
+			$this->errorCode=self::ERROR_NONE;
+		return !$this->errorCode;
+        }
+        
+        public function findCode()
+        {
+            $model = new Code();
+            $dbCriteria = new CDbCriteria();
+            $dbCriteria->compare('code', $this->password);
+            return $user = $model->find($dbCriteria);
+        }
 }
