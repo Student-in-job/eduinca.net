@@ -5,9 +5,9 @@
  * LoginForm is the data structure for keeping
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
-class LoginForm extends CFormModel
+class CodeForm extends CFormModel
 {
-	public $username;
+	public $username = 'participant';
 	public $password;
 	public $rememberMe;
 
@@ -22,9 +22,7 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password', 'required'),
-			// rememberMe needs to be a boolean
-			array('rememberMe', 'boolean'),
+			array('password', 'required'),
 			// password needs to be authenticated
 			array('password', 'authenticate'),
 		);
@@ -36,10 +34,8 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-                    'username' => Yii::t('site', 'username'),
                     'password' => Yii::t('site', 'password'),
-                    'rememberMe' => Yii::t('site', 'rememberme'),
-		);
+                );
 	}
 
 	/**
@@ -51,8 +47,8 @@ class LoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
-			if(!$this->_identity->authenticate())
-				$this->addError('password',Yii::t('site', 'errlogin'));
+			if(!$this->_identity->getaccess())
+				$this->addError('password',Yii::t('site', 'errcode'));
 		}
 	}
 
@@ -69,11 +65,11 @@ class LoginForm extends CFormModel
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
-			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
-			Yii::app()->user->login($this->_identity,$duration);
-                        $user = $this->_identity->findUser();
-                        $user->setAttribute('last_login', date('Y-m-d'));
-                        $user->save();
+			//$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
+			Yii::app()->user->login($this->_identity,0);
+                        //$user = $this->_identity->findUser();
+                        //$user->setAttribute('last_login', date('Y-m-d'));
+                        //$user->save();
 			return true;
 		}
 		else

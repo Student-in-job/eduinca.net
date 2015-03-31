@@ -1,6 +1,6 @@
 <?php
 
-class TblUserController extends Controller
+class SurveyController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,17 +27,9 @@ class TblUserController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('index','view','create','update','admin','delete'),
+				'users'=>array('administrator'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -62,16 +54,16 @@ class TblUserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new TblUser;
+		$model=new Survey;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TblUser']))
+		if(isset($_POST['Survey']))
 		{
-			$model->attributes=$_POST['TblUser'];
+			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -91,11 +83,11 @@ class TblUserController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TblUser']))
+		if(isset($_POST['Survey']))
 		{
-			$model->attributes=$_POST['TblUser'];
+			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -122,7 +114,7 @@ class TblUserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('TblUser');
+		$dataProvider=new CActiveDataProvider('Survey');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +125,10 @@ class TblUserController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new TblUser('search');
+		$model=new Survey('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['TblUser']))
-			$model->attributes=$_GET['TblUser'];
+		if(isset($_GET['Survey']))
+			$model->attributes=$_GET['Survey'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -147,12 +139,12 @@ class TblUserController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return TblUser the loaded model
+	 * @return Survey the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=TblUser::model()->findByPk($id);
+		$model=Survey::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,11 +152,11 @@ class TblUserController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param TblUser $model the model to be validated
+	 * @param Survey $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='tbl-user-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

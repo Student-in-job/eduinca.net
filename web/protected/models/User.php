@@ -4,12 +4,19 @@
  * This is the model class for table "tbl_user".
  *
  * The followings are the available columns in table 'tbl_user':
- * @property integer $id
- * @property string $username
- * @property string $password
+ * @property integer $id_user
+ * @property string $name
+ * @property integer $age
  * @property string $email
+ * @property integer $role_id
+ * @property string $password
+ * @property string $last_login
+ * @property string $login
+ *
+ * The followings are the available model relations:
+ * @property SurveyInUniversity[] $surveyInUniversities
  */
-class TblUser extends CActiveRecord
+class User extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -27,11 +34,15 @@ class TblUser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email', 'required'),
-			array('username, password, email', 'length', 'max'=>128),
+			array('age, role_id', 'numerical', 'integerOnly'=>true),
+			array('name, email', 'length', 'max'=>100),
+                        array('email', 'email'),
+			array('password, login', 'length', 'max'=>15),
+			array('last_login', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email', 'safe', 'on'=>'search'),
+			array('id_user, name, age, email, role_id, password, last_login, login', 'safe', 'on'=>'search'),
+                        array('login, password, name, email', 'required'),
 		);
 	}
 
@@ -43,6 +54,7 @@ class TblUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'surveyInUniversities' => array(self::HAS_MANY, 'SurveyInUniversity', 'user_id'),
 		);
 	}
 
@@ -52,10 +64,14 @@ class TblUser extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-			'email' => 'Email',
+			'id_user' => Yii::t('user', 'id_user'),
+			'name' => Yii::t('user', 'name'),
+			'age' => Yii::t('user', 'age'),
+			'email' => Yii::t('user', 'email'),
+			'role_id' => Yii::t('user', 'role_id'),
+			'password' => Yii::t('user', 'password'),
+			'last_login' => Yii::t('user', 'last_login'),
+			'login' => Yii::t('user', 'login'),
 		);
 	}
 
@@ -77,10 +93,14 @@ class TblUser extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
+		$criteria->compare('id_user',$this->id_user);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('age',$this->age);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('role_id',$this->role_id);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('last_login',$this->last_login,true);
+		$criteria->compare('login',$this->login,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -91,7 +111,7 @@ class TblUser extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TblUser the static model class
+	 * @return User the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

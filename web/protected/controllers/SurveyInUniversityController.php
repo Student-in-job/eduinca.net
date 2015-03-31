@@ -1,25 +1,13 @@
 <?php
 
-class UniversityController extends Controller
+class SurveyInUniversityController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
-        private $_country;
-        private $_universityType;
-        
-        public function init()
-        {
-            parent::init();
-            $dataProvider = new CActiveDataProvider('Country');
-            $this->_universityType = array(1=>Yii::t('university','university'), 2=>Yii::t('university','college'));
-            foreach($dataProvider->getData() as $activeRecord)
-            {
-                $this->_country[$activeRecord->getAttribute('id_country')] = $activeRecord->getAttribute('name');
-            }      
-        }
+
 	/**
 	 * @return array action filters
 	 */
@@ -39,8 +27,8 @@ class UniversityController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','view','create','update','delete'),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('index','create','update','delete','view' ),
 				'users'=>array('administrator'),
 			),
 			array('deny',  // deny all users
@@ -55,10 +43,8 @@ class UniversityController extends Controller
 	 */
 	public function actionView($id)
 	{
-                $this->render('view',array(
-			'model' => $this->loadModel($id),
-                        'country' => $this->_country,
-                        'type'=>$this->_universityType,
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -66,25 +52,27 @@ class UniversityController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($survey_id = null)
 	{
-		$model=new University;
-
-                
+		$model=new SurveyInUniversity;
+                $model->setAttribute('survey_id', $survey_id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+                
+                var_dump($model->HasCodes);
 
-		if(isset($_POST['University']))
+		if(isset($_POST['SurveyInUniversity']))
 		{
-			$model->attributes=$_POST['University'];
+			$model->attributes=$_POST['SurveyInUniversity'];
+                        $model->setAttribute('university_type_id', University::model()->findByPk($model->university_id)->getAttribute('university_type_id'));
 			if($model->save())
-				$this->redirect(array('index'));
-		}
+                            $this->redirect(array('index','survey_id' => $model->getAttribute('survey_id')));
+                }
 
 		$this->render('create',array(
 			'model'=>$model,
-                        'data'=>$this->_country,
-                        'type'=>$this->_universityType,
+                        'university' => $this->GetArray('University', 'id_university', 'name'),
+                        'user' => $this->GetArray('User', 'id_user', 'name'),
 		));
 	}
 
@@ -99,18 +87,16 @@ class UniversityController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-                
-		if(isset($_POST['University']))
+
+		if(isset($_POST['SurveyInUniversity']))
 		{
-			$model->attributes=$_POST['University'];
+			$model->attributes=$_POST['SurveyInUniversity'];
 			if($model->save())
-				$this->redirect(array('index'));
+				$this->redirect(array('view','id'=>$model->id_survey_in_university));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-                        'data'=>$this->_country,
-                        'type'=>$this->_universityType,
 		));
 	}
 
@@ -125,22 +111,24 @@ class UniversityController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex($id = null)
+	public function actionIndex($survey_id = null)
 	{
-                $filter = new CDbCriteria;
-                $filter->compare('university_type_id', $id);
-		$dataProvider=new CActiveDataProvider('University', array('criteria' => $filter));
-		$this->render('index',array(
-			'dataProvider' => $dataProvider,
-                        'data' => $this->_country,
-                        'type' => $this->_universityType,
-                        'active' => $id,
+                $criteria=new CDbCriteria;
+                $criteria->compare('survey_id', $survey_id);
+                $dataProvider = new CActiveDataProvider('SurveyInUniversity', array('criteria' => $criteria));
+                $roleCriteria = new CDbCriteria;
+                $roleCriteria->compare('role_id', 2);
+                $this->render('index',array(
+			'dataProvider'=>$dataProvider,
+                        'university' => $this->GetArray('University', 'id_university', 'name'),
+                        'user' => $this->GetArray('User', 'id_user', 'name', $roleCriteria),
+                        'survey_id' => $survey_id,
 		));
 	}
 
@@ -149,10 +137,10 @@ class UniversityController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new University('search');
+		$model=new SurveyInUniversity('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['University']))
-			$model->attributes=$_GET['University'];
+		if(isset($_GET['SurveyInUniversity']))
+			$model->attributes=$_GET['SurveyInUniversity'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -163,12 +151,12 @@ class UniversityController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return University the loaded model
+	 * @return SurveyInUniversity the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=University::model()->findByPk($id);
+		$model=SurveyInUniversity::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -176,11 +164,11 @@ class UniversityController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param University $model the model to be validated
+	 * @param SurveyInUniversity $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='university-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-in-university-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

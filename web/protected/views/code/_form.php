@@ -1,13 +1,13 @@
 <?php
-/* @var $this TblUserController */
-/* @var $model TblUser */
+/* @var $this CodeController */
+/* @var $model Code */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'tbl-user-form',
+	'id'=>'code-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -20,21 +20,27 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php echo $form->labelEx($model,'code'); ?>
+		<?php echo $form->textField($model,'code',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->error($model,'code'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php echo $form->labelEx($model,'completed'); ?>
+		<?php echo $form->textField($model,'completed'); ?>
+		<?php echo $form->error($model,'completed'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'email'); ?>
+		<?php echo $form->labelEx($model,'completed_date'); ?>
+		<?php echo $form->textField($model,'completed_date'); ?>
+		<?php echo $form->error($model,'completed_date'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'survey_in_university_id'); ?>
+		<?php echo $form->textField($model,'survey_in_university_id'); ?>
+		<?php echo $form->error($model,'survey_in_university_id'); ?>
 	</div>
 
 	<div class="row buttons">
