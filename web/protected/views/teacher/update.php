@@ -21,6 +21,4 @@ $this->menu=array(
 <?php $this->renderPartial('_form', array(
                                 'model'=>$model,
                                 'view' => $view,
-                                'involved' => $involved,
-                                'university' => $university,
-                                'year' => 2014)); ?>
+                                'university' => $university)); ?>

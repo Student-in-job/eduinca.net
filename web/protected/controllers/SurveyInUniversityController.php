@@ -58,8 +58,6 @@ class SurveyInUniversityController extends Controller
                 $model->setAttribute('survey_id', $survey_id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-                
-                var_dump($model->HasCodes);
 
 		if(isset($_POST['SurveyInUniversity']))
 		{

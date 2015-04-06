@@ -94,7 +94,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(array('country/index'));
+				$this->redirect(array('statistics/index'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -126,14 +126,37 @@ class SiteController extends Controller
                                 $dbCriteria = new CDbCriteria();
                                 $dbCriteria->compare('id_survey_in_university', $code->getAttribute('survey_in_university_id'));
                                 $surveyinuniversity = $surveyinuniversityModel->find($dbCriteria);
-                                $this->redirect(array('teacher/create', array('involved' => 1)));
+                                
+                                $surveyModel = new Survey();
+                                $surveyCriteria = new CDbCriteria();
+                                $surveyCriteria->compare('id_survey', $surveyinuniversity->GetAttribute('survey_id'));
+                                $survey = $surveyModel->find($surveyCriteria);
+                                
+                                $url = '';
+
+                                if($code->getAttribute('person_type_id') == 1)
+                                {
+                                    $url = 'teacher/create';
+                                }
+                                elseif($code->getAttribute('person_type_id') == 2)
+                                {
+                                    $url = 'student/create';
+                                }
+                                $this->redirect(array(
+                                        $url,
+                                        'involved' => $code->getAttribute('person_involved'),
+                                        'university_id' => $surveyinuniversity->getAttribute('university_id'),
+                                        'survey_id' => $surveyinuniversity->getAttribute('survey_id'),
+                                        'code' => $code->getAttribute('id_code'),
+                                        'year' => date('Y', strtotime($survey->getAttribute('date_till')))
+                                ));
                             }
                         }
-                        else {$this->redirect(array('index'));}
+                        else {$this->redirect(array('contact'));}
 				
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('index',array('model' => $model));
 	}
 
 	/**

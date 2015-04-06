@@ -219,3 +219,13 @@ CREATE TABLE tbl_code(
 ALTER TABLE tbl_user ADD COLUMN login VARCHAR(15);
 
 INSERT INTO tbl_user VALUES (1,'Katerina Golubina', null, '', 1, 'katerina', null, 'administrator');
+
+ALTER TABLE tbl_code MODIFY completed INTEGER DEFAULT 0;
+ALTER TABLE tbl_code ADD COLUMN person_type_id INTEGER;
+ALTER TABLE tbl_code ADD COLUMN person_involved INTEGER;
+ALTER TABLE tbl_answer_teacher ADD COLUMN survey_id INTEGER;
+ALTER TABLE tbl_answer_teacher ADD CONSTRAINT fk_survey4 FOREIGN KEY (survey_id) REFERENCES tbl_survey(id_survey);
+ALTER TABLE tbl_answer_student ADD COLUMN survey_id INTEGER;
+ALTER TABLE tbl_answer_student ADD CONSTRAINT fk_survey5 FOREIGN KEY (survey_id) REFERENCES tbl_survey(id_survey);
+UPDATE tbl_answer_teacher SET survey_id = 1;
+UPDATE tbl_answer_student SET survey_id = 1;

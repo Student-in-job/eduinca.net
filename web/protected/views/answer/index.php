@@ -5,13 +5,13 @@
 $this->breadcrumbs=array(
 	'Answer Teachers',
 );
-
+/*
 $this->menu=array(
 	array('label'=>Yii::t('answerteacher','member'), 'url'=>array('teacher/create', 'involved' => 1)),
 	array('label'=>Yii::t('answerteacher','notmember'), 'url'=>array('teacher/create', 'involved' => 2)),
         array('label'=>Yii::t('answerstudent','member'), 'url'=>array('student/create', 'involved' => 1)),
 	array('label'=>Yii::t('answerstudent','notmember'), 'url'=>array('student/create', 'involved' => 2)),
-);
+);*/
 $active1 = '';
 $active2 = '';
 switch ($person)

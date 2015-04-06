@@ -57,12 +57,6 @@ class TeacherController extends Controller
 	 */
 	public function actionView($id, $involved = null)
 	{
-                /*
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-                 * 
-                 */
                 $model=$this->loadModel($id);
                 
                 $this->initInvolved($model, $involved);
@@ -74,7 +68,6 @@ class TeacherController extends Controller
 			'model'=>$model,
                         'view'=>true,
                         'university' => $this->_university,
-                        'involved' => $involved,
 		));
 	}
 
@@ -82,18 +75,39 @@ class TeacherController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($involved = null)
+	public function actionCreate($involved = null, $university_id = null, $survey_id = null, $code = null, $year = null)
 	{
-		$model=new Teacher;
+		$model = new Teacher;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
                 if(isset($_POST['Teacher']))
 		{
-			$model->attributes=$_POST['Teacher'];
-			if($model->save())
-				$this->redirect(array('answer/index', 'person' => 1));
+                    $model->attributes=$_POST['Teacher'];
+                    if($model->save())
+                    {
+                        $modelCode = Code::model()->findByPk($_SESSION['code']);
+                        $modelCode->setAttribute('completed',1);
+                        $modelCode->setAttribute('completed_date', date('Y-m-d'));
+                        if($modelCode->save())
+                        {
+                            session_unset();
+                            $this->redirect(array('site/logout'));
+                        }
+                    }
 		}
+                
+                if($code != null)
+                    $_SESSION['code'] = $code;
+                if($university_id != null)
+                    $model->university_id = $university_id;
+                if($involved != null)
+                    $model->involved_person_id = $involved;
+                if($survey_id != null)
+                    $model->survey_id = $survey_id;
+                if($year != null)
+                    $model->year = $year;
+                $model->person_type_id = 1;
                 
                 $this->initInvolved($model, $involved);
                 
@@ -122,12 +136,14 @@ class TeacherController extends Controller
 				$this->redirect(array('answer/index', 'person' => 1));
 		}
                 
+                if($involved != null)
+                    $model->involved_person_id = $involved;
+                
                 $this->initInvolved($model ,$involved);
 
-		$this->render('update',array(
+		$this->render('update', array(
 			'model'=>$model,
                         'view'=>false,
-                        'involved' => $involved,
                         'university' => $this->_university,
 		));
 	}

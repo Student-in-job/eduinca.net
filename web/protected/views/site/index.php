@@ -25,11 +25,14 @@ $this->pageTitle=Yii::app()->name;
         }
         else
         {
+            /*
             echo CHtml::link(
                         Yii::t('site', 'logout'),
                         array('site/logout'),
                         array('class' => 'btn btn-primary')
                 );
+             * 
+             */
         }
         ?>
     </div>

@@ -7,7 +7,7 @@
  */
 class CodeForm extends CFormModel
 {
-	public $username = 'participant';
+        public $username = 'participant';
 	public $code;
 
 	private $_identity;
@@ -22,7 +22,7 @@ class CodeForm extends CFormModel
 		return array(
 			// username and password are required
 			array('code', 'required'),
-			// password needs to be authenticated
+			// code needs to be authenticated
 			array('code', 'authenticate'),
 		);
 	}
@@ -45,9 +45,16 @@ class CodeForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-			$this->_identity=new UserIdentity($this->username,$this->code);
+			$this->_identity = new UserIdentity($this->username,$this->code);
 			if(!$this->_identity->getaccess())
-				$this->addError('code',Yii::t('site', 'errcode'));
+                        {
+                            if($this->_identity->errorCode == UserIdentity::ERROR_CODE_USED)
+                                $this->addError('code', Yii::t('site', 'usedcode'));
+                            elseif($this->_identity->errorCode == UserIdentity::ERROR_DATE_EXPIRED)
+                                $this->addError('code', Yii::t('site', 'expireddate'));
+                            else
+                                $this->addError('code', Yii::t('site', 'invalidcode'));
+                        }
 		}
 	}
 
@@ -64,13 +71,8 @@ class CodeForm extends CFormModel
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
-			//$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
 			Yii::app()->user->login($this->_identity,0);
-                        //$user = $this->_identity->findUser();
-                        //$user->setAttribute('last_login', date('Y-m-d'));
-                        //$user->save();
-                        
-			return true;
+                        return true;
 		}
 		else
 			return false;
