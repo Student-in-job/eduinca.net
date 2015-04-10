@@ -3,7 +3,8 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Answer Teachers',
+	Yii::t('site','statistics') => array('/statistics/index'),
+        'Answer Teachers',
 );
 /*
 $this->menu=array(
