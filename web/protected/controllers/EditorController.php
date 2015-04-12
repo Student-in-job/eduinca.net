@@ -2,9 +2,24 @@
 
 class EditorController extends Controller
 {
+        public $layout = '//layouts/column2';
+        
+        public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index'),
+				'users'=>array('administrator'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+        
 	public function actionIndex()
 	{
-		$this->render('index');
+		$this->redirect(array('country/index'));
 	}
 
 	public function actionView()

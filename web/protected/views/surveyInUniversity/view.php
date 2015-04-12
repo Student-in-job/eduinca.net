@@ -6,14 +6,6 @@ $this->breadcrumbs=array(
 	'Survey In Universities'=>array('index'),
 	$model->id_survey_in_university,
 );
-
-$this->menu=array(
-	array('label'=>'List SurveyInUniversity', 'url'=>array('index')),
-	array('label'=>'Create SurveyInUniversity', 'url'=>array('create')),
-	array('label'=>'Update SurveyInUniversity', 'url'=>array('update', 'id'=>$model->id_survey_in_university)),
-	array('label'=>'Delete SurveyInUniversity', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_survey_in_university),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage SurveyInUniversity', 'url'=>array('admin')),
-);
 ?>
 
 <h1>View SurveyInUniversity #<?php echo $model->id_survey_in_university; ?></h1>

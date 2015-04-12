@@ -2,6 +2,7 @@
 
 class SettingsController extends Controller
 {
+        protected  $menuItem = 'settings';
         public $layout = '//layouts/column2';
     
 	public function actionIndex()

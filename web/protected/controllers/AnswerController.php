@@ -7,6 +7,7 @@
  */
 class AnswerController extends Controller
 {
+        protected  $menuItem = 'statistic';
         public $layout='//layouts/column1';
 
         private $_involved;

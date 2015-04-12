@@ -8,6 +8,7 @@
 
 class AnalyticController extends Controller
 {
+    protected  $menuItem = 'analitic';
     public $layout='//layouts/column2';
 
     function actionIndex()

@@ -29,15 +29,17 @@ $this->menu=array(
                 ),
                 array(
                         'name' => 'university_id',
-                        'value' => 'CHtml::encode($data->university_id)'
+                        'value' => '$this->grid->getController()->universities[$data->university_id]'
                 ),
                 array(
                         'name' => 'user_id',
-                        'value' => 'CHtml::encode($data->user_id)'
+                        'value' => '$this->grid->getController()->user[$data->user_id]'
+                        //'value' => 'CHtml::encode($data->user_id)'
                 ),
                 array(
                         'name' => 'university_type_id',
-                        'value' => 'CHtml::encode($data->university_type_id)'
+                        'value' => '$this->grid->getController()->universityType[$data->university_type_id]'
+                        //'value' => 'CHtml::encode($data->g)'
                 ),
                 array(
                         'name' => 'teachers_num',
@@ -57,10 +59,10 @@ $this->menu=array(
                 ),
                 array(
                         'class' => 'CButtonColumn',
-                        'template' => '{view}{update}{delete}',
+                        'template' => '{view}{delete}',
                         'buttons' => array(
-                            'update' => array(
-                                'url' => 'Yii::app()->createUrl("surveyInUniversity/update",array("id"=>$data->id_survey_in_university));'
+                            'view' => array(
+                                'url' => 'Yii::app()->createUrl("surveyInUniversity/view",array("id"=>$data->id_survey_in_university));'
                             ),
                             'delete' => array(
                                 'url' => 'Yii::app()->createUrl("surveyInUniversity/delete", array("id" => $data->id_survey_in_university));'

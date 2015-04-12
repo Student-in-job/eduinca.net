@@ -21,6 +21,8 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
         
+        protected $menuItem;
+        
         public function init()
         {    
             if (!empty($_GET['language']))

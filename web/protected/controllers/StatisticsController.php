@@ -2,6 +2,7 @@
 
 class StatisticsController extends Controller
 {
+        protected  $menuItem = 'statistic';
 	public $layout = '//layouts/column2';
         
         private $_university;
@@ -62,7 +63,7 @@ class StatisticsController extends Controller
                 $completeCodes = 0;
                 foreach($surveyinuniversityDataProvider->getData() as $activeSurveyInUniversity)
                 {
-                    $universities .= $this->_university[$activeSurveyInUniversity->getAttribute('university_id')] . '';
+                    $universities .= $this->_university[$activeSurveyInUniversity->getAttribute('university_id')] . "\n";
                     $teachersInvolved += $activeSurveyInUniversity->getAttribute('involved_teachers');
                     $teachersNotInvolved += $activeSurveyInUniversity->getAttribute('teachers_num') - $activeSurveyInUniversity->getAttribute('involved_teachers');
                     $studentsInvolved += $activeSurveyInUniversity->getAttribute('involved_students');

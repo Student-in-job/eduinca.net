@@ -3,6 +3,7 @@
 /* @var $model University */
 
 $this->breadcrumbs=array(
+        Yii::t('site', 'editor') => array('editor/index'),
 	Yii::t('university', 'universities')=>array('index'),
         $model->name=>array('view','id'=>$model->id_university),
 	Yii::t('university', 'updating'),

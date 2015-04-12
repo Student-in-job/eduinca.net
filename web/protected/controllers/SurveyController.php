@@ -6,6 +6,7 @@ class SurveyController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
+        protected  $menuItem = 'survey';
 	public $layout='//layouts/column2';
 
 	/**
@@ -114,7 +115,7 @@ class SurveyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Survey');
+                $dataProvider=new CActiveDataProvider('Survey');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
