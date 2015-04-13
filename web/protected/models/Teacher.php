@@ -75,7 +75,7 @@ class Teacher extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code, sex, year', 'required'),
+			array('sex, year', 'required'),
 			array('id_answer, age, sex, year, student_teach1, student_teach2, student_teach3, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, labs, num_labs, practice, practice_place, practice_duration, num_of_papers, num_of_papers_theoretical, num_of_papers_practical, university_id, person_type_id, involved_person_id,methodic_qq1, methodic_qq2, methodic_qq3, methodic_qq4, methodic_qq5, methodic_qq6, methodic_qq7, methodic_qq8, methodic_qq9, methodic_qq10, methodic_qq11, methodic_qq12, methodic_qq13', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('faculty', 'length', 'max'=>100),
@@ -109,7 +109,7 @@ class Teacher extends CActiveRecord
 		return array(
 			'id_answer' => Yii::t('answerteacher','id'),
 			'code' => Yii::t('answerteacher','code'),
-			'age' => '1. ' . Yii::t('answerteacher','age'),
+			'age' => Yii::t('answerteacher','age'),
 			'sex' => '2. ' . Yii::t('answerteacher','sex'),
                         'year' => Yii::t('answerteacher','year'),
 			'faculty' => '3. ' . Yii::t('answerteacher','faculty'),

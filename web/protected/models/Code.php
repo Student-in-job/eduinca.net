@@ -9,6 +9,8 @@
  * @property integer $completed
  * @property string $completed_date
  * @property integer $survey_in_university_id
+ * @property integer $person_type_id
+ * @property integer $person_involved
  *
  * The followings are the available model relations:
  * @property SurveyInUniversity $surveyInUniversity
@@ -31,12 +33,12 @@ class Code extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('completed, survey_in_university_id', 'numerical', 'integerOnly'=>true),
+			array('completed, survey_in_university_id, person_type_id, person_involved', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('completed_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_code, code, completed, completed_date, survey_in_university_id', 'safe', 'on'=>'search'),
+			array('id_code, code, completed, completed_date, survey_in_university_id, person_type_id, person_involved', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +65,8 @@ class Code extends CActiveRecord
 			'completed' => 'Completed',
 			'completed_date' => 'Completed Date',
 			'survey_in_university_id' => 'Survey In University',
+			'person_type_id' => 'Person Type',
+			'person_involved' => 'Person Involved',
 		);
 	}
 
@@ -89,6 +93,8 @@ class Code extends CActiveRecord
 		$criteria->compare('completed',$this->completed);
 		$criteria->compare('completed_date',$this->completed_date,true);
 		$criteria->compare('survey_in_university_id',$this->survey_in_university_id);
+		$criteria->compare('person_type_id',$this->person_type_id);
+		$criteria->compare('person_involved',$this->person_involved);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

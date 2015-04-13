@@ -14,9 +14,10 @@
 class Login extends CWidget{
     
     public $model;
+    public $code;
     
     public function run()
     {
-        $this->render('login', array('model' => $this->model));
+        $this->render('login', array('model' => $this->model, 'code' => $this->code));
     }
 }

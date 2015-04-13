@@ -3,15 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Answer Teachers',
+	Yii::t('site','statistics') => array('/statistics/index'),
+        ($person == 1)?Yii::t('statistics','answers_teachers'):Yii::t('statistics','answers_students')//'Answer Teachers',
 );
-
+/*
 $this->menu=array(
 	array('label'=>Yii::t('answerteacher','member'), 'url'=>array('teacher/create', 'involved' => 1)),
 	array('label'=>Yii::t('answerteacher','notmember'), 'url'=>array('teacher/create', 'involved' => 2)),
         array('label'=>Yii::t('answerstudent','member'), 'url'=>array('student/create', 'involved' => 1)),
 	array('label'=>Yii::t('answerstudent','notmember'), 'url'=>array('student/create', 'involved' => 2)),
-);
+);*/
 $active1 = '';
 $active2 = '';
 switch ($person)
@@ -27,7 +28,7 @@ switch ($person)
     <li class="<?php echo $active2;?>"><?php echo CHtml::link(Yii::t('answer','students'), array('index', 'person' => 2));?></li>
 </ul>
 
-<h1>Answer</h1>
+<!--<h1>Answer</h1>-->
 <?php
     if($person == 1){
         $this->widget('zii.widgets.grid.CGridView', array(

@@ -3,6 +3,7 @@
 /* @var $model Country */
 
 $this->breadcrumbs=array(
+        Yii::t('site', 'editor') => array('editor/index'),
 	'Countries'=>array('index'),
 	$model->name,
 );

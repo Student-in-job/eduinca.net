@@ -6,6 +6,7 @@ class StudentController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
+        protected  $menuItem = 'statistic';
 	public $layout='//layouts/column1';
         
         private $_university;
@@ -58,10 +59,11 @@ class StudentController extends Controller
 	 */
 	public function actionView($id, $involved = null)
 	{
+                $model = $this->loadModel($id);
+                $this->initInvolved($model, $involved);
 		$this->render('update',array(
-			'model'=>$this->loadModel($id),
+			'model'=> $model,
                         'view'=>true,
-                        'involved' => $involved,
                         'university' => $this->_university,
 		));
 	}
@@ -70,7 +72,7 @@ class StudentController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($involved = null)
+	public function actionCreate($involved = null, $university_id = null, $survey_id = null, $code = null, $year = null)
 	{
 		$model=new Student;
 
@@ -79,10 +81,31 @@ class StudentController extends Controller
 
 		if(isset($_POST['Student']))
 		{
-			$model->attributes=$_POST['Student'];
-			if($model->save())
-				$this->redirect(array('answer/index', 'person' => 2));
+                    $model->attributes=$_POST['Student'];
+                    if($model->save())
+                    {
+                        $modelCode = Code::model()->findByPk($_SESSION['code']);
+                        $modelCode->setAttribute('completed',1);
+                        $modelCode->setAttribute('completed_date', date('Y-m-d'));
+                        if($modelCode->save())
+                        {
+                            session_unset();
+                            $this->redirect(array('site/logout'));
+                        }
+                    }
 		}
+                
+                if($code != null)
+                    $_SESSION['code'] = $code;
+                if($university_id != null)
+                    $model->university_id = $university_id;
+                if($involved != null)
+                    $model->involved_person_id = $involved;
+                if($survey_id != null)
+                    $model->survey_id = $survey_id;
+                if($year != null)
+                    $model->year = $year;
+                $model->person_type_id = 2;
 
                 $this->initInvolved($model, $involved);
                 
@@ -112,12 +135,14 @@ class StudentController extends Controller
 				$this->redirect(array('answer/index', 'person' => 2));
 		}
                 
+                if($involved != null)
+                    $model->involved_person_id = $involved;
+                
                 $this->initInvolved($model, $involved);
                 
 		$this->render('update',array(
 			'model'=>$model,
                         'view'=>false,
-                        'involved' => $involved,
                         'university' => $this->_university,
 		));
 	}

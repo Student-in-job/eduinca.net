@@ -3,13 +3,11 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Codes',
+	'Survey' => array('survey/index'), 
+	'Survey In Universities' => array('surveyinuniversity/index', 'survey_id' => $survey_id),
+        'Codes',
 );
 
-$this->menu=array(
-	array('label'=>'Create Code', 'url'=>array('create')),
-	array('label'=>'Manage Code', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Codes</h1>
@@ -36,6 +34,14 @@ $this->menu=array(
                 array(
                         'name' => 'survey_in_university_id',
                         'value' => 'CHtml::encode($data->survey_in_university_id)'
+                ),
+                array(
+                        'name' => 'person_type_id',
+                        'value' => 'CHtml::encode($data->person_type_id)'
+                ),
+                array(
+                        'name' => 'person_involved',
+                        'value' => 'CHtml::encode($data->person_involved)'
                 ),
         ),
 )); ?>

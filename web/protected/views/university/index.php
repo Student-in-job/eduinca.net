@@ -3,7 +3,8 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	Yii::t('university', 'universities'),
+	Yii::t('site', 'editor') => array('editor/index'),
+        Yii::t('university', 'universities'),
 );
 
 $this->menu=array(
@@ -27,6 +28,11 @@ $this->menu=array(
             break;
     }
 ?>
+<ul class="nav nav-pills">
+  <li role="presentation"><?php echo CHtml::link(Yii::t('country','countries'), array('country/index'));?></li>
+  <li role="presentation"  class="active"><?php echo CHtml::link(Yii::t('university','universities'), array('university/index'));?></li>
+</ul>
+
 <ul class="nav nav-pills">
   <li role="presentation" class="<?php echo $active1;?>"><?php echo CHtml::link(Yii::t('university','all'), array('index'));?></li>
   <li role="presentation" class="<?php echo $active2;?>"><?php echo CHtml::link(Yii::t('university','colleges'), array('index', 'id' => 2));?></li>

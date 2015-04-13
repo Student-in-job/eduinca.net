@@ -39,6 +39,7 @@ class SurveyInUniversity extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+                        array('survey_id, university_id, user_id, university_type_id, teachers_num, students_num, involved_teachers, involved_students','required'),
 			array('survey_id, university_id, user_id, university_type_id, teachers_num, students_num, involved_teachers, involved_students', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -69,14 +70,14 @@ class SurveyInUniversity extends CActiveRecord
 	{
 		return array(
 			'id_survey_in_university' => 'Id Survey In University',
-			'survey_id' => 'Survey',
-			'university_id' => 'University',
-			'user_id' => 'User',
-			'university_type_id' => 'University Type',
-			'teachers_num' => 'Teachers Num',
-			'students_num' => 'Students Num',
-			'involved_teachers' => 'Involved Teachers',
-			'involved_students' => 'Involved Students',
+			'survey_id' => Yii::t('site','survey'),
+			'university_id' => Yii::t('university', 'university'),
+			'user_id' => Yii::t('survey', 'user'),
+			'university_type_id' => Yii::t('university', 'type'),
+			'teachers_num' => Yii::t('survey', 'teachersNum'),
+			'students_num' => Yii::t('survey', 'studentsNum'),
+			'involved_teachers' => Yii::t('survey', 'teachersInvolved'),
+			'involved_students' => Yii::t('survey', 'studentsInvolved'),
 		);
 	}
 

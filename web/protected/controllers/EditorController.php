@@ -1,15 +1,9 @@
 <?php
 
-class SettingsController extends Controller
+class EditorController extends Controller
 {
-        protected  $menuItem = 'settings';
         public $layout = '//layouts/column2';
-    
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
-
+        
         public function accessRules()
 	{
 		return array(
@@ -23,6 +17,16 @@ class SettingsController extends Controller
 		);
 	}
         
+	public function actionIndex()
+	{
+		$this->redirect(array('country/index'));
+	}
+
+	public function actionView()
+	{
+		$this->render('view');
+	}
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

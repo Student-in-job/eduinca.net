@@ -21,15 +21,18 @@ $this->pageTitle=Yii::app()->name;
         <?php 
         if (Yii::app()->user->IsGuest)
         {
-            $this->widget('application.extensions.widgets.Login', array('model' => $model));
+            $this->widget('application.extensions.widgets.Login', array('model' => $model, 'code' => $code));
         }
         else
         {
+            /*
             echo CHtml::link(
                         Yii::t('site', 'logout'),
                         array('site/logout'),
                         array('class' => 'btn btn-primary')
                 );
+             * 
+             */
         }
         ?>
     </div>
@@ -63,8 +66,13 @@ $this->pageTitle=Yii::app()->name;
         
         
 <!-- Javascript - jQuery -->
+<<<<<<< .mine
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.7.2.min.js"></script>
 	<script>
+=======
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.7.2.min.js"></script>
+<script>
+>>>>>>> .theirs
 jQuery(document).ready(function($) {
 	tab = $('.tabs h3 a');
 
@@ -82,4 +90,9 @@ jQuery(document).ready(function($) {
 <!--[if (gte IE 6)&(lte IE 8)]>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/selectivizr.js"></script>
 <![endif]-->
+<<<<<<< .mine
+
+=======
+
+>>>>>>> .theirs
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/scripts.js"></script>

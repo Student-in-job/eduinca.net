@@ -18,6 +18,4 @@ $this->breadcrumbs=array(
 <?php $this->renderPartial('_form', array(
                                 'model'=>$model,
                                 'view' => false,
-                                'involved' => $involved,
-                                'university' => $university,
-                                'year' => 2014)); ?>
+                                'university' => $university)); ?>

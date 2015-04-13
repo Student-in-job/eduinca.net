@@ -2,7 +2,9 @@
 
 class SiteController extends Controller
 {
-        public function actions()
+    protected  $menuItem = 'main';
+
+    public function actions()
 	{
 		return array(
 			// captcha action renders the CAPTCHA image displayed on the contact page
@@ -24,10 +26,14 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-                $model = new LoginForm;
+                $modelLogin = new LoginForm;
+                $modelCode = new CodeForm;
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index', array('model' => $model));
+                $this->render('index', array(
+                        'model' => $modelLogin,
+                        'code' => $modelCode,
+                ));
 	}
 
 	/**
@@ -90,7 +96,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(array('country/index'));
+				$this->redirect(array('statistics/index'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -99,14 +105,12 @@ class SiteController extends Controller
 	public function actionCode()
 	{
 		$model = new CodeForm();
-
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='code-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-                var_dump($_POST['CodeForm']);die();
 		// collect user input data
 		if(isset($_POST['CodeForm']))
 		{
@@ -116,7 +120,7 @@ class SiteController extends Controller
                         {
                             $codeModel = new Code;
                             $dbCriteria = new CDbCriteria();
-                            $dbCriteria->compare('code', $this->password);
+                            $dbCriteria->compare('code', $model->code);
                             $code = $codeModel->find($dbCriteria);
                             if($code != null)
                             {
@@ -124,14 +128,37 @@ class SiteController extends Controller
                                 $dbCriteria = new CDbCriteria();
                                 $dbCriteria->compare('id_survey_in_university', $code->getAttribute('survey_in_university_id'));
                                 $surveyinuniversity = $surveyinuniversityModel->find($dbCriteria);
-                                $this->redirect(array('teacher/create', array('involved' => 1)));
+                                
+                                $surveyModel = new Survey();
+                                $surveyCriteria = new CDbCriteria();
+                                $surveyCriteria->compare('id_survey', $surveyinuniversity->GetAttribute('survey_id'));
+                                $survey = $surveyModel->find($surveyCriteria);
+                                
+                                $url = '';
+
+                                if($code->getAttribute('person_type_id') == 1)
+                                {
+                                    $url = 'teacher/create';
+                                }
+                                elseif($code->getAttribute('person_type_id') == 2)
+                                {
+                                    $url = 'student/create';
+                                }
+                                $this->redirect(array(
+                                        $url,
+                                        'involved' => $code->getAttribute('person_involved'),
+                                        'university_id' => $surveyinuniversity->getAttribute('university_id'),
+                                        'survey_id' => $surveyinuniversity->getAttribute('survey_id'),
+                                        'code' => $code->getAttribute('id_code'),
+                                        'year' => date('Y', strtotime($survey->getAttribute('date_till')))
+                                ));
                             }
                         }
-                        else {$this->redirect(array('index'));}
+                        else {$this->redirect(array('contact'));}
 				
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('index',array('model' => $model));
 	}
 
 	/**

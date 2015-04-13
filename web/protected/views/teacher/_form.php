@@ -28,17 +28,10 @@ table tbody tr {height: 45px; }
         </p>
         
         <div class="row">
-                <?php $model->person_type_id = 1?>
+                <?php //$model->person_type_id = 1?>
                 <?php echo $form->hiddenField($model,'person_type_id'); ?>
-        </div>
-        
-        <div class="row">
-                <?php $model->involved_person_id = $involved; ?>
                 <?php echo $form->hiddenField($model,'involved_person_id'); ?>
                 <?php echo $form->error($model,'involved_person_id'); ?>
-        </div>
-        
-        <div class="row">
                 <?php echo $form->hiddenField($model,'id_answer'); ?>
                 <?php echo $form->error($model,'id_answer');?>
         </div>
@@ -51,12 +44,12 @@ table tbody tr {height: 45px; }
                 <tr>
                     <td>
                         <?php echo $form->labelEx($model,'year'); ?>
-                        <?php $model->year = $year; ?>
-                        <?php echo $form->textField($model,'year'); ?>                        
+                        <?php echo $form->textField($model,'year', array('readonly' => 'true')); ?>                        
                     </td>
                     <td>
                         <?php echo $form->labelEx($model,'university_id'); ?>
-                        <?php echo $form->dropDownList($model, 'university_id', $university, array('style' => 'width:500px')); ?>
+                        <?php echo $form->hiddenField($model, 'university_id'); ?>
+                        <?php echo CHtml::textField('n',$university[$model->university_id], array('disabled' => true, 'style' => 'width:500px'));?>
                         <?php echo $form->error($model,'university_id'); ?>
                     </td>
                 </tr>   

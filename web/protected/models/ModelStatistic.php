@@ -70,7 +70,7 @@ class ModelStatistic
                 else{
                     $temp = $value;
                 }
-                $data[$ikey][$key] = round($temp*100, 1);
+                $data[$ikey][$key] = round($temp*100, 0);
             }
         }
         return $data;

@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h1>View Survey #<?php echo $model->id_survey; ?></h1>
+<!--<h1>View Survey #<?php //echo $model->id_survey; ?></h1>-->
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

@@ -6,6 +6,7 @@ class CodeController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
+        protected  $menuItem = 'statistic';
 	public $layout='//layouts/column2';
 
 	/**
@@ -28,7 +29,11 @@ class CodeController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index', 'create', 'update', 'view', 'delete'),
+				'actions'=>array('index', 'view'),
+				'users'=>array('administrator'),
+			),
+                        array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('view'),
 				'users'=>array('administrator'),
 			),
 			array('deny',  // deny all users
@@ -43,70 +48,11 @@ class CodeController extends Controller
 	 */
 	public function actionView($id)
 	{
+                /*
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new Code;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Code']))
-		{
-			$model->attributes=$_POST['Code'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_code));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Code']))
-		{
-			$model->attributes=$_POST['Code'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_code));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+                 */
 	}
 
 	/**
@@ -122,24 +68,13 @@ class CodeController extends Controller
                         $this->generateCodes($model);
                     }
                 }
-		$dataProvider=new CActiveDataProvider('Code');
+		$codeModel = new Code();
+                $codeModel->survey_in_university_id = $id_survey_in_university;
+                $dataProvider = $codeModel->search();
+                
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Code('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Code']))
-			$model->attributes=$_GET['Code'];
-
-		$this->render('admin',array(
-			'model'=>$model,
+                        'survey_id' => $model->getAttribute('survey_id')
 		));
 	}
 
@@ -157,19 +92,6 @@ class CodeController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param Code $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='code-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
         
         protected function genPasswordTwo($length) {
             $password = "";
@@ -185,26 +107,58 @@ class CodeController extends Controller
               'Q', 'R', 'S', 'T', 'U', 'V',
               'W', 'X', 'Y', 'Z', '1', '2',
               '3', '4', '5', '6', '7', '8',
-              '9', '0', '#', '!', "?", "&"
+              '9', '0',
             );
             for ($i = 0; $i < $length; $i++)
               $password .= $arr[mt_rand(0, count($arr) - 1)];
             return date('Y') . '-' . $password;
-      }
+        }
       
-      protected function generateCodes($model)
-      {
-          $teacher = $model->getAttribute('teachers_num');
-          $student = $model->getAttribute('teachers_num');
-          $teacher_involved = $model->getAttribute('involved_teachers');
-          $student_involved = $model->getAttribute('involved_students');
+        protected function generateCodes($model)
+        {
+            $teacher_involved = $model->getAttribute('involved_teachers');
+            $student_involved = $model->getAttribute('involved_students');
+            $teacher_not_involved = $model->getAttribute('teachers_num') - $teacher_involved;
+            $student_not_involved = $model->getAttribute('teachers_num') - $student_involved;
           
-          for($iterator = 0; $iterator<$teacher; $iterator++)
-          {
-              $code = new Code();
-              $code->setAttribute('code', $this->genPasswordTwo(4));
-              $code->setAttribute('survey_in_university_id', $model->getAttribute('id_survey_in_university'));
-              $code->save();
-          }
-      }
+            for($iterator = 0; $iterator<$teacher_involved; $iterator++)
+            {
+                $code = new Code();
+                $code->setAttribute('code', $this->genPasswordTwo(4));
+                $code->setAttribute('survey_in_university_id', $model->getAttribute('id_survey_in_university'));
+                $code->setAttribute('person_type_id', 1);
+                $code->setAttribute('person_involved', 1);
+                $code->save();
+            }
+            
+            for($iterator = 0; $iterator<$student_involved; $iterator++)
+            {
+                $code = new Code();
+                $code->setAttribute('code', $this->genPasswordTwo(4));
+                $code->setAttribute('survey_in_university_id', $model->getAttribute('id_survey_in_university'));
+                $code->setAttribute('person_type_id', 2);
+                $code->setAttribute('person_involved', 1);
+                $code->save();
+            }
+            
+            for($iterator = 0; $iterator<$teacher_not_involved; $iterator++)
+            {
+                $code = new Code();
+                $code->setAttribute('code', $this->genPasswordTwo(4));
+                $code->setAttribute('survey_in_university_id', $model->getAttribute('id_survey_in_university'));
+                $code->setAttribute('person_type_id', 1);
+                $code->setAttribute('person_involved', 2);
+                $code->save();
+            }
+            
+            for($iterator = 0; $iterator<$student_not_involved; $iterator++)
+            {
+                $code = new Code();
+                $code->setAttribute('code', $this->genPasswordTwo(4));
+                $code->setAttribute('survey_in_university_id', $model->getAttribute('id_survey_in_university'));
+                $code->setAttribute('person_type_id', 2);
+                $code->setAttribute('person_involved', 2);
+                $code->save();
+            }
+        }
 }

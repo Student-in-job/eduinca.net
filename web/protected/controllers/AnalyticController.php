@@ -8,6 +8,7 @@
 
 class AnalyticController extends Controller
 {
+    protected  $menuItem = 'analytic';
     public $layout='//layouts/column2';
 
     function actionIndex()
@@ -56,7 +57,7 @@ class AnalyticController extends Controller
                     $student = new StudentStatistic();
                     $dataStudent[$column] = $student->getMethodic($column, true);
                 }
-                $header = array('', '5 (%)', '4 (%)', '3 (%)', '2 (%)', '1 (%)', 'n/a (%)');
+                $header = array('', '5 <br/> (%)', '4  <br/>(%)', '3 <br/> (%)', '2 <br/> (%)', '1 <br/> (%)', 'n/a <br/> (%)');
                 
                 $this->render('methodic', array(
                     'dataTeacher' => $dataTeacher,
@@ -82,7 +83,7 @@ class AnalyticController extends Controller
                     $studentNot = new TeacherStatistic();
                     $dataStudentNot[$column] = $studentNot->getFrequency($column, false);
                 }
-                $header = array('', '5 (%)', '4 (%)', '3 (%)', '2 (%)', '1 (%)', 'n/a (%)');
+                $header = array('', '5 <br/>(%)', '4  <br/>(%)', '3  <br/>(%)', '2  <br/>(%)', '1  <br/>(%)', 'n/a  <br/>(%)');
                 $this->render('frequency', array(
                     'dataTeacher' => $dataTeacher,
                     'dataStudent' => $dataStudent,

@@ -21,6 +21,8 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
         
+        protected $menuItem;
+        
         public function init()
         {    
             if (!empty($_GET['language']))
@@ -47,7 +49,6 @@ class Controller extends CController
                 $dataProvider->setCriteria($dbCriteria);
             foreach($dataProvider->getData() as $activeRecord)
             {
-                //var_dump($activeRecord);
                 $data[$activeRecord->getAttribute($key)] = $activeRecord->getAttribute($value);
             }
             return $data;

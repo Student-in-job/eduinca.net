@@ -8,6 +8,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1><?php echo Yii::t('survey','create_survey')?></h1>
+<h3><?php echo Yii::t('survey','create_survey')?></h3>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

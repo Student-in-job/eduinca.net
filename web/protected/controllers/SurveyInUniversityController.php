@@ -6,8 +6,12 @@ class SurveyInUniversityController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
+        protected  $menuItem = 'survey';
 	public $layout='//layouts/column2';
-
+        protected $universities;
+        protected $user;
+        protected $universityType;
+        
 	/**
 	 * @return array action filters
 	 */
@@ -54,12 +58,10 @@ class SurveyInUniversityController extends Controller
 	 */
 	public function actionCreate($survey_id = null)
 	{
-		$model=new SurveyInUniversity;
+		$model = new SurveyInUniversity;
                 $model->setAttribute('survey_id', $survey_id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-                
-                var_dump($model->HasCodes);
 
 		if(isset($_POST['SurveyInUniversity']))
 		{
@@ -68,11 +70,23 @@ class SurveyInUniversityController extends Controller
 			if($model->save())
                             $this->redirect(array('index','survey_id' => $model->getAttribute('survey_id')));
                 }
-
+                
+                $condition = 'id_university NOT IN (';
+                foreach($model->search()->getData() as $activeRecord)
+                {
+                    $condition .= $activeRecord->GetAttribute('university_id') .  ',';
+                }
+                $condition = trim($condition, ',') . ')';
+                $lastUniversitiesDbCriteria = new CDbCriteria();  
+                $lastUniversitiesDbCriteria->condition = $condition;
+                
+                $roleCriteria = new CDbCriteria;
+                $roleCriteria->compare('role_id', 2);
+                
 		$this->render('create',array(
 			'model'=>$model,
-                        'university' => $this->GetArray('University', 'id_university', 'name'),
-                        'user' => $this->GetArray('User', 'id_user', 'name'),
+                        'university' => $this->GetArray('University', 'id_university', 'name', $lastUniversitiesDbCriteria),
+                        'user' => $this->GetArray('User', 'id_user', 'name', $roleCriteria),
 		));
 	}
 
@@ -94,9 +108,23 @@ class SurveyInUniversityController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id_survey_in_university));
 		}
-
+                
+                $condition = 'id_university NOT IN (';
+                foreach($model->search()->getData() as $activeRecord)
+                {
+                    $condition .= $activeRecord->GetAttribute('university_id') .  ',';
+                }
+                $condition = trim($condition, ',') . ')';
+                $lastUniversitiesDbCriteria = new CDbCriteria();  
+                $lastUniversitiesDbCriteria->condition = $condition;
+                
+                $roleCriteria = new CDbCriteria;
+                $roleCriteria->compare('role_id', 2);
+                
 		$this->render('update',array(
 			'model'=>$model,
+                        'university' => $this->GetArray('University', 'id_university', 'name', $lastUniversitiesDbCriteria),
+                        'user' => $this->GetArray('User', 'id_user', 'name', $roleCriteria),
 		));
 	}
 
@@ -122,31 +150,14 @@ class SurveyInUniversityController extends Controller
                 $criteria=new CDbCriteria;
                 $criteria->compare('survey_id', $survey_id);
                 $dataProvider = new CActiveDataProvider('SurveyInUniversity', array('criteria' => $criteria));
-                $roleCriteria = new CDbCriteria;
-                $roleCriteria->compare('role_id', 2);
+                $this->universities = $this->GetArray('University', 'id_university', 'name');
+                $this->user = $this->GetArray('User', 'id_user', 'name');
+                $this->universityType = $this->GetArray('UniversityType', 'id_university_type', 'name');
                 $this->render('index',array(
 			'dataProvider'=>$dataProvider,
-                        'university' => $this->GetArray('University', 'id_university', 'name'),
-                        'user' => $this->GetArray('User', 'id_user', 'name', $roleCriteria),
                         'survey_id' => $survey_id,
 		));
 	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new SurveyInUniversity('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['SurveyInUniversity']))
-			$model->attributes=$_GET['SurveyInUniversity'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

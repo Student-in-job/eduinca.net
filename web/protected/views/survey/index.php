@@ -12,7 +12,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Surveys</h1>
+<!--<h1>Surveys</h1>-->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$dataProvider,
