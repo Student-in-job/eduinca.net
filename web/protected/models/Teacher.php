@@ -109,7 +109,7 @@ class Teacher extends CActiveRecord
 		return array(
 			'id_answer' => Yii::t('answerteacher','id'),
 			'code' => Yii::t('answerteacher','code'),
-			'age' => '1. ' . Yii::t('answerteacher','age'),
+			'age' => Yii::t('answerteacher','age'),
 			'sex' => '2. ' . Yii::t('answerteacher','sex'),
                         'year' => Yii::t('answerteacher','year'),
 			'faculty' => '3. ' . Yii::t('answerteacher','faculty'),

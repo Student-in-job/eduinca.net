@@ -129,7 +129,7 @@ class Student extends CActiveRecord
 			'id_answer' => Yii::t('answerstudent','id'),
 			'code' => Yii::t('answerstudent','code'),
 			'year' => Yii::t('answerstudent','year'),
-			'age' => '1.' . Yii::t('answerstudent','age'),
+			'age' => Yii::t('answerstudent','age'),
 			'sex' => '2. ' . Yii::t('answerstudent','sex'),
 			'faculty' => '3. ' . Yii::t('answerstudent','faculty') . ':',
 			'speciality' => '4. ' . Yii::t('answerstudent', 'speciality') . ':',

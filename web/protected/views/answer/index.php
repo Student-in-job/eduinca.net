@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	Yii::t('site','statistics') => array('/statistics/index'),
-        'Answer Teachers',
+        ($person == 1)?Yii::t('statistics','answers_teachers'):Yii::t('statistics','answers_students')//'Answer Teachers',
 );
 /*
 $this->menu=array(
@@ -28,7 +28,7 @@ switch ($person)
     <li class="<?php echo $active2;?>"><?php echo CHtml::link(Yii::t('answer','students'), array('index', 'person' => 2));?></li>
 </ul>
 
-<h1>Answer</h1>
+<!--<h1>Answer</h1>-->
 <?php
     if($person == 1){
         $this->widget('zii.widgets.grid.CGridView', array(
@@ -38,10 +38,10 @@ switch ($person)
                     'name' => 'id_answer',
                     'value' => 'CHtml::encode($data->id_answer)',
                 ),
-                array(
+                /*array(
                     'name' => 'code',
                     'value' => 'CHtml::encode($data->code)',
-                ),
+                ),*/
                 array(
                     'name' => 'age',
                     'value' => 'CHtml::encode($data->age)',
@@ -84,10 +84,10 @@ switch ($person)
                     'name' => 'id_answer',
                     'value' => 'CHtml::encode($data->id_answer)',
                 ),
-                array(
+                /*array(
                     'name' => 'code',
                     'value' => 'CHtml::encode($data->code)',
-                ),
+                ),*/
                 array(
                     'name' => 'age',
                     'value' => 'CHtml::encode($data->age)',
