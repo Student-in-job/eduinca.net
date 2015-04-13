@@ -10,12 +10,12 @@
             <?php echo CHtml::encode($data->id_university); ?>
 	</td>
 
-	<td>
-            <?php echo CHtml::link(CHtml::encode($data->code),array('view','id'=>$data->id_university));?>
-        </td>
+<!--	<td>
+            <?php //echo CHtml::link(CHtml::encode($data->code),array('view','id'=>$data->id_university));?>
+        </td>-->
 
         <td>
-            <?php echo CHtml::encode($data->name); ?>
+            <?php echo CHtml::link($data->getAttribute('name_' . Yii::app()->language), array('view','id'=>$data->id_university)); ?>
 	</td>
 
 	<td>

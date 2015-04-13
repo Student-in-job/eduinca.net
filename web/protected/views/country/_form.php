@@ -30,16 +30,22 @@
 		<?php echo $form->error($model,'id_country'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model, 'code'); ?>
-		<?php echo $form->textField($model,'code',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'code'); ?>
-	</div>
+<!--	<div class="row">
+		<?php //echo $form->labelEx($model, 'code'); ?>
+		<?php //echo $form->textField($model,'code',array('size'=>20,'maxlength'=>20)); ?>
+		<?php //echo $form->error($model,'code'); ?>
+	</div>-->
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'name'); ?>
+		<?php echo $form->labelEx($model,'name_ru'); ?>
+		<?php echo $form->textField($model,'name_ru',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->error($model,'name_ru'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'name_en'); ?>
+		<?php echo $form->textField($model,'name_en',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->error($model,'name_en'); ?>
 	</div>
 
 	<div class="row buttons">

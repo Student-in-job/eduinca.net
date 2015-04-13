@@ -8,5 +8,5 @@ $this->breadcrumbs=array(
 	Yii::t('country', 'creating'),
 );
 ?>
-
+<h3><?php echo Yii::t('country', 'createcountry');?></h3>
 <?php $this->renderPartial('_form', array('model'=>$model, 'read' => false));?>

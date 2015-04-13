@@ -55,7 +55,7 @@ class CountryController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Country;
+		$model = new Country;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

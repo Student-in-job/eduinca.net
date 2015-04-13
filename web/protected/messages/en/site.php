@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 return array(
-    'sitename' => 'PPECTA statistics application',
+    'sitename' => 'PBBZ statistics application',
     'home' => 'Home',
     'about' => 'About',
     'contact' => 'Contacts',

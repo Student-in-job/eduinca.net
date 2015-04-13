@@ -5,29 +5,22 @@
 $this->breadcrumbs=array(
         Yii::t('site', 'editor') => array('editor/index'),
 	Yii::t('country', 'countries') => array('index'),
-	$model->name => array('view','id'=>$model->id_country),
+	$model->getAttribute('name_' . Yii::app()->language) => array('view','id'=>$model->id_country),
 	Yii::t('country', 'updating'),
 );
 
 $updateMessage = Yii::t('country', 'changecountry');
-
-/*$this->menu=array(
-	array('label'=>'List Country', 'url'=>array('index')),
-	array('label'=>'Create Country', 'url'=>array('create')),
-	array('label'=>'View Country', 'url'=>array('view', 'id'=>$model->id_country)),
-	array('label'=>'Manage Country', 'url'=>array('admin')),
-);*/
 ?>
 
-<h1>
+<h3>
     <?php echo Yii::t(
         'country',
-        '{changecountry} {name}',
+        '{changecountry} "{name}"',
         array(
             '{changecountry}' => $updateMessage,
-            '{name}' => $model->name,
+            '{name}' => $model->getAttribute('name_' . Yii::app()->language),
         )
     )?>
-</h1>
+</h3>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'read' => true)); ?>

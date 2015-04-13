@@ -89,18 +89,19 @@
         </div> 
         <div class="divide-top">
             <footer class="grid-wrap">
-                <ul class="grid col-one-third social">
+<!--                <ul class="grid col-one-third social">
                     <li><a href="#">RSS</a></li>
                     <li><a href="#">Facebook</a></li>
                     <li><a href="#">Twitter</a></li>
                     <li><a href="#">Google+</a></li>
                     <li><a href="#">Flickr</a></li>
 		</ul>
+-->
 		<div class="up grid col-one-third ">
 			<a href="#navtop" title="Go back up">&uarr;</a>
 		</div>
 		<nav class="grid col-one-third ">
-		<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by PPETCA</p>All rights reserved.</div>
+		<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by PBBZ</p><?php echo Yii::t('site', 'rightsreserved')?>.</div>
 		</nav>
             </footer>
         </div>

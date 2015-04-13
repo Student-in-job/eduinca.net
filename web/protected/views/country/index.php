@@ -9,23 +9,22 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label' => Yii::t('country', 'createcountry'), 'url' => array('create')),
-	//array('label'=>'Manage Country', 'url'=>array('admin')),
 );
 ?>
 
 <ul class="nav nav-pills">
   <li role="presentation" class="active"><?php echo CHtml::link(Yii::t('country','countries'), array('country/index'));?></li>
-  <li role="presentation"><?php echo CHtml::link(Yii::t('university','universities'), array('university/index'));?></li>
+  <li role="presentation"><?php echo CHtml::link(Yii::t('university','educational'), array('university/index'));?></li>
 </ul>
 
-<h1>Countries</h1>
+<!--<h1>Countries</h1>-->
 
 <table class="table table-striped">
     <thead>
     <tr>
         <th><?php echo Yii::t('country', 'id')?></th>
-        <th><?php echo Yii::t('country', 'code')?></th>
-        <th><?php echo Yii::t('country', 'name')?></th>
+        <!--<th><?php //echo Yii::t('country', 'code')?></th>-->
+        <th><?php echo Yii::t('country', 'name_' . Yii::app()->language)?></th>
         <th></th>
         <th></th>
     </tr>

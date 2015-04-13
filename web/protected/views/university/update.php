@@ -4,8 +4,8 @@
 
 $this->breadcrumbs=array(
         Yii::t('site', 'editor') => array('editor/index'),
-	Yii::t('university', 'universities')=>array('index'),
-        $model->name=>array('view','id'=>$model->id_university),
+	Yii::t('university', 'educational')=>array('index'),
+        $model->getAttribute('name_' . Yii::app()->language) => array('view','id'=>$model->id_university),
 	Yii::t('university', 'updating'),
 );
 /*
@@ -16,8 +16,19 @@ $this->menu=array(
 	array('label'=>'Manage University', 'url'=>array('admin')),
 );
 */
+$updateMessage = Yii::t('university', 'changeuniversity');
 ?>
 
-<h1>Update University <?php echo $model->id_university; ?></h1>
+<h3>
+    <?php
+        echo Yii::t(
+        'country',
+        '{changeuniversity} "{name}"',
+        array(
+            '{changeuniversity}' => $updateMessage,
+            '{name}' => $model->getAttribute('name_' . Yii::app()->language),
+        ));
+    ?>
+</h3>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'country'=>$data, 'universityType'=>$type, 'read' => true)); ?>
