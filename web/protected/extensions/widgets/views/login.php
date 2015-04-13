@@ -15,24 +15,14 @@
 
     <div class="tabs-content">
         <div id="signup-tab-content" class="active">
-            <?php
-                $form = $this->beginWidget('CActiveForm', array(
-                        'id'=>'code-form',
-                        'action' => Yii::app()->createUrl('site/Code', array('language' => Yii::app()->language)),
-                        'enableAjaxValidation' => true,
-                        'clientOptions'=>array(
-                                 'validateOnSubmit'=>true,
-                        ),
-                        'htmlOptions' => array('class' => 'code-form')
-                ));
-                echo $form->textField($code,'code', array('class' => 'input', 'autocomplete' => 'off', 'placeholder' => Yii::t('site', 'code')));
-                echo $form->error($code,'code');
-                echo CHtml::submitButton(Yii::t('site', 'login'), array('class' => 'button'));
-                $this->endWidget();
-            ?><!--.login-form-->
+            
+            <form class="signup-form" action="" method="post">
+                <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Code">
+                <input type="submit" class="button" value="Sign Up">
+            </form>
             <div class="help-text">
                 <p>By signing up, you agree to our</p>
-                <p><a href="#">Terms of service</a></p>
+                <p><a href="#">Terms and conditions</a></p>
             </div><!--.help-text-->
         </div><!--.signup-tab-content-->
         <div id="login-tab-content">
