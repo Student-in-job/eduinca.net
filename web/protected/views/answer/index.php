@@ -38,10 +38,10 @@ switch ($person)
                     'name' => 'id_answer',
                     'value' => 'CHtml::encode($data->id_answer)',
                 ),
-                /*array(
+                array(
                     'name' => 'code',
                     'value' => 'CHtml::encode($data->code)',
-                ),*/
+                ),
                 array(
                     'name' => 'age',
                     'value' => 'CHtml::encode($data->age)',
@@ -84,10 +84,10 @@ switch ($person)
                     'name' => 'id_answer',
                     'value' => 'CHtml::encode($data->id_answer)',
                 ),
-                /*array(
+                array(
                     'name' => 'code',
                     'value' => 'CHtml::encode($data->code)',
-                ),*/
+                ),
                 array(
                     'name' => 'age',
                     'value' => 'CHtml::encode($data->age)',
