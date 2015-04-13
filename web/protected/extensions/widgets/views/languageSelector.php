@@ -1,5 +1,4 @@
 <?php 
-
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,32 +7,21 @@
 ?>
 <div id="language-select">
 <?php
-    if(sizeof($languages) < 4) { // если языков меньше четырех - отображаем в строчку
-        // Если хотим видить в виде флагов то используем этот код
+    if(sizeof($languages) < 4) { 
         foreach($languages as $key=>$lang)
         {
             if($key != $currentLang)
             {
                 echo CHtml::link(
-                     '<img src=' . Yii::app()->theme->baseUrl . '/img/flag_' . $key . '.png alt=' . $key . '>&nbsp;' . strtoupper($key), 
+                     '<img src=' . Yii::app()->theme->baseUrl . '/img/flag_' . $key . '.png alt=' . $key . '> ' . strtoupper($key), 
                      $this->getOwner()->createMultilanguageReturnUrl($key));
             }
             else
             {
-                echo '<img src=' . Yii::app()->theme->baseUrl . '/img/flag_' . $key . '.png alt=' . $key . '>&nbsp;' . strtoupper($key);
+                echo '<img src=' . Yii::app()->theme->baseUrl . '/img/flag_' . $key . '.png alt=' . $key . '> ' . strtoupper($key);
             }
             if ($lang != end($languages)) echo '&nbsp;&nbsp';
         }	
-        // Если хотим в виде текста то этот код
-        /*
-        $lastElement = end($languages);
-        foreach($languages as $key=>$lang) {
-            if($key != $currentLang) {
-                echo CHtml::link($lang, $this->getOwner()->createMultilanguageReturnUrl($key),array('style'=>'color:purple;font-weight:bold'));
-            } else echo '<b>'.$lang.'</b>';
-            if($lang != $lastElement) echo ' | ';
-        }
-        */
     }
     else {
         // Render options as dropDownList

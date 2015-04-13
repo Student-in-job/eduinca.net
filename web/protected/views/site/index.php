@@ -47,15 +47,15 @@ $this->pageTitle=Yii::app()->name;
     </article>
         
     <article class="grid col-one-third mq3-col-full">
-        <h5>Web development</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim.</p>
+        <h5></h5>
+        <p style="text-align:center;"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/slogan.png" border="0"></p>
     </article>
 		
     <article class="grid col-one-third mq3-col-full">
         <h5>Контакты</h5>
-	<p>Адрес: </p>
+	<p>Адрес: Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan</p>
 	<p>Телефон: +998 71 140-04-90</p>
-	<p>E-mail: </p>
+	<p>E-mail: <a href="mailto:ekaterina.golubina@giz.de">ekaterina.golubina@giz.de</a></p>
 	<p>Web: www.eduinca.net</p>
     </article>
 </section>
@@ -63,8 +63,7 @@ $this->pageTitle=Yii::app()->name;
         
         
 <!-- Javascript - jQuery -->
-<!--<script src="http://code.jquery.com/jquery.min.js"></script>-->
-<script>window.jQuery || document.write('<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.7.2.min.js"><\/script>')</script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.7.2.min.js"></script>
 	<script>
 jQuery(document).ready(function($) {
 	tab = $('.tabs h3 a');
@@ -79,10 +78,8 @@ jQuery(document).ready(function($) {
 		$(tab_content).addClass('active');
 	});
 });
-</script>
+	</script>
 <!--[if (gte IE 6)&(lte IE 8)]>
-<script src="js/selectivizr.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/selectivizr.js"></script>
 <![endif]-->
-
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.flexslider-min.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/scripts.js"></script>

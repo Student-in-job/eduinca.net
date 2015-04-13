@@ -22,7 +22,7 @@
             </form>
             <div class="help-text">
                 <p>By signing up, you agree to our</p>
-                <p><a href="#">Terms of service</a></p>
+                <p><a href="#">Terms and conditions</a></p>
             </div><!--.help-text-->
         </div><!--.signup-tab-content-->
         <div id="login-tab-content">

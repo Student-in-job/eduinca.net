@@ -1,44 +1,31 @@
 <!DOCTYPE html>
-
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-
 <head>
 	<meta charset="UTF-8">
-	
-	<!-- Remove this line if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-	<link rel="shortcut icon" type="image/png" href="favicon.png">
-	
-	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>-->
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/favicon.ico">
+	<link rel="shortcut icon" type="image/png" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/favicon.png">
 	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
-	
-        <!-- bootstrap -->
-        <?php Yii::app()->bootstrap->register(); ?>
-        <!-- jqplot -->
-        <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.css" />
-        <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.min.js"></script>
-        
-		<!-- blueprint CSS framework -->
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
         <!-- my own css -->
         <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/my.css" />
 	
-        <!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-        <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+        <!-- bootstrap -->
+        <?php /*Yii::app()->bootstrap->register();*/ ?>
+        <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/js/raphael.js" />	
+		
+		<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/excanvas.js"></script><![endif]-->
+        <link class="include" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.jqplot.css" />
+        <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/jquery.min.js"></script>
+		
+		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<?php Yii::app()->name = Yii::t('site', 'sitename');?>
 </head>
 
@@ -77,33 +64,30 @@
 			),
                         'htmlOptions' => array('class' => 'nav'),
 		)); ?>
+            </div>
                 <div id="language-selector" style="float:right; margin:5px;">
                     <?php $this->widget('application.extensions.widgets.LanguageSelector');?>
                 </div>
-            </div>
-            
+				
             <div style="clear: both"></div>
 	</header>
-        
+     <!-- header --> 
         <!--<div style="clear: both"></div>-->
         <div class="home-page main">
             <?php echo $content; ?>
-        </div> 
+        </div>
+		<!-- footer -->
         <div class="divide-top">
             <footer class="grid-wrap">
                 <ul class="grid col-one-third social">
-                    <li><a href="#">RSS</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Google+</a></li>
-                    <li><a href="#">Flickr</a></li>
-		</ul>
-		<div class="up grid col-one-third ">
-			<a href="#navtop" title="Go back up">&uarr;</a>
-		</div>
-		<nav class="grid col-one-third ">
-		<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by PPETCA</p>All rights reserved.</div>
-		</nav>
+                    <li><a href="#">Условия использования</a></li>
+				</ul>
+				<div class="up grid col-one-third ">
+					<a href="#navtop" title="Go back up">&uarr;</a>
+				</div>
+				<nav class="grid col-one-third ">
+					<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by Programme Professional Education and Training in Central Asia.</p><?php echo Yii::t('site', 'rightsreserved'); ?>.</div>
+				</nav>
             </footer>
         </div>
     </div>
