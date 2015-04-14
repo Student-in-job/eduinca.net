@@ -6,7 +6,11 @@
  * and open the template in the editor.
  */
 return array(
+<<<<<<< .mine
     'sitename' => 'Programme Professional Education and Training in Central Asia',
+=======
+    'sitename' => 'PBBZ statistics application',
+>>>>>>> .theirs
     'home' => 'Home',
     'about' => 'About',
     'contact' => 'Contacts',

@@ -6,7 +6,8 @@
  * The followings are the available columns in table 'tbl_country':
  * @property integer $id_country
  * @property string $code
- * @property string $name
+ * @property string $name_ru
+ * @property string $name_en
  *
  * The followings are the available model relations:
  * @property University[] $universities
@@ -29,12 +30,12 @@ class Country extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_country, code, name', 'required'),
+			array('id_country, name_ru, name_en', 'required'),
 			array('id_country', 'numerical', 'integerOnly'=>true),
-			array('code, name', 'length', 'max'=>20),
+			array('code, name_ru, name_en', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_country, code, name', 'safe', 'on'=>'search'),
+			array('id_country, code, name_en, name_ru', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +59,8 @@ class Country extends CActiveRecord
 		return array(
 			'id_country' => Yii::t('country','id'),
 			'code' => Yii::t('country','code'),
-			'name' => Yii::t('country','name'),
+			'name_ru' => Yii::t('country','name_ru'),
+                        'name_en' => Yii::t('country','name_en'),
 		);
 	}
 
@@ -82,7 +84,8 @@ class Country extends CActiveRecord
 
 		$criteria->compare('id_country',$this->id_country);
 		$criteria->compare('code',$this->code,true);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('name_ru',$this->name_ru,true);
+                $criteria->compare('name_en',$this->name_en,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

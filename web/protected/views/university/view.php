@@ -4,8 +4,8 @@
 
 $this->breadcrumbs=array(
         Yii::t('site', 'editor') => array('editor/index'),
-	Yii::t('university', 'universities')=>array('index'),
-	$model->name,
+	Yii::t('university', 'educational')=>array('index'),
+	$model->getAttribute('name_' . Yii::app()->language),
 );
 /*
 $this->menu=array(
@@ -18,14 +18,14 @@ $this->menu=array(
  */
 ?>
 
-<h1>View University #<?php echo $model->id_university; ?></h1>
+<!--<h1>View University #<?php //echo $model->id_university; ?></h1>-->
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id_university',
-		'code',
-		'name',
+		//'code',
+		'name_' . Yii::app()->language,
 		array('name' => 'university_type_id', 'value' => $type[$model->university_type_id]),
 		array('name' => 'country_id','value' => $country[$model->country_id])
 	),

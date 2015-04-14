@@ -4,27 +4,19 @@
 
 $this->breadcrumbs=array(
         Yii::t('site', 'editor') => array('editor/index'),
-	'Countries'=>array('index'),
-	$model->name,
+	Yii::t('country', 'countries') => array('index'),
+	$model->getAttribute('name_'  . Yii::app()->language),
 );
-
-/*$this->menu=array(
-	array('label'=>'List Country', 'url'=>array('index')),
-	array('label'=>'Create Country', 'url'=>array('create')),
-	array('label'=>'Update Country', 'url'=>array('update', 'id'=>$model->id_country)),
-	array('label'=>'Delete Country', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_country),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Country', 'url'=>array('admin')),
-);*/
 ?>
 
-<h1>View Country #<?php echo $model->id_country; ?></h1>
+<!--<h1>View Country #<?php //echo $model->id_country; ?></h1>-->
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id_country',
-		'code',
-		'name',
+		//'code',
+		'name_' . Yii::app()->language,
 	),
 )); ?>
 

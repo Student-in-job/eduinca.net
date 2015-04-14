@@ -11,9 +11,11 @@ return array(
     'update' => 'Modify',
     'delete' => 'Delete',
     'code' => 'Country code',
-    'name' => 'Name',
+    'name_ru' => 'Name in Russian',
+    'name_en' => 'Name in English',
     'updating' => 'Updating',
     'changecountry' => 'Change country',
+    'createcountry' => 'Create country',
     'creating' => 'Creating',
     'id' => 'Id'
 );

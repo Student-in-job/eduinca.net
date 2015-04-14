@@ -7,16 +7,18 @@
  */
 
 return array(
-    'universities' => 'Educational institution',
+    'educational' => 'Educational institution',
     'code' => 'Code',
-    'name' => 'Name',
+    'name_ru' => 'Name of Educational institution in Russian',
+    'name_en' => 'Name of Educational institution in English',
     'type' => 'Educational institution',
     'country' => 'Country',
     'university_type' => 'Type of educational institution',
     'university' => 'University',
     'college' => 'College',
     'creating' => 'Creating',
-    'createuniversity' => 'Create new',
+    'createuniversity' => 'Create educational institution',
+    'changeuniversity' => 'Change educational institution',
     'updating' => 'Updating',
     'id' => 'Id',
     'all' => 'All',

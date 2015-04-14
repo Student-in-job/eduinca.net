@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
         Yii::t('site', 'editor') => array('editor/index'),
-	Yii::t('university','universities') => array('index'),
+	Yii::t('university','educational') => array('index'),
 	Yii::t('university', 'creating'),
 );
 /*
@@ -14,6 +14,6 @@ $this->menu=array(
 );*/
 ?>
 
-<h1>Create University</h1>
+<h3><?php echo Yii::t('university','createuniversity');?></h3>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'country'=>$data, 'universityType'=>$type, 'read' => false)); ?>
