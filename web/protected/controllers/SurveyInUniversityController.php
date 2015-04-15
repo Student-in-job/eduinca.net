@@ -85,7 +85,7 @@ class SurveyInUniversityController extends Controller
                 
 		$this->render('create',array(
 			'model'=>$model,
-                        'university' => $this->GetArray('University', 'id_university', 'name', $lastUniversitiesDbCriteria),
+                        'university' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language, $lastUniversitiesDbCriteria),
                         'user' => $this->GetArray('User', 'id_user', 'name', $roleCriteria),
 		));
 	}
@@ -123,7 +123,7 @@ class SurveyInUniversityController extends Controller
                 
 		$this->render('update',array(
 			'model'=>$model,
-                        'university' => $this->GetArray('University', 'id_university', 'name', $lastUniversitiesDbCriteria),
+                        'university' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language, $lastUniversitiesDbCriteria),
                         'user' => $this->GetArray('User', 'id_user', 'name', $roleCriteria),
 		));
 	}
@@ -150,7 +150,7 @@ class SurveyInUniversityController extends Controller
                 $criteria=new CDbCriteria;
                 $criteria->compare('survey_id', $survey_id);
                 $dataProvider = new CActiveDataProvider('SurveyInUniversity', array('criteria' => $criteria));
-                $this->universities = $this->GetArray('University', 'id_university', 'name');
+                $this->universities = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
                 $this->user = $this->GetArray('User', 'id_user', 'name');
                 $this->universityType = $this->GetArray('UniversityType', 'id_university_type', 'name');
                 $this->render('index',array(

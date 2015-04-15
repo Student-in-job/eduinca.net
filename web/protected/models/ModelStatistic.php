@@ -151,13 +151,13 @@ class ModelStatistic
     
     public function setCount()
     {
-        $this->_keys = array('id', 'name', 'num');
-        $attributes = array('c.id_country as id', 'c.name', 'count(id_answer) as num');
+        $this->_keys = array('id', 'name_' . Yii::app()->language, 'num');
+        $attributes = array('c.id_country as id', 'c.name_' . Yii::app()->language, 'count(id_answer) as num');
         $tables = array(
                         'tbl_university u' => 'university_id = u.id_university',
                         'tbl_country c' => 'u.country_id = c.id_country',
         );
-        $group = array('id', 'c.name');
+        $group = array('id', 'c.name_' . Yii::app()->language);
         $where = array('involved_person_id = :id' => array(':id' => '1'));
         $this->buildCommand($attributes, $tables, $group, $where);
     }
@@ -233,12 +233,12 @@ class ModelStatistic
     
     public function getPracticeParticipation($column, $default = 'Нет')
     {
-        $attributes = 'c.name, count(id_answer) as num';
+        $attributes = 'c.name_' . Yii::app()->language . ', count(id_answer) as num';
         $tables = array(
                         'tbl_university u' => 'university_id = u.id_university',
                         'tbl_country c' => 'u.country_id = c.id_country',
         );
-        $group = array('c.name');
+        $group = array('c.name_' . Yii::app()->language);
         if($default == 'Нет'){
             $where = array(
                 $column . '=:value and involved_person_id = :id' => array(':value' => $default, ':id' => 1)

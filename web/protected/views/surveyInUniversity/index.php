@@ -3,18 +3,18 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-        'Survey' => array('survey/index'), 
-	'Survey In Universities',
+        Yii::t('survey', 'surveys') => array('survey/index'), 
+	Yii::t('survey', 'survey_in_university'),
 );
 
 $this->menu=array(
-	array('label'=>'Create SurveyInUniversity', 'url'=>Yii::app()->CreateUrl('surveyInUniversity/create', array('survey_id' => $survey_id))),
-	//array('label'=>'Manage SurveyInUniversity', 'url'=>array('admin')),
+	array('label' => Yii::t('survey', 'create_survey_in_university'), 'url' => Yii::app()->CreateUrl('surveyInUniversity/create', array('survey_id' => $survey_id))),
 );
 ?>
 
-<h1>Survey In Universities</h1>
-
+<!--<h1>Survey In Universities</h1>-->
+<br/>
+<br/>
 <?php 
     $this->widget('zii.widgets.grid.CGridView', array(
             'dataProvider'=>$dataProvider,
@@ -50,7 +50,7 @@ $this->menu=array(
                         'value' => 'CHtml::encode($data->students_num)'
                 ),
                 array(
-                        'name' => 'teachers_num',
+                        'name' => 'involved_teachers',
                         'value' => 'CHtml::encode($data->involved_teachers)'
                 ),
                 array(
@@ -60,6 +60,7 @@ $this->menu=array(
                 array(
                         'class' => 'CButtonColumn',
                         'template' => '{view}{delete}',
+                        'header' => Yii::t('site', 'operations'),
                         'buttons' => array(
                             'view' => array(
                                 'url' => 'Yii::app()->createUrl("surveyInUniversity/view",array("id"=>$data->id_survey_in_university));'

@@ -69,9 +69,9 @@ class SurveyInUniversity extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_survey_in_university' => 'Id Survey In University',
+			'id_survey_in_university' => 'Id',
 			'survey_id' => Yii::t('site','survey'),
-			'university_id' => Yii::t('university', 'university'),
+			'university_id' => Yii::t('survey', 'educational'),
 			'user_id' => Yii::t('survey', 'user'),
 			'university_type_id' => Yii::t('university', 'type'),
 			'teachers_num' => Yii::t('survey', 'teachersNum'),

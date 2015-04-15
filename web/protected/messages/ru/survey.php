@@ -23,5 +23,10 @@ return array(
     'update_survey' => 'Изменить опрос',
     'survey_in_university' => 'Опросы в учебных заведениях',
     'create_survey_in_university' => 'Добавить учебное заведение',
-    
+    'user' => 'Пользователь',
+    'teachersNum' => 'Преподавателей',
+    'studentsNum' => 'Студентов',
+    'teachersInvolved' => 'Преподавателей участников',
+    'studentsInvolved' => 'Студентов участников',
+    'educational' => 'Учебное заведение'
 );

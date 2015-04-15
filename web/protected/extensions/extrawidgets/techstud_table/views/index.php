@@ -34,7 +34,7 @@ div #st-table td.empty, div #st-table tr.odd td.empty, div #st-table tr.even td.
                                     $country_element = new Country;
                                     $countries = Country::model()->findAll();
                                     foreach ( $countries as $country ) {
-                                        echo '<th>'.$country->name.'</th>';
+                                        echo '<th>'.$country->getAttribute('name_' . Yii::app()->language).'</th>';
                                     }
                                 ?>
 			</tr>
