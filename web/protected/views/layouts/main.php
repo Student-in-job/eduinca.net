@@ -15,7 +15,7 @@
 	</div><!-- header -->
 
         
-        <div  id="language-selector" style="float:right; margin:5px;">
+        <div id="language-selector" style="float:right; margin:5px;">
             <?php 
                 $this->widget('application.extensions.widgets.LanguageSelector');
             ?>
@@ -45,7 +45,7 @@
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-
+	
 	<?php echo $content; ?>
 
 	<div class="clear"></div>

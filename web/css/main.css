@@ -42,12 +42,12 @@
 {
 	/*background:white url(bg.gif) repeat-x left top;*/
 	background-color: #1E582E;
-	height:22px;
+	height:32px;
 }
 
 #mainmenu ul
 {
-	padding:6px 20px 5px 20px;
+	padding:6px 10px;
 	margin:0px;
 }
 
@@ -68,11 +68,19 @@
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
+	color: #1E582E;
+	background-color: #4FDA8C;
 	text-decoration:none;
 }
-
+#uz, #kz, #tj, #kg, #tm {
+	display: none;
+	height: 0;
+	/*overflow: auto;*/
+	position: relative;
+	/*right: 0;*/
+	top: 0;
+	/*width: 220px;*/
+}
 div.flash-error, div.flash-notice, div.flash-success
 {
 	padding:.8em;
@@ -130,6 +138,8 @@ div.view
 
 div.breadcrumbs
 {
+	display:inline;
+	float:left;
 	font-size: 0.9em;
 	padding: 5px 20px;
 }

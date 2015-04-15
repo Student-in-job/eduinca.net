@@ -25,7 +25,7 @@ div #st-table td.selected, div #st-table tr.even td.selected, div #st-table tr.o
 /* use this if you want to apply different styleing to empty table cells*/
 div #st-table td.empty, div #st-table tr.odd td.empty, div #st-table tr.even td.empty{background:#ECF2FF/*fff*/;}
 </style>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/tablecloth.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/tablecloth.js"></script>
 <div id="st-table">
                 <table>
 			<tr>
