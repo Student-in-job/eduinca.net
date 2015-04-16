@@ -1,36 +1,49 @@
 /* -------------------------------------------------------------
 ======	RESET
 ------------------------------------------------------------- */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {display: block}
+html, button, input, select, textarea {
+	font-size: 100%;
+	color: #555; 
+	font-smooth:always;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	font-smoothing: antialiased;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	-ms-text-size-adjust: 100%;
+}:hover, :focus, :active { outline: none; }
+
+body { 
+	font-family: "Open sans", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+	background: url(../img/stripes.png) no-repeat 40% 0;
+	margin: 0;
+	font-weight: 400; /* normal */ 
+	font-size: .85em; 
+	line-height: 1.6; 
+	width:100%; 
+	}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block}
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
-html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-:hover, :focus, :active { outline: none; }
-table {border-collapse:separate;border-spacing:0;}
 caption, th, td {text-align:left;font-weight:normal;float:none !important;}
+table{border-collapse:collapse; border-spacing:0}
 table, th, td {vertical-align:middle;}
 blockquote:before, blockquote:after, q:before, q:after {content:'';}
 blockquote, q {quotes:"" "";}
 a img {border:none;}
 :focus {outline:0;}
 
-html, button, input, select, textarea {
-	font-family: "Open sans", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-	font-weight: 400; /* normal */
-	color: #555; 
-	font-smooth:always;
-	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);}
-
-body { margin: 0; font-size: 13px; line-height: 1.6; }
-
-a { color: #0078CF; font-weight: normal;
-	cursor: pointer;  text-decoration: none;
-	transition:color 0.2s ease; -moz-transition:color 0.2s ease; -webkit-transition:color 0.2s ease; -o-transition:color 0.2s ease;}
-
-a:hover { color: #000; text-decoration: underline; background: rgba(0, 0, 0, .025);} 
+a { 
+	color: #2FA864; 
+	font-weight: normal;
+	cursor: pointer;  
+	text-decoration: none;
+	transition:color 0.2s ease; 
+	-moz-transition:color 0.2s ease; 
+	-webkit-transition:color 0.2s ease; 
+	-o-transition:color 0.2s ease;
+}
+a:hover { color: #219994; text-decoration: underline; background: rgba(0, 0, 0, .025);} 
 
 ::-moz-selection { background: #0078CF; color: #fff; text-shadow: none; }
 ::selection { background: #0078CF; color: #fff; text-shadow: none; }	
@@ -73,11 +86,7 @@ input[type="search"]{-webkit-appearance:textfield; -moz-box-sizing:content-box; 
 input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
 button::-moz-focus-inner, input::-moz-focus-inner{border:0; padding:0}
 textarea{overflow:auto; vertical-align:top; resize:vertical}
-table{border-collapse:collapse; border-spacing:0}
-td{vertical-align:top}
 .chromeframe { margin: 1em 0; background: red; color: black; padding: 1em; }
-
-
 
 /* -------------------------------------------------------------
 ======	STYLES
@@ -85,7 +94,7 @@ td{vertical-align:top}
 
 /* -- FORMS 
 ------------------------------------------------------------- */
-form{margin-top: 2em;}
+form{margin-top: 1em;}
 form li{margin-bottom: 1.5em;}
 label{display: block; margin-bottom:1em; font-weight: 700;}
 input, select, textarea {
@@ -98,7 +107,7 @@ input, select, textarea {
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
-	*behavior: url(/js/boxsizing.htc); }
+}
 textarea{padding: 1em; min-height:15em; height: auto; width: 100%; }
 input, textarea {
  -moz-transition: border .25s;
@@ -176,7 +185,7 @@ h1 {font-size: 4.1em;
 	margin: 0 0 0.5em; 
 	font-weight: normal; }
 h2 { font-size: 2.5em; margin: 0 0 20px; letter-spacing: -0.05em; color: #555; line-height: 1; }
-h3 { font-size: 1.75em; }
+h3 { font-size: 1.6em; }
 h4 { font-size: 1.5em; }
 h5 { font-size: 1.17em; text-transform: uppercase; margin: 0; color: #555; }
 h6 { font-size: 1em; margin-bottom: 2px; font-weight: 700; }
@@ -186,29 +195,27 @@ h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#0078CF;
 
 
 
-/* -- GRID  https://github.com/mattberridge/Proportional-Grids/
+/* -- GRID
 ------------------------------------------------------------- */
-body{width:100%; background: url(../img/stripes.png) no-repeat 40% 0;}
 .container {width: 90%; margin: 10px auto; max-width: 1100px; min-width: 300px;}
- 
-.grid-wrap {
-  margin-left: -3em; /* the same as your gutter */
-  overflow: hidden;
-  *zoom:1;}
-  .grid-wrap:before, .grid-wrap:after{content:""; display:table}
-  .grid-wrap:after{clear:both}
-  
+
 .grid {
   float: left;
-  padding-left: 3em; /* this is your gutter between columns */
+  /*padding-left: 3em;*/ /* this is your gutter between columns */
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   *behavior: url(/js/boxsizing.htc); }
-  
+.grid-wrap {
+  /*margin-left: -3em;*/ /* the same as your gutter */
+  overflow: hidden;
+  *zoom:1;}
+  .grid-wrap:before, .grid-wrap:after{content:""; display:table}
+  .grid-wrap:after{clear:both}
+
 .half-gutter {margin-left: -1.5em; }
-  .half-gutter .grid-col {padding-left: 1.5em; }
+.half-gutter .grid-col {padding-left: 1.5em; }
   
 .col-full {width: 100%; }
 .col-one-half {width: 50%; }
@@ -217,7 +224,7 @@ body{width:100%; background: url(../img/stripes.png) no-repeat 40% 0;}
 .col-one-quarter {width: 25%; }
 .col-three-quarters {width: 75%; }
 
-.divide-top{border-top: 1px solid #ccc;padding-top: 2em;margin-top: 1.5em; }
+.divide-top{border-top: 1px solid #ccc;padding-top: 1em;}
 
 .mright{ margin-right: 3em;}
 .mleft{ margin-left: 3em;}
@@ -236,8 +243,6 @@ body{width:100%; background: url(../img/stripes.png) no-repeat 40% 0;}
 .alignright {float: right;clear: right;margin: 0.38em 0 0.38em 1.62em;}
 .aligncenter {margin: 0 auto 1.62em;display: block;}
 
-
-
 /* -- MISC
 ------------------------------------------------------------- */
 figure { max-height: 100%; overflow: hidden;}
@@ -254,9 +259,7 @@ a img:hover {
 	opacity: 0.7;
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 70);
 	filter: alpha(opacity = 70);}
-    
-    
-    
+
 /* -------------------------------------------------------------
 ======	PAGES
 ------------------------------------------------------------- */
@@ -269,12 +272,12 @@ nav a, menu a { text-decoration: none; color: #555; }
 .navactive { color: #0078CF }
 .logo {margin-bottom: 1.5em;}
 .logo:hover {background: none;}
+#language-selector{float:right;margin-top:8%;}
 
-		
 /* -- GENERAL 
 ------------------------------------------------------------- */
-.main > section { margin-bottom: 3em; }
-.main header{ color: #555; margin-bottom: 3em; }
+.main > section { margin-bottom: 2em; }
+.main header{ color: #555; margin-bottom: 1em; }
 .main header hr{border-top-color:#999;}
 .arrow:after {content:" \27F6"; /* html unicode: &#10230; */ } 
 header .arrow {color: #999; font-style: italic;}
@@ -325,13 +328,13 @@ header .arrow {color: #999; font-style: italic;}
   .form-wrap form .button {
     width: 100%;
     padding: .8em 0 10px .8em;
-    background-color: #28A55F;
+    background-color: #2FA864;
     border: none;
     color: #fff;
     cursor: pointer;
     text-transform: uppercase; }
     .form-wrap form .button:hover {
-      background-color: #4FDA8C; }
+      background-color: #219994; }
   .form-wrap form .checkbox {
     visibility: hidden;
     padding: 20px;
@@ -392,32 +395,6 @@ footer li:last-child { margin-right: 0; padding-right: 0; border-right: none; }
 /* Services */
 .services aside { color: #999; padding-top: 1em; border-top: 1px solid #DDD;}
 .services aside:after, .services h5:after { content: ""; display: block; height: 1px; width: 1em; background: #DDD; margin: 1em 0; }
-
-/* Slider */
-	/* Browser Resets */
-.flex-container a:active,.flexslider a:active,.flex-container a:focus,.flexslider a:focus  {outline: none;}
-.slides,.flex-control-nav,.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
-	/* FlexSlider Necessary Styles */ 
-.flexslider {margin: 0; padding: 0; position: relative;}
-.flexslider .slides > .slide {display: none; -webkit-backface-visibility: hidden;}
-.flexslider .slides img {width: 100%; display: block;}
-.flex-pauseplay span {text-transform: capitalize;}
-.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
-html[xmlns] .slides {display: block;} 
-* html .slides {height: 1%;}
-
-.slide figcaption {
-	position: absolute;
-	background: white; 
-	height: auto; min-height: 3em; width: 60%; padding: 1em; 
-	top: 3em; right: 0; }
-.slide figcaption div { text-align: right; display: block; border-right: 1px solid #DDD; padding: 0 2em 0 0; margin: auto 5em auto 0; }
-.slide figcaption div p { margin: 0 }
-.flex-direction-nav{ position: absolute; top: 4em; right: 1.5em; z-index: 10;}
-.flex-direction-nav li {display: inline;}
-.flex-prev, .flex-next{ text-decoration: none; color: #999;	margin-left: 1em;}
-.flex-prev:hover, .flex-next:hover{ color: #0078CF}
-
 
 /* -- WORKS / Home-page and Works-page
 ------------------------------------------------------------- */
@@ -677,13 +654,13 @@ ul.page-numbers{float: right;overflow:hidden; display:block;}
 table, td{font:100% Arial, Helvetica, sans-serif;}
 table{width:100%;border-collapse:collapse;margin:1em 0;}
 th, td{text-align:left;padding:.5em;border:1px solid #fff;}
-th{background:#328aa4; color:#fff;}
+th{background:#4BB2C5; color:#fff;}
 td{background:#e5f1f4;}
 
 /* tablecloth styles */
 
 tr.even td{background:#e5f1f4;}
-tr.odd td{background:#4FDA8C;}
+tr.odd td{/*background:#4FDA8C;*/}
 
 th.over, tr.even th.over, tr.odd th.over{background:#4a98af;}
 th.down, tr.even th.down, tr.odd th.down{background:#bce774;}

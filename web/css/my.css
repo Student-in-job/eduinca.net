@@ -13,14 +13,14 @@ and open the template in the editor.
     vertical-align:middle;
 }
 .tab.td{
-    color: blue;
+    color: #666;
     font-weight: bold;
 }
 .tab caption{
+	padding:10px;
     text-align: center;
     font-weight: 700;
-    font-size: 14px;
-    color: #149BDF;
+    color: #666;
 }
 .tab th span
 {

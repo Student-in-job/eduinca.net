@@ -6,11 +6,8 @@
  * and open the template in the editor.
  */
 return array(
-<<<<<<< .mine
     'sitename' => 'Programme Professional Education and Training in Central Asia',
-=======
     'sitename' => 'PBBZ statistics application',
->>>>>>> .theirs
     'home' => 'Home',
     'about' => 'About',
     'contact' => 'Contacts',
@@ -23,7 +20,7 @@ return array(
     'required' => 'are required',
     'username' => 'Login',
     'password' => 'Password',
-    'rememberme' => 'Remember me next time',
+    'rememberme' => 'Remember me',
     'errlogin' => 'Incorrect username or password',
     'operations' => 'Actions',
     'create' => 'Create',

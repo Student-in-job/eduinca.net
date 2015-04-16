@@ -8,4 +8,5 @@
 return array(
     'answers_teachers' => 'Анкеты преподавателей',
     'answers_students' => 'Анкеты студентов',
+	'year' => 'Год',
 );

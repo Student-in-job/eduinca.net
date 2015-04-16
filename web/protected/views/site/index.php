@@ -18,8 +18,8 @@ $this->pageTitle=Yii::app()->name;
 					window.onload = function () {
 						var R = Raphael("paper", 450, 650);
 						var attr = {
-							fill: "#1E582E",
-							stroke: "#666",
+							fill: "#2FA864",
+							stroke: "#ccc",
 							"stroke-width": 1,
 							"stroke-linejoin": "round"
 						};
@@ -35,7 +35,7 @@ $this->pageTitle=Yii::app()->name;
 							(function (st, state) {
 								st[0].style.cursor = "pointer";
 								st[0].onmouseover = function () {
-									current && asia[current].animate({fill: "#1E582E", stroke: "#ccc"}, 500) && (document.getElementById(current).style.display = "");
+									current && asia[current].animate({fill: "#2FA864", stroke: "#ccc"}, 500) && (document.getElementById(current).style.display = "");
 									st.animate({fill: st.color, stroke: "#ccc"}, 500);
 									st.toFront();
 									R.safari();
@@ -43,7 +43,7 @@ $this->pageTitle=Yii::app()->name;
 									current = state;
 								};
 								st[0].onmouseout = function () {
-									st.animate({fill: "#1E582E", stroke: "#ccc"}, 500);
+									st.animate({fill: "#2FA864", stroke: "#ccc"}, 500);
 									st.toFront();
 									R.safari();
 								};
@@ -54,7 +54,7 @@ $this->pageTitle=Yii::app()->name;
 						}
 					};
 					</script>
-					<div id="canvas">
+					<div id="canvas" style="padding-left:40px;">
 						<div id="paper" style="position:absolute; top:1em;"></div>
 						<div id="uz">
 							<h4>UZBEKISTAN</h4>
@@ -90,7 +90,6 @@ $this->pageTitle=Yii::app()->name;
 		
 		
     </div>
-
     <div class="grid col-one-half mq2-col-full">
         <?php 
         if (Yii::app()->user->IsGuest)
@@ -104,23 +103,20 @@ $this->pageTitle=Yii::app()->name;
                         Yii::t('site', 'logout'),
                         array('site/logout'),
                         array('class' => 'btn btn-primary')
-                );
-             * 
+                ); 
              */
         }
         ?>
     </div>
-		
 </section>
 <section class="services grid-wrap">
     <header class="grid col-full">
         <hr>
         <p class="fleft"></p>
     </header>
-
     <article class="grid col-one-third mq3-col-full">
-        <h5>О программе</h5>
-        <p>Данный опрос предназначен для определения методики преподавания в высших и средних профессиональных учебных заведениях-партнерах Программы,  а также для выявления потенциала для улучшения образовательных процессов в этих учреждениях.</p>
+        <h5>About programme</h5>
+        <p>The survey aims to get insights into the teaching methodology in higher and vocational educational institutions – partners of the Programme, and to find out ways to improve education processes at these institutions.</p>
     </article>
         
     <article class="grid col-one-third mq3-col-full">
@@ -129,9 +125,9 @@ $this->pageTitle=Yii::app()->name;
     </article>
 		
     <article class="grid col-one-third mq3-col-full">
-        <h5>Контакты</h5>
-	<p>Адрес: Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan</p>
-	<p>Телефон: +998 71 140-04-90</p>
+        <h5>Contacts</h5>
+	<p>Address: Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan</p>
+	<p>Phone: +998 71 140-04-90</p>
 	<p>E-mail: <a href="mailto:ekaterina.golubina@giz.de">ekaterina.golubina@giz.de</a></p>
 	<p>Web: www.eduinca.net</p>
     </article>

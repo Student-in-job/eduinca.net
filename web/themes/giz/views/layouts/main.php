@@ -34,7 +34,8 @@
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo.png" alt="">
             </a>
             <div style="display:inline;float:left;padding-left:10px;padding-top:10px;font-size:22px;font-weight:bold;line-height:1.2em;color:#1e582e;">Programme Professional<br/>Education and Training<br/>in Central Asia</div>
-            <div style="clear: both"></div>
+            <div id="language-selector"><?php $this->widget('application.extensions.widgets.LanguageSelector');?></div>
+			<div style="clear:both;"></div>
             <div id="mainmenu" class="navbar navbar-inner">
 		<?php $this->widget('zii.widgets.CMenu',array(
                         'activateParents'=>true,
@@ -55,10 +56,7 @@
                         'htmlOptions' => array('class' => 'nav'),
 		)); ?>
             </div>
-                <div id="language-selector" style="float:right; margin:5px;">
-                    <?php $this->widget('application.extensions.widgets.LanguageSelector');?>
-                </div>
-            <div style="clear: both"></div>
+            <div style="clear:both;"></div>
 	</header>
      <!-- header --> 
         <!--<div style="clear: both"></div>-->
@@ -75,7 +73,7 @@
 			<a href="#navtop" title="Go back up">&uarr;</a>
 		</div>
 		<nav class="grid col-one-third ">
-		<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by PBBZ</p><?php echo Yii::t('site', 'rightsreserved')?>.</div>
+		<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by <a href="http://eduinca.net">PBBZ</a>.</p><?php echo Yii::t('site', 'rightsreserved')?>.</div>
 		</nav>
             </footer>
         </div>

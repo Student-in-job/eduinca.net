@@ -3,14 +3,14 @@
 	margin-top: 5px;
 	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #219994/*#C9E0ED*/;
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	border-top: 3px solid #219994;
 }
 
 #content
@@ -20,7 +20,8 @@
 
 #sidebar
 {
-	padding: 20px 20px 20px 0;
+	float:right;
+	/*padding: 20px 20px 20px 0;*/
 }
 
 #footer
@@ -29,7 +30,7 @@
 	margin: 10px 20px;
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	border-top: 1px solid #219994;
 }
 
 #logo
@@ -41,7 +42,7 @@
 #mainmenu
 {
 	/*background:white url(bg.gif) repeat-x left top;*/
-	background-color: #1E582E;
+	background-color:#2FA864/*#1E582E*/;
 	height:32px;
 }
 
@@ -56,20 +57,16 @@
 	display: inline;
 }
 
-#mainmenu ul li a
-{
-	color:#ffffff;
+#mainmenu ul li a {
+	color:#fff;
 	background-color:transparent;
-	font-size:12px;
-	font-weight:bold;
 	text-decoration:none;
-	padding:5px 8px;
+	padding:4px 8px;
 }
 
-#mainmenu ul li a:hover, #mainmenu ul li.active a
-{
-	color: #1E582E;
-	background-color: #4FDA8C;
+#mainmenu ul li a:hover, #mainmenu ul li.active a {
+	color: #328AA4;
+	background-color: #F8F8FF;
 	text-decoration:none;
 }
 #uz, #kz, #tj, #kg, #tm {
@@ -80,6 +77,12 @@
 	/*right: 0;*/
 	top: 0;
 	/*width: 220px;*/
+}
+#uz, #kz, #tj, #kg, #tm h4 {
+	/*background-color:#28A55F;*/
+	padding:4px;
+	height:28px;
+	width:80%;
 }
 div.flash-error, div.flash-notice, div.flash-success
 {
@@ -138,10 +141,11 @@ div.view
 
 div.breadcrumbs
 {
-	display:inline;
-	float:left;
+	/*display:inline;
+	float:left;*/
 	font-size: 0.9em;
-	padding: 5px 20px;
+	padding-top: 10px;
+	padding-left:30px;
 }
 
 div.breadcrumbs span
