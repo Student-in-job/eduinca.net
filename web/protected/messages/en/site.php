@@ -6,10 +6,10 @@
  * and open the template in the editor.
  */
 return array(
-    'sitename' => 'Programme Professional Education and Training in Central Asia',
+    'fullsitename' => 'Programme Professional Education and Training in Central Asia',
     'sitename' => 'PBBZ statistics application',
     'home' => 'Home',
-    'about' => 'About',
+    'about' => 'About programme',
     'contact' => 'Contacts',
     'login' => 'Login',
     'user' => 'User',
@@ -38,4 +38,9 @@ return array(
     'useremail' => 'User or email',
     'users' => 'Users',
     'confirm_delete' => 'Are you sure you want to delete this item',
+	'aboutcontent' => 'The survey aims to get insights into the teaching methodology in higher and vocational educational institutions – partners of the Programme, and to find out ways to improve education processes at these institutions.',
+	'adr' => 'Address',
+	'phone' => 'phone',
+	'email' => 'E-mail',
+	'web' => 'Web',	
 );

@@ -243,6 +243,8 @@ h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#0078CF;
 .alignright {float: right;clear: right;margin: 0.38em 0 0.38em 1.62em;}
 .aligncenter {margin: 0 auto 1.62em;display: block;}
 
+.span-20{float:left;width:80%;}
+
 /* -- MISC
 ------------------------------------------------------------- */
 figure { max-height: 100%; overflow: hidden;}
@@ -652,7 +654,7 @@ ul.page-numbers{float: right;overflow:hidden; display:block;}
  /* general styles */
 
 table, td{font:100% Arial, Helvetica, sans-serif;}
-table{width:100%;border-collapse:collapse;margin:1em 0;}
+table{width:100%;border-collapse:collapse;/*margin:1em 0;*/}
 th, td{text-align:left;padding:.5em;border:1px solid #fff;}
 th{background:#4BB2C5; color:#fff;}
 td{background:#e5f1f4;}

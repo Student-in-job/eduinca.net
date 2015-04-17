@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 return array(
+	'fullsitename' => 'Программа профессионального образования в Центральной Азии',
     'sitename' => 'Приложение статистики PBBZ',
     'home' => 'Главная',
     'about' => 'О приложении',

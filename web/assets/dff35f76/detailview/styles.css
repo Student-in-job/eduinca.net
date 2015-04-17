@@ -5,7 +5,6 @@ table.detail-view .null
 
 table.detail-view
 {
-	background: white;
 	border-collapse: collapse;
 	width: 100%;
 	margin: 0;
@@ -13,7 +12,6 @@ table.detail-view
 
 table.detail-view th, table.detail-view td
 {
-	font-size: 0.9em;
 	border: 1px white solid;
 	padding: 0.3em 0.6em;
 	vertical-align: top;

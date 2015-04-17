@@ -10,7 +10,6 @@ $this->breadcrumbs=array(
         Yii::t('analitic', 'Methodic'),
 );
 ?>
-<h4 style="visibility:hidden;"><?php echo Yii::t('analitic', 'Methodic'); ?></h4>
     <?php
         $this->renderPartial('_table', array('data' => $dataTeacher, 'header' => $header, 'caption' => Yii::t('analytic', 'Teachers')));
     ?>

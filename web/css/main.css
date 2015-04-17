@@ -1,3 +1,110 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11.02.2015, 18:58:17
+    Author     : DEVELOPER
+*/
+
+.tab thead th, .tab.td{
+    text-align:center;
+    vertical-align:middle;
+}
+.tab.td{
+    color: #666;
+    font-weight: bold;
+}
+.tab caption{
+	padding:10px;
+    text-align: center;
+    color: #666;
+}
+.tab th span
+{
+    margin-left: 42px;
+}
+
+table.jqplot-table-legend
+{
+    width: auto !important;
+}
+
+.portlet
+{
+position:fixed;
+width:16%;
+}
+
+.portlet-decoration
+{
+	padding: 3px 8px;
+	background: #B7D6E7;
+	border-left: 5px solid #4a98af;
+}
+
+.portlet-title
+{
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	color: #fff/*#298dcd*/;
+}
+
+.portlet-content
+{
+	font-size:0.9em;
+	margin: 0 0 15px 0;
+	padding: 5px 8px;
+	background:#ECFBD4;
+}
+
+.portlet-content ul
+{
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+}
+
+.portlet-content li
+{
+	padding: 2px 0 4px 0px;
+}
+
+.operations
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.operations li
+{
+	padding-bottom: 2px;
+}
+
+.operations li a
+{
+	color: #0066A4;
+	display: block;
+	padding: 2px 0 2px 8px;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.operations li a:visited
+{
+	color: #0066A4;
+}
+
+.operations li a:hover
+{
+	/*background:#F8F8FF;*/
+}
+
 #page
 {
 	margin-top: 5px;
@@ -21,6 +128,7 @@
 #sidebar
 {
 	float:right;
+	width:19%;
 	/*padding: 20px 20px 20px 0;*/
 }
 
@@ -48,7 +156,7 @@
 
 #mainmenu ul
 {
-	padding:6px 10px;
+	padding:5px 10px;
 	margin:0px;
 }
 
@@ -75,15 +183,10 @@
 	/*overflow: auto;*/
 	position: relative;
 	/*right: 0;*/
-	top: 0;
+	top: -4em;
 	/*width: 220px;*/
 }
-#uz, #kz, #tj, #kg, #tm h4 {
-	/*background-color:#28A55F;*/
-	padding:4px;
-	height:28px;
-	width:80%;
-}
+
 div.flash-error, div.flash-notice, div.flash-success
 {
 	padding:.8em;
@@ -158,79 +261,4 @@ div.search-form
 	padding: 10px;
 	margin: 10px 0;
 	background: #eee;
-}
-
-.portlet
-{
-
-}
-
-.portlet-decoration
-{
-	padding: 3px 8px;
-	background: #B7D6E7;
-	border-left: 5px solid #6FACCF;
-}
-
-.portlet-title
-{
-	font-size: 12px;
-	font-weight: bold;
-	padding: 0;
-	margin: 0;
-	color: #298dcd;
-}
-
-.portlet-content
-{
-	font-size:0.9em;
-	margin: 0 0 15px 0;
-	padding: 5px 8px;
-	background:#EFFDFF;
-}
-
-.portlet-content ul
-{
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	margin: 0;
-	padding: 0;
-}
-
-.portlet-content li
-{
-	padding: 2px 0 4px 0px;
-}
-
-.operations
-{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-.operations li
-{
-	padding-bottom: 2px;
-}
-
-.operations li a
-{
-	font: bold 12px Arial;
-	color: #0066A4;
-	display: block;
-	padding: 2px 0 2px 8px;
-	line-height: 15px;
-	text-decoration: none;
-}
-
-.operations li a:visited
-{
-	color: #0066A4;
-}
-
-.operations li a:hover
-{
-	background: #80CFFF;
 }

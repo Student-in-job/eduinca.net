@@ -11,9 +11,6 @@ $this->menu=array(
 	//array('label'=>'Manage Survey', 'url'=>array('admin')),
 );
 ?>
-
-<!--<h1>Surveys</h1>-->
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$dataProvider,
 	'columns'=>array(

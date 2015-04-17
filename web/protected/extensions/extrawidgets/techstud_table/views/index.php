@@ -1,6 +1,6 @@
 <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/tablecloth.js"></script>
 <div id="st-table">
-                <table>
+                <table style="margin:15px 0;">
 			<tr>
                             <td>&nbsp;</td>
                                 <?php 
@@ -12,7 +12,7 @@
                                 ?>
 			</tr>
 			<tr>
-                            <th><?php echo Yii::t('analytic', 'Students'); ?></th>                        
+                            <th><?php echo Yii::t('analytic', 'Teachers'); ?></th>                        
                                 <?php 
                                     $student_element = new Student;
                                     $student = new StudentStatistic();
@@ -22,16 +22,16 @@
 //                                    $data = array_merge($student->getData(true), $teacher->getData(true));
                                     $stud = $student->getData(true);
                                     $teach = $teacher->getData(true);
-                                    foreach ($stud as $st){
-                                        echo '<td>' . "$st[num]" . '</td>';
-                                    }
+                                    foreach ($teach as $t){
+                                        echo '<td>' . "$t[num]" . '</td>';
+                                    }									
                                 ?>                           
 			</tr>
                         <tr>
-                            <th><?php echo Yii::t('analytic', 'Teachers'); ?></th>
+                            <th><?php echo Yii::t('analytic', 'Students'); ?></th>
                                 <?php 
-                                    foreach ($teach as $t){
-                                        echo '<td>' . "$t[num]" . '</td>';
+                                    foreach ($stud as $st){
+                                        echo '<td>' . "$st[num]" . '</td>';
                                     }
                                 ?>
                         </tr>

@@ -55,8 +55,6 @@
 		<?php echo Yii::t('site', 'rightsreserved'); ?>.<br/>
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
-
 </div><!-- page -->
-
 </body>
 </html>

@@ -10,7 +10,6 @@
 
 ul.yiiPager
 {
-	font-size:11px;
 	border:0;
 	margin:0;
 	padding:0;
@@ -26,9 +25,8 @@ ul.yiiPager li
 ul.yiiPager a:link,
 ul.yiiPager a:visited
 {
-	border:solid 1px #9aafe5;
-	font-weight:bold;
-	color:#0e509e;
+	border:solid 1px #666;
+	color:#2FA864;
 	padding:1px 6px;
 	text-decoration:none;
 }
@@ -40,13 +38,13 @@ ul.yiiPager .page a
 
 ul.yiiPager a:hover
 {
-	border:solid 1px #0e509e;
+	border:solid 1px #219994;
 }
 
 ul.yiiPager .selected a
 {
-	background:#2e6ab1;
-	color:#FFFFFF;
+	background:#F8F8FF;
+	color:#666;
 	font-weight:bold;
 }
 
