@@ -5,9 +5,8 @@
 ?>
 
 <style type="text/css">
-table tbody tr td {vertical-align: central; padding-left: 30px;}
-table tbody tr td input{}
-table tbody tr {height: 45px; }
+table tbody tr td {vertical-align: middle;}
+table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
 </style>
 
 <div class="form">
@@ -38,7 +37,7 @@ table tbody tr {height: 45px; }
         
         <?php echo $form->errorSummary($model); ?>
         
-        <div style="background-color: #DFEBF6">
+        <div style="background-color: ">
             <table>
                 <tr><td colspan="2"><h3><?php echo Yii::t('answerteacher', 'header');?> </h3></td></tr>
                 <tr>
@@ -397,17 +396,17 @@ table tbody tr {height: 45px; }
 		<?php echo $form->textField($model,'private_comments',array('size'=>500,'maxlength'=>250, 'style' => 'width:100%;')); ?>
 		<?php echo $form->error($model,'private_comments'); ?>
 	</div>
-
+	<br>
 	<div class="row buttons">
                 <?php if (!$view) {?>
-		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save'),array('class'=>'btn btn-primary')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save'),array('class'=>'button')); ?>
                 <?php
                     }
                     else
-                        echo CHtml::link(Yii::t('site','back'),Yii::app()->request->urlReferrer, array('class'=>'btn btn-primary'));
+                        echo CHtml::link('← '.Yii::t('site','back'),Yii::app()->request->urlReferrer, array('class'=>'button'));
                 ?>
 	</div>
-
+	<br>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

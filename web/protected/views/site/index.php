@@ -17,7 +17,7 @@ $this->pageTitle=Yii::app()->name;
 					window.onload = function () {
 						var R = Raphael("paper", 500, 650);
 						var attr = {
-							fill: "#2FA864",
+							fill: "#015C3B",
 							stroke: "#ccc",
 							"stroke-width": 1,
 							"stroke-linejoin": "round"
@@ -34,7 +34,7 @@ $this->pageTitle=Yii::app()->name;
 							(function (st, state) {
 								st[0].style.cursor = "pointer";
 								st[0].onmouseover = function () {
-									current && asia[current].animate({fill: "#2FA864", stroke: "#ccc"}, 500) && (document.getElementById(current).style.display = "");
+									current && asia[current].animate({fill: "#015C3B", stroke: "#ccc"}, 500) && (document.getElementById(current).style.display = "");
 									st.animate({fill: st.color, stroke: "#ccc"}, 500);
 									st.toFront();
 									R.safari();
@@ -42,7 +42,7 @@ $this->pageTitle=Yii::app()->name;
 									current = state;
 								};
 								st[0].onmouseout = function () {
-									st.animate({fill: "#219994", stroke: "#ccc"}, 500);
+									st.animate({fill: "#087C8F", stroke: "#ccc"}, 500);
 									st.toFront();
 									R.safari();
 								};
@@ -59,8 +59,10 @@ $this->pageTitle=Yii::app()->name;
 						<div id="paper"></div>
 						<div id="uz">
 							<h4>Узбекистан</h4>
-							<p>
+							<p style="background-color:#CFF9FF;">
 								UZB
+							</p>
+							<p style="background-color:#CFFFDA;">some info
 							</p>
 						</div>
 						<div id="kz">
@@ -68,24 +70,32 @@ $this->pageTitle=Yii::app()->name;
 							<p>
 							   KZ
 							</p>
+							<p>1
+							</p>						
 						</div>
 						<div id="tj">
 							<h4>Таджикистан</h4>
 							<p>
 								TJ
 							</p>
+							<p>1
+							</p>						
 						</div>
 						<div id="kg">
-							<h4>Киргизстан</h4>
+							<h4>Кыргызстан</h4>
 							<p>
 								KG
 							</p>
+							<p>1
+							</p>						
 						</div>
 						<div id="tm">
 							<h4>Туркменистан</h4>
 							<p>
 								TM
 							</p>
+							<p>1
+							</p>							
 						</div>
 					</div>';
 				}

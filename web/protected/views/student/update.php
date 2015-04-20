@@ -18,7 +18,7 @@ $this->menu=array(
 */
 ?>
 
-<h1>Update Student <?php echo $model->id_answer; ?></h1>
+<!--<h3>Update Student <?php echo $model->id_answer; ?></h3>-->
 
 <?php $this->renderPartial('_form', array(
                                 'model'=>$model,

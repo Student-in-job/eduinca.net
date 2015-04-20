@@ -5,9 +5,8 @@
 ?>
 
 <style type="text/css">
-table tbody tr td {vertical-align: central; padding-left: 30px;}
-table tbody tr td input{}
-table tbody tr {height: 45px; }
+table tbody tr td {vertical-align: middle;}
+table td, table tbody tr, table tbody tr td {background:none;}
 </style>
 
 <div class="form">
@@ -38,9 +37,9 @@ table tbody tr {height: 45px; }
 
 	<?php echo $form->errorSummary($model); ?>
 
-        <div style="background-color: #DFEBF6">
+        <div>
             <table>
-                <tr><td colspan="2"><h3><?php echo Yii::t('answerstudent', 'header');?> </h3></td></tr>
+                <tr><td colspan="2"><h4><?php echo Yii::t('answerstudent', 'header');?></h4></td></tr>
                 <tr>
                     <td>
                         <?php echo $form->labelEx($model,'year'); ?>
@@ -451,16 +450,17 @@ table tbody tr {height: 45px; }
                     <?php echo $form->radioButton($model, 'practice_comment', array('value' => '4', 'uncheckValue' => null)); ?>
                     <?php echo Yii::t('answerstudent','practice_comment_5'); ?>
         </div>
-        
+	<br>
 	<div class="row buttons">
-                <?php if (!$view) {?>
-		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save'),array('class'=>'btn btn-primary')); ?>
-                <?php
-                    }
-                    else
-                        echo CHtml::link(Yii::t('site','back'),Yii::app()->request->urlReferrer, array('class'=>'btn btn-primary'));
-                ?>
+        <?php if (!$view) {?>
+			<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save'),array('class'=>'button')); ?>
+		<?php
+			}
+				else
+					echo CHtml::link('← '.Yii::t('site','back'),Yii::app()->request->urlReferrer, array('class'=>'button'));
+		?>
 	</div>
+<br>
 
 <?php $this->endWidget(); ?>
 

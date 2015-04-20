@@ -14,7 +14,7 @@ $this->menu=array(
 );*/
 ?>
 
-<h1><?php echo Yii::t('answerstudent', 'interview');?></h1>
+<!--<h1><?php echo Yii::t('answerstudent', 'interview');?></h1>-->
 
 <?php $this->renderPartial('_form', array(
                                 'model'=>$model,

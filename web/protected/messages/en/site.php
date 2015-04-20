@@ -43,4 +43,5 @@ return array(
 	'phone' => 'phone',
 	'email' => 'E-mail',
 	'web' => 'Web',	
+	'terms_of_use' => 'Terms of Use',	
 );

@@ -34,7 +34,7 @@ a img {border:none;}
 :focus {outline:0;}
 
 a { 
-	color: #2FA864; 
+	color: #015C3B; 
 	font-weight: normal;
 	cursor: pointer;  
 	text-decoration: none;
@@ -43,7 +43,7 @@ a {
 	-webkit-transition:color 0.2s ease; 
 	-o-transition:color 0.2s ease;
 }
-a:hover { color: #219994; text-decoration: underline; background: rgba(0, 0, 0, .025);} 
+a:hover { color: #3C88AD; text-decoration: underline; background: rgba(0, 0, 0, .025);} 
 
 ::-moz-selection { background: #0078CF; color: #fff; text-shadow: none; }
 ::selection { background: #0078CF; color: #fff; text-shadow: none; }	
@@ -128,19 +128,18 @@ select {height: auto;}
 /* validate.js */
 label.error { color: #0078CF; margin: 0.5em 0 0 0.5em; font-weight: normal; font-style: italic; }
 
-
-
 /* -- BUTTONS 
 ------------------------------------------------------------- */
 .button, input[type="submit"], button, .toggle-title {
-	color: #666;
+	color: #fff;	
 	font-size: 1.1em;
 	font-weight: normal;
 	padding: 0.6em 1.2em;
-	text-shadow: 0 1px 0 #fff;
+	/*text-shadow: 0 1px 0 #fff;*/
 	border: solid 1px #ddd;
 	text-decoration: none;
 	cursor: pointer;
+	background-color:#015C3B;
 
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -155,23 +154,21 @@ label.error { color: #0078CF; margin: 0.5em 0 0 0.5em; font-weight: normal; font
 	-o-transition: 0.1s linear all;
 	transition: 0.1s linear all; }
 .button:hover, input[type="submit"]:hover, button:hover, .toggle-title:hover {
-	color: #333;
+	color: #fff;
 	text-decoration: none;
 	border-color: #BBB;
 	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-	background: 0 100%;}
+	background-color:#09899F;}
 .button:focus, input[type="submit"]:focus, button:focus, .toggle-title:focus {
-	color: #333;
+	/*color: #333;*/
 	border-color: #BBB;}
-.button:active, input[type="submit"]:active, button:active, .toggle-title:active {
+/*.button:active, input[type="submit"]:active, button:active, .toggle-title:active {
 	color: #000;
 	background: #F5F5F5;
 	border-color: #444;
-	position: relative; top:1px;}
-
-
+	position: relative; top:1px;}*/
 
 /* -- TYPO
 ------------------------------------------------------------- */
@@ -192,8 +189,6 @@ h6 { font-size: 1em; margin-bottom: 2px; font-weight: 700; }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{color:#333; text-decoration: none;}
 h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#0078CF;text-decoration: underline;}
-
-
 
 /* -- GRID
 ------------------------------------------------------------- */
@@ -330,13 +325,13 @@ header .arrow {color: #999; font-style: italic;}
   .form-wrap form .button {
     width: 100%;
     padding: .8em 0 10px .8em;
-    background-color: #2FA864;
+    background-color: #015C3B;
     border: none;
     color: #fff;
     cursor: pointer;
     text-transform: uppercase; }
     .form-wrap form .button:hover {
-      background-color: #219994; }
+      background-color: #09899F; }
   .form-wrap form .checkbox {
     visibility: hidden;
     padding: 20px;
@@ -656,7 +651,7 @@ ul.page-numbers{float: right;overflow:hidden; display:block;}
 table, td{font:100% Arial, Helvetica, sans-serif;}
 table{width:100%;border-collapse:collapse;/*margin:1em 0;*/}
 th, td{text-align:left;padding:.5em;border:1px solid #fff;}
-th{background:#4BB2C5; color:#fff;}
+th{background:#09899F; color:#fff;}
 td{background:#e5f1f4;}
 
 /* tablecloth styles */

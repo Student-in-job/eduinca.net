@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-<h1><?php echo Yii::t('answerteacher', 'interview');?></h1>
+<!--<h3><?php echo Yii::t('answerteacher', 'interview');?></h3>-->
 
 <?php $this->renderPartial('_form', array(
                                 'model'=>$model,

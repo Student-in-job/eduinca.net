@@ -31,27 +31,30 @@
         <div style="display:inline;float:left;padding-left:10px;padding-top:10px;font-size:22px;font-weight:bold;line-height:1.2em;color:#1e582e;">Programme Professional<br/>Education and Training<br/>in Central Asia</div>
         <div id="language-selector"><?php $this->widget('application.extensions.widgets.LanguageSelector');?></div>
 		<div style="clear:both;"></div>
-        <div id="mainmenu" class="navbar navbar-inner">
-				<?php $this->widget('zii.widgets.CMenu',array(
-							'activateParents'=>true,
-							'activeCssClass'=>'active',
-							'items'=>array(
-								array('label' => Yii::t('site','home'), 'url' => array('/site/index'), 'visible' => !Yii::app()->user->isGuest, 'active' => ($this->menuItem =='main')),
-								array('label' => Yii::t('site','survey'), 'url' => array('/survey/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='survey')),
-								array('label' => Yii::t('site','statistics'), 'url' => array('/statistics/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='statistic')),
-								array('label' => Yii::t('site','reports'), 'url' => array('/analytic/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='analytic')),
-								array('label' => Yii::t('site','editor'), 'url' => array('/editor/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='editor')),
-								array('label' => Yii::t('site','settings'), 'url' => array('/settings/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='settings')),
-								array('label' => Yii::t('site','help'), 'url' => array('/help/index'), 'visible' => !Yii::app()->user->isGuest), 'active' => ($this->menuItem =='help'),
-								//array('label' => Yii::t('site', 'about'), 'url' => array('/site/page', 'view'=>'about')),
-								//array('label' => Yii::t('site', 'contact'), 'url' => array('/site/contact')),
-								//array('label' => Yii::t('site', 'login'), 'url' => array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-								array('label' => Yii::t('site', 'logout').' ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-							),
-							'htmlOptions' => array('class' => 'nav'),
-				)); ?>
-            </div>
-            <div style="clear:both;"></div>
+			<div id="mainmenu" class="navbar navbar-inner">
+				<?php
+						$this->widget('zii.widgets.CMenu',array(
+									'activateParents'=>true,
+									'activeCssClass'=>'active',
+									'items'=>array(
+										array('label' => Yii::t('site','home'), 'url' => array('/site/index'), 'visible' => !Yii::app()->user->isGuest, 'active' => ($this->menuItem =='main')),
+										array('label' => Yii::t('site','survey'), 'url' => array('/survey/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='survey')),
+										array('label' => Yii::t('site','statistics'), 'url' => array('/statistics/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='statistic')),
+										array('label' => Yii::t('site','reports'), 'url' => array('/analytic/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='analytic')),
+										array('label' => Yii::t('site','editor'), 'url' => array('/editor/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='editor')),
+										array('label' => Yii::t('site','settings'), 'url' => array('/settings/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='settings')),
+										array('label' => Yii::t('site','help'), 'url' => array('/help/index'), 'visible' => !Yii::app()->user->isGuest), 'active' => ($this->menuItem =='help'),
+										//array('label' => Yii::t('site', 'about'), 'url' => array('/site/page', 'view'=>'about')),
+										//array('label' => Yii::t('site', 'contact'), 'url' => array('/site/contact')),
+										//array('label' => Yii::t('site', 'login'), 'url' => array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+										array('label' => Yii::t('site', 'logout').' ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+									),
+								'htmlOptions' => array('class' => 'nav'),
+						));
+					?>
+			</div>
+			<div style="padding:2px;background-color:#09899F;"></div>
+        <div style="clear:both;"></div>
 	</header>
      <!-- header --> 
         <div class="home-page main">
@@ -61,7 +64,7 @@
         <div class="divide-top">
             <footer class="grid-wrap">
                 <ul class="grid col-one-third social">
-                    <li><a href="#">Условия использования</a></li>
+                    <li><a href="#"><?php echo Yii::t('site','terms_of_use'); ?></a></li>
 				</ul>
 				<div class="up grid col-one-third ">
 					<a href="#navtop" title="Go back up">&uarr;</a>
