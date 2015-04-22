@@ -38,5 +38,7 @@ return array(
     'useremail' => 'Логин или email',
     'users' => 'Пользователи',
     'confirm_delete' => 'Вы действительно хотите удалить эту запись',
-    'terms_of_use' => 'Условия использования',	
+    'terms_of_use' => 'Условия использования',
+    'sign_agree' => 'By signing up, you agree to our',
+    
 );

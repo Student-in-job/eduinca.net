@@ -96,7 +96,7 @@ textarea{overflow:auto; vertical-align:top; resize:vertical}
 ------------------------------------------------------------- */
 form{margin-top: 1em;}
 form li{margin-bottom: 1.5em;}
-label{display: block; margin-bottom:1em; font-weight: 700;}
+label{display: block; margin-bottom:.4em; margin-top:1em; font-weight: 700;}
 input, select, textarea {
 	border: 1px solid #DDD;
 	color: #777;
@@ -332,11 +332,11 @@ header .arrow {color: #999; font-style: italic;}
     text-transform: uppercase; }
     .form-wrap form .button:hover {
       background-color: #09899F; }
-  .form-wrap form .checkbox {
+  .form-wrap form .checkbox, .rememberMe  input[type="checkbox"], #LoginForm_rememberMe {
     visibility: hidden;
     padding: 20px;
     margin: .5em 0 1.5em; }
-    .form-wrap form .checkbox:checked + label:after {
+    .form-wrap form .checkbox:checked + label:after, #LoginForm_rememberMe:checked {
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
       filter: alpha(opacity=100);
       opacity: 1; }

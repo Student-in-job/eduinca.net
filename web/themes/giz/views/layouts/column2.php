@@ -9,7 +9,7 @@
     <?php endif?><!-- breadcrumbs -->
     </header>
 
-    <div class="span-20">
+    <div class="span-22">
         <?php echo $content; ?>
     </div>
     <div class="span-5 last">
