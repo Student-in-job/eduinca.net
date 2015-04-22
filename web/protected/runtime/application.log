@@ -272,3 +272,264 @@ Stack trace:
 REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
 HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/site/index/language/ru
 ---
+2015/04/16 10:08:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/en".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/en
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/analytic/view/type/1/language/en
+---
+2015/04/16 10:59:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/site/index/language/ru
+---
+2015/04/16 11:25:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/site/index/language/ru
+---
+2015/04/16 12:03:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/site/index/language/ru
+---
+2015/04/16 16:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/
+---
+2015/04/16 16:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/
+---
+2015/04/16 16:48:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/
+---
+2015/04/16 21:40:45 [error] [exception.CException] exception 'CException' with message 'Путь CAssetManager.basePath "C:\xampp\htdocs\eduinca.net\web\assets" задан неверно. Удостоверьтесь, что директория существует и доступна для записи пользователю, под которым запущен веб-сервер.' in C:\xampp\htdocs\eduinca.net\framework\web\CAssetManager.php:138
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CAssetManager.php(123): CAssetManager->setBasePath('C:\xampp\htdocs...')
+#1 C:\xampp\htdocs\eduinca.net\framework\web\CAssetManager.php(217): CAssetManager->getBasePath()
+#2 C:\xampp\htdocs\eduinca.net\framework\zii\widgets\grid\CGridView.php(350): CAssetManager->publish('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(147): CGridView->init()
+#4 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 C:\xampp\htdocs\eduinca.net\web\protected\views\survey\index.php(56): CBaseController->widget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#7 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#8 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#9 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#10 C:\xampp\htdocs\eduinca.net\web\protected\controllers\SurveyController.php(121): CController->render('index', Array)
+#11 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): SurveyController->actionIndex()
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\eduinca.net\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): CController->run('index')
+#21 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('survey/index/la...')
+#22 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/eduinca.net/web/index.php/survey/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/country/update/id/1/language/ru
+---
+2015/04/18 12:30:03 [error] [php] Object of class CMenu could not be converted to string (C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php:54)
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#1 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\xampp\htdocs\eduinca.net\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(214): CContentDecorator->run()
+#4 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(308): SiteController->endWidget()
+#5 C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php(10): SiteController->endContent()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require()
+#7 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#8 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(784): SiteController->renderFile()
+#9 C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php(36): SiteController->render()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(286): SiteController->runAction()
+#13 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#14 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): SiteController->run()
+#15 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\eduinca.net\web\index.php(13): CWebApplication->run()
+REQUEST_URI=/eduinca.net/web/index.php/site/index/language/en
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php (54)
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php (10)
+in C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php (36)
+2015/04/18 12:30:32 [error] [php] Object of class CMenu could not be converted to string (C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php:54)
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#1 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\xampp\htdocs\eduinca.net\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(214): CContentDecorator->run()
+#4 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(308): SiteController->endWidget()
+#5 C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php(10): SiteController->endContent()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require()
+#7 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#8 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(784): SiteController->renderFile()
+#9 C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php(36): SiteController->render()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(286): SiteController->runAction()
+#13 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#14 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): SiteController->run()
+#15 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\eduinca.net\web\index.php(13): CWebApplication->run()
+REQUEST_URI=/eduinca.net/web/index.php/site/index/language/en
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php (54)
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php (10)
+in C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php (36)
+2015/04/18 12:30:46 [error] [php] Object of class CMenu could not be converted to string (C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php:54)
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#1 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\xampp\htdocs\eduinca.net\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(214): CContentDecorator->run()
+#4 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(308): SiteController->endWidget()
+#5 C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php(10): SiteController->endContent()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require()
+#7 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#8 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(784): SiteController->renderFile()
+#9 C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php(36): SiteController->render()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(286): SiteController->runAction()
+#13 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#14 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): SiteController->run()
+#15 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\eduinca.net\web\index.php(13): CWebApplication->run()
+REQUEST_URI=/eduinca.net/web/index.php/site/index/language/en
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php (54)
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php (10)
+in C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php (36)
+2015/04/18 12:31:18 [error] [php] Object of class CMenu could not be converted to string (C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php:54)
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#1 C:\xampp\htdocs\eduinca.net\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\xampp\htdocs\eduinca.net\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(214): CContentDecorator->run()
+#4 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(308): SiteController->endWidget()
+#5 C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php(10): SiteController->endContent()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(126): require()
+#7 C:\xampp\htdocs\eduinca.net\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#8 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(784): SiteController->renderFile()
+#9 C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php(36): SiteController->render()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(286): SiteController->runAction()
+#13 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#14 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): SiteController->run()
+#15 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\eduinca.net\web\index.php(13): CWebApplication->run()
+REQUEST_URI=/eduinca.net/web/index.php/site/index/language/en
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\main.php (54)
+in C:\xampp\htdocs\eduinca.net\web\themes\giz\views\layouts\column1.php (10)
+in C:\xampp\htdocs\eduinca.net\web\protected\controllers\SiteController.php (36)
+2015/04/20 04:50:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/eduinca.net/web/index.php/help/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/settings/index/language/ru
+---
+2015/04/20 05:21:23 [error] [exception.CException] exception 'CException' with message 'Контроллер StudentController не может найти представление "index".' in C:\xampp\htdocs\eduinca.net\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#1 C:\xampp\htdocs\eduinca.net\web\protected\controllers\StudentController.php(172): CController->render('index', Array)
+#2 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): StudentController->actionIndex()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\eduinca.net\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('student/index/l...')
+#13 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/eduinca.net/web/index.php/student/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/student/view/id/1/language/ru
+---
+2015/04/20 05:21:30 [error] [exception.CException] exception 'CException' with message 'Контроллер StudentController не может найти представление "index".' in C:\xampp\htdocs\eduinca.net\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#1 C:\xampp\htdocs\eduinca.net\web\protected\controllers\StudentController.php(172): CController->render('index', Array)
+#2 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): StudentController->actionIndex()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\eduinca.net\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('student/index/l...')
+#13 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/eduinca.net/web/index.php/student/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/student/view/id/1/language/ru
+---
+2015/04/20 05:21:40 [error] [exception.CException] exception 'CException' with message 'Контроллер StudentController не может найти представление "index".' in C:\xampp\htdocs\eduinca.net\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#1 C:\xampp\htdocs\eduinca.net\web\protected\controllers\StudentController.php(172): CController->render('index', Array)
+#2 C:\xampp\htdocs\eduinca.net\framework\web\actions\CInlineAction.php(49): StudentController->actionIndex()
+#3 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\eduinca.net\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\eduinca.net\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\eduinca.net\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\xampp\htdocs\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('student/index/l...')
+#13 C:\xampp\htdocs\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\eduinca.net\web\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/eduinca.net/web/index.php/student/index/language/ru
+HTTP_REFERER=http://localhost:81/eduinca.net/web/index.php/student/view/id/1/language/ru
+---
