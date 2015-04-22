@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<!--<h1><?php echo Yii::t('site', 'login'); ?></h1>-->
+<h1><?php echo Yii::t('site', 'login'); ?></h1>
 
 <p><?php echo Yii::t('site', 'loginmessage'); ?>:</p>
 
@@ -34,17 +34,20 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
+<!--		<p class="hint">
+			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
+		</p>-->
 	</div>
-<!--
+
 	<div class="row rememberMe">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>
 		<?php echo $form->label($model,'rememberMe'); ?>
 		<?php echo $form->error($model,'rememberMe'); ?>
 	</div>
---><br>	
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton(Yii::t('site', 'login')); ?>
 	</div>
-<br>
+
 <?php $this->endWidget(); ?>
 </div><!-- form -->
