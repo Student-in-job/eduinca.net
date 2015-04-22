@@ -129,3 +129,12 @@ Stack trace:
 REQUEST_URI=/index.php/site/index/language/ru
 HTTP_REFERER=http://statistic.eduinca.lan:8082/
 ---
+2015/04/22 14:58:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "help/index/language/ru".' in C:\Webserver\www\eduinca.net\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Webserver\www\eduinca.net\framework\web\CWebApplication.php(141): CWebApplication->runController('help/index/lang...')
+#1 C:\Webserver\www\eduinca.net\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\Webserver\www\eduinca.net\web\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/help/index/language/ru
+HTTP_REFERER=http://statistic.eduinca.lan:8082/index.php/settings/index/language/ru
+---

@@ -128,8 +128,8 @@ $this->pageTitle=Yii::app()->name;
         <p class="fleft"></p>
     </header>
     <article class="grid col-one-third mq3-col-full">
-        <h5>About programme</h5>
-        <p>The survey aims to get insights into the teaching methodology in higher and vocational educational institutions – partners of the Programme, and to find out ways to improve education processes at these institutions.</p>
+        <h5><?php echo Yii::t('site','about');?></h5>
+        <p><?php echo Yii::t('site','aboutcontent');?></p>
     </article>
         
     <article class="grid col-one-third mq3-col-full">
@@ -138,11 +138,11 @@ $this->pageTitle=Yii::app()->name;
     </article>
 		
     <article class="grid col-one-third mq3-col-full">
-        <h5>Contacts</h5>
-	<p>Address: Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan</p>
-	<p>Phone: +998 71 140-04-90</p>
-	<p>E-mail: <a href="mailto:ekaterina.golubina@giz.de">ekaterina.golubina@giz.de</a></p>
-	<p>Web: www.eduinca.net</p>
+        <h5><?php echo Yii::t('site', 'contact');?></h5>
+	<p><?php echo Yii::t('site', 'address');?>: Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan</p>
+	<p><?php echo Yii::t('site', 'phone');?>: +998 71 140-04-90</p>
+	<p><?php echo Yii::t('site', 'email');?>: <a href="mailto:ekaterina.golubina@giz.de">ekaterina.golubina@giz.de</a></p>
+	<p><?php echo Yii::t('site', 'site');?>: www.eduinca.net</p>
     </article>
 </section>
 <!--main-->   
