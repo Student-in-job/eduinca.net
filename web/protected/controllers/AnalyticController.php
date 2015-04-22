@@ -49,14 +49,20 @@ class AnalyticController extends Controller
             case 2:
                 $dataTeacher = array();
                 $dataStudent = array();
-                $columns = array('common_q2', 'common_q3', 'common_q4', 'common_q7', 'common_q9');
-                foreach($columns as $column)
+                $columnsTeacher = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9');
+                foreach($columnsTeacher as $column)
                 {
                     $teacher = new TeacherStatistic();
                     $dataTeacher[$column] = $teacher->getMethodic($column, true);
+                    
+                }
+                $columnsStudent = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
+                foreach($columnsStudent as $column)
+                {
                     $student = new StudentStatistic();
                     $dataStudent[$column] = $student->getMethodic($column, true);
                 }
+                
                 $header = array('', '5 <br/> (%)', '4  <br/>(%)', '3 <br/> (%)', '2 <br/> (%)', '1 <br/> (%)', 'n/a <br/> (%)');
                 
                 $this->render('methodic', array(

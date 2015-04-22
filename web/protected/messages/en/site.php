@@ -9,7 +9,7 @@ return array(
     'fullsitename' => 'Programme Professional Education and Training in Central Asia',
     'sitename' => 'PBBZ statistics application',
     'home' => 'Home',
-    'about' => 'About programme',
+    'about' => 'About',
     'contact' => 'Contacts',
     'login' => 'Login',
     'user' => 'User',

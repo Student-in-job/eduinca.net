@@ -68,13 +68,15 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'age'); ?>
+                <?php $req = $model->isAttributeRequired('age')?' *': '';?>
+		<?php echo CHtml::label('1. ' . Yii::t('answerteacher','age') . $req,'');?>
 		<?php echo $form->textField($model,'age'); ?>
 		<?php echo $form->error($model,'age'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'sex'); ?>
+                <?php $req = $model->isAttributeRequired('sex')?' *': '';?>
+		<?php echo CHtml::label('2. ' . Yii::t('answerteacher','sex') . $req,'');?>
 	</div>
 
         <table style="width: 250px;">
@@ -85,7 +87,8 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </table>
         
 	<div class="row">
-		<?php echo $form->labelEx($model,'faculty'); ?>
+                <?php $req = $model->isAttributeRequired('faculty')?' *': '';?>
+                <?php echo CHtml::label('3. ' . Yii::t('answerteacher','faculty') . $req,'');?>
 		<?php echo $form->textField($model,'faculty',array('size'=>60,'maxlength'=>100, 'style' => 'width:450px;')); ?>
 		<?php echo $form->error($model,'faculty'); ?>
 	</div>
@@ -302,7 +305,8 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'labs'); ?>
+		<?php $req = $model->isAttributeRequired('labs')?' *': '';?>
+                <?php echo CHtml::label('7. ' . Yii::t('answerteacher','labs') . $req,'');?>
         </div>
         <table style="width: 200px;">
             <tr>
@@ -312,13 +316,15 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </table>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'num_labs'); ?>
+		<?php $req = $model->isAttributeRequired('num_labs')?' *': '';?>
+                <?php echo CHtml::label('8. ' . Yii::t('answerteacher','num_labs') . $req,'');?>
 		<?php echo $form->textField($model,'num_labs'); ?>
 		<?php echo $form->error($model,'num_labs'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'labs_comment'); ?>
+		<?php $req = $model->isAttributeRequired('labs_comment')?' *': '';?>
+                <?php echo CHtml::label('9. ' . Yii::t('answerteacher','labs_comment') . $req,'');?>
         </div>
         <span style="padding-left: 15px;">
                 <?php echo Yii::t('answerteacher','labs_comment_q'); ?>
@@ -339,7 +345,8 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </div>
         
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice'); ?>
+		<?php $req = $model->isAttributeRequired('practice')?' *': '';?>
+                <?php echo CHtml::label('10. ' . Yii::t('answerteacher','practice') . $req,'');?>
 	</div>
         
         <table style="width: 200px;">
@@ -350,7 +357,8 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </table>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice_place'); ?>
+		<?php $req = $model->isAttributeRequired('practice_place')?' *': '';?>
+                <?php echo CHtml::label('9. ' . Yii::t('answerteacher','practice_place') . $req,'');?>
 	</div>
         
         <table style="width: 200px;">
@@ -361,13 +369,15 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </table>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice_duration'); ?>
+		<?php $req = $model->isAttributeRequired('practice_duration')?' *': '';?>
+                <?php echo CHtml::label('12. ' . Yii::t('answerteacher','practice_duration') . $req,'');?>
 		<?php echo $form->textField($model,'practice_duration'); ?>
 		<?php echo $form->error($model,'practice_duration'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'num_of_papers'); ?>
+		<?php $req = $model->isAttributeRequired('num_of_papers')?' *': '';?>
+                <?php echo CHtml::label('13. ' . Yii::t('answerteacher','num_of_papers') . $req,'');?>
 		<?php echo $form->textField($model,'num_of_papers'); ?>
 		<?php echo $form->error($model,'num_of_papers'); ?>
 	</div>
@@ -386,13 +396,15 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
         </div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'private_papers'); ?>
+		<?php $req = $model->isAttributeRequired('private_papers')?' *': '';?>
+                <?php echo CHtml::label('15. ' . Yii::t('answerteacher','private_papers') . $req,'');?>
 		<?php echo $form->textField($model,'private_papers',array('size'=>500,'maxlength'=>500, 'style' => 'width:100%;')); ?>
 		<?php echo $form->error($model,'private_papers'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'private_comments'); ?>
+		<?php $req = $model->isAttributeRequired('private_comments')?' *': '';?>
+                <?php echo CHtml::label('16. ' . Yii::t('answerteacher','private_comments') . $req,'');?>
 		<?php echo $form->textField($model,'private_comments',array('size'=>500,'maxlength'=>250, 'style' => 'width:100%;')); ?>
 		<?php echo $form->error($model,'private_comments'); ?>
 	</div>

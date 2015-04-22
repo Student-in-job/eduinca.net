@@ -3,14 +3,14 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Survey' => array('survey/index'), 
-	'Survey In Universities' => array('surveyinuniversity/index', 'survey_id' => $survey_id),
-        'Codes',
+	Yii::t('survey', 'surveys') => array('survey/index'), 
+	Yii::t('survey', 'survey_in_university') => array('surveyinuniversity/index', 'survey_id' => $survey_id),
+        Yii::t('survey', 'codes'),
 );
 
 ?>
 
-<h1>Codes</h1>
+<!--<h1>Codes</h1>-->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$dataProvider,

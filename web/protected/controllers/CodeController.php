@@ -6,8 +6,10 @@ class CodeController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-        protected  $menuItem = 'statistic';
+        protected  $menuItem = 'survey';
 	public $layout='//layouts/column2';
+        private $_university;
+        private $_survey_in_university;
 
 	/**
 	 * @return array action filters
@@ -68,13 +70,23 @@ class CodeController extends Controller
                         $this->generateCodes($model);
                     }
                 }
+                
+                $this->_university = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
+                
+                $university_id = $model->university_id;
+                
 		$codeModel = new Code();
                 $codeModel->survey_in_university_id = $id_survey_in_university;
+                $codeModel->completed = null;
                 $dataProvider = $codeModel->search();
+                $sortCodes = new CSort();
+                $sortCodes->defaultOrder = 'person_type_id, person_involved, id_code';
+                $dataProvider->sort = $sortCodes;
                 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-                        'survey_id' => $model->getAttribute('survey_id')
+                        'survey_id' => $model->getAttribute('survey_id'),
+                        'university' => $this->_university,
 		));
 	}
 

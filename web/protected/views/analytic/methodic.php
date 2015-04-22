@@ -11,8 +11,8 @@ $this->breadcrumbs=array(
 );
 ?>
     <?php
-        $this->renderPartial('_table', array('data' => $dataTeacher, 'header' => $header, 'caption' => Yii::t('analytic', 'Teachers')));
+        $this->renderPartial('_table', array('data' => $dataTeacher, 'header' => $header, 'caption' => Yii::t('analytic', 'Teachers'), 'translate' => 'answerteacher'));
     ?>
     <?php
-        $this->renderPartial('_table', array('data' => $dataStudent, 'header' => $header, 'caption' => Yii::t('analytic', 'Students')));
+        $this->renderPartial('_table', array('data' => $dataStudent, 'header' => $header, 'caption' => Yii::t('analytic', 'Students'), 'translate' => 'answerstudent'));
     ?>

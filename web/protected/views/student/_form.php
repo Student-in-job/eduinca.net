@@ -68,13 +68,15 @@ table td, table tbody tr, table tbody tr td {background:none;}
         </div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'age'); ?>
+		<?php $req = $model->isAttributeRequired('age')?' *': '';?>
+		<?php echo CHtml::label('1. ' . Yii::t('answerteacher','age') . $req,'');?>
 		<?php echo $form->textField($model,'age'); ?>
 		<?php echo $form->error($model,'age'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'sex'); ?>
+		<?php $req = $model->isAttributeRequired('sex')?' *': '';?>
+		<?php echo CHtml::label('2. ' . Yii::t('answerstudent','sex') . $req,'');?>
 	</div>
 
         <table style="width: 250px;">
@@ -85,13 +87,15 @@ table td, table tbody tr, table tbody tr td {background:none;}
         </table><?php echo $form->error($model,'sex'); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'faculty'); ?>
+		<?php $req = $model->isAttributeRequired('faculty')?' *': '';?>
+		<?php echo CHtml::label('3. ' . Yii::t('answerstudent','faculty') . $req,'');?>
 		<?php echo $form->textField($model,'faculty',array('size'=>60,'maxlength'=>100, 'style' => 'width:450px;')); ?>
 		<?php echo $form->error($model,'faculty'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'speciality'); ?>
+		<?php $req = $model->isAttributeRequired('speciality')?' *': '';?>
+		<?php echo CHtml::label('4. ' . Yii::t('answerstudent','speciality') . $req,'');?>
 		<?php echo $form->textField($model,'speciality',array('size'=>60,'maxlength'=>100, 'style' => 'width:450px;')); ?>
 		<?php echo $form->error($model,'speciality'); ?>
 	</div>
@@ -370,7 +374,8 @@ table td, table tbody tr, table tbody tr td {background:none;}
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'labs'); ?>
+		<?php $req = $model->isAttributeRequired('labs')?' *': '';?>
+		<?php echo CHtml::label('10. ' . Yii::t('answerstudent','labs') . $req,'');?>
         </div>
         <table style="width: 200px;">
             <tr>
@@ -380,17 +385,19 @@ table td, table tbody tr, table tbody tr td {background:none;}
         </table>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'num_labs'); ?>
+		<?php $req = $model->isAttributeRequired('num_labs')?' *': '';?>
+		<?php echo CHtml::label('11. ' . Yii::t('answerstudent','num_labs') . $req,'');?>
 		<?php echo $form->textField($model,'num_labs'); ?>
 		<?php echo $form->error($model,'num_labs'); ?>
 	</div>
 
         <div class="row">
-		<?php echo $form->labelEx($model,'labs_comment'); ?>
+		<?php $req = $model->isAttributeRequired('labs_comment')?' *': '';?>
+		<?php echo CHtml::label('12. ' . Yii::t('answerstudent','labs_comment') . $req,'');?>
         </div>
-        <span style="padding-left: 15px;">
+        <div style="margin-left: 25px;">
                 <?php echo Yii::t('answerstudent','labs_comment_q'); ?>
-        </span>    
+        </div>    
             
 	<div style="padding-left: 30px;">
 		<br/>
@@ -408,7 +415,8 @@ table td, table tbody tr, table tbody tr td {background:none;}
         </div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice'); ?>
+		<?php $req = $model->isAttributeRequired('practice')?' *': '';?>
+		<?php echo CHtml::label('13. ' . Yii::t('answerstudent','practice') . $req,'');?>
 	</div>
         
         <table style="width: 200px;">
@@ -419,19 +427,22 @@ table td, table tbody tr, table tbody tr td {background:none;}
         </table>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice_place'); ?>
+		<?php $req = $model->isAttributeRequired('practice_place')?' *': '';?>
+		<?php echo CHtml::label('14. ' . Yii::t('answerstudent','practice_place') . $req,'');?>
 		<?php echo $form->textField($model,'practice_place',array('size'=>60,'maxlength'=>250, 'style' => 'width:100%')); ?>
 		<?php echo $form->error($model,'practice_place'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice_duration'); ?>
+		<?php $req = $model->isAttributeRequired('practice_duration')?' *': '';?>
+		<?php echo CHtml::label('15. ' . Yii::t('answerstudent','practice_duration') . $req,'');?>
 		<?php echo $form->textField($model,'practice_duration'); ?>
 		<?php echo $form->error($model,'practice_duration'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'practice_comment'); ?>
+		<?php $req = $model->isAttributeRequired('practice_comment')?' *': '';?>
+		<?php echo CHtml::label('16. ' . Yii::t('answerstudent','practice_comment') . $req,'');?>
         </div>  
             
 	<div style="padding-left: 30px;">
@@ -447,10 +458,46 @@ table td, table tbody tr, table tbody tr td {background:none;}
                     <?php echo $form->radioButton($model, 'practice_comment', array('value' => '4', 'uncheckValue' => null)); ?>
                     <?php echo Yii::t('answerstudent','practice_comment_4'); ?>
                 <br/>
-                    <?php echo $form->radioButton($model, 'practice_comment', array('value' => '4', 'uncheckValue' => null)); ?>
+                    <?php echo $form->radioButton($model, 'practice_comment', array('value' => '5', 'uncheckValue' => null)); ?>
                     <?php echo Yii::t('answerstudent','practice_comment_5'); ?>
         </div>
-	<br>
+        
+        <div class="row">
+		<?php echo CHtml::label('17. ' . Yii::t('answerstudent','diploma_add'),'');?>
+        </div>
+        <div style="margin-left: 25px;font-weight: bold">
+                <?php echo Yii::t('answerstudent','diploma_add_q1'); ?>
+        </div>
+        <br/>
+        <div style="margin-left: 25px;">
+                <?php echo Yii::t('answerstudent','diploma_add_q2'); ?>
+        </div>
+        <div style="padding-left: 30px;">
+		    <?php echo $form->radioButton($model, 'diploma_aspects', array('value' => '1', 'uncheckValue' => null)); ?>
+                    <?php echo Yii::t('answerstudent','diploma_aspects_1'); ?>
+                    <br/>
+                    <?php echo $form->radioButton($model, 'diploma_aspects', array('value' => '2', 'uncheckValue' => null)); ?>
+                    <?php echo Yii::t('answerstudent','diploma_aspects_2'); ?>
+        </div>
+        <br/>
+        <div style="padding-left: 30px;">
+		    <?php echo $form->radioButton($model, 'diploma_research', array('value' => '1', 'uncheckValue' => null)); ?>
+                    <?php echo Yii::t('answerstudent','diploma_research_1'); ?>
+                    <br/>
+                    <?php echo $form->radioButton($model, 'diploma_research', array('value' => '2', 'uncheckValue' => null)); ?>
+                    <?php echo Yii::t('answerstudent','diploma_research_2'); ?>
+        </div>
+        
+        <div class="row">
+		<?php $req = $model->isAttributeRequired('private_comments')?' *': '';?>
+		<?php echo CHtml::label('18. ' . Yii::t('answerstudent','private_comments') . $req,'');?>
+                <?php echo Yii::t('answerstudent','private_comments_q'); ?>
+                <br/>
+                <?php echo $form->textField($model,'private_comments', array('size'=>60,'maxlength'=>250, 'style' => 'width:100%')); ?>
+		<?php echo $form->error($model,'private_comments'); ?>
+        </div>
+        
+	<br/>
 	<div class="row buttons">
         <?php if (!$view) {?>
 			<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save'),array('class'=>'button')); ?>
