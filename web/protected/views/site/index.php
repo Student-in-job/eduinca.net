@@ -142,7 +142,7 @@ $this->pageTitle=Yii::app()->name;
 	<p><?php echo Yii::t('site', 'address');?>: Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan</p>
 	<p><?php echo Yii::t('site', 'phone');?>: +998 71 140-04-90</p>
 	<p><?php echo Yii::t('site', 'email');?>: <a href="mailto:ekaterina.golubina@giz.de">ekaterina.golubina@giz.de</a></p>
-	<p><?php echo Yii::t('site', 'site');?>: www.eduinca.net</p>
+        <p><?php echo Yii::t('site', 'web');?>: <a href="http://www.eduinca.net" target="_blank">www.eduinca.net</a></p>
     </article>
 </section>
 <!--main-->   
