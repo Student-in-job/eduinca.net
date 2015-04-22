@@ -181,12 +181,11 @@ width:16%;
 }
 #uz, #kz, #tj, #kg, #tm {
 	display: none;
-	height: 0;
-	/*overflow: auto;*/
 	position: relative;
-	/*right: 0;*/
-	top: -4em;
-	/*width: 220px;*/
+	/*height: 0;
+	overflow: auto;
+	right: 0;
+	width: 220px;*/
 }
 /*#uz p, #kz p, #tj p, #kg p, #tm p {
 color:#666;

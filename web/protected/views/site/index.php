@@ -1,6 +1,5 @@
 <?php
 /* @var $this SiteController */
-
 $this->pageTitle=Yii::app()->name;
 ?>
 <section class="grid-wrap" >
@@ -12,10 +11,9 @@ $this->pageTitle=Yii::app()->name;
         <?php endif?><!-- breadcrumbs -->
     </header>
     <div class="grid col-one-half mq2-col-full">
-        <p><?php /*echo CHtml::encode(Yii::app()->name);*/ ?></p>
 			<script type="text/javascript" charset="utf-8">
 					window.onload = function () {
-						var R = Raphael("paper", 500, 650);
+						var R = Raphael("paper", 650, 650);
 						var attr = {
 							fill: "#015C3B",
 							stroke: "#ccc",
@@ -52,54 +50,45 @@ $this->pageTitle=Yii::app()->name;
 							})(asia[state], state);
 						}
 					};
-					</script>
+			</script>
 					<?php 
 						if (Yii::app()->user->IsGuest) {
-									echo '<div id="canvas" style="position:absolute;top:-20%;padding-left:4%;">
-						<div id="paper"></div>
+									echo '<div id="canvas" style="position:relative;">
+						<div id="paper" style="position:absolute;bottom:-300%;"></div>
 						<div id="uz">
-							<h4>Узбекистан</h4>
-							<p style="background-color:#CFF9FF;">
-								UZB
-							</p>
-							<p style="background-color:#CFFFDA;">some info
+							<h3>Узбекистан</h3>
+							<p>
+								&nbsp;
 							</p>
 						</div>
 						<div id="kz">
-							<h4>Казахстан</h4>
+							<h3>Казахстан</h3>
 							<p>
 							   KZ
-							</p>
-							<p>1
 							</p>						
 						</div>
 						<div id="tj">
-							<h4>Таджикистан</h4>
+							<h3>Таджикистан</h3>
 							<p>
 								TJ
-							</p>
-							<p>1
 							</p>						
 						</div>
 						<div id="kg">
-							<h4>Кыргызстан</h4>
+							<h3>Кыргызстан</h3>
 							<p>
 								KG
-							</p>
-							<p>1
 							</p>						
 						</div>
 						<div id="tm">
-							<h4>Туркменистан</h4>
+							<h3>Туркменистан</h3>
 							<p>
 								TM
-							</p>
-							<p>1
-							</p>							
+							</p>						
 						</div>
 					</div>';
 				}
-			?>				
+			?>
+			
     </div>
     <div class="grid col-one-half mq2-col-full">
         <?php 
