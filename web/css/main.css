@@ -188,13 +188,13 @@ width:16%;
 	top: -4em;
 	/*width: 220px;*/
 }
-#uz p, #kz p, #tj p, #kg p, #tm p {
+/*#uz p, #kz p, #tj p, #kg p, #tm p {
 color:#666;
 float:left;
 width:450px;
 padding:5px;
 margin:2px 5px;
-}
+}*/
 
 div.flash-error, div.flash-notice, div.flash-success
 {
