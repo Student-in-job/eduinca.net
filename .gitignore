@@ -11,3 +11,4 @@
 /web/assets/
 .gitignore
 >>>>>>> .theirs
+/web/protected/runtime/application.log
