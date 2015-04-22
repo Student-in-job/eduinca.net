@@ -30,6 +30,7 @@
                 echo CHtml::submitButton(Yii::t('site', 'login'), array('class' => 'button'));
                 $this->endWidget();
             ?><!--.login-form-->
+			
             <div class="help-text">
                 <p><?php echo Yii::t('site', 'sign_agree');?> </p>
                 <p><a href="#"><?php echo Yii::t('site', 'terms_of_use');?></a></p>
