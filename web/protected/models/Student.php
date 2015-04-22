@@ -66,6 +66,9 @@
  * @property integer $university_id
  * @property integer $person_type_id
  * @property integer $involved_person_id
+ * @property integer $diploma_aspects
+ * @property integer $diploma_research
+ * @property integer $private_comments
  *
  * The followings are the available model relations:
  * @property University $university
@@ -94,11 +97,11 @@ class Student extends CActiveRecord
 		// will receive user inputs.
 		return array(
                         array('sex, year', 'required'),
-			array('year, age, sex, diploma, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, methodic_qq1, methodic_qq2, methodic_qq3, methodic_qq4, methodic_qq5, methodic_qq6, methodic_qq7, methodic_qq8, methodic_qq9, methodic_qq10, methodic_qq11, methodic_qq12, methodic_qq13, labs, num_labs, labs_comment, practice, practice_duration, university_id, person_type_id, involved_person_id', 'numerical', 'integerOnly'=>true),
+			array('year, age, sex, diploma, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, methodic_qq1, methodic_qq2, methodic_qq3, methodic_qq4, methodic_qq5, methodic_qq6, methodic_qq7, methodic_qq8, methodic_qq9, methodic_qq10, methodic_qq11, methodic_qq12, methodic_qq13, labs, num_labs, labs_comment, practice, practice_duration, university_id, person_type_id, involved_person_id, diploma_aspects, diploma_research', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('faculty, speciality', 'length', 'max'=>100),
 			array('study_from, study_till', 'length', 'max'=>7),
-			array('common_comment, methodic_comment, practice_place, practice_comment', 'length', 'max'=>250),
+			array('common_comment, methodic_comment, practice_place, practice_comment, private_comments', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_answer, code, year, age, sex, faculty, speciality, diploma, study_from, study_till, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, common_comment, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, methodic_qq1, methodic_qq2, methodic_qq3, methodic_qq4, methodic_qq5, methodic_qq6, methodic_qq7, methodic_qq8, methodic_qq9, methodic_qq10, methodic_qq11, methodic_qq12, methodic_qq13, methodic_comment, labs, num_labs, labs_comment, practice, practice_place, practice_duration, practice_comment, university_id, person_type_id, involved_person_id', 'safe', 'on'=>'search'),
@@ -130,49 +133,50 @@ class Student extends CActiveRecord
 			'code' => Yii::t('answerstudent','code'),
 			'year' => Yii::t('answerstudent','year'),
 			'age' => Yii::t('answerstudent','age'),
-			'sex' => '2. ' . Yii::t('answerstudent','sex'),
-			'faculty' => '3. ' . Yii::t('answerstudent','faculty') . ':',
-			'speciality' => '4. ' . Yii::t('answerstudent', 'speciality') . ':',
-			'diploma' => 'Diploma',
+			'sex' => Yii::t('answerstudent','sex'),
+			'faculty' => Yii::t('answerstudent','faculty'),
+			'speciality' => Yii::t('answerstudent', 'speciality'),
+			'diploma' => Yii::t('answerstudent', 'speciality'),
 			'study_from' => Yii::t('answerstudent', 'study_from'),
 			'study_till' => Yii::t('answerstudent', 'study_till'),
-			'course' => '7. ' . Yii::t('answerstudent', 'course') . ':',
-			'common_q1' => Yii::t('answerstudent', 'common_1'),
-			'common_q2' => Yii::t('answerstudent', 'common_2'),
-			'common_q3' => Yii::t('answerstudent', 'common_3'),
-			'common_q4' => Yii::t('answerstudent', 'common_4'),
-			'common_q5' => Yii::t('answerstudent', 'common_5'),
-			'common_q6' => Yii::t('answerstudent', 'common_6'),
-			'common_q7' => Yii::t('answerstudent', 'common_7'),
-			'common_q8' => Yii::t('answerstudent', 'common_8'),
-			'common_q9' => Yii::t('answerstudent', 'common_9'),
-			'common_q10' => Yii::t('answerstudent', 'common_10'),
-			'common_q11' => Yii::t('answerstudent', 'common_11'),
-			'common_comment' => Yii::t('answerstudent', 'common_comment') . ':',
-			'methodic_q1' => Yii::t('answerstudent', 'methodic_1'),
-			'methodic_q2' => Yii::t('answerstudent', 'methodic_2'),
-			'methodic_q3' => Yii::t('answerstudent', 'methodic_3'),
-			'methodic_q4' => Yii::t('answerstudent', 'methodic_4'),
-			'methodic_q5' => Yii::t('answerstudent', 'methodic_5'),
-			'methodic_q6' => Yii::t('answerstudent', 'methodic_6'),
-			'methodic_q7' => Yii::t('answerstudent', 'methodic_7'),
-			'methodic_q8' => Yii::t('answerstudent', 'methodic_8'),
-			'methodic_q9' => Yii::t('answerstudent', 'methodic_9'),
-			'methodic_q10' => Yii::t('answerstudent', 'methodic_10'),
-			'methodic_q11' => Yii::t('answerstudent', 'methodic_11'),
-			'methodic_q12' => Yii::t('answerstudent', 'methodic_12'),
-			'methodic_q13' => Yii::t('answerstudent', 'methodic_13'),
+			'course' => Yii::t('answerstudent', 'course'),
+			'common_q1' => Yii::t('answerstudent', 'common_q1'),
+			'common_q2' => Yii::t('answerstudent', 'common_q2'),
+			'common_q3' => Yii::t('answerstudent', 'common_q3'),
+			'common_q4' => Yii::t('answerstudent', 'common_q4'),
+			'common_q5' => Yii::t('answerstudent', 'common_q5'),
+			'common_q6' => Yii::t('answerstudent', 'common_q6'),
+			'common_q7' => Yii::t('answerstudent', 'common_q7'),
+			'common_q8' => Yii::t('answerstudent', 'common_q8'),
+			'common_q9' => Yii::t('answerstudent', 'common_q9'),
+			'common_q10' => Yii::t('answerstudent', 'common_q10'),
+			'common_q11' => Yii::t('answerstudent', 'common_q11'),
+			'common_comment' => Yii::t('answerstudent', 'common_comment'),
+			'methodic_q1' => Yii::t('answerstudent', 'methodic_q1'),
+			'methodic_q2' => Yii::t('answerstudent', 'methodic_q2'),
+			'methodic_q3' => Yii::t('answerstudent', 'methodic_q3'),
+			'methodic_q4' => Yii::t('answerstudent', 'methodic_q4'),
+			'methodic_q5' => Yii::t('answerstudent', 'methodic_q5'),
+			'methodic_q6' => Yii::t('answerstudent', 'methodic_q6'),
+			'methodic_q7' => Yii::t('answerstudent', 'methodic_q7'),
+			'methodic_q8' => Yii::t('answerstudent', 'methodic_q8'),
+			'methodic_q9' => Yii::t('answerstudent', 'methodic_q9'),
+			'methodic_q10' => Yii::t('answerstudent', 'methodic_q10'),
+			'methodic_q11' => Yii::t('answerstudent', 'methodic_q11'),
+			'methodic_q12' => Yii::t('answerstudent', 'methodic_q12'),
+			'methodic_q13' => Yii::t('answerstudent', 'methodic_q13'),
 			'methodic_comment' => Yii::t('answerstudent', 'methodic_comment'),
-			'labs' => '10. ' . Yii::t('answerstudent', 'labs'),
-			'num_labs' => '11. ' . Yii::t('answerstudent', 'num_labs'),
-			'labs_comment' => '12. ' . Yii::t('answerstudent', 'labs_comment'),
-			'practice' => '13. ' . Yii::t('answerstudent', 'practice'),
-			'practice_place' => '14. ' . Yii::t('answerstudent', 'practice_place'),
-			'practice_duration' => '15. ' . Yii::t('answerstudent', 'practice_duration'),
-			'practice_comment' => '16. ' . Yii::t('answerstudent', 'practice_comment'),
+			'labs' => Yii::t('answerstudent', 'labs'),
+			'num_labs' => Yii::t('answerstudent', 'num_labs'),
+			'labs_comment' => Yii::t('answerstudent', 'labs_comment'),
+			'practice' => Yii::t('answerstudent', 'practice'),
+			'practice_place' => Yii::t('answerstudent', 'practice_place'),
+			'practice_duration' => Yii::t('answerstudent', 'practice_duration'),
+			'practice_comment' => Yii::t('answerstudent', 'practice_comment'),
 			'university_id' => Yii::t('answerstudent', 'university_id'),
 			'person_type_id' => Yii::t('answerstudent', 'person_type_id'),
 			'involved_person_id' => Yii::t('answerstudent', 'involved_person_id'),
+                        'private_comments' => Yii::t('answerstudent', 'private_comments'),
 		);
 	}
 
@@ -256,6 +260,9 @@ class Student extends CActiveRecord
 		$criteria->compare('university_id',$this->university_id);
 		$criteria->compare('person_type_id',$this->person_type_id);
 		$criteria->compare('involved_person_id',$this->involved_person_id);
+                $criteria->compare('diploma_aspects', $this->diploma_aspects);
+                $criteria->compare('diploma_research', $this->diploma_research);
+                $criteria->compare('private_comments', $this->private_comments);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

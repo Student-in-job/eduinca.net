@@ -16,7 +16,7 @@ class StudentController extends Controller
             $dataProvider = new CActiveDataProvider('University', array('pagination' => false));
             foreach($dataProvider->getData() as $activeRecord)
             {
-                $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name');
+                $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name_' . Yii::app()->language);
             }
         }
 

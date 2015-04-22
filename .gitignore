@@ -12,3 +12,4 @@
 .gitignore
 >>>>>>> .theirs
 /web/protected/runtime/application.log
+/web/protected/runtime/*.log

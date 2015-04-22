@@ -28,5 +28,6 @@ return array(
     'studentsNum' => 'Студентов',
     'teachersInvolved' => 'Преподавателей участников',
     'studentsInvolved' => 'Студентов участников',
-    'educational' => 'Учебное заведение'
+    'educational' => 'Учебное заведение',
+    'codes' => 'Коды',
 );

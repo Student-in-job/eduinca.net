@@ -28,5 +28,6 @@ return array(
     'studentsNum' => 'Students',
     'teachersInvolved' => 'Teachers involved',
     'studentsInvolved' => 'Ctudents involved',
-    'educational' => 'Educational institution'
+    'educational' => 'Educational institution',
+    'codes' => '',
 );

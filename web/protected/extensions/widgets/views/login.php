@@ -33,7 +33,7 @@
 			
             <div class="help-text">
                 <p><?php echo Yii::t('site', 'sign_agree');?> </p>
-                <p><a href="#"><?php echo Yii::t('site', 'terms_of_use');?></a></p>
+                <p><a href="#"><?php echo Yii::t('site', 'terms_of_survey');?></a></p>
             </div><!--.help-text-->
         </div><!--.signup-tab-content-->
         <div id="login-tab-content">
@@ -58,7 +58,7 @@
                 $this->endWidget();
             ?>
             <div class="help-text">
-                <p><a href="#">Forget your password?</a></p>
+                <p><a href="#"><?php echo Yii::t('site', 'forget_password');?>?</a></p>
             </div><!--.help-text-->
         </div><!--.login-tab-content-->      
     </div><!--.tabs-content-->

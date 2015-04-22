@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <?php
+                    echo '<th></th>';
                     foreach($header as $item)
                     {
                         echo '<th>' . $item . '</th>';
@@ -21,12 +22,14 @@
         </thead>
         <tbody>
             <?php
+                $counter = 1;
                 foreach($data as $row)
                 {
                     echo '<tr>';
                     foreach($row as $key => $value)
                     {
-                        echo '<td style="width:400px">' . Yii::t('analytic', $key) . '</td>';
+                        echo '<td style="width:18px">' . $counter++ . '. </td>';
+                        echo '<td style="width:400px">'  . Yii::t($translate, $key) . '</td>';
                         foreach ($value as $data)
                         {
                             echo '<td class="tab td">'. $data .'</td>';
