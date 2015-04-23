@@ -11,12 +11,25 @@ $this->breadcrumbs=array(
 ?>
 
 <!--<h1>Codes</h1>-->
-
+<!--
 <table>
     <caption style="background:#EEEEEE;text-align:center;padding:10px; color:blue"><?php echo '<h3><b>' . $university_name . '</b></h3>';?></caption>
     <tbody>
         <?php
-            $this->renderPartial('_view', array('dataProvider' => $dataProvider, 'date_till' => $date_till));
+            //$this->renderPartial('_view', array('dataProvider' => $dataProvider, 'date_till' => $date_till));
         ?>
     </tbody>
 </table>
+-->
+<?php $codes_view = PDF::PrintCodes($dataProvider, $university_name, $date_till);?>
+<?php echo $codes_view;?>
+<div><?php echo CHtml::link(
+            'Print',
+            array(
+                    'PDFMaker/Generate',
+                    'id_survey_in_university' => $id_survey_in_university,
+                    'date_till' => $date_till,
+                    'university_name' => $university_name,                
+            ),
+            array('target' => '_blank')
+            );?></div>

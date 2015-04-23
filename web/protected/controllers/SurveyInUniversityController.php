@@ -190,4 +190,10 @@ class SurveyInUniversityController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        protected function Getlabel($item = false)
+        {
+            if (!$item) return Yii::t('survey', 'generate_codes');
+            else return Yii::t('survey', 'view_codes');
+        }
 }

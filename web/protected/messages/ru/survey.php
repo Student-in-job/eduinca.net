@@ -35,4 +35,6 @@ return array(
     'code_student' => 'Студенты',
     'code_involved' => 'участвующие в программе',
     'code_notinvolved' => 'не участвующие в программе',
+    'view_codes' => 'Коды доступа к опросу',
+    'generate_codes' => 'Создать коды для опроса',
 );

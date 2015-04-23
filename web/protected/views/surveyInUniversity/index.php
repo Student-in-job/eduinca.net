@@ -66,17 +66,17 @@ $this->menu=array(
                                 'url' => 'Yii::app()->createUrl("surveyInUniversity/view",array("id"=>$data->id_survey_in_university));'
                             ),
                             'delete' => array(
-                                'url' => 'Yii::app()->createUrl("surveyInUniversity/delete", array("id" => $data->id_survey_in_university));'
-                            ),
+                                'url' => 'Yii::app()->createUrl("surveyInUniversity/delete", array("id" => $data->id_survey_in_university));',
+                                'visible' => '!$data->HasCodes'
+                             ),
                         )
                     ),
                 array(
                         'class' => 'CLinkColumn',
-                        'label' => 'generate_codes',
+                        'labelExpression' => '$this->grid->GetController()->GetLabel($data->HasCodes)',
                         'urlExpression' => 'Yii::app()->createUrl("Code/index", array("id_survey_in_university" => $data->id_survey_in_university, "date_till" => $this->grid->getController()->date_till))',
-                        'header' => 'generate_codes',
                 ),
-               array('name' => 'HasCodes', 'value' => '($data->HasCodes)?"yes":"no"')
+                //array('name' => 'HasCodes', 'value' => '($data->HasCodes)?"'. Yii::t('site', 'yes') .'":"' . Yii::t('site','no') . '"')
             ),
     ));
     

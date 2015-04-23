@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 return array(
-    'fullsitename' => 'Programme Professional Education and Training in Central Asia',
+    'fullsitename' => 'Programme Professional Education and Training in Central Asia (PBBZ)',
     'sitename' => 'PBBZ statistics application',
     'home' => 'Home',
     'about' => 'About',
@@ -51,5 +51,5 @@ return array(
     'expireddate' => 'Sorry bur survey has completed',
     'invalidcode' => 'Wrong code',
     'siteContact' => '',
-    'link' => ''
+    'link' => 'Web-site'
 );

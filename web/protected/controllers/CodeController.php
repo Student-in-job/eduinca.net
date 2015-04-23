@@ -89,6 +89,7 @@ class CodeController extends Controller
                         'survey_id' => $model->getAttribute('survey_id'),
                         'university_name' => $university[$university_id],
                         'date_till' => $date_till,
+                        'id_survey_in_university' => $id_survey_in_university,
 		));
 	}
 
