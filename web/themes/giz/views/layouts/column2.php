@@ -9,10 +9,10 @@
     <?php endif?><!-- breadcrumbs -->
     </header>
 
-    <div class="span-22">
+    <div class="span-20">
         <?php echo $content; ?>
     </div>
-    <div class="span-5 last">
+    <div class="span-5">
             <div id="sidebar">
             <?php
                     $this->beginWidget('zii.widgets.CPortlet', array(

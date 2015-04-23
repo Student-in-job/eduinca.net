@@ -30,4 +30,9 @@ return array(
     'studentsInvolved' => 'Студентов участников',
     'educational' => 'Учебное заведение',
     'codes' => 'Коды',
+    'used' => 'Использован',
+    'code_teacher' => 'Преподаватели',
+    'code_student' => 'Студенты',
+    'code_involved' => 'участвующие в программе',
+    'code_notinvolved' => 'не участвующие в программе',
 );

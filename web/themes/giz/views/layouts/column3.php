@@ -8,7 +8,7 @@
     )); ?><!-- breadcrumbs -->
     <?php endif?><!-- breadcrumbs -->
     </header>
-    <div class="span-24">
+    <div class="span-20">
             <div id="content">
                     <?php echo $content; ?>
             </div><!-- content -->

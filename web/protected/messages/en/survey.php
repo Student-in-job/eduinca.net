@@ -30,4 +30,9 @@ return array(
     'studentsInvolved' => 'Ctudents involved',
     'educational' => 'Educational institution',
     'codes' => '',
+    'used' => 'Used',
+    'code_teacher' => '',
+    'code_student' => '',
+    'code_involved' => '',
+    'code_notinvolved' => '',
 );
