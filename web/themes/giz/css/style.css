@@ -238,9 +238,12 @@ h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#0078CF;
 .alignright {float: right;clear: right;margin: 0.38em 0 0.38em 1.62em;}
 .aligncenter {margin: 0 auto 1.62em;display: block;}
 
+.span-5{float:left;margin-left:5px;margin-top: -39px;}
+.span-18{float:left;width:78%;}
 .span-20{float:left;width:80%;}
 .span-22{float:left;width:78%;}
 .span-24{float:left;width:78%;}
+
 
 
 /* -- MISC

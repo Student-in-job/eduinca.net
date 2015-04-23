@@ -50,4 +50,6 @@ return array(
     'usedcode' => 'Code was used. Enter another code',
     'expireddate' => 'Sorry bur survey has completed',
     'invalidcode' => 'Wrong code',
+    'siteContact' => '',
+    'link' => ''
 );

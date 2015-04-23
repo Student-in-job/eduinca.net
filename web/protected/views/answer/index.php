@@ -73,6 +73,13 @@ switch ($person)
                         ),
                     )
                 ),
+            ),
+            'pager' => array ('class' => 'CLinkPager'),
+            'pager' => array(
+                    'firstPageCssClass' => 'previous',
+                    'lastPageCssClass' => 'previous',
+                    'prevPageLabel' => false,
+                    'nextPageLabel' => false,
             )
         ));
     }
@@ -119,6 +126,13 @@ switch ($person)
                         ),
                     )
                 )
+            ),
+            'pager' => array ('class' => 'CLinkPager'),
+            'pager' => array(
+                    'firstPageCssClass' => 'previous',
+                    'lastPageCssClass' => 'previous',
+                    'prevPageLabel' => false,
+                    'nextPageLabel' => false,
             )
         ));
     }

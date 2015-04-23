@@ -11,6 +11,7 @@ class SurveyInUniversityController extends Controller
         protected $universities;
         protected $user;
         protected $universityType;
+        protected $date_till;
         
 	/**
 	 * @return array action filters
@@ -153,6 +154,10 @@ class SurveyInUniversityController extends Controller
                 $this->universities = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
                 $this->user = $this->GetArray('User', 'id_user', 'name');
                 $this->universityType = $this->GetArray('UniversityType', 'id_university_type', 'name');
+                
+                $survey = Survey::model()->findByPk($survey_id);
+                $this->date_till = $survey->date_till;
+                        
                 $this->render('index',array(
 			'dataProvider'=>$dataProvider,
                         'survey_id' => $survey_id,

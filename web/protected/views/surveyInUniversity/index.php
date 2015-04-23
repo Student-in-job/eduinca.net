@@ -73,7 +73,7 @@ $this->menu=array(
                 array(
                         'class' => 'CLinkColumn',
                         'label' => 'generate_codes',
-                        'urlExpression' => 'Yii::app()->createUrl("Code/index", array("id_survey_in_university" => $data->id_survey_in_university))',
+                        'urlExpression' => 'Yii::app()->createUrl("Code/index", array("id_survey_in_university" => $data->id_survey_in_university, "date_till" => $this->grid->getController()->date_till))',
                         'header' => 'generate_codes',
                 ),
                array('name' => 'HasCodes', 'value' => '($data->HasCodes)?"yes":"no"')

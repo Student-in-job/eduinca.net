@@ -8,7 +8,6 @@ class CodeController extends Controller
 	 */
         protected  $menuItem = 'survey';
 	public $layout='//layouts/column2';
-        private $_university;
         private $_survey_in_university;
 
 	/**
@@ -60,7 +59,7 @@ class CodeController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex($id_survey_in_university = null)
+	public function actionIndex($id_survey_in_university = null, $date_till = null)
 	{
                 if($id_survey_in_university!=null)
                 {
@@ -71,8 +70,7 @@ class CodeController extends Controller
                     }
                 }
                 
-                $this->_university = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
-                
+                $university = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
                 $university_id = $model->university_id;
                 
 		$codeModel = new Code();
@@ -82,11 +80,15 @@ class CodeController extends Controller
                 $sortCodes = new CSort();
                 $sortCodes->defaultOrder = 'person_type_id, person_involved, id_code';
                 $dataProvider->sort = $sortCodes;
+                $pagesCodes = new CPagination();
+                $pagesCodes->pageSize = $dataProvider->totalItemCount+1;
+                $dataProvider->pagination = $pagesCodes;
                 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
                         'survey_id' => $model->getAttribute('survey_id'),
-                        'university' => $this->_university,
+                        'university_name' => $university[$university_id],
+                        'date_till' => $date_till,
 		));
 	}
 
