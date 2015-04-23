@@ -58,7 +58,7 @@
 		<?php echo $form->dropDownList($model,'country_id',$country); ?>
 		<?php echo $form->error($model,'country_id'); ?>
 	</div>
-
+<br>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save')); ?>
 	</div>

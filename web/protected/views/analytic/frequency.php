@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.barRenderer.js"></script>
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.pointLabels.js"></script>
 
-<table>
+<table id="frequency">
     <thead class="tab">
         <tr>
             <th><span><?php echo Yii::t('analytic', 'Teachers');?></span></th>

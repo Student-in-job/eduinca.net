@@ -3,9 +3,7 @@
 /* @var $model Survey */
 /* @var $form CActiveForm */
 ?>
-
 <div class="form">
-
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'survey-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -67,7 +65,7 @@
                 ?>
 		<?php echo $form->error($model,'date_till'); ?>
 	</div>
-
+<br>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('survey','create') : Yii::t('survey','save')); ?>
 	</div>

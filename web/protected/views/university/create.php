@@ -14,6 +14,6 @@ $this->menu=array(
 );*/
 ?>
 
-<h3><?php echo Yii::t('university','createuniversity');?></h3>
+<!--<h3><?php echo Yii::t('university','createuniversity');?></h3>-->
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'country'=>$data, 'universityType'=>$type, 'read' => false)); ?>

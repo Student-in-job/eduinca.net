@@ -51,17 +51,11 @@ $(document).ready(function(){
                   padMin: 0,
                 }
             },
-            legend: {
+            /*legend: {
                 show: true,
                 location: 'e',
                 placement: 'outside'
-            }     
+            }*/   
         });
-     
-        $('#<?php echo $id;?>').bind('jqplotDataClick', 
-            function (ev, seriesIndex, pointIndex, data) {
-              $('#info3').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
-            }
-        ); 
     });
 </script>

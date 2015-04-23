@@ -10,6 +10,6 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h3><?php echo Yii::t('survey', 'update_survey');?> <?php echo $model->id_survey; ?></h3>
+<!--<h3><?php echo Yii::t('survey', 'update_survey');?> <?php echo $model->id_survey; ?></h3>-->
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

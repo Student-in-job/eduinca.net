@@ -67,7 +67,7 @@
                     <li><a href="#"><?php echo Yii::t('site','terms_of_use'); ?></a></li>
 				</ul>
 				<div class="up grid col-one-third ">
-					<a href="#navtop" title="Go back up">&uarr;</a>
+					<a href="#navtop" title="">&uarr;</a>
 				</div>
 				<nav class="grid col-one-third ">
 					<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by <a href="http://eduinca.net">PBBZ</a>.</p><?php echo Yii::t('site', 'rightsreserved')?>.</div>

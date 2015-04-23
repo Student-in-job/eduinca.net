@@ -47,7 +47,7 @@
 		<?php echo $form->textField($model,'name_en',array('size'=>20,'maxlength'=>20)); ?>
 		<?php echo $form->error($model,'name_en'); ?>
 	</div>
-
+<br>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site', 'create') : Yii::t('site', 'save')); ?>
 	</div>

@@ -19,7 +19,7 @@ $this->menu=array(
 $updateMessage = Yii::t('university', 'changeuniversity');
 ?>
 
-<h3>
+<!--<h3>
     <?php
         echo Yii::t(
         'country',
@@ -29,6 +29,6 @@ $updateMessage = Yii::t('university', 'changeuniversity');
             '{name}' => $model->getAttribute('name_' . Yii::app()->language),
         ));
     ?>
-</h3>
+</h3>-->
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'country'=>$data, 'universityType'=>$type, 'read' => true)); ?>

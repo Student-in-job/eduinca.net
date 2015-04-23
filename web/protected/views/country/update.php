@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 $updateMessage = Yii::t('country', 'changecountry');
 ?>
 
-<h3>
+<!--<h3>
     <?php echo Yii::t(
         'country',
         '{changecountry} "{name}"',
@@ -21,6 +21,6 @@ $updateMessage = Yii::t('country', 'changecountry');
             '{name}' => $model->getAttribute('name_' . Yii::app()->language),
         )
     )?>
-</h3>
+</h3>-->
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'read' => true)); ?>
