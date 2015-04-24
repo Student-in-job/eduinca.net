@@ -32,4 +32,5 @@ $this->breadcrumbs=array(
                     'university_name' => $university_name,                
             ),
             array('target' => '_blank')
-            );?></div>
+            );?>
+</div>

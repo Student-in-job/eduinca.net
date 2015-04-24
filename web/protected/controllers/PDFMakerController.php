@@ -5,6 +5,14 @@ include 'mpdf/mpdf.php';
 
 class PDFMakerController extends Controller
 {
+        private function Header()
+        {
+                $header = '<table><tr style="border-bottom:#AAA solid 2px;"><td style="padding:0;width:111px"><img src="images/GIZ_LOGO.png" style="float:left;margin-left:-22px;"/></td>';
+                $header .= '<td style="vertical-align:bottom;padding-bottom:10px;padding-left:-32px;"><span style="font-family:Times;color:#AAA;font-size:13pt;">' . Yii::t('site', 'fullsitename') . '</span></td></tr></table>';
+                $header .= '<div style="clear:both;position:relative;"><hr style="margin:0;"/></div>';
+                return $header;
+        }
+    
 	public function actionGenerate($id_survey_in_university = null, $date_till = null, $university_name = null)
 	{
                 $codeModel = new Code();
@@ -20,12 +28,8 @@ class PDFMakerController extends Controller
                 
                 $html = PDF::PrintCodes($dataProvider, $university_name, $date_till);
                 
-                $pdf = new mPDF('UTF-8','A4','','',32,25,47,47,10,10);
-                //$pdf->charset_in = '';
-                $header = '<table><tr style="border-bottom:#AAA solid 2px;"><td style="padding:0;width:111px"><img src="images/GIZ_LOGO.png" style="float:left;margin-left:-22px;"/></td>';
-                $header .= '<td style="vertical-align:bottom;padding-bottom:30px;padding-left:-32px;"><span style="font-family:Times;color:#AAA;font-size:13pt;">' . Yii::t('site', 'fullsitename') . '</span></td></tr></table>';
-                $header .= '<div style="clear:both;position:relative;"><hr style="margin:0;"/></div>';
-                $pdf->SetHTMLHeader($header);
+                $pdf = new mPDF('UTF-8','A4',12, 'Times',15,15,25,15,5,9);
+                $pdf->SetHTMLHeader($this->Header());
                 $pdf->WriteHTML($html);
                 $pdf->Output();
                 exit;

@@ -30,12 +30,12 @@ class PDF
             if ($counter%2 == 1){
                 $text .= '<tr>';
             }
-            $back = ($activeRecord->completed == 1)?'background:#FF8A8A;':'background:#8AFF8A;';
+            $back = ($activeRecord->completed == 1)?'background-color:#FF8A8A;':'background-color:#8AFF8A;';
             $text .= '<td valign="middle" style="height:120px;'. $back . '">';
             $text .= '<div style="margin:10px;">';
             if ($activeRecord->completed == 1)
             {
-                $text .= '<h4 style= " text-align:right;float:right"">' . Yii::t('survey', 'used') . '</h4>';
+                $text .= '<h4 style= "text-align:right;float:right">' . Yii::t('survey', 'used') . '</h4>';
             }
             $text .= '<h2 style="text-align:center;clear:both;"><b>' . $activeRecord->code . '</b></h2>'; 
             $text .= '<h6 style= " text-align:left;margin-bottom:10px;">'. Yii::t('survey', 'date_till') . ': <b>' . $date_till . '</b></h6>';

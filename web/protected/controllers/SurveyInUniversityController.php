@@ -78,8 +78,9 @@ class SurveyInUniversityController extends Controller
                     $condition .= $activeRecord->GetAttribute('university_id') .  ',';
                 }
                 $condition = trim($condition, ',') . ')';
-                $lastUniversitiesDbCriteria = new CDbCriteria();  
-                $lastUniversitiesDbCriteria->condition = $condition;
+                $lastUniversitiesDbCriteria = new CDbCriteria();
+                if ($model->search()->totalItemCount > 0)
+                    $lastUniversitiesDbCriteria->condition = $condition;
                 
                 $roleCriteria = new CDbCriteria;
                 $roleCriteria->compare('role_id', 2);
