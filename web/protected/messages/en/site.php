@@ -6,7 +6,8 @@
  * and open the template in the editor.
  */
 return array(
-    'fullsitename' => 'Programme Professional Education and Training in Central Asia (PBBZ)',
+    'fullsitename' => 'Programme Professional Education and Training in Central Asia',
+    'fullsname_title' => 'PBBZ<br>statistics<br>application',
     'sitename' => 'PBBZ statistics application',
     'home' => 'Home',
     'about' => 'About',
@@ -30,7 +31,7 @@ return array(
     'year' => 'Year',
     'survey' => 'Surveys',
     'statistics' => 'Questionaries',
-    'reports' => 'Analitics',
+    'reports' => 'Analytics',
     'editor' => 'Editor',
     'settings' => 'Settings',
     'help' => 'Help',
@@ -40,11 +41,12 @@ return array(
     'confirm_delete' => 'Are you sure you want to delete this item',
     'terms_of_use' => 'Terms of Use',
     'terms_of_survey' => 'Terms of survey',
+    'terms_of_survey_content' => '1. The survey is conducted in the framework of the GIZ Programme «Professional Education and Training in Central Asia».<br>2. There are four groups of respondents in the survey:<br>- teachers involved into the Programme activities and teaching at Programme’ implementing partners;<br>- teachers not involved into the Programme activities, but teaching at Programme’ implementing partners;<br>- students taught by the teachers involved into the Programme activities;<br>- students taught by the teachers involved into the Programme activities;<br>3. The questionnaire is completely anonymous.<br>4. The information about age, gender and educational institution is collected for statistical reasons only.<br>5. Information, obtained in the framework of the survey, is primary used within the Programme. However, the Programme is entitled to share the survey results with the third parties.',
     'sign_agree' => 'By entering site you agree with terms of survey',
     'forget_password' => 'Forget your password',
     'aboutcontent' => 'The survey aims to get insights into the teaching methodology in higher and vocational educational institutions – partners of the Programme, and to find out ways to improve education processes at these institutions.',
     'address' => 'Address',
-    'phone' => 'phone',
+    'phone' => 'Phone',
     'email' => 'E-mail',
     'web' => 'Web',
     'usedcode' => 'Code was used. Enter another code',

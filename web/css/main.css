@@ -34,7 +34,7 @@ table.jqplot-table-legend
 .portlet
 {
 position:fixed;
-width:16%;
+width:15%;
 }
 
 .portlet-decoration
@@ -129,8 +129,7 @@ width:16%;
 
 #sidebar
 {
-	float:right;
-	width:19%;
+
 	/*padding: 20px 20px 20px 0;*/
 }
 
@@ -176,7 +175,7 @@ width:16%;
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a {
 	/*color: #328AA4;*/
-	background-color: #09899F;
+	background-color: #1CBF17;
 	text-decoration:none;
 }
 #uz, #kz, #tj, #kg, #tm {

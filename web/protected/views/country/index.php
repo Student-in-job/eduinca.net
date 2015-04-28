@@ -24,7 +24,7 @@ $this->menu=array(
     <tr>
         <th><?php echo Yii::t('country', 'id')?></th>
         <!--<th><?php //echo Yii::t('country', 'code')?></th>-->
-        <th><?php echo Yii::t('country', 'name_' . Yii::app()->language)?></th>
+        <th><?php echo Yii::t('country', 'countries')?></th>
         <th></th>
         <th></th>
     </tr>
