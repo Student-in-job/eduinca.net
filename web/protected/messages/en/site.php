@@ -49,9 +49,15 @@ return array(
     'phone' => 'Phone',
     'email' => 'E-mail',
     'web' => 'Web',
+	'adrfull' => 'Chimkentskaya St. 7a, 100029, Tashkent, Uzbekistan',	
     'usedcode' => 'Code was used. Enter another code',
     'expireddate' => 'Sorry bur survey has completed',
     'invalidcode' => 'Wrong code',
     'siteContact' => '',
-    'link' => 'Web-site'
+    'link' => 'Web-site',
+	'turkmenistan' => 'Turkmenistan',
+	'kazakhstan' => 'Kazakhstan',
+	'uzbekistan' => 'Uzbekistan',
+	'kyrgyzstan' => 'Kyrgyzstan',
+	'tajikistan' => 'Tajikistan',
 );

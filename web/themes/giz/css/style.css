@@ -328,10 +328,27 @@ nav a, menu a { text-decoration: none; color: #555; }
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
 }
-.close:hover {
+.close:hover, .mapinfo .close:hover {
     background: #087C8F;
 	color:#fff;
 	text-decoration:none;
+}
+.mapinfo {
+position:absolute;
+display:none;
+padding:10px 15px;
+background:#7BB9F0;
+font-size:14px;
+font-weight:bold;
+-moz-border-radius:8px;
+}
+.mapinfo img {
+vertical-align:middle;
+margin-right:10px;
+}
+
+a img {
+border:none;
 }
 
 /* -- GENERAL 
