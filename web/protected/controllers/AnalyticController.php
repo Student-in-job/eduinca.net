@@ -5,11 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+//include 'pChart/class/pData.class.php';
+//include 'pChart/class/pDraw.class.php';
+//include 'pChart/class/pImage.class.php';
+        
 class AnalyticController extends Controller
 {
     protected  $menuItem = 'analytic';
-    public $layout='//layouts/column2';
+    public $layout='//layouts/column1';
 
     function actionIndex()
     {
@@ -116,5 +119,73 @@ class AnalyticController extends Controller
             default:
                 break;
         }
+    }
+    
+    public function actionCommon() {
+        $modelStudent = new StudentStatistic();
+        $modelTeacher = new TeacherStatistic();
+        $teachers = $modelTeacher->getCountByCountries(true); 
+        $students = $modelStudent->getCountByCountries(true);
+        
+        $country = $this->GetArray('Country', 'id_country', 'name_' . Yii::app()->language);
+        $data = array();
+        foreach($teachers as $row)
+        {
+            //$data[$row['country_id']]['country_id'] = $country[$row['country_id']];
+            $data[$row['country_id']]['t_' . $row['involved_person_id']] = $row['num'];
+        }
+        foreach($students as $row)
+        {
+            $data[$row['country_id']]['s_' . $row['involved_person_id']] = $row['num'];
+        }
+        $teachers = $modelTeacher->getCountByCountries(); 
+        $students = $modelStudent->getCountByCountries();
+        $dataPersonType = array();
+        $dataPersonType1 = array();
+        $countries = $this->GetArray('Country', 'id_country', 'name_' . Yii::app()->language);
+        $dataTeachers = array();
+        $dataStudents = array();
+        $axes = array();
+        foreach($teachers as $teacher)
+        {
+            $id_country = $teacher['country_id'];
+            foreach($students as $student)
+            {
+                if ($student['country_id'] == $id_country)
+                {
+                    $total = $teacher['num'] + $student['num'];
+                    $dataPersonType[1][$id_country] = round($teacher['num'] / $total * 100);
+                    $dataPersonType[2][$id_country] = round($student['num'] / $total * 100);
+                    
+                    array_push($dataTeachers, round($teacher['num'] / $total * 100));
+                    array_push($dataStudents, round($student['num'] / $total * 100));
+                    array_push($axes, $countries[$id_country]);
+                }
+            }
+        }
+        $dataPersonType1[Yii::t('analytic','teachers')] = $dataTeachers;
+        $dataPersonType1[Yii::t('analytic','students')] = $dataStudents;
+        $this->render('common', array(
+                'data' => $data,
+                'dataPersonType' => $dataPersonType,
+                'dataPersonType1' => $dataPersonType1,
+                'countries' => $countries,
+                'axes' => $axes,
+        ));
+    }
+    
+    public function actionEducationProcess()
+    {
+        $modelTeacher = new TeacherStatistic();
+        $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9');
+        $teachers = $modelTeacher->getMethodicByUniversities($columns);
+        $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
+        $modelStudent = new StudentStatistic();
+        $students = $modelStudent->getMethodicByUniversities($columns);
+        $this->render('educationProcess', array(
+                'teachers' => $teachers,
+                'students' => $students,
+                'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+        ));
     }
 }

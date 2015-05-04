@@ -30,7 +30,7 @@ return array(
     'year' => 'Year',
     'survey' => 'Surveys',
     'statistics' => 'Questionaries',
-    'reports' => 'Analitics',
+    'analytic' => 'Analitics',
     'editor' => 'Editor',
     'settings' => 'Settings',
     'help' => 'Help',

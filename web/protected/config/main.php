@@ -23,7 +23,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-                'bootstrap.helpers.TbHtml',
+//                'bootstrap.helpers.TbHtml',
 	),
 
 	'modules'=>array(
@@ -39,16 +39,6 @@ return array(
 		
 	),
         
-        /*
-        // Associates a behavior-class with the onBeginRequest event.
-        // By placing this within the primary array, it applies to the application as a whole
-        'behaviors'=>array(
-                'onBeginRequest' => array(
-                        'class' => 'application.components.behaviors.BeginRequest'
-                    ),
-                ),
-        */
-    
 	// application components
 	'components'=>array(
 
@@ -68,13 +58,7 @@ return array(
                             '<lang:(ru|en)>/<controller:\w+>/<id:\d+>'=>'<controller>/view',
                             '<lang:(ru|en)>/<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                             '<lang:(ru|en)>/<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),/*
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-                         */
 		),
 		
 		// database settings are configured in database.php

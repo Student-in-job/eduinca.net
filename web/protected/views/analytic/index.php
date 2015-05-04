@@ -7,13 +7,17 @@
  */
 
 $this->breadcrumbs=array(
-	Yii::t('site', 'reports'),
+	Yii::t('site', 'analytic'),
 );
 ?>
-
+<ol style="padding-left:50px;list-style: decimal !important">
+    <li><?php echo CHtml::link(Yii::t('analytic', 'common'), array('common')); ?></li>
+    <li><?php echo CHtml::link(Yii::t('analytic', 'education_process'), array('educationProcess')); ?></li>
+</ol>
+<br/><br/>
 <!--<h1>Statistic</h1>-->
 <ul>
-    <li><?php echo CHtml::link('Total', array('view', 'type' => 1)); ?></li>
+    <li><?php //echo CHtml::link('Total', array('view', 'type' => 1)); ?></li>
     <li><?php echo CHtml::link('Methodic', array('view', 'type' => 2)); ?></li>
     <li><?php echo CHtml::link('Frequency', array('view', 'type' => 3)); ?></li>
     <li><?php echo CHtml::link('HBars', array('view', 'type' => 4)); ?></li>

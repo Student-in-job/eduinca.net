@@ -40,7 +40,7 @@
 										array('label' => Yii::t('site','home'), 'url' => array('/site/index'), 'visible' => !Yii::app()->user->isGuest, 'active' => ($this->menuItem =='main')),
 										array('label' => Yii::t('site','survey'), 'url' => array('/survey/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='survey')),
 										array('label' => Yii::t('site','statistics'), 'url' => array('/statistics/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='statistic')),
-										array('label' => Yii::t('site','reports'), 'url' => array('/analytic/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='analytic')),
+										array('label' => Yii::t('site','analytic'), 'url' => array('/analytic/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='analytic')),
 										array('label' => Yii::t('site','editor'), 'url' => array('/editor/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='editor')),
 										array('label' => Yii::t('site','settings'), 'url' => array('/settings/index'), 'visible' => (Yii::app()->user->name == 'administrator'), 'active' => ($this->menuItem =='settings')),
 										array('label' => Yii::t('site','help'), 'url' => array('/help/index'), 'visible' => !Yii::app()->user->isGuest), 'active' => ($this->menuItem =='help'),

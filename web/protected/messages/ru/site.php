@@ -30,7 +30,7 @@ return array(
     'year' => 'Год',
     'survey' => 'Опросы',
     'statistics' => 'Анкеты',
-    'reports' => 'Аналитика',
+    'analytic' => 'Аналитика',
     'editor' => 'Редактор',
     'settings' => 'Настройки',
     'help' => 'Помощь',
