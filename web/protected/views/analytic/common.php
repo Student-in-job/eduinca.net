@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 ?>
 
     <h3><?php echo Yii::t('analytic', 'respondents')?></h3>
-    <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/tablecloth.js"></script>
+    <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/tablecloth.js"></script>-->
 <?php
     $header = array(
             0 => array(
@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
             )
     );
     
-    $this->widget('application.extensions.widgets.tables.table', array(
+    $this->widget('application.extensions.widgets.tables.Table', array(
         'header' => $header,
         'data' => $data,
         'labels' => $countries,
