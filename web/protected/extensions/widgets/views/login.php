@@ -33,9 +33,18 @@
 			
             <div class="help-text">
                 <p><?php echo Yii::t('site', 'sign_agree');?> </p>
-                <p><a href="#"><?php echo Yii::t('site', 'terms_of_survey');?></a></p>
+                <p><a href="#terms"><?php echo Yii::t('site', 'terms_of_survey');?></a></p>
             </div><!--.help-text-->
         </div><!--.signup-tab-content-->
+			<div id="terms" class="modalDialog">
+				<div>
+					<a href="#close" title="close" class="close">X</a>
+					<h3><?php echo Yii::t('site', 'terms_of_survey');?></h3>
+					<p>
+						<?php echo Yii::t('site', 'terms_of_survey_content');?>
+					</p>
+				</div>
+			</div>	
         <div id="login-tab-content">
             <?php
                 $form = $this->beginWidget('CActiveForm', array(

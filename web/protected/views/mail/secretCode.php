@@ -1,0 +1,1 @@
+<p style="padding:0; font-family: Arial, Tahoma, Verdana;">Secret code: <strong><?php echo $secretCode; ?></strong></p>

@@ -1,20 +1,22 @@
 <?php
-/* @var $this SiteController */
-/* @var $model ContactForm */
-/* @var $form CActiveForm */
-
 $this->pageTitle=Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs=array(
 	'Contact',
 );
 ?>
 
-<h3>Contact Us</h3>
+<h1>Contact Us</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
 <div class="flash-success">
 	<?php echo Yii::app()->user->getFlash('contact'); ?>
+</div>
+
+<?php elseif(Yii::app()->user->hasFlash('error')): ?>
+
+<div class="flash-error">
+	<?php echo Yii::app()->user->getFlash('error'); ?>
 </div>
 
 <?php else: ?>
