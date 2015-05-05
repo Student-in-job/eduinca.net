@@ -178,11 +178,26 @@ class AnalyticController extends Controller
     {
         $modelTeacher = new TeacherStatistic();
         $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9');
-        $teachers = $modelTeacher->getMethodicByUniversities($columns);
+        $teachers = $modelTeacher->getCommonByUniversities($columns, true);
         $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
         $modelStudent = new StudentStatistic();
-        $students = $modelStudent->getMethodicByUniversities($columns);
+        $students = $modelStudent->getCommonByUniversities($columns, true);
         $this->render('educationProcess', array(
+                'teachers' => $teachers,
+                'students' => $students,
+                'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+        ));
+    }
+    
+    public function actionEducationMethodic()
+    {
+        $modelTeacher = new TeacherStatistic();
+        $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
+        $teachers = $modelTeacher->getCommonByUniversities($columns, true);
+        $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
+        $modelStudent = new StudentStatistic();
+        $students = $modelStudent->getCommonByUniversities($columns, true);
+        $this->render('educationMethodic', array(
                 'teachers' => $teachers,
                 'students' => $students,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),

@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 <ol style="padding-left:50px;list-style: decimal !important">
     <li><?php echo CHtml::link(Yii::t('analytic', 'common'), array('common')); ?></li>
     <li><?php echo CHtml::link(Yii::t('analytic', 'education_process'), array('educationProcess')); ?></li>
+    <li><?php echo CHtml::link(Yii::t('analytic', 'education_methodic'), array('educationMethodic')); ?></li>
 </ol>
 <br/><br/>
 <!--<h1>Statistic</h1>-->

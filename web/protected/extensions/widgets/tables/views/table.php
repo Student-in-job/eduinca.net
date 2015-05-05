@@ -8,7 +8,7 @@
 ?>
 <div id = "st-table">
     <table>
-        <?php echo '<caption style ="background:#FFEAEA">' . $this->caption . '</caption>'; ?>
+        <?php echo '<caption style ="background:#FFC8C8">' . $this->caption . '</caption>'; ?>
         <thead>
             <?php
                 foreach($this->header as $row)
@@ -33,7 +33,7 @@
                     echo '<tr>';
                     foreach($row as $key => $value)
                     {
-                        echo '<td>'  . $value . '</td>';
+                        echo '<td' . $this->SetBackground() . '>'  . $value . '</td>';
                     }
                     echo '</tr>';
                 }

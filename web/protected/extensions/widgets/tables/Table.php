@@ -12,13 +12,14 @@ class Table extends CWidget
     public $header;
     public $data = array();
     public $labels = array();
+    public $background;
     
     public function run()
     {
         $this->render('table');
     }
     
-    public function GetNormalizedArray()
+    protected function GetNormalizedArray()
     {
         $data = array();
         $counter = 0;
@@ -42,5 +43,13 @@ class Table extends CWidget
         //die();
         //var_dump($data);die();
         return $data;
+    }
+    
+    protected function SetBackground()
+    {
+        if (isset($this->background))
+            return ' style="background:' . $this->background . '"';
+        else
+            return '';
     }
 }

@@ -216,43 +216,8 @@ class ModelStatistic
             }
         }
     }
-            
-    function __construct($attributes = null, $tables = null) {
-        $this->init();
-        $this->buildCommand($attributes = null, $tables = null);
-    }
     
-    public function getId() {
-        return $this->_id;
-    }
-    
-    public function getTotalItemCount()
-    {
-        return count($this->_data);
-    }
-    
-    public function getCountByCountries($byInvolved = false)
-    {
-        $this->init();
-        if($byInvolved == true)
-        {
-            $attributes = array('u.country_id', 'involved_person_id');
-        }
-        else
-        {
-            $attributes = array('u.country_id');
-        }
-        $tables = array(
-                        'tbl_university u' => 'university_id = u.id_university',
-        );
-        $this->setCommonCount($attributes, $tables);
-        return $this->_command->queryAll();
-    }
-    
-    public function getMethodicByUniversities($columns = null, $byInvolved = false)
-    {
-        if (!isset($columns))
-            $columns = array('common_q1');
+    protected function getByUniversities($columns = null, $byInvolved = false, $inPercentage = false) {
         $data = array();
         foreach($columns as $column)
         {
@@ -270,12 +235,57 @@ class ModelStatistic
             $this->buildCommand($attributes, null, $group);
             $records = $this->_command->queryAll();
             $data[$column] = $this->ToAssosiative($records, array('id', $column), 'num');
-            //var_dump($data);//die();
-        }//var_dump($data);
-        $d = $this->ToPercentage($data);
-        //var_dump('<br/><br/>');
-        //var_dump($d);die();
-        return $d;
+        }
+        if ($inPercentage)
+            return $this->ToPercentage($data);
+        else
+            return $data;
+    }
+            
+    function __construct($attributes = null, $tables = null) {
+        $this->init();
+        $this->buildCommand($attributes = null, $tables = null);
+    }
+    
+    public function getId() {
+        return $this->_id;
+    }
+    
+    public function getTotalItemCount()
+    {
+        return count($this->_data);
+    }
+    
+    public function getCountByCountries($byInvolved = false, $inPercentage = false)
+    {
+        $this->init();
+        if($byInvolved == true)
+        {
+            $attributes = array('u.country_id', 'involved_person_id');
+        }
+        else
+        {
+            $attributes = array('u.country_id');
+        }
+        $tables = array(
+                        'tbl_university u' => 'university_id = u.id_university',
+        );
+        $this->setCommonCount($attributes, $tables);
+        return $this->_command->queryAll();
+    }
+    
+    public function getCommonByUniversities($columns = null, $inPercentage = false, $byInvolved = false)
+    {
+        if (!isset($columns))
+            $columns = array('common_q1');
+        return $this->getByUniversities($columns, $byInvolved, $inPercentage);
+    }
+    
+    public function getMethodicByUniversities($columns = null, $inPercentage = false, $byInvolved = false)
+    {
+        if (!isset($columns))
+            $columns = array('methodic_q1');
+        return $this->getByUniversities($columns, $byInvolved, $inPercentage);
     }
     
     public function setCount()

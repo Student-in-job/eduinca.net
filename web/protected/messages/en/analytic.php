@@ -20,4 +20,5 @@ return array(
     'education_process' => 'Structure of education process',
     'respondents' => 'Surveys respondents',
     'educational_institution' => 'Educational Institution',
+    'education_methodic' => '',
 );

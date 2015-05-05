@@ -20,4 +20,5 @@ return array(
     'education_process' => 'Структура образовательного процесса',
     'respondents' => 'Участники опроса',
     'educational_institution' => 'Образовательное учреждение',
+    'education_methodic' => 'Методы преподавания',
 );

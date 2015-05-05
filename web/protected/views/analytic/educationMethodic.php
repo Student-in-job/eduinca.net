@@ -8,7 +8,7 @@
 $this->breadcrumbs=array(
         
 	Yii::t('site', 'analytic') => array('analytic/index'),
-        Yii::t('analytic', 'education_process')
+        Yii::t('analytic', 'education_methodic')
 );
 ?>
 <table style="color:#0000FF;">
