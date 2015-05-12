@@ -182,10 +182,19 @@ class AnalyticController extends Controller
         $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
         $modelStudent = new StudentStatistic();
         $students = $modelStudent->getCommonByUniversities($columns, true);
+        $xAxes = array();
+        foreach ($columns as $column)
+        {
+            array_push($xAxes, Yii::t('answerteacher', $column));
+        }
+        
         $this->render('educationProcess', array(
                 'teachers' => $teachers,
                 'students' => $students,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+                'xAxes' => $xAxes,
+                'teachersMax' => $this->GetArrayOf($teachers),
+                'studentsMax' => $this->GetArrayOf($students),
         ));
     }
     
@@ -201,6 +210,36 @@ class AnalyticController extends Controller
                 'teachers' => $teachers,
                 'students' => $students,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+                'teachersMax' => $this->GetArrayOf($teachers),
+                'studentsMax' => $this->GetArrayOf($students),
         ));
+    }
+    
+    public function actionTest()
+    {
+        $this->render('test');
+    }
+    
+    protected function GetArrayOf($array)
+    {
+        $data = array();
+        $data['keys'] = array();
+        $data['values'] = array();
+        foreach($array as $itemKey => $itemValue)
+        {
+            $max = 0;
+            $maxCountry = 0;
+            foreach ($itemValue as $key => $value)
+            {
+                if ($max<$value['5'])
+                {
+                    $max = $value['5'];
+                    $maxCountry = $key;
+                }
+            }
+            array_push($data['keys'], $maxCountry);
+            array_push($data['values'], $max);
+        }
+        return $data;
     }
 }

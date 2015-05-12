@@ -59,7 +59,7 @@
         $myPicture->drawLegend(530,39,array("Style"=>LEGEND_BOX,"Mode"=>LEGEND_VERTICAL)); 
 
         /* Render the picture (choose the best way) */ 
-        $myPicture->render(YiiBase::getPathOfAlias("webroot") . '/images/example.drawBarChart.can.png');
+        $myPicture->render(YiiBase::getPathOfAlias("webroot") . '/images/example.' . $this->name . 'BarChart.can.png');
         
-        echo '<img src = /images/example.drawBarChart.can.png>';
+        echo '<img src = /images/example.' . $this->name . 'BarChart.can.png>';
 ?>
