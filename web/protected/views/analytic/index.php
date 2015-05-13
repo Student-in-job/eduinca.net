@@ -14,6 +14,7 @@ $this->breadcrumbs=array(
     <li><?php echo CHtml::link(Yii::t('analytic', 'common'), array('common')); ?></li>
     <li><?php echo CHtml::link(Yii::t('analytic', 'education_process'), array('educationProcess')); ?></li>
     <li><?php echo CHtml::link(Yii::t('analytic', 'education_methodic'), array('educationMethodic')); ?></li>
+    <li><?php echo CHtml::link(Yii::t('analytic', 'test'), array('test')); ?></li>
 </ol>
 <br/><br/>
 <!--<h1>Statistic</h1>-->

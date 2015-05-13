@@ -10,4 +10,41 @@ class Chart extends CWidget{
     
     public $data;
     public $xAxes;
+    public $legend;
+    public $title;
+    public $colors;
+    public $name = 'draw';
+    
+    protected function IninPallete()
+    {
+        return array(
+                    "0"=>array("R"=>0,"G"=>255,"B"=>255,"Alpha"=>100), 
+                    "1"=>array("R"=>0,"G"=>255,"B"=>0,"Alpha"=>100), 
+                    "2"=>array("R"=>255,"G"=>255,"B"=>0,"Alpha"=>100), 
+                    "3"=>array("R"=>0,"G"=>0,"B"=>255,"Alpha"=>100), 
+                    "4"=>array("R"=>255,"G"=>0,"B"=>255,"Alpha"=>100), 
+                    "5"=>array("R"=>255,"G"=>0,"B"=>0,"Alpha"=>100), 
+                    "6"=>array("R"=>31,"G"=>108,"B"=>141,"Alpha"=>100), 
+                    "7"=>array("R"=>19,"G"=>221,"B"=>144,"Alpha"=>100),
+                    "8"=>array("R"=>54,"G"=>189,"B"=>13,"Alpha"=>100),
+                    "9"=>array("R"=>199,"G"=>190,"B"=>17,"Alpha"=>100),
+                    "10"=>array("R"=>183,"G"=>36,"B"=>19,"Alpha"=>100),
+                    "11"=>array("R"=>126,"G"=>226,"B"=>224,"Alpha"=>100),
+                    "12"=>array("R"=>57,"G"=>109,"B"=>183,"Alpha"=>100),
+                    "13"=>array("R"=>135,"G"=>135,"B"=>135,"Alpha"=>100),
+                    "14"=>array("R"=>233,"G"=>171,"B"=>105,"Alpha"=>100),
+                    "15"=>array("R"=>209,"G"=>99,"B"=>231,"Alpha"=>100),
+        );
+    }
+    
+    protected function ReturnPallette()
+    {
+        $colors = $this->IninPallete();
+        $pallete = array();
+        foreach($this->colors as $color)
+        {
+            array_push($pallete, $colors[$color]);
+        }
+        return $pallete;
+    }
 }

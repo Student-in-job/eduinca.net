@@ -49,3 +49,38 @@ $this->breadcrumbs=array(
         }
     ?>
 </table>
+<div>
+    <?php
+        $axes = array();
+        $legend = array();
+        foreach($teachers as $question => $questionValue)
+        {
+            array_push($axes, Yii::t('answerteacher', $question));
+        }
+        $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
+                'data' => array('some' => $teachersMax['values']),
+                'xAxes' => $axes,
+                //'legend' => $legend,
+                'title' => 'Информация об учебном заведении (преподаватели)',
+                'colors' => $teachersMax['keys'],
+                'name' => 'draw1',
+    ));?>
+</div>
+<br/>
+<div>
+    <?php
+        $axes = array();
+        $legend = array();
+        foreach($students as $question => $questionValue)
+        {
+            array_push($axes, Yii::t('answerstudent', $question));
+        }
+        $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
+                'data' => array('some' => $studentsMax['values']),
+                'xAxes' => $axes,
+                //'legend' => $legend,
+                'title' => 'Информация об учебном заведении (студенты)',
+                'colors' => $studentsMax['keys'],
+                'name' => 'draw2',
+    ));?>
+</div>
