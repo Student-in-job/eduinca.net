@@ -3,9 +3,9 @@
 /* @var $model AnswerTeacher */
 
 $this->breadcrumbs=array(
-	'Answer Teachers'=>array('answer/index',),
-	//$model->id_answer=>array('view','id'=>$model->id_answer),
-	'Update',
+	Yii::t('answerteacher','answerteacher') => array('/statistics/index'),
+	Yii::t('answerteacher','answerteachers') => array('answer/index', 'person' => 1),
+	Yii::t('answerteacher','update'),
 );
 /*
 $this->menu=array(

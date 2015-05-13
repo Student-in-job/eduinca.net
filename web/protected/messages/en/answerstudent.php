@@ -96,5 +96,8 @@ return array(
     'diploma_research_2' => 'It is based on a close collaboration with and my experience during my internship at a company',
     'private_comments' => 'Did you participate in educational projects involving close collaboration with the private sector?',
     'private_comments_q' => 'Describe the project content: ',
+    'answerstudent' => 'Questionnaires',	
+	'answerstudents' => 'Answer Students',
+	'update' => 'Update',
 );
 ?>

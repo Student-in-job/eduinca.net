@@ -8,7 +8,7 @@
 ?>
 <div id = "st-table">
     <table>
-        <?php echo '<caption style ="background:#FFC8C8">' . $this->caption . '</caption>'; ?>
+        <?php echo '<caption style ="padding-left:4px;margin:2px 0;background:#D0FFCF;">' . $this->caption . '</caption>'; ?>
         <thead>
             <?php
                 foreach($this->header as $row)

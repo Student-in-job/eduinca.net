@@ -15,8 +15,12 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
+	<p class="note">
+            <?php echo Yii::t('site', 'requiredfields');?>  
+            &nbsp;<span class="required">*</span>&nbsp;
+            <?php echo Yii::t('site', 'required');?>
+	</p>
+		
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -66,9 +70,9 @@
 		<?php echo $form->textField($model,'involved_students'); ?>
 		<?php echo $form->error($model,'involved_students'); ?>
 	</div>
-
+<br>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('site','create') : Yii::t('site','save')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

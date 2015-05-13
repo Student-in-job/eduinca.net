@@ -9,6 +9,8 @@
 return array(
     'interview'=>'Questionnaire for teachers',
     'answerteacher' => 'Questionnaires',
+	'answerteachers' => 'Answer Teachers',
+	'update' => 'Update',
     'member' => 'Questionnaire of participant teacher',
     'notmember' => 'Questionnaire of not a member of program',
     'id'=>'Id questionnaire',

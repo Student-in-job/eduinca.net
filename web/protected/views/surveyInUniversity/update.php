@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Update SurveyInUniversity <?php echo $model->id_survey_in_university; ?></h1>
+<!--<h3>Update SurveyInUniversity <?php echo $model->id_survey_in_university; ?></h3>-->
 
 <?php
     $this->renderPartial('_form', array(

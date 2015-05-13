@@ -27,10 +27,10 @@ $this->menu=array(
             break;
     }
 ?>
-<ul class="nav nav-pills">
+<!--<ul class="nav nav-pills">
   <li role="presentation"><?php echo CHtml::link(Yii::t('country','countries'), array('country/index'));?></li>
   <li role="presentation"  class="active"><?php echo CHtml::link(Yii::t('university','educational'), array('university/index'));?></li>
-</ul>
+</ul>-->
 
 <ul class="nav nav-pills">
   <li role="presentation" class="<?php echo $active1;?>"><?php echo CHtml::link(Yii::t('university','all'), array('index'));?></li>

@@ -49,6 +49,7 @@ a:hover { color: #3C88AD; text-decoration: underline; background: rgba(0, 0, 0, 
 ::selection { background: #0078CF; color: #fff; text-shadow: none; }	
 
 p{margin: 0 0 1em;}
+.note {margin: 0 0 1em; color:red; font-size:12px;}
 p:last-child {margin-bottom: 0;}
 
 a:visited{opacity:0.9;}
@@ -311,7 +312,7 @@ nav a, menu a { text-decoration: none; color: #555; }
     background: -o-linear-gradient(#fff, #999);
 }
 .close {
-    background: #015C3B;
+    background: #099F67;
     color: #fff;
     line-height: 25px;
     position: absolute;
@@ -333,18 +334,29 @@ nav a, menu a { text-decoration: none; color: #555; }
 	color:#fff;
 	text-decoration:none;
 }
-.mapinfo {
+.mapinfo  {
 position:absolute;
 display:none;
-padding:10px 15px;
+padding:2px 10px;
 background:#7BB9F0;
 font-size:14px;
-font-weight:bold;
--moz-border-radius:8px;
+border-radius:5px;
+/*font-weight:bold;*/
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+color:#333;
 }
 .mapinfo img {
 vertical-align:middle;
-margin-right:10px;
+margin-right:5px;
+}
+.mapinfo div {
+padding-right:15px;
+/*font-weight:bold;*/
+}
+.mapinfo span {
+padding-right:15px;
+font-weight:bold;
 }
 
 a img {
@@ -586,6 +598,24 @@ footer li:last-child { margin-right: 0; padding-right: 0; border-right: none; }
 .tab_container > article { display:none; }
 .tab_container > article:first-child { display: block; }
 
+.nav-pills li {
+border: 1px solid #666;
+padding: 4px;
+text-align:center;
+display:inline;
+background-color:;
+}
+.nav-pills .active {
+background-color:#F8F8FF;
+}
+.nav-pills .active  a{
+color:#666;
+font-weight:bold;
+}
+.nav-pills li:hover {
+border:solid 1px #219994;
+}
+
 
 
 /* -------------------------------------------------------------
@@ -729,17 +759,17 @@ ul.page-numbers{float: right;overflow:hidden; display:block;}
  /* general styles */
 
 table, td{font:100% Arial, Helvetica, sans-serif;}
-.table-bordered td {/*border-top:1px solid #666;border-bottom:1px solid #666;*/border:1px solid #f5f5f5;}
+.table-bordered td {/*border-top:1px solid #666;border-bottom:1px solid #666;*/border:1px solid #EFEFEF;}
 #frequency, #frequency th, #frequency tr, #frequency tr td {background:#fff;}
 #frequency th {color:#666;}
 table{width:100%;border-collapse:collapse;/*margin:1em 0;*/}
 th, td{text-align:left;padding:.5em;border:1px solid #fff;}
-th{background:#09899F; color:#fff;}
-td{background:#e5f1f4;}
+th{background:#23BBBF; color:#fff;}
+td{background:#D1EFE0;}
 
 /* tablecloth styles */
 
-tr.even td{background:#e5f1f4;}
+tr.even td{background:#D1EFE0;}
 tr.odd td{/*background:#4FDA8C;*/}
 
 th.over, tr.even th.over, tr.odd th.over{background:#4a98af;}

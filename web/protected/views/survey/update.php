@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	Yii::t('survey','surveys')=>array('index'),
-	$model->id_survey=>array('view','id'=>$model->id_survey),
+	//$model->id_survey=>array('view','id'=>$model->id_survey),
 	Yii::t('survey','edit'),
 );
 

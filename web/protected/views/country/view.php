@@ -20,4 +20,4 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-<?php echo CHtml::link(Yii::t('site','back'),array('index'))?>
+<?php //echo CHtml::link(Yii::t('site','back'),array('index')); ?>

@@ -13,7 +13,8 @@
 	</td>-->
 
 	<td>
-            <?php echo CHtml::link($data->getAttribute('name_' . Yii::app()->language), array('view', 'id' => $data->id_country)); ?>
+            <?php //echo CHtml::link($data->getAttribute('name_' . Yii::app()->language), array('view', 'id' => $data->id_country)); ?>
+            <?php echo $data->getAttribute('name_' . Yii::app()->language); ?>			
 	</td>
 
         <td>

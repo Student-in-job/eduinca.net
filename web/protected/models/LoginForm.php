@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LoginForm class.
  * LoginForm is the data structure for keeping
@@ -10,9 +9,7 @@ class LoginForm extends CFormModel
 	public $username;
 	public $password;
 	public $rememberMe;
-
 	private $_identity;
-
 	/**
 	 * Declares the validation rules.
 	 * The rules state that username and password are required,
@@ -29,7 +26,6 @@ class LoginForm extends CFormModel
 			array('password', 'authenticate'),
 		);
 	}
-
 	/**
 	 * Declares attribute labels.
 	 */
@@ -41,7 +37,6 @@ class LoginForm extends CFormModel
                     'rememberMe' => Yii::t('site', 'rememberme'),
 		);
 	}
-
 	/**
 	 * Authenticates the password.
 	 * This is the 'authenticate' validator as declared in rules().
@@ -55,7 +50,6 @@ class LoginForm extends CFormModel
 				$this->addError('password',Yii::t('site', 'errlogin'));
 		}
 	}
-
 	/**
 	 * Logs in the user using the given username and password in the model.
 	 * @return boolean whether login is successful

@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 ?>
 
     <h3><?php echo Yii::t('analytic', 'respondents')?></h3>
-    <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/tablecloth.js"></script>-->
 <?php
     $header = array(
             0 => array(

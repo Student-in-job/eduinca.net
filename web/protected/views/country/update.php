@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* @var $this CountryController */
 /* @var $model Country */
 
@@ -12,15 +12,14 @@ $this->breadcrumbs=array(
 $updateMessage = Yii::t('country', 'changecountry');
 ?>
 
-<!--<h3>
     <?php echo Yii::t(
         'country',
-        '{changecountry} "{name}"',
+        '{changecountry} «{name}»',
         array(
             '{changecountry}' => $updateMessage,
             '{name}' => $model->getAttribute('name_' . Yii::app()->language),
         )
-    )?>
-</h3>-->
+    );
+	?>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'read' => true)); ?>

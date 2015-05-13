@@ -10,7 +10,7 @@
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.barRenderer.js"></script>
 <script class="include" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jqplot/plugins/jqplot.pointLabels.js"></script>
 <?php
-echo '<div id="' . $this->id . '" style="float: left; height:' . $this->height . 'px; width:' . $this->width . 'px;"></div>';
+echo '<div id="' . $this->id . '" style="height:' . $this->height . 'px; width:' . $this->width . 'px;"></div><br>';
 ?>
 <script class="code" type="text/javascript">
     $(document).ready(function(){

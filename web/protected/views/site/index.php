@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* @var $this SiteController */
 $this->pageTitle=Yii::app()->name;
 ?>
@@ -50,37 +50,39 @@ $this->pageTitle=Yii::app()->name;
 								}
 								
 								st[0].onclick = function(){
-									document.location.hash = arr[this.id];
 									
 									var point = this.getBBox(0);
 									
 									$('#canvas').next('.mapinfo').remove();
 									
 									$('#canvas').after($('<div />').addClass('mapinfo'));
+									var cname = $('#'+state).text();
 									$('.mapinfo')
 									.html(asia[st])
 									.prepend($('<a />').attr('href', '#').addClass('close').text('X'))
 									.prepend($('<img />').attr('src', '../../../../images/'+state+'.png'))
+									.append($('<span />').html(cname))
+									.append($('<div />').text('<?php echo Yii::t('site', 'universities'); ?>: 5'))
+									.append($('<div />').text('<?php echo Yii::t('site', 'participants'); ?>: 55000'))
+									.append($('<div />').text('<?php echo Yii::t('site', 'participants'); ?>: 55000'))
 									.css({
 										left: point.x+(point.width/2)+90,
 										top: point.y+(point.height/2)-185
 									})
 									.fadeIn();
 								};
-								/*$('.mapinfo').find('.close').live('click', function(){
-									var t = $(this),
-										parent = t.parent('.mapinfo');
-									
-									parent.fadeOut(function(){
-										parent.remove();
-									});
-									return false;
-								});	*/						
-								
-							})(asia[state], state);
-							
+							})(asia[state], state);	
 						}
 					};
+						$('.mapinfo').find('.close').on('click', function(){
+						alert('123');
+							var t = $(this),
+								parent = t.parent('.mapinfo');
+								parent.fadeOut(function(){
+									parent.remove();
+								});
+							return false;
+						});
 			</script>
 					<?php 
 						if (Yii::app()->user->IsGuest) {
@@ -119,7 +121,6 @@ $this->pageTitle=Yii::app()->name;
 					</div>';
 				}
 			?>
-			
     </div>
     <div class="grid col-one-half mq2-col-full">
         <?php 
@@ -130,13 +131,6 @@ $this->pageTitle=Yii::app()->name;
         else
         {
 			echo '<div style="height:200px"></div>';
-            /*
-            echo CHtml::link(
-                        Yii::t('site', 'logout'),
-                        array('site/logout'),
-                        array('class' => 'btn btn-primary')
-                ); 
-             */
         }
         ?>
     </div>

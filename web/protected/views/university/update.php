@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /* @var $this UniversityController */
 /* @var $model University */
 
 $this->breadcrumbs=array(
-        Yii::t('site', 'editor') => array('editor/index'),
+    Yii::t('site', 'editor') => array('editor/index'),
 	Yii::t('university', 'educational')=>array('index'),
-        $model->getAttribute('name_' . Yii::app()->language) => array('view','id'=>$model->id_university),
+    $model->getAttribute('name_' . Yii::app()->language) => array('view','id'=>$model->id_university),
 	Yii::t('university', 'updating'),
 );
 /*
@@ -19,16 +19,14 @@ $this->menu=array(
 $updateMessage = Yii::t('university', 'changeuniversity');
 ?>
 
-<!--<h3>
     <?php
         echo Yii::t(
         'country',
-        '{changeuniversity} "{name}"',
+        '{changeuniversity} «{name}»',
         array(
             '{changeuniversity}' => $updateMessage,
             '{name}' => $model->getAttribute('name_' . Yii::app()->language),
         ));
     ?>
-</h3>-->
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'country'=>$data, 'universityType'=>$type, 'read' => true)); ?>

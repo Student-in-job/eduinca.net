@@ -60,4 +60,6 @@ return array(
 	'uzbekistan' => 'Uzbekistan',
 	'kyrgyzstan' => 'Kyrgyzstan',
 	'tajikistan' => 'Tajikistan',
+	'universities' => 'Universities',
+	'participants' => 'Participants',
 );

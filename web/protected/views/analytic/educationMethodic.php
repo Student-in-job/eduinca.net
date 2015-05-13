@@ -11,10 +11,10 @@ $this->breadcrumbs=array(
         Yii::t('analytic', 'education_methodic')
 );
 ?>
-<table style="color:#0000FF;">
+<table>
     <tr>
-        <td style="color:#000000"><h3 style="margin:0;text-align:center"><?php echo Yii::t('analytic', 'teachers');?></h3></td>
-        <td style="color:#000000;background:#C8FFC8"><h3 style="margin:0;text-align:center"><?php echo Yii::t('analytic', 'students');?></h3></td>
+        <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'teachers');?></h4></td>
+        <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'students');?></h4></td>
     </tr>
     <?php
         $counter = 1;
@@ -41,7 +41,6 @@ $this->breadcrumbs=array(
                         'header' => $header,
                         'data' => $students[$question],
                         'labels' => $universities,
-                        'background' => '#C8FFC8',
                 ));
             }
             echo '</td>';

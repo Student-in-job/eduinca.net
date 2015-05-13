@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-        Yii::t('site', 'editor') => array('editor/index'),
+    Yii::t('site', 'editor') => array('editor/index'),
 	Yii::t('country', 'countries'),
 );
 

@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	Yii::t('site','statistics') => array('/statistics/index'),
+		Yii::t('site','statistics') => array('/statistics/index'),
         ($person == 1)?Yii::t('statistics','answers_teachers'):Yii::t('statistics','answers_students')//'Answer Teachers',
 );
 /*

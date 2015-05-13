@@ -12,8 +12,7 @@ $this->menu=array(
 );
 ?>
 
-<!--<h1>Survey In Universities</h1>-->
-<br/>
+<!--<h3>Survey In Universities</h3>-->
 <br/>
 <?php 
     $this->widget('zii.widgets.grid.CGridView', array(
