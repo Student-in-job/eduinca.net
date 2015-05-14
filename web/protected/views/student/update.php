@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	Yii::t('answerteacher','answerteacher') => array('/statistics/index'),
-	Yii::t('answerstudents','answerstudents') => array('answer/index', 'person' => 2),
+	Yii::t('answerstudent','answerstudents') => array('answer/index', 'person' => 2),
 	Yii::t('answerteacher','update'),
 );
 

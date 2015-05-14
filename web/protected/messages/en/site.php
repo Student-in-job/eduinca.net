@@ -62,4 +62,5 @@ return array(
 	'tajikistan' => 'Tajikistan',
 	'universities' => 'Universities',
 	'participants' => 'Participants',
+	'allparticipants' => 'Participants',
 );

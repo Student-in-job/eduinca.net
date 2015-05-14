@@ -62,9 +62,9 @@ $this->pageTitle=Yii::app()->name;
 									.prepend($('<a />').attr('href', '#').addClass('close').text('X'))
 									.prepend($('<img />').attr('src', '../../../../images/'+state+'.png'))
 									.append($('<span />').html(cname))
-									.append($('<div />').text('<?php echo Yii::t('site', 'universities'); ?>: 5'))
-									.append($('<div />').text('<?php echo Yii::t('site', 'participants'); ?>: 55000'))
-									.append($('<div />').text('<?php echo Yii::t('site', 'participants'); ?>: 55000'))
+									.append($('<div />').text('<?php echo Yii::t('site', 'universities'); ?>: 1'))
+									.append($('<div />').text('<?php echo Yii::t('site', 'participants'); ?>: 2'))
+									.append($('<div />').text('<?php echo Yii::t('site', 'allparticipants'); ?>: 3'))
 									.css({
 										left: point.x+(point.width/2)+90,
 										top: point.y+(point.height/2)-185

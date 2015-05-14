@@ -3,13 +3,17 @@
 $this->breadcrumbs=array(
 	Yii::t('site', 'statistics'),
 );
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>Yii::t('statistics','answers_teachers'), 'url'=>array('answer/index', 'person' => 1)),
 	array('label'=>Yii::t('statistics','answers_students'), 'url'=>array('answer/index', 'person' => 2)),
     //array('label'=>Yii::t('answerstudent','member'), 'url'=>array('student/create', 'involved' => 1)),
 	//array('label'=>Yii::t('answerstudent','notmember'), 'url'=>array('student/create', 'involved' => 2)),
-    );
+    );*/
 ?>
+<ul class="nav nav-pills">
+    <li class="<?php echo Yii::t('statistics','answers_teachers');?>"><?php echo CHtml::link(Yii::t('answer','teachers'), array('answer/index', 'person' => 1));?></li>
+    <li class="<?php echo Yii::t('statistics','answers_students');?>"><?php echo CHtml::link(Yii::t('answer','students'), array('answer/index', 'person' => 2));?></li>
+</ul>
 <?php
     //var_dump($dataProvider);die ();
     $this->widget('zii.widgets.grid.CGridView', array(
@@ -73,3 +77,4 @@ $this->menu=array(
             )
     ));
 ?>
+<br>

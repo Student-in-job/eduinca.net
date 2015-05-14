@@ -9,24 +9,23 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'change-password-form',
 )); ?>
-        
 		<p class="note">
             <?php echo Yii::t('site', 'requiredfields');?>
             &nbsp;<span class="required">*</span>&nbsp;
             <?php echo Yii::t('site', 'required');?>
         </p>
-                   
+		
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->textField($model,'password',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'password',array('size'=>20,'maxlength'=>15)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 	
     <div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->textField($model,'password',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'password',array('size'=>20,'maxlength'=>15)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 <br>
@@ -36,4 +35,4 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>

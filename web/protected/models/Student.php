@@ -41,20 +41,6 @@
  * @property integer $methodic_q12
  * @property integer $methodic_q13
  * @property integer $methodic_q14
- * @property integer $methodic_qq1
- * @property integer $methodic_qq2
- * @property integer $methodic_qq3
- * @property integer $methodic_qq4
- * @property integer $methodic_qq5
- * @property integer $methodic_qq6
- * @property integer $methodic_qq7
- * @property integer $methodic_qq8
- * @property integer $methodic_qq9
- * @property integer $methodic_qq10
- * @property integer $methodic_qq11
- * @property integer $methodic_qq12
- * @property integer $methodic_qq13
- * @property integer $methodic_qq14
  * @property string $methodic_comment
  * @property integer $labs
  * @property integer $num_labs
@@ -97,14 +83,14 @@ class Student extends CActiveRecord
 		// will receive user inputs.
 		return array(
                         array('sex, year', 'required'),
-			array('year, age, sex, diploma, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, methodic_qq1, methodic_qq2, methodic_qq3, methodic_qq4, methodic_qq5, methodic_qq6, methodic_qq7, methodic_qq8, methodic_qq9, methodic_qq10, methodic_qq11, methodic_qq12, methodic_qq13, labs, num_labs, labs_comment, practice, practice_duration, university_id, person_type_id, involved_person_id, diploma_aspects, diploma_research', 'numerical', 'integerOnly'=>true),
+			array('year, age, sex, diploma, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, labs, num_labs, labs_comment, practice, practice_duration, university_id, person_type_id, involved_person_id, diploma_aspects, diploma_research', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('faculty, speciality', 'length', 'max'=>100),
 			array('study_from, study_till', 'length', 'max'=>7),
 			array('common_comment, methodic_comment, practice_place, practice_comment, private_comments', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_answer, code, year, age, sex, faculty, speciality, diploma, study_from, study_till, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, common_comment, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, methodic_qq1, methodic_qq2, methodic_qq3, methodic_qq4, methodic_qq5, methodic_qq6, methodic_qq7, methodic_qq8, methodic_qq9, methodic_qq10, methodic_qq11, methodic_qq12, methodic_qq13, methodic_comment, labs, num_labs, labs_comment, practice, practice_place, practice_duration, practice_comment, university_id, person_type_id, involved_person_id', 'safe', 'on'=>'search'),
+			array('id_answer, code, year, age, sex, faculty, speciality, diploma, study_from, study_till, course, common_q1, common_q2, common_q3, common_q4, common_q5, common_q6, common_q7, common_q8, common_q9, common_q10, common_q11, common_comment, methodic_q1, methodic_q2, methodic_q3, methodic_q4, methodic_q5, methodic_q6, methodic_q7, methodic_q8, methodic_q9, methodic_q10, methodic_q11, methodic_q12, methodic_q13, methodic_comment, labs, num_labs, labs_comment, practice, practice_place, practice_duration, practice_comment, university_id, person_type_id, involved_person_id', 'safe', 'on'=>'search'),
                         //array('study_from, study_till', 'match', 'pattern'=>'[0-90-9]/[0-90-90-90-9]')
 		);
 	}
@@ -235,20 +221,6 @@ class Student extends CActiveRecord
 		$criteria->compare('methodic_q12',$this->methodic_q12);
 		$criteria->compare('methodic_q13',$this->methodic_q13);
 		$criteria->compare('methodic_q14',$this->methodic_q14);
-		$criteria->compare('methodic_qq1',$this->methodic_qq1);
-		$criteria->compare('methodic_qq2',$this->methodic_qq2);
-		$criteria->compare('methodic_qq3',$this->methodic_qq3);
-		$criteria->compare('methodic_qq4',$this->methodic_qq4);
-		$criteria->compare('methodic_qq5',$this->methodic_qq5);
-		$criteria->compare('methodic_qq6',$this->methodic_qq6);
-		$criteria->compare('methodic_qq7',$this->methodic_qq7);
-		$criteria->compare('methodic_qq8',$this->methodic_qq8);
-		$criteria->compare('methodic_qq9',$this->methodic_qq9);
-		$criteria->compare('methodic_qq10',$this->methodic_qq10);
-		$criteria->compare('methodic_qq11',$this->methodic_qq11);
-		$criteria->compare('methodic_qq12',$this->methodic_qq12);
-		$criteria->compare('methodic_qq13',$this->methodic_qq13);
-		$criteria->compare('methodic_qq14',$this->methodic_qq14);
 		$criteria->compare('methodic_comment',$this->methodic_comment,true);
 		$criteria->compare('labs',$this->labs);
 		$criteria->compare('num_labs',$this->num_labs);

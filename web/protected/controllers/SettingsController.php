@@ -22,16 +22,23 @@ class SettingsController extends Controller
 		);
 	}
 
-	public function actionUpdate()
+	public function actionView($id)
 	{
-		$model = new Settings;
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}		
+	
+	public function actionUpdate($id)
+	{
+		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Settings']))
+		if(isset($_POST['id']))
 		{
-			$model->attributes=$_POST['Settings'];
+			$model->attributes=$_POST['id'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -40,33 +47,7 @@ class SettingsController extends Controller
 			'model'=>$model,
 		));
 	}
-	
-/*	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Settings']))
-		{
-			$model->attributes=$_POST['Settings'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}*/
-	
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}	
-	
+		
 	public function loadModel($id)
 	{
 		$model=Settings::model()->findByPk($id);

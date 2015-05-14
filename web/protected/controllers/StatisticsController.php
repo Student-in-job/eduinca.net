@@ -3,7 +3,7 @@
 class StatisticsController extends Controller
 {
         protected  $menuItem = 'statistic';
-	public $layout = '//layouts/column2';
+	public $layout = '//layouts/column1';
         
         private $_university;
         

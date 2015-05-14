@@ -61,5 +61,6 @@ return array(
 	'kyrgyzstan' => 'Кыргызстан',
 	'tajikistan' => 'Таджикистан',
 	'universities' => 'Учебные заведения',
-	'participants' => 'Участники',
+	'participants' => 'Участников программы',
+	'allparticipants' => 'Всего приняли участие',
 );

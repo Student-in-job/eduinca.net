@@ -7,5 +7,6 @@
  */
 
 return array(
+    'password' => 'Пароль',
     'changepassword' => 'Сменить пароль',
 );

@@ -39,7 +39,7 @@ table td, table tbody tr, table tbody tr td {background:none;}
 
         <div>
             <table>
-                <tr><td colspan="2"><h4><?php echo Yii::t('answerstudent', 'header');?></h4></td></tr>
+                <!--<tr><td colspan="2"><h4><?php echo Yii::t('answerstudent', 'header');?></h4></td></tr>-->
                 <tr>
                     <td>
                         <?php echo $form->labelEx($model,'year'); ?>
@@ -289,80 +289,132 @@ table td, table tbody tr, table tbody tr td {background:none;}
 	<table class='table-bordered'>
             <thead>
                 <tr>
-                    <td style="width: 500px;padding: 15px;"><b><?php echo Yii::t('answerstudent','methodic_teach'); ?></b></td>
-                    <td style="width: 300px;padding: 15px;">
-                        <?php echo Yii::t('answerstudent', 'methodic_answers1'); ?> 
-                    </td>
-                    <td style="width: 300px;padding: 15px;">
-                        <?php echo Yii::t('answerstudent', 'methodic_answers2'); ?> 
-                    </td>
+                    <td style="width: 650px"></td>
+                    <td><?php echo Yii::t('answerstudent', 'common_answer5');?></td>
+                    <td><?php echo Yii::t('answerstudent', 'common_answer4');?></td>
+                    <td><?php echo Yii::t('answerstudent', 'common_answer3');?></td>
+                    <td><?php echo Yii::t('answerstudent', 'common_answer2');?></td>
+                    <td><?php echo Yii::t('answerstudent', 'common_answer1');?></td>
+                    <td><?php echo Yii::t('answerstudent', 'common_answer0');?></td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q1'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q1'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq1'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q2'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q2'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq2'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q3'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q3'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq1'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q4'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q4'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq4'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q5'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q5'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq5'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q6'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q6'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq6'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q7'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q7'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq7'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q8'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q8'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq8'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q9'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q9'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq9'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q10'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q10'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq10'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q11'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q11'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq11'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q12'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q12'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq12'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q13'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_q13'); ?></td>
-                    <td><?php echo $form->textField($model,'methodic_qq13'); ?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '5', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '4', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '3', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '2', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '1', 'uncheckValue' => null));?></td>
+                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
             </tbody>
          </table>

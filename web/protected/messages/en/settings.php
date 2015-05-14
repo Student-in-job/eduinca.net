@@ -7,5 +7,6 @@
  */
 
 return array(
+    'cpassword' => 'Password',
     'changepassword' => 'Change password',
 );
