@@ -14,8 +14,11 @@ class Chart extends CWidget{
     public $title;
     public $colors;
     public $name = 'draw';
+    public $width = 650;
+    public $height = 400;
+    public $rotation = 0;
     
-    protected function IninPallete()
+    protected function InitPallete()
     {
         return array(
                     "0"=>array("R"=>0,"G"=>255,"B"=>255,"Alpha"=>100), 
@@ -39,7 +42,7 @@ class Chart extends CWidget{
     
     protected function ReturnPallette()
     {
-        $colors = $this->IninPallete();
+        $colors = $this->InitPallete();
         $pallete = array();
         foreach($this->colors as $color)
         {

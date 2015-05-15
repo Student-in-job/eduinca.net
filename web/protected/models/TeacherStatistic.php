@@ -11,7 +11,6 @@ class TeacherStatistic extends ModelStatistic
     public function __construct($attributes = null, $tables = null, $group = null, $where = null) {
         $this->init();
         $this->_tableName = 'tbl_answer_teacher';
-        $this->buildCommand($attributes, $tables, $group, $where);
         $this->_id = 'answer';
         parent::__construct();
     }
