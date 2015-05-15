@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<!--<h1><?php echo Yii::t('site', 'login'); ?></h1>-->
+<!--<h3><?php echo Yii::t('site', 'login'); ?></h3>-->
 
 <p><?php echo Yii::t('site', 'loginmessage'); ?>:</p>
 

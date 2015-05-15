@@ -16,7 +16,7 @@ $this->pageTitle=Yii::app()->name;
 						var R = Raphael("paper", 650, 650);
 						var attr = {
 							fill: "#015C3B",
-							stroke: "#ccc",
+							stroke: "#ddd",
 							"stroke-width": 1,
 							"stroke-linejoin": "round"
 						},
@@ -41,7 +41,7 @@ $this->pageTitle=Yii::app()->name;
 									current = state;
 								};
 								st[0].onmouseout = function () {
-									st.animate({fill: "#087C8F", stroke: "#ccc"}, 500);
+									st.animate({fill: "#09899F", stroke: "#ccc"}, 500);
 									st.toFront();
 									R.safari();
 								};
@@ -70,11 +70,11 @@ $this->pageTitle=Yii::app()->name;
 										top: point.y+(point.height/2)-185
 									})
 									.fadeIn();
-								};
+								};						
 							})(asia[state], state);	
 						}
 					};
-						$('.mapinfo').find('.close').on('click', function(){
+					$('.mapinfo').find('.close').on('click', function(){
 						alert('123');
 							var t = $(this),
 								parent = t.parent('.mapinfo');
@@ -82,7 +82,7 @@ $this->pageTitle=Yii::app()->name;
 									parent.remove();
 								});
 							return false;
-						});
+						});	
 			</script>
 					<?php 
 						if (Yii::app()->user->IsGuest) {

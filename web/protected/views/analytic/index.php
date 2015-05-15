@@ -7,7 +7,7 @@
  */
 
 $this->breadcrumbs=array(
-	Yii::t('site', 'analytic'),
+	Yii::t('analytic', 'analytic'),
 );
 ?>
 <ol style="padding-left:50px;list-style: decimal !important">
