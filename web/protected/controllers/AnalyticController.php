@@ -131,7 +131,6 @@ class AnalyticController extends Controller
         $data = array();
         foreach($teachers as $row)
         {
-            //$data[$row['country_id']]['country_id'] = $country[$row['country_id']];
             $data[$row['country_id']]['t_' . $row['involved_person_id']] = $row['num'];
         }
         foreach($students as $row)
@@ -202,16 +201,29 @@ class AnalyticController extends Controller
     {
         $modelTeacher = new TeacherStatistic();
         $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
-        $teachers = $modelTeacher->getCommonByUniversities($columns, true);
+        $teachersInvolved = $modelTeacher->getMethodic($columns, true, array('involved_person_id' => '1'));
+        $teachersNotInvolved = $modelTeacher->getMethodic($columns, true, array('involved_person_id' => '2'));
+        $questionsTeacher = array();
+        foreach ($columns as $column)
+        {
+            $questionsTeacher[$column] = Yii::t('answerteacher', $column);
+        }
         $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
         $modelStudent = new StudentStatistic();
-        $students = $modelStudent->getCommonByUniversities($columns, true);
+        $studentsInvolved = $modelStudent->getMethodic($columns, true, array('involved_person_id' => '1'));
+        $studentsNotInvolved = $modelStudent->getMethodic($columns, true, array('involved_person_id' => '2'));
+        $questionsStudent = array();
+        foreach ($columns as $column)
+        {
+            $questionsStudent[$column] = Yii::t('answerstudent', $column);
+        }
         $this->render('educationMethodic', array(
-                'teachers' => $teachers,
-                'students' => $students,
-                'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
-                'teachersMax' => $this->GetArrayOf($teachers),
-                'studentsMax' => $this->GetArrayOf($students),
+                'teachersInvolved' => $teachersInvolved,
+                'teachersNotInvolved' => $teachersNotInvolved,
+                'studentsInvolved' => $studentsInvolved,
+                'studentsNotInvolved' => $studentsNotInvolved,
+                'questionsTeacher' => $questionsTeacher,
+                'questionsStudent' => $questionsStudent,
         ));
     }
     
