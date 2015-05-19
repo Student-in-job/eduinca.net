@@ -11,10 +11,8 @@ $this->breadcrumbs=array(
         Yii::t('analytic', 'education_methodic')
 );
 ?>
-<table>
-    <?php
-        echo '<tr>';
-        echo '<td style="background:#ffffff;vertical-align:top">';
+<div style="width:85%">
+<?php
         $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1, 'n/a <br/> %' => 1);
         if(isset($teachersInvolved))
         {
@@ -25,8 +23,39 @@ $this->breadcrumbs=array(
                     'labels' => $questionsTeacher,
             ));
         }
-        echo '</td>';
-        echo '<td style="background:#ffffff;vertical-align:top">';
+?>
+</div>
+<div>
+    <?php
+        $legend = array('5','4','3','2','1','0');
+        $array = array();
+        foreach(array('5','4','3','2','1','0') as $index)
+        {
+            $array[$index] = array();
+        }
+        $axes = array();
+        foreach($teachersInvolved as $key => $row)
+        {
+            foreach($row as $item => $value)
+            {
+                array_push($array[$item], $value);
+            }
+            array_push($axes, $key);
+        }
+        $this->widget('application.extensions.widgets.charts.BarChart', array(
+                'data' => $array,
+                'xAxes' => $axes,
+                //'legend' => $legend,
+                'title' => 'Информация об методике преподавания (студенты)',
+                //'colors' => $studentsMax['keys'],
+                'name' => 'draw3',
+                'rotation' => 90,
+                'width' => 765,
+                'height' => 400,
+    ));?>
+</div>
+<div style="width:85%">
+<?php
         if(isset($teachersNotInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
@@ -36,10 +65,37 @@ $this->breadcrumbs=array(
                     'labels' => $questionsTeacher,
             ));
         }
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td style="background:#ffffff;vertical-align:top">';
+?>
+</div>
+<div>
+    <?php
+        $array = array();
+        foreach(array('5','4','3','2','1','0') as $index)
+        {
+            $array[$index] = array();
+        }
+        foreach($teachersNotInvolved as $key => $row)
+        {
+            foreach($row as $item => $value)
+            {
+                array_push($array[$item], $value);
+            }
+        }
+        $this->widget('application.extensions.widgets.charts.BarChart', array(
+                'data' => $array,
+                'xAxes' => $axes,
+                //'legend' => $legend,
+                'title' => 'Информация об методике преподавания (студенты)',
+                //'colors' => $studentsMax['keys'],
+                'name' => 'draw4',
+                'rotation' => 90,
+                'width' => 765,
+                'height' => 400,
+    ));?>
+</div>
+<div style="width:85%">  
+<?php
+        
         if(isset($studentsInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
@@ -49,8 +105,38 @@ $this->breadcrumbs=array(
                     'labels' => $questionsTeacher,
             ));
         }
-        echo '</td>';
-        echo '<td style="background:#ffffff;vertical-align:top">';
+?>
+</div>
+<div>
+    <?php
+        $array = array();
+        foreach(array('5','4','3','2','1','0') as $index)
+        {
+            $array[$index] = array();
+        }
+        $axes = array();
+        foreach($studentsInvolved as $key => $row)
+        {
+            foreach($row as $item => $value)
+            {
+                array_push($array[$item], $value);
+            }
+            array_push($axes, $key);
+        }
+        $this->widget('application.extensions.widgets.charts.BarChart', array(
+                'data' => $array,
+                'xAxes' => $axes,
+                //'legend' => $legend,
+                'title' => 'Информация об методике преподавания (студенты)',
+                //'colors' => $studentsMax['keys'],
+                'name' => 'draw5',
+                'rotation' => 90,
+                'width' => 765,
+                'height' => 400,
+    ));?>
+</div>
+<div style="width:85%"> 
+    <?php
         if(isset($studentsNotInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
@@ -60,51 +146,31 @@ $this->breadcrumbs=array(
                     'labels' => $questionsTeacher,
             ));
         }
-        echo '</td>';
-        echo '</tr>';
-    ?>
-</table>            
-
+    ?>     
+</div>
 <div>
     <?php
-        $legend = array('5','4','3','2','1','0');
-        /*
-        foreach($students as $question => $questionValue)
-        {
-            array_push($axes, Yii::t('answerstudent', $question));
-        }
-        */
-        //var_dump('start');die();
         $array = array();
         foreach(array('5','4','3','2','1','0') as $index)
         {
             $array[$index] = array();
         }
-        foreach($teachersInvolved as $key => $row)
+        foreach($studentsNotInvolved as $key => $row)
         {
-            //$data = array();
             foreach($row as $item => $value)
             {
-                //var_dump($item . ' => ' . $value);
                 array_push($array[$item], $value);
             }
-            //$array[$key] = $data;
         }
-        $axes = array();
-        foreach($teachersInvolved as $question => $val)
-        {
-            array_push($axes, $question);
-        }
-        //var_dump($array);die();
         $this->widget('application.extensions.widgets.charts.BarChart', array(
                 'data' => $array,
                 'xAxes' => $axes,
-                'legend' => $legend,
+                //'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
                 //'colors' => $studentsMax['keys'],
-                'name' => 'draw3',
+                'name' => 'draw6',
                 'rotation' => 90,
-                'width' => 850,
+                'width' => 765,
                 'height' => 400,
     ));?>
 </div>
