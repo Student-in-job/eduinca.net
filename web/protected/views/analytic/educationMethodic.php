@@ -28,22 +28,13 @@ $this->breadcrumbs=array(
 <div>
     <?php
         $legend = array('5','4','3','2','1','0');
-        $array = array();
-        foreach(array('5','4','3','2','1','0') as $index)
-        {
-            $array[$index] = array();
-        }
         $axes = array();
         foreach($teachersInvolved as $key => $row)
         {
-            foreach($row as $item => $value)
-            {
-                array_push($array[$item], $value);
-            }
             array_push($axes, $key);
         }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $array,
+                'data' => $this->GetArrayTransform($teachersInvolved),// $array,
                 'xAxes' => $axes,
                 //'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
@@ -70,19 +61,8 @@ $this->breadcrumbs=array(
 <div>
     <?php
         $array = array();
-        foreach(array('5','4','3','2','1','0') as $index)
-        {
-            $array[$index] = array();
-        }
-        foreach($teachersNotInvolved as $key => $row)
-        {
-            foreach($row as $item => $value)
-            {
-                array_push($array[$item], $value);
-            }
-        }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $array,
+                'data' => $this->GetArrayTransform($teachersNotInvolved),
                 'xAxes' => $axes,
                 //'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
@@ -110,21 +90,13 @@ $this->breadcrumbs=array(
 <div>
     <?php
         $array = array();
-        foreach(array('5','4','3','2','1','0') as $index)
-        {
-            $array[$index] = array();
-        }
         $axes = array();
         foreach($studentsInvolved as $key => $row)
         {
-            foreach($row as $item => $value)
-            {
-                array_push($array[$item], $value);
-            }
             array_push($axes, $key);
         }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $array,
+                'data' => $this->GetArrayTransform($studentsInvolved),
                 'xAxes' => $axes,
                 //'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
@@ -151,19 +123,8 @@ $this->breadcrumbs=array(
 <div>
     <?php
         $array = array();
-        foreach(array('5','4','3','2','1','0') as $index)
-        {
-            $array[$index] = array();
-        }
-        foreach($studentsNotInvolved as $key => $row)
-        {
-            foreach($row as $item => $value)
-            {
-                array_push($array[$item], $value);
-            }
-        }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $array,
+                'data' => $this->GetArrayTransform($studentsNotInvolved),
                 'xAxes' => $axes,
                 //'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',

@@ -9,10 +9,13 @@
 class ModelStatistic
 {
     protected $_command;
-    protected $_data;
-    protected $_id;
     protected $_tableName;
     
+    /**
+     * Обращение к свойству объекта
+     * @param string $name Название свойтсва 
+     * @return object property
+     */
     public function __get($name) {
         if (method_exists($this, ($method = 'get_' . $name))) {
             return $this->$method();
@@ -29,14 +32,35 @@ class ModelStatistic
         $this->_command = Yii::app()->db->createCommand();
     }
     /**
-     * 
-     * @param array() $attributes Основные столбцы
-     * @param array() $tables Указываются в виде array($join => $condition) таблицы с которыми будет соединяться данная таблица 
-     * и условия соединения 
-     * @param array() $group Указываются столбцы группировки
-     * @param array() $where Указываются в виде array($condition => $value) условия отбора данных из таблиц и их значения
+     * Трансформирование ассоциативного массива в условие DBCommand
+     * @param array $conditions Массив вида столбец=>значение
+     * @return array Массив вида (условие => параметр)
      */
-    protected function buildCommand($attributes = null, $tables = null, $group = null, $where = null)
+    protected function TransformConditions($conditions = null)
+    {
+        $where = array();
+        if (is_array($conditions)&&isset($conditions))
+        {
+            $counter = 1;
+            foreach($conditions as $column => $value)
+            {
+                $condition = $column . '=:p' . $counter;
+                $param = array(':p' . $counter => $value);
+                $where[$condition] = $param;
+            }
+        }
+        return $where;
+    }
+    /**
+     * Генерация команды на языке SQL и помещает в объект $_command
+     * @param array() $attributes Основные столбцы
+     * @param array() $tables Указываются в виде array($join => $condition) таблицы с которыми будет соединяться данная 
+     * таблица и условия соединения 
+     * @param array() $group Указываются столбцы группировки
+     * @param array() $where Указываются в виде array($condition => $value) условия отбора данных из таблиц и их 
+     * значения
+     */
+    protected function BuildCommand($attributes = null, $tables = null, $group = null, $where = null)
     {
         if(!is_null($attributes)){
             $this->_command->select($attributes);
@@ -64,6 +88,13 @@ class ModelStatistic
         }
     }
     
+    /**
+     * Перевод массива query в ассоиативный вида (5=>,4=>,3=>,2=>,1=>,0=>)
+     * @param array $array Массив строк, возвращаемый query
+     * @param string or array $column столбцы которые должны быть ключевыми для массивов (5=>,4=>,3=>,2=>,1=>,0=>)
+     * @param string столбец из которого будет браться значение для массива (5=>,4=>,3=>,2=>,1=>,0=>)
+     * @return Assosoative array
+     */
     protected function ToAssosiative($array, $column, $value)
     {
         $data = array();
@@ -93,6 +124,12 @@ class ModelStatistic
         return $data;
     }
     
+    /**
+     * Перевод абсолютных величин массива в процентные
+     * @param array $array одномерный массив или несколько массивов (процент высчитывается для каждого одномерного
+     * массива)
+     * @return array массив или несколько массивов со значениями в процентах
+     */
     protected function ToPercentage($array)
     {
         $data = array();
@@ -132,82 +169,58 @@ class ModelStatistic
         }
         return $data;
     }
+       
+    //Helper functions
     
-    protected function ToArray($assosiative)
+    /**
+     * Подготовка SQL запроса с фильтром по выьранным столбццам
+     * @param array $columns Столбцы для выборки и группировки
+     * @param array $tables Соединение с таблицами
+     * @param array $conditions Условия отбора всех строк
+     */
+    protected function setCommonCount($columns, $tables = null, $conditions = null)
     {
-        $data = array();
-        $index = 1;
-        foreach($assosiative as $ikey => $ivalue)
+        $group = null;
+        $where = null;
+        if(isset($columns))
         {
-            foreach ($ivalue as $key => $value)
-            {
-                $data[$index] = $value;
-                $index++;
-            }
+            if (is_array($columns))
+                $attributes = array_merge(array('count(id_answer) as num'), $columns);
+            else
+                $attributes = array('count(id_answer) as num', $columns);
+            $group = $columns;
         }
-        return $data;
+        else
+        {
+            $attributes = array('count(id_answer) as num');
+        }
+        $where = $this->TransformConditions($conditions);
+        $this->BuildCommand($attributes, $tables, $group, $where);
     }
     
-    protected function ToArrayInverse($array, $column = null)
-    {
-        $data = array();
-        foreach ($array as $item)
-        {
-            $bool = true;
-            $newkey;
-            foreach ($item as $key => $value)
-            {
-                if($bool){
-                    $newkey = $value;
-                    $bool = !$bool;
-                }
-                else{
-                    if($column != null){
-                        $data[$newkey] = array($column => $value);
-                    }
-                    else{
-                        $data[$newkey] = $value;
-                    }
-                }
-            }
-        }
-        return $data;
-    }
-    
-    protected function transformConditions($conditions = null)
-    {
-        $where = array();
-        if (is_array($conditions)&&isset($conditions))
-        {
-            $counter = 1;
-            foreach($conditions as $column => $value)
-            {
-                $condition = $column . '=:p' . $counter;
-                $param = array(':p' . $counter => $value);
-                $where[$condition] = $param;
-            }
-        }
-        return $where;
-    }
-    
+    /**
+     * Вывод количественных показателей с группировкой по учебным заведениям
+     * @param array $columns одинарный массив с названием столбцов
+     * @param bool $byInvolved учитывать ли вовлеченных и невовлеченных в программу
+     * @param bool $inPercentage возвращать ли значение в процентах
+     * @return array Массив сгрупированных по учебным заведениям (в качестве ключа выступает имя столбца)
+     */
     protected function getByUniversities($columns = null, $byInvolved = false, $inPercentage = false) {
         $data = array();
         foreach($columns as $column)
         {
             if($byInvolved == true)
             {
-                $attributes = array('university_id as id', $column, 'involved_person_id', 'count(id_answer) as num');
-                $group = array('university_id', $column, 'involved_person_id');
+                $attributes = array('university_id', $column, 'involved_person_id');
             }
             else
             {
-                $attributes = array('university_id as id', $column, 'count(id_answer) as num');
-                $group = array('university_id', $column);
+                $attributes = array('university_id', $column);
             }
             $this->init();
-            $this->buildCommand($attributes, null, $group);
+            $this->setCommonCount($attributes);
             $records = $this->_command->queryAll();
-            $data[$column] = $this->ToAssosiative($records, array('id', $column), 'num');
+            $data[$column] = $this->ToAssosiative($records, array('university_id', $column), 'num');
         }
         if ($inPercentage)
             return $this->ToPercentage($data);
@@ -215,46 +228,47 @@ class ModelStatistic
             return $data;
     }
     
+    /**
+     * 
+     * @param array $columns
+     * @param bool $inPercentage
+     * @param array $filter
+     * @return type
+     */
     protected function getAll($columns = null, $inPercentage = false, $filter = null)
     {
         $data = array();
         foreach($columns as $column)
         {
-            $attributes = array($column, 'count(id_answer) as num');
-            $group = array($column);
             $this->init();
-            //var_dump($filter);
-            //var_dump('<br/>');
-            if (isset($filter))
-                $where = $this->transformConditions($filter);
-            else
-                $where = null;
-            //var_dump($where);die();
-            $this->buildCommand($attributes, null, $group, $where);
-            //var_dump($this->_command->text);die();
+            $this->setCommonCount($column, null, $filter);
             $records = $this->_command->queryAll();
             $data[$column] = $this->ToAssosiative($records, $column, 'num');
         }
-        //var_dump($this->ToPercentage($data));die();
         if ($inPercentage)
             return $this->ToPercentage($data);
         else
             return $data;
     }
-
+    
+    
+    /**
+     * Конструктор с атрибутами
+     * @param type $attributes
+     * @param type $tables
+     */
     public function __construct($attributes = null, $tables = null) {
         $this->init();
     }
     
-    public function getId() {
-        return $this->_id;
-    }
+    //Analytics
     
-    public function getTotalItemCount()
-    {
-        return count($this->_data);
-    }
-    
+    /**
+     * Подсчет количества по странам
+     * @param bool $byInvolved 
+     * @param bool $inPercentage
+     * @return array
+     */
     public function getCountByCountries($byInvolved = false, $inPercentage = false)
     {
         $this->init();
@@ -294,76 +308,9 @@ class ModelStatistic
         return $this->getAll($columns, $inPercentage ,$filter);
     }
     
-    public function setCount()
+    public function getLabsByUniversities()
     {
-        $attributes = array('c.id_country as id', 'c.name_' . Yii::app()->language, 'count(id_answer) as num');
-        $tables = array(
-                        'tbl_university u' => 'university_id = u.id_university',
-                        'tbl_country c' => 'u.country_id = c.id_country',
-        );
-        $group = array('id', 'c.name_' . Yii::app()->language);
-        $where = array('involved_person_id = :id' => array(':id' => '1'));
-        $this->buildCommand($attributes, $tables, $group, $where);
-    }
-
-    /**
-     * 
-     * @param array() $columns Столбцы для выборки и группировки
-     * @param array() $tables Соединение с таблицами
-     * @param array() $conditions Условия отбора всех строк
-     */
-    protected function setCommonCount($columns, $tables = null, $conditions = null)
-    {
-        $group = null;
-        $where = null;
-        if(isset($columns)&&isset($columns))
-        {
-            $attributes = array_merge(array('count(id_answer) as num'), $columns);
-            $group = $columns;
-        }
-        else
-        {
-            $attributes = array('count(id_answer) as num');
-        }
-        if (is_array($conditions)&&isset($conditions))
-        {
-            $counter = 1;
-            foreach($conditions as $column => $value)
-            {
-                $condition = $column . '=:p' . $counter;
-                $where = array(':p' . $counter => $value);
-                $where[$counter++] = array($condition => $value);
-            }
-        }
-        $this->buildCommand($attributes, $tables, $group, $where);
-    }
-    
-    public function getFrequency($column, $persentage = false, $involved = true)
-    {
-        $data = array();
-        $this->setCommonCount($column, $involved);
-        $result = $this->_command->queryAll();
-        $data[$column] = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0);
-        $sum = 0;
-        foreach ($result as $row)
-        {
-            $sum += $row['num'];
-            switch($row[$column])
-            {
-                case 1: $data[$column]['1'] += $row['num']; break;
-                case 2: $data[$column]['2'] += $row['num']; break;
-                case 3: $data[$column]['3'] += $row['num']; break;
-                case 4: $data[$column]['4'] += $row['num']; break;
-                case 5: $data[$column]['5'] += $row['num']; break;
-                default: $sum -= $row['num']; break;
-            }
-        }
-        if($persentage){
-            return $this->ToArray($this->ToPersentage1($data, $sum));
-        }
-        else{
-            return $this->ToArray($data);
-        }
+        $columns = array('');
     }
     
     public function getPracticeParticipation($column, $default = 'Нет')
@@ -384,12 +331,7 @@ class ModelStatistic
                 $column . '<>:value and involved_person_id = :id' => array(':value' => $default, ':id' => 1)
             );
         }
-        $this->buildCommand($attributes, $tables, $group, $where);
+        $this->BuildCommand($attributes, $tables, $group, $where);
         return $this->ToArrayInverse($this->_command->queryAll());
-    }
-    
-    public function getDiploma($column)
-    {
-        $this->setCommonCount($column);
     }
 }

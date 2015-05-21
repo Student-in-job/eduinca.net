@@ -14,26 +14,4 @@ class TeacherStatistic extends ModelStatistic
         $this->_id = 'answer';
         parent::__construct();
     }
-    /*
-    public function setCount()
-    {
-        $this->_keys = array('id', 'name', 'num');
-        $attributes = array('c.id_country as id', 'c.name', 'count(id_answer) as num');
-        $tables = array(
-                        'tbl_university u' => 'university_id = u.id_university',
-                        'tbl_country c' => 'u.country_id = c.id_country',
-        );
-        $group = array('id', 'c.name');
-        $where = array('involved_person_id = :id' => array(':id' => '1'));
-        $this->buildCommand($attributes, $tables, $group, $where);
-    }
-    */
-    public function setCountBySex()
-    {
-        $this->_keys = array('num','sex');
-        $attributes = array('count(id_answer) as num', 'sex');
-        $where = array('involved_person_id = :id' => array(':id' => '1'));
-        $group = array('sex');
-        $this->buildCommand($attributes, null, $group, $where);
-    }
 }
