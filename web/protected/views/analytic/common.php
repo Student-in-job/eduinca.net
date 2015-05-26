@@ -44,6 +44,8 @@ $this->breadcrumbs=array(
     
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $dataPersonType1,
-            'xAxes' => $axes
+            'xAxes' => $axes,
+            'name' => 'draw11',
+            'legend_left' => 500,
     ));
 ?>

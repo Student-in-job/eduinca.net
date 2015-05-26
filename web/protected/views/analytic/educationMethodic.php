@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
         Yii::t('analytic', 'education_methodic')
 );
 ?>
-<div style="width:85%">
+<div style="width:65%">
 <?php
         $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1, 'n/a <br/> %' => 1);
         if(isset($teachersInvolved))
@@ -27,25 +27,26 @@ $this->breadcrumbs=array(
 </div>
 <div>
     <?php
-        $legend = array('5','4','3','2','1','0');
+        $legend = array('0' => 'n/a');
         $axes = array();
         foreach($teachersInvolved as $key => $row)
         {
-            array_push($axes, $key);
+            array_push($axes, Yii::t('analytic',$key));
         }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $this->GetArrayTransform($teachersInvolved),// $array,
+                'data' => $this->GetArrayTransform($teachersInvolved),
                 'xAxes' => $axes,
-                //'legend' => $legend,
+                'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
                 //'colors' => $studentsMax['keys'],
-                'name' => 'draw3',
+                'name' => 'draw31',
                 'rotation' => 90,
                 'width' => 765,
-                'height' => 400,
+                'height' => 750,
+                'margin_bottom' => 350,
     ));?>
 </div>
-<div style="width:85%">
+<div style="width:65%">
 <?php
         if(isset($teachersNotInvolved))
         {
@@ -60,20 +61,20 @@ $this->breadcrumbs=array(
 </div>
 <div>
     <?php
-        $array = array();
         $this->widget('application.extensions.widgets.charts.BarChart', array(
                 'data' => $this->GetArrayTransform($teachersNotInvolved),
                 'xAxes' => $axes,
-                //'legend' => $legend,
+                'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
                 //'colors' => $studentsMax['keys'],
-                'name' => 'draw4',
+                'name' => 'draw32',
                 'rotation' => 90,
                 'width' => 765,
-                'height' => 400,
+                'height' => 750,
+                'margin_bottom' => 350,
     ));?>
 </div>
-<div style="width:85%">  
+<div style="width:65%">  
 <?php
         
         if(isset($studentsInvolved))
@@ -89,25 +90,25 @@ $this->breadcrumbs=array(
 </div>
 <div>
     <?php
-        $array = array();
         $axes = array();
         foreach($studentsInvolved as $key => $row)
         {
-            array_push($axes, $key);
+            array_push($axes, Yii::t('analytic',$key));
         }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
                 'data' => $this->GetArrayTransform($studentsInvolved),
                 'xAxes' => $axes,
-                //'legend' => $legend,
+                'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
                 //'colors' => $studentsMax['keys'],
-                'name' => 'draw5',
+                'name' => 'draw33',
                 'rotation' => 90,
                 'width' => 765,
-                'height' => 400,
+                'height' => 750,
+                'margin_bottom' => 350,
     ));?>
 </div>
-<div style="width:85%"> 
+<div style="width:65%"> 
     <?php
         if(isset($studentsNotInvolved))
         {
@@ -129,9 +130,10 @@ $this->breadcrumbs=array(
                 //'legend' => $legend,
                 'title' => 'Информация об методике преподавания (студенты)',
                 //'colors' => $studentsMax['keys'],
-                'name' => 'draw6',
+                'name' => 'draw34',
                 'rotation' => 90,
                 'width' => 765,
-                'height' => 400,
+                'height' => 750,
+                'margin_bottom' => 350,
     ));?>
 </div>

@@ -17,6 +17,13 @@ class Chart extends CWidget{
     public $width = 650;
     public $height = 400;
     public $rotation = 0;
+    public $margin_left = 50;
+    public $margin_right = 50;
+    public $margin_top = 30;
+    public $margin_bottom = 30;
+    public $legend_left = 0;
+    public $legend_top = 0;
+    public $axisName = '%';
     
     protected function InitPallete()
     {
@@ -40,7 +47,7 @@ class Chart extends CWidget{
         );
     }
     
-    protected function ReturnPallette()
+    protected function ReturnPallete()
     {
         $colors = $this->InitPallete();
         $pallete = array();
@@ -49,5 +56,17 @@ class Chart extends CWidget{
             array_push($pallete, $colors[$color]);
         }
         return $pallete;
+    }
+    
+    protected function GetLegend($serie)
+    {
+        if(isset($this->legend[$serie]))
+        {
+            return $this->legend[$serie];
+        }
+        else
+        {
+            return $serie;
+        }
     }
 }

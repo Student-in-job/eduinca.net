@@ -192,8 +192,8 @@ class AnalyticController extends Controller
                 'students' => $students,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
                 'xAxes' => $xAxes,
-                'teachersMax' => $this->GetArrayOf($teachers),
-                'studentsMax' => $this->GetArrayOf($students),
+                'teachersMax' => $this->GetMaxArrayOf($teachers),
+                'studentsMax' => $this->GetMaxArrayOf($students),
         ));
     }
     
@@ -206,7 +206,7 @@ class AnalyticController extends Controller
         $questionsTeacher = array();
         foreach ($columns as $column)
         {
-            $questionsTeacher[$column] = Yii::t('answerteacher', $column);
+            $questionsTeacher[$column] = Yii::t('analytic', $column);
         }
         $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
         $modelStudent = new StudentStatistic();
@@ -215,7 +215,7 @@ class AnalyticController extends Controller
         $questionsStudent = array();
         foreach ($columns as $column)
         {
-            $questionsStudent[$column] = Yii::t('answerstudent', $column);
+            $questionsStudent[$column] = Yii::t('analytic', $column);
         }
         //var_dump($this->GetArrayTranform($teachersInvolved));die();
         $this->render('educationMethodic', array(
@@ -230,10 +230,28 @@ class AnalyticController extends Controller
     
     public function actionEducationLabs()
     {
-        $this->render('educationLabs');
+        $modelTeacher = new TeacherStatistic();
+        $teachers = $modelTeacher->getLabsByUniversities();
+        $modelStudent = new StudentStatistic();
+        $students = $modelStudent->getLabsByUniversities();
+        $practice_teachers = $modelTeacher->getPracticeByUniversities();
+        $practice_students = $modelStudent->getPracticeByUniversities();
+        $practice_duration_teachers = $modelTeacher->getPracticeDurationByUniversities();
+        $practice_duration_students = $modelStudent->getPracticeDurationByUniversities();
+        //var_dump($teachers);
+        $this->render('educationLabs', array(
+                'teachers' => $teachers,
+                'students' => $students,
+                'practice_teachers' => $practice_teachers,
+                'practice_students' => $practice_students,
+                'practice_duration_teachers' => $practice_duration_teachers,
+                'practice_duration_students' => $practice_duration_students,
+                'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+        ));
+        
     }
     
-    protected function GetArrayOf($array)
+    protected function GetMaxArrayOf($array)
     {
         $data = array();
         $data['keys'] = array();
@@ -256,10 +274,14 @@ class AnalyticController extends Controller
         return $data;
     }
     
-    protected function GetArrayTransform($array)
+    protected function GetArrayTransform($array, $templateArray = null)
     {
         $data = array();
-        foreach(array('5','4','3','2','1','n/a') as $index)
+        if(isset($templateArray))
+            $forArray = $templateArray;
+        else
+            $forArray = array('5','4','3','2','1','0');
+        foreach($forArray as $index)
         {
             $data[$index] = array();
         }
@@ -267,10 +289,7 @@ class AnalyticController extends Controller
         {
             foreach($row as $item => $value)
             {
-                if ($item!=0)
-                    array_push($data[$item], $value);
-                else
-                    array_push($data['n/a'], $value);
+                array_push($data[$item], $value);
             }
         }
         return $data;
