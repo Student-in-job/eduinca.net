@@ -7,9 +7,14 @@
  */
 
 $this->breadcrumbs=array(
-	Yii::t('site', 'analytic'),
+	Yii::t('analytic', 'analytic'),
 );
 ?>
+<?php $this->widget('application.extensions.widgets.filters.filter', array(
+    'filtername' => '1'
+)); 
+?>
+
 <ol style="padding-left:50px;list-style: decimal !important">
     <li><?php echo CHtml::link(Yii::t('analytic', 'common'), array('common')); ?></li>
     <li><?php echo CHtml::link(Yii::t('analytic', 'education_process'), array('educationProcess')); ?></li>

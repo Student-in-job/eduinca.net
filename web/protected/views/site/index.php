@@ -16,7 +16,7 @@ $this->pageTitle=Yii::app()->name;
 						var R = Raphael("paper", 650, 650);
 						var attr = {
 							fill: "#015C3B",
-							stroke: "#ccc",
+							stroke: "#ddd",
 							"stroke-width": 1,
 							"stroke-linejoin": "round"
 						},
@@ -41,7 +41,7 @@ $this->pageTitle=Yii::app()->name;
 									current = state;
 								};
 								st[0].onmouseout = function () {
-									st.animate({fill: "#087C8F", stroke: "#ccc"}, 500);
+									st.animate({fill: "#09899F", stroke: "#ccc"}, 500);
 									st.toFront();
 									R.safari();
 								};
@@ -57,24 +57,25 @@ $this->pageTitle=Yii::app()->name;
 									
 									$('#canvas').after($('<div />').addClass('mapinfo'));
 									var cname = $('#'+state).text();
+									var abc = 1;
 									$('.mapinfo')
 									.html(asia[st])
 									.prepend($('<a />').attr('href', '#').addClass('close').text('X'))
 									.prepend($('<img />').attr('src', '../../../../images/'+state+'.png'))
 									.append($('<span />').html(cname))
-									.append($('<div />').text('<?php echo Yii::t('site', 'universities'); ?>: 1'))
-									.append($('<div />').text('<?php echo Yii::t('site', 'participants'); ?>: 2'))
-									.append($('<div />').text('<?php echo Yii::t('site', 'allparticipants'); ?>: 3'))
+									.append($('<div />').text('<?php echo Yii::t("site", "universities"); ?>:'+abc))
+									.append($('<div />').text('<?php echo Yii::t("site", "participants"); ?>: 2'))
+									.append($('<div />').text('<?php echo Yii::t("site", "allparticipants"); ?>: 3'))
 									.css({
 										left: point.x+(point.width/2)+90,
 										top: point.y+(point.height/2)-185
 									})
 									.fadeIn();
-								};
+								};						
 							})(asia[state], state);	
 						}
 					};
-						$('.mapinfo').find('.close').on('click', function(){
+					$('.mapinfo').find('.close').on('click', function(){
 						alert('123');
 							var t = $(this),
 								parent = t.parent('.mapinfo');
@@ -82,7 +83,7 @@ $this->pageTitle=Yii::app()->name;
 									parent.remove();
 								});
 							return false;
-						});
+						});	
 			</script>
 					<?php 
 						if (Yii::app()->user->IsGuest) {
