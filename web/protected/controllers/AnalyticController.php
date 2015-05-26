@@ -217,6 +217,7 @@ class AnalyticController extends Controller
         {
             $questionsStudent[$column] = Yii::t('answerstudent', $column);
         }
+        //var_dump($this->GetArrayTranform($teachersInvolved));die();
         $this->render('educationMethodic', array(
                 'teachersInvolved' => $teachersInvolved,
                 'teachersNotInvolved' => $teachersNotInvolved,
@@ -227,9 +228,9 @@ class AnalyticController extends Controller
         ));
     }
     
-    public function actionTest()
+    public function actionEducationLabs()
     {
-        $this->render('test');
+        $this->render('educationLabs');
     }
     
     protected function GetArrayOf($array)
@@ -251,6 +252,26 @@ class AnalyticController extends Controller
             }
             array_push($data['keys'], $maxCountry);
             array_push($data['values'], $max);
+        }
+        return $data;
+    }
+    
+    protected function GetArrayTransform($array)
+    {
+        $data = array();
+        foreach(array('5','4','3','2','1','n/a') as $index)
+        {
+            $data[$index] = array();
+        }
+        foreach($array as $key => $row)
+        {
+            foreach($row as $item => $value)
+            {
+                if ($item!=0)
+                    array_push($data[$item], $value);
+                else
+                    array_push($data['n/a'], $value);
+            }
         }
         return $data;
     }

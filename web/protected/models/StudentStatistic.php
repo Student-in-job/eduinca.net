@@ -14,13 +14,4 @@ class StudentStatistic extends ModelStatistic
         $this->_id = 'answer';
         parent::__construct();
     }
-    
-    public function setCountBySex()
-    {
-        $this->_keys = array('num','sex');
-        $attributes = array('count(id_answer) as num', 'sex');
-        $where = array('involved_person_id = :id' => array(':id' => '2'));
-        $group = array('sex');
-        $this->buildCommand($attributes, null, $group, $where);
-    }
 }

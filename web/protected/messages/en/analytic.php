@@ -17,8 +17,9 @@ return array(
     'yes' => 'yes',
     'no' => 'no',
     'common' => 'Owerview',
-    'education_process' => 'Structure of education process',
     'respondents' => 'Surveys respondents',
     'educational_institution' => 'Educational Institution',
-    'education_methodic' => '',
+    'education_process' => 'Structure of education process',
+    'education_methodic' => 'Teaching methods',
+    'education_labs' => 'Lab lessons and internships',
 );
