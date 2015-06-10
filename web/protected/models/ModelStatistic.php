@@ -5,6 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+define("ISNULL", 920301);
+define("ISNOTNULL", 920302);
+
+define("COUNT", 930601);
+define("SUM", 930602);
+define("AVG", 930603);
+define("MAX", 930604);
+define("MIN", 930605);
 
 class ModelStatistic
 {
@@ -42,12 +50,36 @@ class ModelStatistic
         if (is_array($conditions)&&isset($conditions))
         {
             $counter = 1;
+            $params = array();
+            $condition = '';
             foreach($conditions as $column => $value)
             {
-                $condition = $column . '=:p' . $counter;
-                $param = array(':p' . $counter => $value);
-                $where[$condition] = $param;
+                if($value == ISNULL)
+                {
+                    $condition .= $column . ' IS NULL AND ';
+                    $counter++;
+                }
+                elseif($value == ISNOTNULL)
+                {
+                    $condition .= $column . ' IS NOT NULL AND ';
+                    $counter++;
+                }
+                elseif(is_array($value))
+                {
+                    $condition .= $column . ' IN (';
+                    foreach ($value as $item)
+                        $condition .= $item . ',';
+                    $condition = trim($condition, ',') . ') AND ';
+                    $counter++;
+                }
+                else
+                {
+                    $condition .= $column . '=:p' . $counter . ' AND ';
+                    $params[':p' . $counter++] = $value;
+                }
             }
+            $condition = trim($condition, ' AND ');
+            $where[$condition] = $params;
         }
         return $where;
     }
@@ -62,6 +94,7 @@ class ModelStatistic
      */
     protected function BuildCommand($attributes = null, $tables = null, $group = null, $where = null)
     {
+        //var_dump($where);
         if(!is_null($attributes)){
             $this->_command->select($attributes);
         }
@@ -82,6 +115,10 @@ class ModelStatistic
                     $this->_command->where($column, $param);
                 }
             }
+            else
+            {
+                $this->_command->where($where);
+            }
         }
         if(!is_null($group)){
             $this->_command->group($group);
@@ -91,8 +128,9 @@ class ModelStatistic
     /**
      * Перевод массива query в ассоиативный вида (5=>,4=>,3=>,2=>,1=>,0=>)
      * @param array $array Массив строк, возвращаемый query
-     * @param string or array $column столбцы которые должны быть ключевыми для массивов (5=>,4=>,3=>,2=>,1=>,0=>)
-     * @param string столбец из которого будет браться значение для массива (5=>,4=>,3=>,2=>,1=>,0=>)
+     * @param string $column столбцы которые должны быть ключевыми для массивов (5=>,4=>,3=>,2=>,1=>,0=>)
+     * @param string $value столбец из которого будет браться значение для массива (5=>,4=>,3=>,2=>,1=>,0=>)
+     * @param array $templateArray шаблон массива
      * @return Assosoative array
      */
     protected function ToAssosiative($array, $column, $value, $templateArray = null)
@@ -224,6 +262,7 @@ class ModelStatistic
         }
         $where = $this->TransformConditions($conditions);
         $this->BuildCommand($attributes, $tables, $group, $where);
+       // var_dump($where);die();
     }
     
     /**
@@ -232,7 +271,7 @@ class ModelStatistic
      * @param array $columns Столбцы для выборки и группировки
      * @param array $tables Соединение с таблицами
      * @param array $conditions Условия отбора всех строк
-     */
+     *//*
     protected function setCommonAverage($avgColumn ,$columns, $tables = null, $conditions = null)
     {
         $group = null;
@@ -251,8 +290,45 @@ class ModelStatistic
         }
         $where = $this->TransformConditions($conditions);
         $this->BuildCommand($attributes, $tables, $group, $where);
-    }
+    }*/
     
+    /**
+     * Подготовка SQL (агрегатное значение) запроса с фильтром по выбранным столбццам
+     * @param int $function Агрегатная функция одна из COUNT, SUM, MAX, MIN, AVG
+     * @param string $agregateColumn Столбец для которого считается среднее значение
+     * @param array $columns Столбцы для выборки и группировки
+     * @param array $tables Соединение с таблицами
+     * @param array $conditions Условия отбора всех строк
+     */
+    protected function setCommonAgregate($function ,$agregateColumn, $columns = null, $tables = null, $conditions = null)
+    {
+        $group = null;
+        $where = null;
+        switch ($function)
+        {
+            case COUNT: $func = 'COUNT'; break;
+            case AVG: $func = 'AVG'; break;
+            case SUM: $func = 'SUM'; break;
+            case MIN: $func = 'MIN'; break;
+            case MAX: $func = 'MAX'; break;
+        }
+        if(isset($columns))
+        {
+            if (is_array($columns))
+                $attributes = array_merge(array( $func . '('. $agregateColumn . ') as num'), $columns);
+            else
+                $attributes = array($func . '(' . $agregateColumn . ') as num', $columns);
+            $group = $columns;
+        }
+        else
+        {
+            $attributes = array($func . '(' . $agregateColumn . ') as num');
+        }
+        $where = $this->TransformConditions($conditions);
+        $this->BuildCommand($attributes, $tables, $group, $where);
+    }
+
+
     /**
      * Вывод количественных показателей с группировкой по учебным заведениям
      * @param array $columns одинарный массив с названием столбцов
@@ -260,7 +336,7 @@ class ModelStatistic
      * @param bool $inPercentage возвращать ли значение в процентах
      * @return array Массив сгрупированных по учебным заведениям (в качестве ключа выступает имя столбца)
      */
-    protected function getByUniversities($columns = null, $byInvolved = false, $inPercentage = false) {
+    protected function getByUniversities($columns = null, $byInvolved = false, $inPercentage = false, $conditions = null) {
         $data = array();
         foreach($columns as $column)
         {
@@ -273,7 +349,7 @@ class ModelStatistic
                 $attributes = array('university_id', $column);
             }
             $this->init();
-            $this->setCommonCount($attributes);
+            $this->setCommonCount($attributes, null, $conditions);
             $records = $this->_command->queryAll();
             $data[$column] = $this->ToAssosiative($records, array('university_id', $column), 'num');
         }
@@ -341,6 +417,32 @@ class ModelStatistic
     //Analytics
     
     /**
+     * Возврат последнего года для опросов
+     * @return int Последний год опросов
+     */
+    public function getLastYear()
+    {
+        $this->init();
+        $this->setCommonAgregate(MAX, 'year');
+        $data = $this->_command->queryAll();
+        return $data[0]['num'];
+    }
+    
+    /**
+     * Возврат всех годов, в которых проводились опросы
+     * @return array массив из годов
+     */
+    public function getYears()
+    {
+        $this->init();
+        $attributes = array('DISTINCT(year) as num');
+        $this->BuildCommand($attributes);
+        $records = $this->_command->queryAll();
+        $data = $this->ToAssosiative($records, 'num', 'num', array());
+        return $data;
+    }
+    
+    /**
      * Подсчет количества по странам
      * @param bool $byInvolved гриппировать по участвующим и неучаствующим
      * @param bool $inPercentage в процентном соотношении
@@ -369,13 +471,14 @@ class ModelStatistic
      * @param array $columns столбцы вопросов для результата
      * @param bool $inPercentage в процентном соотношении
      * @param bool $byInvolved сгруппировать по участвующим и неучаствующим
+     * @param array $conditions условия отбора
      * @return array Массив сгруппированный по учебным заведениям
      */
-    public function getCommonByUniversities($columns = null, $inPercentage = false, $byInvolved = false)
+    public function getCommonByUniversities($columns = null, $inPercentage = false, $byInvolved = false, $conditions = null)
     {
         if (!isset($columns))
             $columns = array('common_q1');
-        return $this->getByUniversities($columns, $byInvolved, $inPercentage);
+        return $this->getByUniversities($columns, $byInvolved, $inPercentage, $conditions);
     }
     
     /**
@@ -440,16 +543,53 @@ class ModelStatistic
         return $this->ToPercentage($data);
     }
     
+    /**
+     * Подсчет средней длительности практики по университетам
+     * @param type $conditions
+     * @return type
+     */
     public function getPracticeDurationByUniversities($conditions = null)
     {
         $avgColumn = 'practice_duration';
         $columns = array('university_id');
         $this->init();
-        $this->setCommonAverage($avgColumn ,$columns, null, $conditions);
+        $this->setCommonAgregate(AVG, $avgColumn ,$columns, null, $conditions);
         $records = $this->_command->queryAll();
         $templateArray = array();
         $data = $this->ToAssosiative($records, 'university_id', 'num', $templateArray);
         $this->RoundValues($data);
         return $data;
+    }
+    
+    public function getPrivateSectorByUniversities($conditions = null, $inPercentage = FALSE)
+    {
+        $agregateColumn = 'id_answer';
+        $columns = array('university_id');
+        $this->init();
+        if (!isset($conditions))
+            $conditions1 = $conditions;
+        $conditions1['private_comments'] = 'Нет';
+        $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions1);
+        $records = $this->_command->queryAll();
+        $templateArray = array();
+        $notParticipated = $this->ToAssosiative($records, 'university_id', 'num', $templateArray);
+        
+        $this->init();
+        $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions);
+        $records = $this->_command->queryAll();
+        $total = $this->ToAssosiative($records, 'university_id', 'num', $templateArray);
+        
+        $participated = array();
+        foreach ($total as $key => $value)
+        {
+            $minus = isset($notParticipated[$key])?$notParticipated[$key]:0;
+            if($inPercentage==TRUE)
+                $participated[$key] = ($value - $minus)/$value*100;
+            else
+                $participated[$key] = $value - $minus;
+        }
+        
+        $this->RoundValues($participated);
+        return $participated;
     }
 }

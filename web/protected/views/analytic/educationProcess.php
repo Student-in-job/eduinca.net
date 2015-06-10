@@ -5,20 +5,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$this->breadcrumbs=array(
+    $this->breadcrumbs=array(
         
-	Yii::t('site', 'analytic') => array('analytic/index'),
-        Yii::t('analytic', 'education_process')
-);
-?>
-<table>
-    <tr>
-        <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'teachers');?></h4></td>
-        <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'students');?></h4></td>
-    </tr>
-    <?php
-        $counter = 1;
-        $teachers_questions = array(
+            Yii::t('site', 'analytic') => array('analytic/index'),
+            Yii::t('analytic', 'education_process')
+    );
+    $teachers_questions = array(
                 'common_q1' => Yii::t('analytic', 'common_q2'),
                 'common_q2' => Yii::t('analytic', 'common_q4'),
                 'common_q3' => Yii::t('analytic', 'common_q5'),
@@ -29,11 +21,42 @@ $this->breadcrumbs=array(
                 'common_q8' => Yii::t('analytic', 'common_q10'),
                 'common_q9' => Yii::t('analytic', 'common_q11'),
         );
+    $students_questions = array(
+                'common_q1' => Yii::t('analytic', 'common_q1'),
+                'common_q2' => Yii::t('analytic', 'common_q2'),
+                'common_q3' => Yii::t('analytic', 'common_q3'),
+                'common_q4' => Yii::t('analytic', 'common_q4'),
+                'common_q5' => Yii::t('analytic', 'common_q5'),
+                'common_q6' => Yii::t('analytic', 'common_q6'),
+                'common_q7' => Yii::t('analytic', 'common_q7'),
+                'common_q8' => Yii::t('analytic', 'common_q8'),
+                'common_q9' => Yii::t('analytic', 'common_q9'),
+                'common_q10' => Yii::t('analytic', 'common_q10'),
+                'common_q11' => Yii::t('analytic', 'common_q11'),
+        );
+    $this->widget('application.extensions.widgets.filters.Filter', array(
+            'filtername' => 'educationProcess',
+            'questions_students' => $students_questions,
+            'questions_teachers' => $teachers_questions,
+            'model' => new FilterForm(),
+            'universities' => $universities,
+            'type' => ANALYTIC_PROCESS,
+            'years' => $years,
+    )); 
+?>
+<table>
+    <tr>
+        <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'teachers');?></h4></td>
+        <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'students');?></h4></td>
+    </tr>
+    <?php
+        $maxVal = (count($students)>count($teachers)) ? count($students) : count($teachers);
         $header[0] = array(Yii::t('analytic', 'educational_institution') => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1, 'n/a <br/> %' => 1);
-        foreach($students as $question => $arrayValues)
+        for($counter=1;$counter<=$maxVal;$counter++)
         {
             echo '<tr>';
             echo '<td style="background:#ffffff;vertical-align:top">';
+            list($question,$arrayValue) = each($teachers);
             if (isset($teachers[$question]))
             {
                 $this->widget('application.extensions.widgets.tables.Table', array(
@@ -45,6 +68,7 @@ $this->breadcrumbs=array(
             }
             echo '</td>';
             echo '<td style="background:#ffffff;vertical-align:top">';
+            list($question,$arrayValue) = each($students);
             if (isset($students[$question]))
             {
                 $this->widget('application.extensions.widgets.tables.Table', array(
@@ -56,7 +80,6 @@ $this->breadcrumbs=array(
             }
             echo '</td>';
             echo '</tr>';
-            $counter++;
         }
     ?>
 </table>
@@ -64,6 +87,7 @@ $this->breadcrumbs=array(
     <?php
         $axes = array();
         $legend = array();
+        $height = 80 + count($teachersMax['values'])*30 + 30;
         foreach($teachers as $question => $questionValue)
         {
             array_push($axes, $teachers_questions[$question]);
@@ -72,7 +96,7 @@ $this->breadcrumbs=array(
                 'data' => array('some' => $teachersMax['values']),
                 'xAxes' => $axes,
                 'width' => 850,
-                'height' => 400,
+                'height' => $height,
                 'margin_left' => 400,
                 'margin_top' => 80,
                 //'legend' => $legend,
@@ -80,6 +104,7 @@ $this->breadcrumbs=array(
                 'colors' => $teachersMax['keys'],
                 'name' => 'draw21',
                 'legend_left' => 1060,
+                'axisName' => '%',
     ));?>
 </div>
 <br/>
@@ -87,15 +112,17 @@ $this->breadcrumbs=array(
     <?php
         $axes = array();
         $legend = array();
+        $height = 80 + count($studentsMax['values'])*30 + 30;
         foreach($students as $question => $questionValue)
         {
             array_push($axes, Yii::t('analytic', $question));
         }
         $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
                 'data' => array('some' => $studentsMax['values']),
+                //'data' => $studentsMax['values'],
                 'xAxes' => $axes,
                 'width' => 850,
-                'height' => 500,
+                'height' => $height,
                 'margin_left' => 400,
                 'margin_top' => 80,
                 //'legend' => $legend,
@@ -103,5 +130,6 @@ $this->breadcrumbs=array(
                 'colors' => $studentsMax['keys'],
                 'name' => 'draw22',
                 'legend_left' => 1060,
+                'axisName' => '%',
     ));?>
 </div>

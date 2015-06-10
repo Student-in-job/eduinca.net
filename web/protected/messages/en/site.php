@@ -63,4 +63,5 @@ return array(
 	'universities' => 'Universities',
 	'participants' => 'Participants',
 	'allparticipants' => 'Participants',
+    'see' => 'Show',
 );

@@ -52,4 +52,10 @@ return array(
     'practice_duration' => '',
     'practice_duration_teachers' => '',
     'practice_duration_students' => '',
+    'education_diploma' => '',
+    'papers' => '',
+    'papers_types' => '',
+    'papers_theoretical' => '',
+    'papers_practical' => '',
+    'private_sector' => '',
 );

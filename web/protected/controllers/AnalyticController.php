@@ -8,6 +8,10 @@
 //include 'pChart/class/pData.class.php';
 //include 'pChart/class/pDraw.class.php';
 //include 'pChart/class/pImage.class.php';
+define('ANALYTIC_PROCESS', 125691);
+define('ANALYTIC_METHODIC', 125692);
+define('ANALYTIC_LABS', 125693);
+define('ANALYTIC_DIPLOMA', 125694);
         
 class AnalyticController extends Controller
 {
@@ -19,106 +23,39 @@ class AnalyticController extends Controller
         $this->render('index');
     }
     
-    function actionView($type=null)
+    public function actionFilter($type = null)
     {
-        switch ($type) {
-            case 1:
-                $student = new StudentStatistic();
-                $teacher = new TeacherStatistic();
-                $student->setCount();
-                $teacher->setCount();
-                $data = array_merge($student->getData(true), $teacher->getData(true));
-                $dataProvider = new CArrayDataProvider($data, array(
-                        'id' => 'id',
-                        'sort' => array(
-                            'attributes' => array('name', 'num')
-                        ),
-                        'pagination' => array(
-                            'pageSize' => 10,
-                        )
-                    ));
-                $studentBySex = new StudentStatistic();
-                $studentBySex->setCountBySex();
-                $teacherBySex = new TeacherStatistic();
-                $teacherBySex->setCountBySex();
-                //var_dump($dataProvider->getData());
-                
-                $this->render('allanswer', array(
-                    'dataProvider' => $dataProvider,
-                    'students' => $studentBySex->getData(true),
-                    'teachers' => $teacherBySex->getData(true),
-                ));
+        
+        $filter = $_POST['FilterForm'];
+        $year = $filter['year'];
+        $universities = ($filter['universities']!="")?$filter['universities']:null;
+        switch($_POST['type'])
+        {
+            case ANALYTIC_PROCESS:
+            {
+                $questions_teachers = ($filter['questions_teachers']!="")?$filter['questions_teachers']:null;
+                $questions_students = ($filter['questions_students']!="")?$filter['questions_students']:null;
+                $this->actionEducationProcess($year, $questions_teachers, $questions_students, $universities);
                 break;
-            case 2:
-                $dataTeacher = array();
-                $dataStudent = array();
-                $columnsTeacher = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9');
-                foreach($columnsTeacher as $column)
-                {
-                    $teacher = new TeacherStatistic();
-                    $dataTeacher[$column] = $teacher->getMethodic($column, true);
-                    
-                }
-                $columnsStudent = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
-                foreach($columnsStudent as $column)
-                {
-                    $student = new StudentStatistic();
-                    $dataStudent[$column] = $student->getMethodic($column, true);
-                }
-                
-                $header = array('', '5 <br/> (%)', '4  <br/>(%)', '3 <br/> (%)', '2 <br/> (%)', '1 <br/> (%)', 'n/a <br/> (%)');
-                
-                $this->render('methodic', array(
-                    'dataTeacher' => $dataTeacher,
-                    'dataStudent' => $dataStudent,
-                    'header' => $header,
-                ));
+            }
+            case ANALYTIC_METHODIC:
+            {
+                $questions = ($filter['questions']!="")?$filter['questions']:null;
+                $this->actionEducationMethodic($year, $questions, $universities);
                 break;
-            case 3:
-                $this->layout='//layouts/column3';
-                $dataTeacher = array();
-                $dataTeacherNot = array();
-                $dataStudent = array();
-                $dataStudentNot = array();
-                $columns = array('methodic_q1', 'methodic_q5', 'methodic_q8', 'methodic_q9', 'methodic_q13');
-                foreach($columns as $column)
-                {
-                    $teacher = new TeacherStatistic();
-                    $dataTeacher[$column] = $teacher->getFrequency($column, false, false);
-                    $teacherNot = new TeacherStatistic();
-                    $dataTeacherNot[$column] = $teacherNot->getFrequency($column, false);
-                    $student = new StudentStatistic();
-                    $dataStudent[$column] = $student->getFrequency($column, false, false);
-                    $studentNot = new TeacherStatistic();
-                    $dataStudentNot[$column] = $studentNot->getFrequency($column, false);
-                }
-                $header = array('', '5 <br/>(%)', '4  <br/>(%)', '3  <br/>(%)', '2  <br/>(%)', '1  <br/>(%)', 'n/a  <br/>(%)');
-                $this->render('frequency', array(
-                    'dataTeacher' => $dataTeacher,
-                    'dataStudent' => $dataStudent,
-                    'dataTeacherNot' => $dataTeacherNot,
-                    'dataStudentNot' => $dataStudentNot,
-                    'header' => $header,
-                ));
+            }
+            case ANALYTIC_LABS:
+            {
+                $this->actionEducationLabs($year, $universities);
                 break;
-            case 4:
-                $data = '';
-                $this->render('HBars', array(
-                    'data' => $data,
-                ));
+            }
+            case ANALYTIC_DIPLOMA:
+            {
+                $this->actionEducationDiploma($year, $universities);
                 break;
-            case 5:
-                $teacher = new TeacherStatistic();
-                $dataY = $teacher->getPracticeParticipation('private_papers');
-                $teacher = new TeacherStatistic();
-                $dataN = $teacher->getPracticeParticipation('private_papers', 'ANY');
-                $this->render('private_papers', array(
-                    'dataY' => $dataY,
-                    'dataN' => $dataN,
-                ));
-            default:
-                break;
+            }
         }
+        Yii::app()->end();
     }
     
     public function actionCommon() {
@@ -173,20 +110,39 @@ class AnalyticController extends Controller
         ));
     }
     
-    public function actionEducationProcess()
+    public function actionEducationProcess($year = null, $questionTeachers = null, $questionStudents = null, $universities = null)
     {
         $modelTeacher = new TeacherStatistic();
-        $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9');
-        $teachers = $modelTeacher->getCommonByUniversities($columns, true);
-        $columns = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
+        if(!isset($year))
+        {
+            $year = $modelTeacher->getLastYear();
+        }
+        $conditions['year'] = $year;
+        if(!isset($questionTeachers))
+        {
+            $questionTeachers = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9');
+        }
+        if(!isset($questionStudents))
+        {
+            $questionStudents = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
+        }
+        if(isset($universities))
+        {
+            $selected = array();
+            foreach ($universities as $item)
+            {
+                array_push($selected, $item);
+            }
+            $conditions['university_id'] = $selected;
+        }
+        $teachers = $modelTeacher->getCommonByUniversities($questionTeachers, true, false,$conditions);        
         $modelStudent = new StudentStatistic();
-        $students = $modelStudent->getCommonByUniversities($columns, true);
+        $students = $modelStudent->getCommonByUniversities($questionStudents, true, false,$conditions);
         $xAxes = array();
-        foreach ($columns as $column)
+        foreach ($questionStudents as $column)
         {
             array_push($xAxes, Yii::t('answerteacher', $column));
         }
-        
         $this->render('educationProcess', array(
                 'teachers' => $teachers,
                 'students' => $students,
@@ -194,51 +150,78 @@ class AnalyticController extends Controller
                 'xAxes' => $xAxes,
                 'teachersMax' => $this->GetMaxArrayOf($teachers),
                 'studentsMax' => $this->GetMaxArrayOf($students),
+                'years' => $modelTeacher->getYears(),
         ));
     }
     
-    public function actionEducationMethodic()
+    public function actionEducationMethodic($year = null, $questions = null, $universities = null)
     {
         $modelTeacher = new TeacherStatistic();
-        $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
-        $teachersInvolved = $modelTeacher->getMethodic($columns, true, array('involved_person_id' => '1'));
-        $teachersNotInvolved = $modelTeacher->getMethodic($columns, true, array('involved_person_id' => '2'));
-        $questionsTeacher = array();
-        foreach ($columns as $column)
-        {
-            $questionsTeacher[$column] = Yii::t('analytic', $column);
-        }
-        $columns = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
         $modelStudent = new StudentStatistic();
-        $studentsInvolved = $modelStudent->getMethodic($columns, true, array('involved_person_id' => '1'));
-        $studentsNotInvolved = $modelStudent->getMethodic($columns, true, array('involved_person_id' => '2'));
-        $questionsStudent = array();
-        foreach ($columns as $column)
+        if(!isset($year))
         {
-            $questionsStudent[$column] = Yii::t('analytic', $column);
+            $year = $modelTeacher->getLastYear();
         }
-        //var_dump($this->GetArrayTranform($teachersInvolved));die();
+        $conditions['year'] = $year;
+        if(!isset($questions))
+        {
+            $questions = array('methodic_q1', 'methodic_q2', 'methodic_q3', 'methodic_q4', 'methodic_q5', 'methodic_q6', 'methodic_q7', 'methodic_q8', 'methodic_q9', 'methodic_q10', 'methodic_q11', 'methodic_q12', 'methodic_q13');
+        }
+        if(isset($universities))
+        {
+            $selected = array();
+            foreach ($universities as $item)
+            {
+                array_push($selected, $item);
+            }
+            $conditions['university_id'] = $selected;
+        }
+        $conditions['involved_person_id'] = '1';
+        $teachersInvolved = $modelTeacher->getMethodic($questions, true, $conditions);
+        $studentsInvolved = $modelStudent->getMethodic($questions, true, $conditions);
+        $conditions['involved_person_id'] = '2';
+        $teachersNotInvolved = $modelTeacher->getMethodic($questions, true, $conditions);
+        $studentsNotInvolved = $modelStudent->getMethodic($questions, true, $conditions);
+        $questions = array();
+        foreach ($questions as $column)
+        {
+            $questions[$column] = Yii::t('analytic', $column);
+        }
         $this->render('educationMethodic', array(
                 'teachersInvolved' => $teachersInvolved,
                 'teachersNotInvolved' => $teachersNotInvolved,
                 'studentsInvolved' => $studentsInvolved,
                 'studentsNotInvolved' => $studentsNotInvolved,
-                'questionsTeacher' => $questionsTeacher,
-                'questionsStudent' => $questionsStudent,
+                '$questions' => $questions,
+                'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+                'years' => $modelTeacher->getYears(),
         ));
     }
     
-    public function actionEducationLabs()
+    public function actionEducationLabs($year = null, $universities = null)
     {
         $modelTeacher = new TeacherStatistic();
-        $teachers = $modelTeacher->getLabsByUniversities();
+        if(!isset($year))
+        {
+            $year = $modelTeacher->getLastYear();
+        }
+        $conditions['year'] = $year;
+        if(isset($universities))
+        {
+            $selected = array();
+            foreach ($universities as $item)
+            {
+                array_push($selected, $item);
+            }
+            $conditions['university_id'] = $selected;
+        }
+        $teachers = $modelTeacher->getLabsByUniversities($conditions);
         $modelStudent = new StudentStatistic();
-        $students = $modelStudent->getLabsByUniversities();
-        $practice_teachers = $modelTeacher->getPracticeByUniversities();
-        $practice_students = $modelStudent->getPracticeByUniversities();
-        $practice_duration_teachers = $modelTeacher->getPracticeDurationByUniversities();
-        $practice_duration_students = $modelStudent->getPracticeDurationByUniversities();
-        //var_dump($teachers);
+        $students = $modelStudent->getLabsByUniversities($conditions);
+        $practice_teachers = $modelTeacher->getPracticeByUniversities($conditions);
+        $practice_students = $modelStudent->getPracticeByUniversities($conditions);
+        $practice_duration_teachers = $modelTeacher->getPracticeDurationByUniversities($conditions);
+        $practice_duration_students = $modelStudent->getPracticeDurationByUniversities($conditions);
         $this->render('educationLabs', array(
                 'teachers' => $teachers,
                 'students' => $students,
@@ -247,8 +230,42 @@ class AnalyticController extends Controller
                 'practice_duration_teachers' => $practice_duration_teachers,
                 'practice_duration_students' => $practice_duration_students,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+                'years' => $modelTeacher->getYears(),
+        ));    
+    }
+    
+    public function actionEducationDiploma($year = null, $universities = null)
+    {
+        $modelTeacher = new TeacherStatistic();
+        if(!isset($year))
+        {
+            $year = $modelTeacher->getLastYear();
+        }
+        $conditions['year'] = $year;
+        if(isset($universities))
+        {
+            $selected = array();
+            foreach ($universities as $item)
+            {
+                array_push($selected, $item);
+            }
+            $conditions['university_id'] = $selected;
+        }
+        $papersAverage = $modelTeacher->getAveragePapersByUniversities($conditions);
+        $papersTheoretical = $modelTeacher->getPapersByUniversities($conditions);
+        $teachersPrivateSector = $modelTeacher->getPrivateSectorByUniversities($conditions);
+        $teachersPrivateSectorPercentage = $modelTeacher->getPrivateSectorByUniversities($conditions, TRUE);
+        $modelStudent = new StudentStatistic();
+        $studentsPrivateSectorPercentage = $modelStudent->getPrivateSectorByUniversities($conditions,TRUE);
+        $this->render('educationDiploma', array(
+                'papersAverage' => $papersAverage,
+                'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
+                'paperstheoretical' => $papersTheoretical,
+                'teachersPrivateSector' => $teachersPrivateSector,
+                'studentsPrivateSectorPercentage' => $studentsPrivateSectorPercentage,
+                'teachersPrivateSectorPercentage' => $teachersPrivateSectorPercentage,
+                'years' => $modelTeacher->getYears(),
         ));
-        
     }
     
     protected function GetMaxArrayOf($array)

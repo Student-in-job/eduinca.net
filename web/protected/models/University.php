@@ -34,7 +34,7 @@ class University extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_university, code, name_ru, name_en', 'required'),
+			array('id_university, name_ru, name_en', 'required'),
 			array('id_university, university_type_id, country_id', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
                         array('name_ru, name_en', 'length', 'max'=>100),

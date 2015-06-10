@@ -63,4 +63,5 @@ return array(
 	'universities' => 'Учебные заведения',
 	'participants' => 'Участников программы',
 	'allparticipants' => 'Всего приняли участие',
+    'see' => 'Показать',
 );

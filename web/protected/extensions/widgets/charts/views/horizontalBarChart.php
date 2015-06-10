@@ -24,6 +24,7 @@ foreach($this->data as $serie => $data)
  //$MyData->setSerieDrawable("Hits2",FALSE); 
 $MyData->addPoints($this->xAxes,"xAxes");
 //$MyData->setSerieDescription("Months","Month"); 
+$MyData->setAxisName(0,$this->axisName); 
 $MyData->setAbscissa("xAxes");
 
 //$MyData->setAbscissaName("Browsers");
@@ -49,7 +50,7 @@ else
     
 
 /* Draw the chart */  
-$myPicture->drawBarChart(array("DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"Rounded"=>TRUE,"Surrounding"=>30,"OverrideColors"=>$Palette,"Orientation"=>ORIENTATION_VERTICAL)); 
+$myPicture->drawBarChart(array("DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"Rounded"=>TRUE,"Surrounding"=>30,"OverrideColors"=>$Palette,"Orientation"=>ORIENTATION_VERTICAL, "DisplayR"=>0,"DisplayG"=>0, "DisplayB"=>0)); 
 
 $myPicture->drawLegend($this->legend_left,$this->legend_top,array("Style"=>LEGEND_BOX,"Mode"=>LEGEND_VERTICAL)); 
  

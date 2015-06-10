@@ -10,20 +10,62 @@ $this->breadcrumbs=array(
 	Yii::t('site', 'analytic') => array('analytic/index'),
         Yii::t('analytic', 'education_methodic')
 );
+$questions = array(
+        'methodic_q1' => Yii::t('analytic', 'methodic_q1'),
+        'methodic_q2' => Yii::t('analytic', 'methodic_q2'),
+        'methodic_q3' => Yii::t('analytic', 'methodic_q3'),
+        'methodic_q4' => Yii::t('analytic', 'methodic_q4'),
+        'methodic_q5' => Yii::t('analytic', 'methodic_q5'),
+        'methodic_q6' => Yii::t('analytic', 'methodic_q6'),
+        'methodic_q7' => Yii::t('analytic', 'methodic_q7'),
+        'methodic_q8' => Yii::t('analytic', 'methodic_q8'),
+        'methodic_q9' => Yii::t('analytic', 'methodic_q9'),
+        'methodic_q10' => Yii::t('analytic', 'methodic_q10'),
+        'methodic_q11' => Yii::t('analytic', 'methodic_q11'),
+        'methodic_q12' => Yii::t('analytic', 'methodic_q12'),
+        'methodic_q13' => Yii::t('analytic', 'methodic_q13'),
+);
+$labels = array();
+foreach($questions as $key => $value)
+{
+    $labels[$key] = '';
+}
+$this->widget('application.extensions.widgets.filters.Filter', array(
+            'filtername' => 'educationMethodic',
+            'questions' => $questions,
+            'model' => new FilterForm(),
+            'universities' => $universities,
+            'type' => ANALYTIC_METHODIC,
+            'years' => $years,
+    )); 
+$width = 50+count($teachersInvolved)*65+50;
 ?>
-<div style="width:65%">
-<?php
+<div style="width:55%;float:left;">
+    <?php
         $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1, 'n/a <br/> %' => 1);
         if(isset($teachersInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => 'Преподаватели участвующие в программе',
+                    'caption' => 'Преподаватели (участвующие в программе)',
                     'header' => $header,
                     'data' => $teachersInvolved,
-                    'labels' => $questionsTeacher,
+                    'labels' => $questions,
             ));
         }
-?>
+    ?>
+</div>
+<div style="width:20%;float:left;">
+    <?php
+        if(isset($teachersNotInvolved))
+        {
+            $this->widget('application.extensions.widgets.tables.Table', array(
+                    'caption' => '(не участвующие в программе)',
+                    'header' => $header,
+                    'data' => $teachersNotInvolved,
+                    'labels' => $labels,
+            ));
+        }
+    ?>
 </div>
 <div>
     <?php
@@ -37,27 +79,16 @@ $this->breadcrumbs=array(
                 'data' => $this->GetArrayTransform($teachersInvolved),
                 'xAxes' => $axes,
                 'legend' => $legend,
-                'title' => 'Информация об методике преподавания (студенты)',
+                'title' => 'Преподаватели (участвующие в программе)',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw31',
                 'rotation' => 90,
-                'width' => 765,
+                'width' => $width,
                 'height' => 750,
                 'margin_bottom' => 350,
+                'margin_top' => 60,
+                'axisName' => '%',
     ));?>
-</div>
-<div style="width:65%">
-<?php
-        if(isset($teachersNotInvolved))
-        {
-            $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => 'Преподаватели не участвующие в программе',
-                    'header' => $header,
-                    'data' => $teachersNotInvolved,
-                    'labels' => $questionsTeacher,
-            ));
-        }
-?>
 </div>
 <div>
     <?php
@@ -65,28 +96,42 @@ $this->breadcrumbs=array(
                 'data' => $this->GetArrayTransform($teachersNotInvolved),
                 'xAxes' => $axes,
                 'legend' => $legend,
-                'title' => 'Информация об методике преподавания (студенты)',
+                'title' => 'Преподаватели (не участвующие в программе)',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw32',
                 'rotation' => 90,
-                'width' => 765,
+                'width' => $width,
                 'height' => 750,
                 'margin_bottom' => 350,
+                'margin_top' => 60,
+                'axisName' => '%',
     ));?>
 </div>
-<div style="width:65%">  
-<?php
-        
+<div style="width:55%;float:left;">  
+    <?php
         if(isset($studentsInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => 'Студенты участвующие в программе',
+                    'caption' => 'Студенты (участвующие в программе)',
                     'header' => $header,
                     'data' => $studentsInvolved,
-                    'labels' => $questionsTeacher,
+                    'labels' => $questions,
             ));
         }
-?>
+    ?>
+</div>
+<div style="width:20%;float:left;"> 
+    <?php
+        if(isset($studentsNotInvolved))
+        {
+            $this->widget('application.extensions.widgets.tables.Table', array(
+                    'caption' => '(не участвующие в программе)',
+                    'header' => $header,
+                    'data' => $studentsNotInvolved,
+                    'labels' => $labels,
+            ));
+        }
+    ?>     
 </div>
 <div>
     <?php
@@ -99,27 +144,16 @@ $this->breadcrumbs=array(
                 'data' => $this->GetArrayTransform($studentsInvolved),
                 'xAxes' => $axes,
                 'legend' => $legend,
-                'title' => 'Информация об методике преподавания (студенты)',
+                'title' => 'Студенты (участвующие в программе)',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw33',
                 'rotation' => 90,
-                'width' => 765,
+                'width' => $width,
                 'height' => 750,
                 'margin_bottom' => 350,
+                'margin_top' => 60,
+                'axisName' => '%',
     ));?>
-</div>
-<div style="width:65%"> 
-    <?php
-        if(isset($studentsNotInvolved))
-        {
-            $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => 'Студенты не участвующие в программе',
-                    'header' => $header,
-                    'data' => $studentsNotInvolved,
-                    'labels' => $questionsTeacher,
-            ));
-        }
-    ?>     
 </div>
 <div>
     <?php
@@ -128,12 +162,14 @@ $this->breadcrumbs=array(
                 'data' => $this->GetArrayTransform($studentsNotInvolved),
                 'xAxes' => $axes,
                 //'legend' => $legend,
-                'title' => 'Информация об методике преподавания (студенты)',
+                'title' => 'Студенты (не участвующие в программе)',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw34',
                 'rotation' => 90,
-                'width' => 765,
+                'width' => $width,
                 'height' => 750,
                 'margin_bottom' => 350,
+                'margin_top' => 60,
+                'axisName' => '%',
     ));?>
 </div>

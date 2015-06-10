@@ -403,9 +403,11 @@ text-decoration:underline;
 #dropmenu:checked ~ .titledropmenu {
 	 -webkit-transition:1s;
 	width: 99%;
-	height: 100px;
+	height: 300px;
 	opacity: 1;
 	padding:5px;
+        overflow: auto;
+        
 }
 	
 .titledropmenu {
@@ -648,7 +650,6 @@ border: 1px solid #666;
 padding: 4px;
 text-align:center;
 display:inline;
-background-color:;
 }
 .nav-pills .active {
 background-color:#F8F8FF;

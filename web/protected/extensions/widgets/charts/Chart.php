@@ -23,7 +23,8 @@ class Chart extends CWidget{
     public $margin_bottom = 30;
     public $legend_left = 0;
     public $legend_top = 0;
-    public $axisName = '%';
+    public $axisName = '';
+    public $chartNum = 1;
     
     protected function InitPallete()
     {
