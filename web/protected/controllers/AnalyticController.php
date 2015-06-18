@@ -8,6 +8,7 @@
 //include 'pChart/class/pData.class.php';
 //include 'pChart/class/pDraw.class.php';
 //include 'pChart/class/pImage.class.php';
+define('ANALYTIC_COMMON', 125695);
 define('ANALYTIC_PROCESS', 125691);
 define('ANALYTIC_METHODIC', 125692);
 define('ANALYTIC_LABS', 125693);
@@ -54,15 +55,25 @@ class AnalyticController extends Controller
                 $this->actionEducationDiploma($year, $universities);
                 break;
             }
+            case ANALYTIC_COMMON:
+            {
+                $this->actionCommon($year);
+                break;
+            }
         }
         Yii::app()->end();
     }
     
-    public function actionCommon() {
+    public function actionCommon($year = null) {
         $modelStudent = new StudentStatistic();
         $modelTeacher = new TeacherStatistic();
-        $teachers = $modelTeacher->getCountByCountries(true); 
-        $students = $modelStudent->getCountByCountries(true);
+        if(!isset($year))
+        {
+            $year = $modelTeacher->getLastYear();
+        }
+        $conditions['year'] = $year;
+        $teachers = $modelTeacher->getCountByCountries(true, false, $conditions); 
+        $students = $modelStudent->getCountByCountries(true, false, $conditions);
         
         $country = $this->GetArray('Country', 'id_country', 'name_' . Yii::app()->language);
         $data = array();
@@ -74,8 +85,8 @@ class AnalyticController extends Controller
         {
             $data[$row['country_id']]['s_' . $row['involved_person_id']] = $row['num'];
         }
-        $teachers = $modelTeacher->getCountByCountries(); 
-        $students = $modelStudent->getCountByCountries();
+        $teachers = $modelTeacher->getCountByCountries(false, false, $conditions); 
+        $students = $modelStudent->getCountByCountries(false, false, $conditions);
         $dataPersonType = array();
         $dataPersonType1 = array();
         $countries = $this->GetArray('Country', 'id_country', 'name_' . Yii::app()->language);
@@ -107,6 +118,7 @@ class AnalyticController extends Controller
                 'dataPersonType1' => $dataPersonType1,
                 'countries' => $countries,
                 'axes' => $axes,
+                'years' => $modelTeacher->getYears(),
         ));
     }
     
@@ -124,7 +136,7 @@ class AnalyticController extends Controller
         }
         if(!isset($questionStudents))
         {
-            $questionStudents = array('common_q1', 'common_q2', 'common_q3', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
+            $questionStudents = array('common_q2', 'common_q4', 'common_q5', 'common_q6', 'common_q7', 'common_q8', 'common_q9', 'common_q10', 'common_q11');
         }
         if(isset($universities))
         {
@@ -306,9 +318,26 @@ class AnalyticController extends Controller
         {
             foreach($row as $item => $value)
             {
+                //if (is_null($value)) $value=0;
                 array_push($data[$item], $value);
             }
         }
         return $data;
+    }
+    
+    protected function getColorByUniversity($data, $universities)
+    {
+        $allColors = array();
+        $counter = 0;
+        foreach ($universities as $university => $values)
+        {
+            $allColors[$university] = $counter++;
+        }
+        $colors = array();
+        foreach($data as $key => $value)
+        {
+            array_push($colors, $allColors[$key]);
+        }
+        return $colors;
     }
 }

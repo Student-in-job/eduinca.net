@@ -5,9 +5,15 @@ $this->breadcrumbs=array(
 	Yii::t('site', 'analytic') => array('analytic/index'),
         Yii::t('analytic', 'common')
 );
+$this->widget('application.extensions.widgets.filters.Filter', array(
+            'filtername' => 'common',
+            'model' => new FilterForm(),
+            'type' => ANALYTIC_COMMON,
+            'years' => $years,
+    )); 
 ?>
 
-    <h3><?php echo Yii::t('analytic', 'respondents')?></h3>
+<h3><?php echo Yii::t('analytic', 'respondents')?></h3>
 <?php
     $header = array(
             0 => array(

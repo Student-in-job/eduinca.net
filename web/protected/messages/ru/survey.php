@@ -37,4 +37,5 @@ return array(
     'code_notinvolved' => 'не участвующие в программе',
     'view_codes' => 'Коды доступа к опросу',
     'generate_codes' => 'Создать коды для опроса',
+    'print' => 'Вывести в PDF',
 );

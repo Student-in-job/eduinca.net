@@ -130,11 +130,9 @@
 <?php
     $width = 50 + count($practice_duration_teachers)*50 + 350;
     $legend = array();
-    $colors = array();
     foreach ($practice_duration_teachers as $key => $row)
     {
         $legend[$key] = $universities[$key];
-        $colors[$key] = $key;
     }
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $practice_duration_teachers,
@@ -149,15 +147,13 @@
             'legend_top' => 160,
             'legend_left' => $width - 285,
             'axisName' => 'дней',
-            'colors' => $colors,
+            'colors' => $this->getColorByUniversity($practice_duration_teachers, $universities),
     ));
     $width = 50 + count($practice_duration_students)*50 + 350;
     $legend = array();
-    $colors = array();
     foreach ($practice_duration_students as $key => $row)
     {
         $legend[$key] = $universities[$key];
-        $colors[$key] = $key;
     }
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $practice_duration_students,
@@ -172,6 +168,6 @@
             'legend_top' => 160,
             'legend_left' => $width - 285,
             'axisName' => 'дней',
-            'colors' => $colors,
+            'colors' => $this->getColorByUniversity($practice_duration_students, $universities),
     ));
 ?>

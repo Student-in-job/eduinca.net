@@ -11,9 +11,12 @@
 
         
         $MyData = new pData();   
-        $MyData->loadPalette("pChart/palettes/blind.color",TRUE);
+        //$MyData->loadPalette("pChart/palettes/blind.color",TRUE);
+        if (!is_null($this->colors))
+            $colors = $this->ReturnPallete();
+        else
+            $colors = $this->InitPallete();
         
-        $colors = $this->InitPallete();
         $counter = 0;
         //var_dump($this->data);die();
         foreach($this->data as $serie => $data)
@@ -38,8 +41,8 @@
         $myPicture->drawScale(array("CycleBackground"=>TRUE,"DrawSubTicks"=>TRUE,"GridR"=>0,"GridG"=>0,"GridB"=>0,"GridAlpha"=>10, "LabelRotation"=>$this->rotation)); 
 
         /* Turn on shadow computing */  
-        $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10)); 
-
+        $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
+        
         /* Draw the chart */ 
         $settings = array("Gradient"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE, "DisplayR"=>0,"DisplayG"=>0, "DisplayB"=>0,"DisplayShadow"=>TRUE,"Surrounding"=>10); 
         //$settings = array("Floating0Serie"=>"Floating 0","Draw0Line"=>TRUE,"Gradient"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"DisplayR"=>255,"DisplayG"=>255,"DisplayB"=>255,"DisplayShadow"=>TRUE,"Surrounding"=>10);

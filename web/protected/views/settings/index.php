@@ -3,12 +3,14 @@
 /* @var $model Settings */
 /* @var $form CActiveForm */
 
-$this->breadcrumbs=array(
+$this->breadcrumbs = array(
         Yii::t('site', 'settings') => array('settings/index'),
 );
 
-$this->menu=array(
+$this->menu = array(
 	array('label' => Yii::t('settings', 'changepassword'), 'url' => array('update')),
+        array('label' => Yii::t('user','create_user'), 'url' => array('user/create')),
+	array('label' => Yii::t('user','manage_user'), 'url' => array('user/admin')),
 );
 ?>
 

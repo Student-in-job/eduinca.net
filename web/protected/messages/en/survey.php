@@ -37,4 +37,5 @@ return array(
     'code_notinvolved' => '',
     'view_codes' => 'Access codes for survey',
     'generate_codes' => 'Create access codes for survey',
+    'print' => '',
 );

@@ -40,7 +40,8 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
     )); 
 $width = 50+count($teachersInvolved)*65+50;
 ?>
-<div style="width:55%;float:left;">
+<div class="span-20">
+<div style="width:65%;float:left;">
     <?php
         $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1, 'n/a <br/> %' => 1);
         if(isset($teachersInvolved))
@@ -54,7 +55,7 @@ $width = 50+count($teachersInvolved)*65+50;
         }
     ?>
 </div>
-<div style="width:20%;float:left;">
+<div style="width:25%;float:left;">
     <?php
         if(isset($teachersNotInvolved))
         {
@@ -107,7 +108,7 @@ $width = 50+count($teachersInvolved)*65+50;
                 'axisName' => '%',
     ));?>
 </div>
-<div style="width:55%;float:left;">  
+<div style="width:65%;float:left;">  
     <?php
         if(isset($studentsInvolved))
         {
@@ -120,7 +121,7 @@ $width = 50+count($teachersInvolved)*65+50;
         }
     ?>
 </div>
-<div style="width:20%;float:left;"> 
+<div style="width:25%;float:left;"> 
     <?php
         if(isset($studentsNotInvolved))
         {
@@ -173,3 +174,29 @@ $width = 50+count($teachersInvolved)*65+50;
                 'axisName' => '%',
     ));?>
 </div>
+</div>
+<div class="span-5">
+<div class="portlet">
+    <table>
+        <tr>
+            <td><?php echo Yii::t('analytic', 'common_answer5');?></td>
+        </tr>
+        <tr>
+            <td><?php echo Yii::t('analytic', 'common_answer4');?></td>
+        </tr>
+        <tr>
+            <td><?php echo Yii::t('analytic', 'common_answer3');?></td>
+        </tr>
+        <tr>
+            <td><?php echo Yii::t('analytic', 'common_answer2');?></td>
+        </tr>
+        <tr>
+            <td><?php echo Yii::t('analytic', 'common_answer1');?></td>
+        </tr>
+        <tr>
+            <td><?php echo Yii::t('analytic', 'common_answer0');?></td>
+        </tr>
+    </table>
+</div>
+</div>
+<div style="clear: both;">

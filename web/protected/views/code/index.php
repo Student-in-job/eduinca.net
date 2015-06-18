@@ -23,14 +23,15 @@ $this->breadcrumbs=array(
 -->
 <?php $codes_view = PDF::PrintCodes($dataProvider, $university_name, $date_till);?>
 <?php echo $codes_view;?>
+<br/>
 <div><?php echo CHtml::link(
-            'Print',
+            Yii::t('survey', 'print'),
             array(
                     'PDFMaker/Generate',
                     'id_survey_in_university' => $id_survey_in_university,
                     'date_till' => $date_till,
                     'university_name' => $university_name,                
             ),
-            array('target' => '_blank')
+            array('target' => '_blank', 'class' => 'button')
             );?>
 </div>

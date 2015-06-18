@@ -103,6 +103,6 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'vitalik.pak@gmail.com',
                 'languages'=>array('ru'=>'Русский', 'en'=>'English'),
-                'url' => 'http://st.i-cloud.uz',
+                'url' => 'http://statistics.eduinca.net',
 	),
 );

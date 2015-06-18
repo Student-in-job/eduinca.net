@@ -44,6 +44,7 @@
             'years' => $years,
     )); 
 ?>
+<div class="span-20">
 <table>
     <tr>
         <td style="background:none;"><h4 style="margin:0;text-align:center;"><?php echo Yii::t('analytic', 'teachers');?></h4></td>
@@ -92,6 +93,7 @@
         {
             array_push($axes, $teachers_questions[$question]);
         }
+        var_dump($teachersMax['keys']);
         $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
                 'data' => array('some' => $teachersMax['values']),
                 'xAxes' => $axes,
@@ -133,3 +135,29 @@
                 'axisName' => '%',
     ));?>
 </div>
+</div>
+<div class="span-5">
+    <div class="portlet" style="margin-top: 44px;">
+        <table>
+            <tr>
+                <td><?php echo Yii::t('analytic', 'common_answer5');?></td>
+            </tr>
+            <tr>
+                <td><?php echo Yii::t('analytic', 'common_answer4');?></td>
+            </tr>
+            <tr>
+                <td><?php echo Yii::t('analytic', 'common_answer3');?></td>
+            </tr>
+            <tr>
+                <td><?php echo Yii::t('analytic', 'common_answer2');?></td>
+            </tr>
+            <tr>
+                <td><?php echo Yii::t('analytic', 'common_answer1');?></td>
+            </tr>
+            <tr>
+                <td><?php echo Yii::t('analytic', 'common_answer0');?></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div style="clear: both"></div>

@@ -58,4 +58,10 @@ return array(
     'papers_theoretical' => '',
     'papers_practical' => '',
     'private_sector' => '',
+    'common_answer5' => '5 - fully agree',
+    'common_answer4' => '4 - agree, but minor adjustments are necessary',
+    'common_answer3' => '3 - partially agree, some improvements needed',
+    'common_answer2' => '2 - rather disagree, substantial improvements needed',
+    'common_answer1' => '1 - completely disagree',
+    'common_answer0' => 'n/a - unable to assess',
 );

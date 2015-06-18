@@ -31,6 +31,7 @@ class Filter extends CWidget
             case ANALYTIC_METHODIC: $this->render('filterEducationMethodic'); break;
             case ANALYTIC_LABS: $this->render('filterEducationLabs'); break;
             case ANALYTIC_DIPLOMA: $this->render('filterEducationLabs'); break;
+            case ANALYTIC_COMMON: $this->render('filterCommon'); break;
         }
     }
 }

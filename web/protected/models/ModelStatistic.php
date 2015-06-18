@@ -194,6 +194,7 @@ class ModelStatistic
                         }
                         foreach($rowValue as $key => $value)
                         {
+                            $sum = ($sum==0)?1:$sum;
                             $data[$item][$row][$key] = round($value/$sum*100);
                         }
                     }
@@ -201,10 +202,12 @@ class ModelStatistic
                     {
                         $sum += $rowValue;
                     }
-                }if(!$flag)
+                }
+                if(!$flag)
                 {
                     foreach($itemValue as $row => $rowValue)
                     {
+                        $sum = ($sum==0)?1:$sum;
                         $data[$item][$row] = round($rowValue/$sum*100);
                     }
                     $flag = false;
@@ -446,9 +449,10 @@ class ModelStatistic
      * Подсчет количества по странам
      * @param bool $byInvolved гриппировать по участвующим и неучаствующим
      * @param bool $inPercentage в процентном соотношении
+     * @param array $conditions Условия отбора всех строк
      * @return array Массив сгруппированный по странам
      */
-    public function getCountByCountries($byInvolved = false, $inPercentage = false)
+    public function getCountByCountries($byInvolved = false, $inPercentage = false, $conditions = null)
     {
         $this->init();
         if($byInvolved == true)
@@ -462,7 +466,7 @@ class ModelStatistic
         $tables = array(
                         'tbl_university u' => 'university_id = u.id_university',
         );
-        $this->setCommonCount($attributes, $tables);
+        $this->setCommonCount($attributes, $tables, $conditions);
         return $this->_command->queryAll();
     }
     
@@ -566,7 +570,7 @@ class ModelStatistic
         $agregateColumn = 'id_answer';
         $columns = array('university_id');
         $this->init();
-        if (!isset($conditions))
+        if (isset($conditions))
             $conditions1 = $conditions;
         $conditions1['private_comments'] = 'Нет';
         $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions1);

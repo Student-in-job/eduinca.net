@@ -14,9 +14,11 @@
         $MyData = new pData();   
         //$MyData->loadPalette("pChart/palettes/blind.color",TRUE);
         
-        $colors = $this->InitPallete();
+        if (!is_null($this->colors))
+            $colors = $this->ReturnPallete();
+        else
+            $colors = $this->InitPallete();
         $MyData->Palette = $colors;
-        
         foreach($this->data as $serie => $data)
         {
             $MyData->addPoints($data, $this->GetLegend($serie));
