@@ -90,7 +90,8 @@ class StudentController extends Controller
                         if($modelCode->save())
                         {
                             session_unset();
-                            $this->redirect(array('site/logout'));
+                            Yii::app()->user->logout();
+                            $this->redirect(array('answer/completed'));
                         }
                     }
 		}

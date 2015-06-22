@@ -43,11 +43,11 @@ $width = 50+count($teachersInvolved)*65+50;
 <div class="span-20">
 <div style="width:65%;float:left;">
     <?php
-        $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1, 'n/a <br/> %' => 1);
+        $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1);
         if(isset($teachersInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => 'Преподаватели (участвующие в программе)',
+                    'caption' => Yii::t('analytic', 'teachers') . ' (' . Yii::t('analytic', 'participated') . ')',
                     'header' => $header,
                     'data' => $teachersInvolved,
                     'labels' => $questions,
@@ -60,7 +60,7 @@ $width = 50+count($teachersInvolved)*65+50;
         if(isset($teachersNotInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => '(не участвующие в программе)',
+                    'caption' => '(' . Yii::t('analytic', 'notparticipated') . ')',
                     'header' => $header,
                     'data' => $teachersNotInvolved,
                     'labels' => $labels,
@@ -77,10 +77,10 @@ $width = 50+count($teachersInvolved)*65+50;
             array_push($axes, Yii::t('analytic',$key));
         }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $this->GetArrayTransform($teachersInvolved),
+                'data' => $this->GetArrayTransform($teachersInvolved, array('5','4','3','2','1')),
                 'xAxes' => $axes,
                 'legend' => $legend,
-                'title' => 'Преподаватели (участвующие в программе)',
+                'title' => Yii::t('analytic', 'teachers') . ' (' . Yii::t('analytic', 'participated') . ')',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw31',
                 'rotation' => 90,
@@ -94,10 +94,10 @@ $width = 50+count($teachersInvolved)*65+50;
 <div>
     <?php
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $this->GetArrayTransform($teachersNotInvolved),
+                'data' => $this->GetArrayTransform($teachersNotInvolved, array('5','4','3','2','1')),
                 'xAxes' => $axes,
                 'legend' => $legend,
-                'title' => 'Преподаватели (не участвующие в программе)',
+                'title' => Yii::t('analytic', 'teachers') . ' (' . Yii::t('analytic', 'notparticipated') . ')',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw32',
                 'rotation' => 90,
@@ -113,7 +113,7 @@ $width = 50+count($teachersInvolved)*65+50;
         if(isset($studentsInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => 'Студенты (участвующие в программе)',
+                    'caption' => Yii::t('analytic', 'students') . ' (' . Yii::t('analytic', 'participated') . ')',
                     'header' => $header,
                     'data' => $studentsInvolved,
                     'labels' => $questions,
@@ -126,7 +126,7 @@ $width = 50+count($teachersInvolved)*65+50;
         if(isset($studentsNotInvolved))
         {
             $this->widget('application.extensions.widgets.tables.Table', array(
-                    'caption' => '(не участвующие в программе)',
+                    'caption' => '(' . Yii::t('analytic', 'notparticipated') . ')',
                     'header' => $header,
                     'data' => $studentsNotInvolved,
                     'labels' => $labels,
@@ -142,10 +142,10 @@ $width = 50+count($teachersInvolved)*65+50;
             array_push($axes, Yii::t('analytic',$key));
         }
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $this->GetArrayTransform($studentsInvolved),
+                'data' => $this->GetArrayTransform($studentsInvolved, array('5','4','3','2','1')),
                 'xAxes' => $axes,
                 'legend' => $legend,
-                'title' => 'Студенты (участвующие в программе)',
+                'title' => Yii::t('analytic', 'teachers') . ' (' . Yii::t('analytic', 'participated') . ')',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw33',
                 'rotation' => 90,
@@ -160,10 +160,10 @@ $width = 50+count($teachersInvolved)*65+50;
     <?php
         $array = array();
         $this->widget('application.extensions.widgets.charts.BarChart', array(
-                'data' => $this->GetArrayTransform($studentsNotInvolved),
+                'data' => $this->GetArrayTransform($studentsNotInvolved, array('5','4','3','2','1')),
                 'xAxes' => $axes,
                 //'legend' => $legend,
-                'title' => 'Студенты (не участвующие в программе)',
+                'title' => Yii::t('analytic', 'teachers') . ' (' . Yii::t('analytic', 'notparticipated') . ')',
                 //'colors' => $studentsMax['keys'],
                 'name' => 'draw34',
                 'rotation' => 90,
@@ -179,22 +179,19 @@ $width = 50+count($teachersInvolved)*65+50;
 <div class="portlet">
     <table>
         <tr>
-            <td><?php echo Yii::t('analytic', 'common_answer5');?></td>
+            <td><?php echo Yii::t('analytic', 'methodic_answer5');?></td>
         </tr>
         <tr>
-            <td><?php echo Yii::t('analytic', 'common_answer4');?></td>
+            <td><?php echo Yii::t('analytic', 'methodic_answer4');?></td>
         </tr>
         <tr>
-            <td><?php echo Yii::t('analytic', 'common_answer3');?></td>
+            <td><?php echo Yii::t('analytic', 'methodic_answer3');?></td>
         </tr>
         <tr>
-            <td><?php echo Yii::t('analytic', 'common_answer2');?></td>
+            <td><?php echo Yii::t('analytic', 'methodic_answer2');?></td>
         </tr>
         <tr>
-            <td><?php echo Yii::t('analytic', 'common_answer1');?></td>
-        </tr>
-        <tr>
-            <td><?php echo Yii::t('analytic', 'common_answer0');?></td>
+            <td><?php echo Yii::t('analytic', 'methodic_answer1');?></td>
         </tr>
     </table>
 </div>

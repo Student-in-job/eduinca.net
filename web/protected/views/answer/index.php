@@ -6,13 +6,6 @@ $this->breadcrumbs=array(
 		Yii::t('site','statistics') => array('/statistics/index'),
         ($person == 1)?Yii::t('statistics','answers_teachers'):Yii::t('statistics','answers_students')//'Answer Teachers',
 );
-/*
-$this->menu=array(
-	array('label'=>Yii::t('answerteacher','member'), 'url'=>array('teacher/create', 'involved' => 1)),
-	array('label'=>Yii::t('answerteacher','notmember'), 'url'=>array('teacher/create', 'involved' => 2)),
-        array('label'=>Yii::t('answerstudent','member'), 'url'=>array('student/create', 'involved' => 1)),
-	array('label'=>Yii::t('answerstudent','notmember'), 'url'=>array('student/create', 'involved' => 2)),
-);*/
 $active1 = '';
 $active2 = '';
 switch ($person)
@@ -22,13 +15,20 @@ switch ($person)
 }
 ?>
 
-
 <ul class="nav nav-pills">
     <li class="<?php echo $active1;?>"><?php echo CHtml::link(Yii::t('answer','teachers'), array('index', 'person' => 1));?></li>
     <li class="<?php echo $active2;?>"><?php echo CHtml::link(Yii::t('answer','students'), array('index', 'person' => 2));?></li>
 </ul>
-
-<!--<h1>Answer</h1>-->
+<br/>
+<ul class="nav nav-pills">
+    <?php
+        foreach ($years as $year)
+        {
+            $class = ($chosen_year == $year)?'class = active':'';
+            echo '<li ' . $class . '>' . CHtml::link($year, array('index', 'person' => $person, 'year' => $year)) . '</li>';
+        }
+    ?>
+</ul>
 <?php
     if($person == 1){
         $this->widget('zii.widgets.grid.CGridView', array(
@@ -48,15 +48,15 @@ switch ($person)
                 ),
                 array(
                     'name' => 'university_id',
-                    'value' => '$data->university_name',
+                    'value' => '$this->grid->controller->_university[$data->university_id]',
                 ),
                 array(
                     'name' => 'person_type_id',
-                    'value' => '$data->person_type_name',
+                    'value' => '$this->grid->controller->_persontype[$data->person_type_id]',
                 ),
                 array(
                     'name' => 'involved_person_id',
-                    'value' => '$data->involved_name',
+                    'value' => '$this->grid->controller->_involved[$data->involved_person_id]',
                 ),
                 array(
                     'class' => 'CButtonColumn',
@@ -101,15 +101,15 @@ switch ($person)
                 ),
                 array(
                     'name' => 'university_id',
-                    'value' => '$data->university_name',
+                    'value' => '$this->grid->controller->_university[$data->university_id]',
                 ),
                 array(
                     'name' => 'person_type_id',
-                    'value' => '$data->person_type_name',
+                    'value' => '$this->grid->controller->_persontype[$data->person_type_id]',
                 ),
                 array(
                     'name' => 'involved_person_id',
-                    'value' => '$data->involved_name',
+                    'value' => '$this->grid->controller->_involved[$data->involved_person_id]',
                 ),
                 array(
                     'class' => 'CButtonColumn',
@@ -137,7 +137,3 @@ switch ($person)
         ));
     }
 ?>
-<?php /*$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); */?>

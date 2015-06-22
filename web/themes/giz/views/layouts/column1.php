@@ -6,5 +6,7 @@
         )); ?><!-- breadcrumbs -->
         <?php endif?><!-- breadcrumbs -->
     </header>
+    <div style="min-height:350px;">
     <?php echo $content ?>
+    </div>
     <?php $this->endContent(); ?>

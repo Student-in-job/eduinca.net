@@ -3,6 +3,13 @@
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
  */
+
+define('ANALYTIC_COMMON', 125695);
+define('ANALYTIC_PROCESS', 125691);
+define('ANALYTIC_METHODIC', 125692);
+define('ANALYTIC_LABS', 125693);
+define('ANALYTIC_DIPLOMA', 125694);
+
 class Controller extends CController
 {
 	/**

@@ -14,4 +14,5 @@ return array(
     'notmember' => 'other',
     'teachers' => 'Teachers',
     'students' => 'Students',
+    'thanks' => 'Thank you for your participation!',
 );

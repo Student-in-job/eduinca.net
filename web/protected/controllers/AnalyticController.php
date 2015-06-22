@@ -8,11 +8,6 @@
 //include 'pChart/class/pData.class.php';
 //include 'pChart/class/pDraw.class.php';
 //include 'pChart/class/pImage.class.php';
-define('ANALYTIC_COMMON', 125695);
-define('ANALYTIC_PROCESS', 125691);
-define('ANALYTIC_METHODIC', 125692);
-define('ANALYTIC_LABS', 125693);
-define('ANALYTIC_DIPLOMA', 125694);
         
 class AnalyticController extends Controller
 {

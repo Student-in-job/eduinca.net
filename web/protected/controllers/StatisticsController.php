@@ -9,11 +9,7 @@ class StatisticsController extends Controller
         
         public function init(){
             parent::init();
-            $dataProvider = new CActiveDataProvider('University');
-            foreach($dataProvider->getData() as $activeRecord)
-            {
-                $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name');
-            }
+            $this->_university = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
         }
         /**
 	 * Specifies the access control rules.

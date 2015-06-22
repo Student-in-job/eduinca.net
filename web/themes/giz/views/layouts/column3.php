@@ -8,10 +8,12 @@
     )); ?><!-- breadcrumbs -->
     <?php endif?><!-- breadcrumbs -->
     </header>
+    <div style="min-height:350px;">
     <div class="span-20">
             <div id="content">
                     <?php echo $content; ?>
             </div><!-- content -->
+    </div>
     </div>
     <?php $this->endContent(); ?>
 </section>

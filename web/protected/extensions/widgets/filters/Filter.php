@@ -17,6 +17,7 @@ class Filter extends CWidget
     public $universities;
     public $type;
     public $questions;
+    public $params;
 
     public function run()
     {

@@ -8,7 +8,7 @@
     )); ?><!-- breadcrumbs -->
     <?php endif?><!-- breadcrumbs -->
     </header>
-
+    <div style="min-height:350px;">
     <div class="span-20">
         <?php echo $content; ?>
     </div>
@@ -25,6 +25,7 @@
                     $this->endWidget();
             ?>
             </div><!-- sidebar -->
+    </div>
     </div>
     <?php $this->endContent(); ?>
 </section>

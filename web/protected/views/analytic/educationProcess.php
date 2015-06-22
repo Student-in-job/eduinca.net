@@ -93,7 +93,6 @@
         {
             array_push($axes, $teachers_questions[$question]);
         }
-        var_dump($teachersMax['keys']);
         $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
                 'data' => array('some' => $teachersMax['values']),
                 'xAxes' => $axes,
@@ -102,7 +101,7 @@
                 'margin_left' => 400,
                 'margin_top' => 80,
                 //'legend' => $legend,
-                'title' => 'Информация об учебном заведении (преподаватели)',
+                'title' => Yii::t('analytic', 'educational_institute_info_teachers'),
                 'colors' => $teachersMax['keys'],
                 'name' => 'draw21',
                 'legend_left' => 1060,
@@ -128,7 +127,7 @@
                 'margin_left' => 400,
                 'margin_top' => 80,
                 //'legend' => $legend,
-                'title' => 'Информация об учебном заведении (студенты)',
+                'title' => Yii::t('analytic', 'educational_institute_info_students'),
                 'colors' => $studentsMax['keys'],
                 'name' => 'draw22',
                 'legend_left' => 1060,

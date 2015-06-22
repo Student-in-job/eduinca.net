@@ -221,12 +221,11 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
             <thead>
                 <tr>
                     <td style="width: 650px"></td>
-                    <td><?php echo Yii::t('answerteacher', 'common_answer5');?></td>
-                    <td><?php echo Yii::t('answerteacher', 'common_answer4');?></td>
-                    <td><?php echo Yii::t('answerteacher', 'common_answer3');?></td>
-                    <td><?php echo Yii::t('answerteacher', 'common_answer2');?></td>
-                    <td><?php echo Yii::t('answerteacher', 'common_answer1');?></td>
-                    <td><?php echo Yii::t('answerteacher', 'common_answer0');?></td>
+                    <td><?php echo Yii::t('answerteacher', 'methodic_answer5');?></td>
+                    <td><?php echo Yii::t('answerteacher', 'methodic_answer4');?></td>
+                    <td><?php echo Yii::t('answerteacher', 'methodic_answer3');?></td>
+                    <td><?php echo Yii::t('answerteacher', 'methodic_answer2');?></td>
+                    <td><?php echo Yii::t('answerteacher', 'methodic_answer1');?></td>
                 </tr>
             </thead>
             <tbody>
@@ -237,7 +236,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q1', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q2'); ?></td>
@@ -246,7 +244,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q2', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q3'); ?></td>
@@ -255,7 +252,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q3', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q4'); ?></td>
@@ -264,7 +260,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q4', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q5'); ?></td>
@@ -273,7 +268,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q5', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q6'); ?></td>
@@ -282,7 +276,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q6', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q7'); ?></td>
@@ -291,7 +284,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q7', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q8'); ?></td>
@@ -300,7 +292,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q8', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q9'); ?></td>
@@ -309,7 +300,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q9', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q10'); ?></td>
@@ -318,7 +308,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q10', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q11'); ?></td>
@@ -327,7 +316,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q11', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q12'); ?></td>
@@ -336,7 +324,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q12', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
                 <tr>
                     <td><?php echo $form->labelEx($model,'methodic_q13'); ?></td>
@@ -345,7 +332,6 @@ table td, table tbody tr, table tbody tr td {background:none/*#DFEBF6*/;}
                     <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '3', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '2', 'uncheckValue' => null));?></td>
                     <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '1', 'uncheckValue' => null));?></td>
-                    <td><?php echo $form->radioButton($model, 'methodic_q13', array('value' => '0', 'uncheckValue' => null));?></td>
                 </tr>
             </tbody>
          </table>

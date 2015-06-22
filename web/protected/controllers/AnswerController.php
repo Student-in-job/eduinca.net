@@ -5,23 +5,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 class AnswerController extends Controller
 {
         protected  $menuItem = 'statistic';
         public $layout='//layouts/column1';
 
-        private $_involved;
-        private $_persontype;
-        private $_university;
-        
-        public function init(){
-            parent::init();
-            $dataProvider = new CActiveDataProvider('University');
-            foreach($dataProvider->getData() as $activeRecord)
-            {
-                $this->_university[$activeRecord->getAttribute('id_university')] = $activeRecord->getAttribute('name_' . Yii::app()->language);
-            }
-        }
+        protected $_involved;
+        protected $_persontype;
+        protected $_university;
 
         public function filters()
         {
@@ -31,71 +23,44 @@ class AnswerController extends Controller
             );
         }
 
-        public function actionIndex($person)
+        public function actionIndex($person, $year = null)
         {
-            $dataProvider = new CActiveDataProvider('PersonType');
-            foreach($dataProvider->getData() as $activeRecord)
-            {
-                $this->_persontype[$activeRecord->getAttribute('id_person_type')] = $activeRecord->getAttribute('name');
-            }
-            $dataProvider = new CActiveDataProvider('InvolvedPerson');
-            foreach($dataProvider->getData() as $activeRecord)
-            { 
-                $this->_involved[$activeRecord->getAttribute('id_involved_person')] = $activeRecord->getAttribute('name');
-            }
+            $this->_persontype = $this->GetArray('PersonType', 'id_person_type', 'name');
+            $this->_involved = $this->GetArray('InvolvedPerson', 'id_involved_person', 'name');
+            $this->_university = $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language);
             
             switch ($person)
             {
                 case 1:
+                    $model = new TeacherStatistic();
                     $dataProvider = new CActiveDataProvider('Teacher');
-                    
-                    foreach ($dataProvider->data as $answerTeacher)
-                    {
-                        $id_university = $answerTeacher->university_id;
-                        if($id_university!='')
-                            $answerTeacher->university_name = $this->_university[$id_university];
-                        else
-                            $answerTeacher->university_name = 'n/a';
-                        $id_person = $answerTeacher->person_type_id;
-                        if($id_person!='')
-                            $answerTeacher->person_type_name = $this->_persontype[$id_person];
-                        else
-                            $answerTeacher->person_type_name = 'n/a';
-                        $id_involved_type = $answerTeacher->involved_person_id;
-                        if($id_involved_type!='')
-                            $answerTeacher->involved_name = $this->_involved[$id_involved_type];
-                        else
-                            $answerTeacher->involved_name = 'n/a';
-                    }
                     break;
                 case 2:
+                    $model = new StudentStatistic();
                     $dataProvider = new CActiveDataProvider('Student');
-                    
-                    foreach ($dataProvider->data as $answerStudent)
-                    {
-                        $id_university = $answerStudent->university_id;
-                        if($id_university!='')
-                            $answerStudent->university_name = $this->_university[$id_university];
-                        else
-                            $answerStudent->university_name = 'n/a';
-                        $id_person = $answerStudent->person_type_id;
-                        if($id_person!='')
-                            $answerStudent->person_type_name = $this->_persontype[$id_person];
-                        else
-                            $answerStudent->person_type_name = 'n/a';
-                        $id_involved_type = $answerStudent->involved_person_id;
-                        if($id_involved_type!='')
-                            $answerStudent->involved_name = $this->_involved[$id_involved_type];
-                        else
-                            $answerStudent->involved_name = 'n/a';
-                    }
                     break;
             }
+            
+            if(!isset($year))
+            {
+                $year = $model->getLastYear();
+            }
+            $dbCriteria = new CDbCriteria();
+            $dbCriteria->compare('year', $year);
+            $dataProvider->criteria = $dbCriteria;
+            $years = $model->getYears();
             
             $this->render('index', array(
                 'dataProvider' => $dataProvider,
                 'person' => $person,
-                ));
+                'years' => $years,
+                'chosen_year' => $year
+            ));
+        }
+        
+        public function actionCompleted()
+        {
+            $this->render('completed');
         }
 /*        
         public function actionDelete($id)

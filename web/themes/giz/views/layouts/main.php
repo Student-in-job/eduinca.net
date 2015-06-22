@@ -24,7 +24,7 @@
 <!--[if lt IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
     <div class="container">
 	<header id="navtop">
-        <a href="<?php Yii::app()->baseUrl; ?>" class="logo fleft">
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="logo fleft">
             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo.png" alt="">
         </a>
         <div style="display:inline;float:left;padding-left:10px;padding-top:10px;font-size:22px;font-weight:bold;line-height:1.2em;color:#1e582e;"><?php echo nl2br(Yii::t('site','fullsname_title')); ?></div>

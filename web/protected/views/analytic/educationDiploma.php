@@ -79,7 +79,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
     if(count($teachersPrivateSector)>0)
     $this->widget('application.extensions.widgets.charts.PieChart', array(
             'data' => array('some' => $data),
-            'title' => 'по словам преподавателей',
+            'title' => Yii::t('analytic','by_words_teachers'),
             //'legend' => $universities,
             'xAxes' => $xAxes,
             'name' => 'draw55',
@@ -96,7 +96,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
     if(count($teachersPrivateSectorPercentage)>0)
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $teachersPrivateSectorPercentage,
-            'title' => 'по словам преподавателей',
+            'title' => Yii::t('analytic','by_words_teachers'),
             'legend' => $universities,
             'name' => 'draw53',
             'margin_right' => 300,
@@ -112,7 +112,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
     if(count($studentsPrivateSectorPercentage)>0)
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $studentsPrivateSectorPercentage,
-            'title' => 'по словам студентов',
+            'title' => Yii::t('analytic','by_words_students'),
             'legend' => $universities,
             'name' => 'draw54',
             'margin_right' => 300,

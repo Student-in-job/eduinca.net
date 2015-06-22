@@ -403,7 +403,7 @@ text-decoration:underline;
 #dropmenu:checked ~ .titledropmenu {
 	 -webkit-transition:1s;
 	width: 99%;
-	height: 300px;
+	height: auto;
 	opacity: 1;
 	padding:5px;
         overflow: auto;
