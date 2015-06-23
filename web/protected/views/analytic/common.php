@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 $this->widget('application.extensions.widgets.filters.Filter', array(
             'filtername' => 'common',
-            'model' => new FilterForm(),
+            'model' => $filter,
             'type' => ANALYTIC_COMMON,
             'years' => $years,
     )); 

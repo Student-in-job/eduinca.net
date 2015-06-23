@@ -38,7 +38,7 @@
             'filtername' => 'educationProcess',
             'questions_students' => $students_questions,
             'questions_teachers' => $teachers_questions,
-            'model' => new FilterForm(),
+            'model' => $filter,
             'universities' => $universities,
             'type' => ANALYTIC_PROCESS,
             'years' => $years,

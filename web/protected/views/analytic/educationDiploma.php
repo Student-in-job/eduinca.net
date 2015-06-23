@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 
 $this->widget('application.extensions.widgets.filters.Filter', array(
             'filtername' => 'educationDiploma',
-            'model' => new FilterForm(),
+            'model' => $filter,
             'universities' => $universities,
             'type' => ANALYTIC_DIPLOMA,
             'years' => $years,

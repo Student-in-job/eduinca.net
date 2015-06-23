@@ -12,7 +12,7 @@
     
     $this->widget('application.extensions.widgets.filters.Filter', array(
             'filtername' => 'educationLabs',
-            'model' => new FilterForm(),
+            'model' => $filter,
             'universities' => $universities,
             'type' => ANALYTIC_LABS,
             'years' => $years,

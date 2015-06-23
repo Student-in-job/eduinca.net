@@ -67,6 +67,8 @@ class AnalyticController extends Controller
             $year = $modelTeacher->getLastYear();
         }
         $conditions['year'] = $year;
+        $filter = new FilterForm();
+        $filter->year = $year;
         $teachers = $modelTeacher->getCountByCountries(true, false, $conditions); 
         $students = $modelStudent->getCountByCountries(true, false, $conditions);
         
@@ -114,6 +116,7 @@ class AnalyticController extends Controller
                 'countries' => $countries,
                 'axes' => $axes,
                 'years' => $modelTeacher->getYears(),
+                'filter' => $filter,
         ));
     }
     
@@ -142,6 +145,11 @@ class AnalyticController extends Controller
             }
             $conditions['university_id'] = $selected;
         }
+        $filter = new FilterForm();
+        $filter->year = $year;
+        $filter->questions_teachers = $questionTeachers;
+        $filter->questions_students = $questionStudents;
+        $filter->universities = $universities;
         $teachers = $modelTeacher->getCommonByUniversities($questionTeachers, true, false,$conditions);        
         $modelStudent = new StudentStatistic();
         $students = $modelStudent->getCommonByUniversities($questionStudents, true, false,$conditions);
@@ -158,6 +166,7 @@ class AnalyticController extends Controller
                 'teachersMax' => $this->GetMaxArrayOf($teachers),
                 'studentsMax' => $this->GetMaxArrayOf($students),
                 'years' => $modelTeacher->getYears(),
+                'filter' => $filter,
         ));
     }
     
@@ -183,6 +192,10 @@ class AnalyticController extends Controller
             }
             $conditions['university_id'] = $selected;
         }
+        $filter = new FilterForm();
+        $filter->year = $year;
+        $filter->questions = $questions;
+        $filter->universities = $universities;
         $conditions['involved_person_id'] = '1';
         $teachersInvolved = $modelTeacher->getMethodic($questions, true, $conditions);
         $studentsInvolved = $modelStudent->getMethodic($questions, true, $conditions);
@@ -202,6 +215,7 @@ class AnalyticController extends Controller
                 '$questions' => $questions,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
                 'years' => $modelTeacher->getYears(),
+                'filter' => $filter,
         ));
     }
     
@@ -222,6 +236,9 @@ class AnalyticController extends Controller
             }
             $conditions['university_id'] = $selected;
         }
+        $filter = new FilterForm();
+        $filter->year = $year;
+        $filter->universities = $universities;
         $teachers = $modelTeacher->getLabsByUniversities($conditions);
         $modelStudent = new StudentStatistic();
         $students = $modelStudent->getLabsByUniversities($conditions);
@@ -238,6 +255,7 @@ class AnalyticController extends Controller
                 'practice_duration_students' => $practice_duration_students,
                 'universities' => $this->GetArray('University', 'id_university', 'name_' . Yii::app()->language),
                 'years' => $modelTeacher->getYears(),
+                'filter' => $filter,
         ));    
     }
     
@@ -258,6 +276,9 @@ class AnalyticController extends Controller
             }
             $conditions['university_id'] = $selected;
         }
+        $filter = new FilterForm();
+        $filter->year = $year;
+        $filter->universities = $universities;
         $papersAverage = $modelTeacher->getAveragePapersByUniversities($conditions);
         $papersTheoretical = $modelTeacher->getPapersByUniversities($conditions);
         $teachersPrivateSector = $modelTeacher->getPrivateSectorByUniversities($conditions);
@@ -272,6 +293,7 @@ class AnalyticController extends Controller
                 'studentsPrivateSectorPercentage' => $studentsPrivateSectorPercentage,
                 'teachersPrivateSectorPercentage' => $teachersPrivateSectorPercentage,
                 'years' => $modelTeacher->getYears(),
+                'filter' => $filter,
         ));
     }
     

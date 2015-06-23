@@ -33,7 +33,7 @@ foreach($questions as $key => $value)
 $this->widget('application.extensions.widgets.filters.Filter', array(
             'filtername' => 'educationMethodic',
             'questions' => $questions,
-            'model' => new FilterForm(),
+            'model' => $filter,
             'universities' => $universities,
             'type' => ANALYTIC_METHODIC,
             'years' => $years,
