@@ -62,7 +62,7 @@
 		<!-- footer -->
         <div class="divide-top">
             <footer class="grid-wrap">
-                <ul class="grid col-one-third social">
+                <ul style="color:#ccc;font-size:12px;" class="grid col-one-third social">
                     <li><a href="#order"><?php echo nl2br(Yii::t('site','terms_of_use')); ?></a></li>
 				</ul>
 					<div id="order" class="modalDialog">
@@ -70,7 +70,6 @@
 							<a href="#close" title="close" class="close">X</a>
 							<h3><?php echo Yii::t('site','terms_of_use'); ?></h3>
 							<p>
-							
 							</p>
 						</div>
 					</div>			
@@ -78,7 +77,7 @@
 					<a href="#navtop" title="">&uarr;</a>
 				</div>
 				<nav class="grid col-one-third ">
-					<div style="color:#cccccc;font-size:12px;text-align:right;"><p>Copyright © 2014 - <?php echo date('Y'); ?> by <a href="http://eduinca.net">PBBZ</a>.</p><?php echo Yii::t('site', 'rightsreserved')?>.</div>
+					<div style="color:#999;font-size:12px;text-align:right;">Copyright © 2014 - <?php echo date('Y'); ?> by <a href="http://eduinca.net">PBBZ</a>.<br><?php echo Yii::t('site', 'rightsreserved')?>.</div>
 				</nav>
             </footer>
         </div>
