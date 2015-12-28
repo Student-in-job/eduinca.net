@@ -9,14 +9,24 @@ require_once Yii::app()->basePath . '/extensions/widgets/charts/Chart.php';
 
 class PieChart extends Chart
 {
-    public function run() {
-        $file = YiiBase::getPathOfAlias("webroot") . '/images/example.' . $this->name . 'BarChart.can.png';
-        if (file_exists($file))
-            unlink($file);
-        if ($this->legend_left == 0)
-            $this->legend_left = $this->width - $this->margin_right;
-        if($this->legend_top == 0)
-            $this->legend_top = $this->margin_top + 63;
-        $this->render('pieChart');
+    protected $_direction = DIRECTION_HORIZONTAL;
+    protected $_prefix = 'PieChart';
+    protected $_chart;
+
+
+    protected function DrawScale() {}
+    
+    protected function DrawLegend() {
+        $this->_chart->drawPieLegend($this->legend_left,$this->legend_top, array("Alpha"=>20));
+    }
+    
+    protected function DrawChart() {
+        $this->_chart = new pPie($this->_picture, $this->_data); 
+
+        /* Draw an AA pie chart */  
+        $this->_chart->draw2DPie($this->margin_left, $this->height/2 + $this->margin_top/4  ,array("DrawLabels"=>FALSE,"LabelStacked"=>TRUE,"Border"=>TRUE, "ValuePosition"=>PIE_VALUE_INSIDE,"Radius"=>120, "WriteValues" => PIE_VALUE_NATURAL, "LabelColor" => PIE_LABEL_COLOR_AUTO, 'ValueR'=>0, 'ValueG'=>0, 'ValueB' =>0)); 
+
+        /* Write the legend box */  
+        $this->_picture->setShadow(FALSE); 
     }
 }

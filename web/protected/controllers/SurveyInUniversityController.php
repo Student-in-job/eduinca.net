@@ -108,7 +108,7 @@ class SurveyInUniversityController extends Controller
 		{
 			$model->attributes=$_POST['SurveyInUniversity'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_survey_in_university));
+				$this->redirect(Yii::app()->createUrl('surveyInUniversity/index', array('survey_id' => $model->survey_id)));
 		}
                 
                 $condition = 'id_university NOT IN (';

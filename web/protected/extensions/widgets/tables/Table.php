@@ -52,4 +52,40 @@ class Table extends CWidget
         else
             return '';
     }
+    
+    public function PrintTable()
+    {
+        $table = '';
+        $table .= '<div id = "st-table">';
+        $table .= '<table>';
+        $table .= '<caption style ="padding-left:4px;margin:2px 0;background:#D0FFCF;">' . $this->caption . '</caption>';
+        $table .= '<thead>';
+        foreach($this->header as $row)
+        {
+            $table .= '<tr>';
+            foreach($row as $colname => $colspan)
+            {
+                if ($colname == ' ')
+                    $table .= '<th colspan = "' . $colspan . '" style="background:#fff">' . $colname . '</th>';
+                else
+                    $table .= '<th colspan = "' . $colspan . '">' . $colname . '</th>';
+            }
+            $table .= '</tr>';
+        }
+        $table .= '</thead>';
+        $table .= '<tbody>';
+        foreach($this->GetNormalizedArray() as $row)
+        {
+            $table .= '<tr>';
+            foreach($row as $key => $value)
+            {
+                $table .= '<td' . $this->SetBackground() . '>'  . $value . '</td>';
+            }
+            $table .= '</tr>';
+        }
+        $table .= '</tbody>';
+        $table .= '</table>';
+        $table .= '</div>';
+        return $table;
+    }
 }

@@ -58,7 +58,7 @@ $this->menu=array(
                 ),
                 array(
                         'class' => 'CButtonColumn',
-                        'template' => '{view}{delete}',
+                        'template' => '{view}{delete}{update}',
                         'header' => Yii::t('site', 'operations'),
                         'buttons' => array(
                             'view' => array(
@@ -68,6 +68,9 @@ $this->menu=array(
                                 'url' => 'Yii::app()->createUrl("surveyInUniversity/delete", array("id" => $data->id_survey_in_university));',
                                 'visible' => '!$data->HasCodes'
                              ),
+                            'update' => array(
+                                'url' => 'Yii::app()->createUrl("surveyInUniversity/update", array("id" => $data->id_survey_in_university));',
+                             ),
                         )
                     ),
                 array(
@@ -75,6 +78,11 @@ $this->menu=array(
                         'labelExpression' => '$this->grid->GetController()->GetLabel($data->HasCodes)',
                         'urlExpression' => 'Yii::app()->createUrl("Code/index", array("id_survey_in_university" => $data->id_survey_in_university, "date_till" => $this->grid->getController()->date_till))',
                 ),
+                array(
+                        'class' => 'CLinkColumn',
+                        'labelExpression' => 'Yii::t("survey","update_codes")',
+                        'urlExpression' => 'Yii::app()->createUrl("Code/updateCodes", array("id_survey_in_university" => $data->id_survey_in_university, "date_till" => $this->grid->getController()->date_till))'
+                )
                 //array('name' => 'HasCodes', 'value' => '($data->HasCodes)?"'. Yii::t('site', 'yes') .'":"' . Yii::t('site','no') . '"')
             ),
     ));

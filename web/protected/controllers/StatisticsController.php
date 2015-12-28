@@ -35,10 +35,12 @@ class StatisticsController extends Controller
         
         public function actionIndex()
 	{
+            //var_dump($this->_university);die();
             $dataArray = array();
             $surveyModel = new Survey();
             $surveyDataProvider = new CActiveDataProvider('Survey', array('pagination' => false));
             $index = 0;
+            //var_dump($surveyDataProvider->getData());
             foreach($surveyDataProvider->getData() as $activeSurvey)
             {
                 $data = array();
@@ -70,7 +72,6 @@ class StatisticsController extends Controller
                     $activeCodes += $codeModel->search()->getItemCount();
                     $codeModel->completed = 0;
                     $completeCodes += $codeModel->search()->getItemCount();
-                    
                 }
                 $data['universities'] = $universities;
                 $data['teachers_involved'] = $teachersInvolved;

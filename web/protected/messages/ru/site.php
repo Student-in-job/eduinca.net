@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 return array(
-    'fullsitename' => 'Программа "Профессиональное образование в Центральной Азии"',
+    'fullsitename' => 'Программа "Профессиональное образование в Центральной Азии"  (PBBZ)',
     'fullsname_title' => 'Приложение<br>статистики<br>PBBZ',
     'sitename' => 'Приложение статистики PBBZ',
     'home' => 'Главная',
@@ -34,6 +34,7 @@ return array(
     'analytic' => 'Аналитика',
     'editor' => 'Редактор',
     'settings' => 'Настройки',
+    'reports' => 'Отчеты',
     'help' => 'Помощь',
     'sign' => 'Ввести код',
     'useremail' => 'Логин или email',

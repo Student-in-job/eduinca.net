@@ -10,7 +10,8 @@ class PDF
     public static function PrintCodes($dataProvider = null, $university_name = null, $date_till = null)
     {
         $text = '';
-        if ($dataProvider == null) return $text;
+        if ($dataProvider == null)
+            return $text;
         $text .= '<table><caption style="background:#EEEEEE;text-align:center;padding:10px; color:blue"><h3><b>' . $university_name . '</b></h3></caption><tbody>';
         $person = 0;
         $involved = 0;
@@ -49,6 +50,34 @@ class PDF
             $counter++;
         }
         $text .= '</tbody></table>';
+        return $text;
+    }
+    
+    public static function PrintTitle($title = null, $year = null, $countries = null)
+    {
+        $text = '<div style="height:10cm;"></div>';
+        $text .= '<div style="margin-left:70px;margin-right:70px;font-size:30px;text-align:center;font-family:Arial;">' . $title . '</div>';
+        $text .= '<div style="height:7cm;"></div>';
+        if(isset($year))
+            $text .= '<div style="width:100%;text-align:right;">' . Yii::t('reports', 'report_date') . ': <span style="color:#F00">' . $year . '</span></div>';
+        if(isset($countries))
+            $text .= '<div style="width:100%;text-align:right;">' . Yii::t('reports', 'report_countries') . ': <span style="color:#F00">' . $countries . '</span></div>';
+        return $text;
+    }
+    
+    public static function PrintIntro($year = null, $countries = null)
+    {
+        $text = '<h3>' . Yii::t('reports', 'report_intro') . '</h3>';
+        $text .= '<p>' . Yii::t('reports', 'report_intro1') . '</p>';
+        $text .= '<p>' . Yii::t('reports', 'report_intro2') . '</p>';
+        $text .= '<p>' . Yii::t('reports', 'report_intro3') . '</p>';
+        $text .= '<ul><li>' . Yii::t('reports', 'report_intro_list1') . '</li>';
+        $text .= '<li>' . Yii::t('reports', 'report_intro_list2') . '</li>';
+        $text .= '<li>' . Yii::t('reports', 'report_intro_list3') . '</li></ul>';
+        $text .= '<p>' . Yii::t('reports', 'report_intro4') . '</p>';
+        $text .= '<p><span style="color:#F00">' . Yii::t('reports', 'report_intro5') . $year . '</span>' . Yii::t('reports', 'report_intro6') . '<span style="color:#F00">' . $countries . '</span></p>';
+        $text .= '<p>' . Yii::t('reports', 'report_intro7') . '</p>';
+        $text .= '<p style="margin-top: 150px;color:#F00">' . Yii::t('reports', 'report_intro8') . '</p>';
         return $text;
     }
 }

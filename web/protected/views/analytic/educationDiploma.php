@@ -24,6 +24,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
 
 <?php
     $width = 50 + count($papersAverage)*50 + 350;
+    $colors = $this->getColorByUniversity(array_keys($papersAverage), $universities);
     if(count($papersAverage)>0)
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $papersAverage,
@@ -35,7 +36,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
             'height' => 290,
             'legend_top' => 100,
             'legend_left' => $width - 285,
-            'colors' => $this->getColorByUniversity($papersAverage, $universities),
+            'colors' => $colors['colors'],
     ));
 ?>
 <h3 style="text-align:center; line-height: 1; margin-top: 20px"><?php echo Yii::t('analytic', 'papers_types')?></h3>
@@ -76,6 +77,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
         array_push($data, $value);
         array_push($xAxes, $universities[$key]); 
     }
+    $colors = $this->getColorByUniversity(array_keys($teachersPrivateSector), $universities);
     if(count($teachersPrivateSector)>0)
     $this->widget('application.extensions.widgets.charts.PieChart', array(
             'data' => array('some' => $data),
@@ -90,9 +92,10 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
             'height' => 320,
             'legend_top' => 130,
             'legend_left' => 560 - 285,
-            'colors' => $this->getColorByUniversity($teachersPrivateSector, $universities),
+            'colors' => $colors['colors'],
     ));
     $width = 50 + count($teachersPrivateSectorPercentage)*50 + 350;
+    $colors = $this->getColorByUniversity(array_keys($teachersPrivateSectorPercentage), $universities);
     if(count($teachersPrivateSectorPercentage)>0)
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $teachersPrivateSectorPercentage,
@@ -106,9 +109,10 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
             'legend_top' => 160,
             'legend_left' => $width - 285,
             'axisName' => '%',
-            'colors' => $this->getColorByUniversity($teachersPrivateSectorPercentage, $universities),
+            'colors' => $colors['colors'],
     ));
     $width = 50 + count($studentsPrivateSectorPercentage)*50 + 350;
+    $colors = $this->getColorByUniversity(array_keys($studentsPrivateSectorPercentage), $universities);
     if(count($studentsPrivateSectorPercentage)>0)
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $studentsPrivateSectorPercentage,
@@ -122,7 +126,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
             'legend_top' => 160,
             'legend_left' => $width - 285,
             'axisName' => '%',
-            'colors' => $this->getColorByUniversity($studentsPrivateSectorPercentage, $universities),
+            'colors' => $colors['colors'],
     ));
     
 ?>

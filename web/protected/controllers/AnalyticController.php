@@ -297,7 +297,7 @@ class AnalyticController extends Controller
         ));
     }
     
-    protected function GetMaxArrayOf($array)
+    public static function GetMaxArrayOf($array)
     {
         $data = array();
         $data['keys'] = array();
@@ -320,7 +320,7 @@ class AnalyticController extends Controller
         return $data;
     }
     
-    protected function GetArrayTransform($array, $templateArray = null)
+    public static function GetArrayTransform($array, $templateArray = null)
     {
         $data = array();
         if(isset($templateArray))
@@ -342,7 +342,7 @@ class AnalyticController extends Controller
         return $data;
     }
     
-    protected function getColorByUniversity($data, $universities)
+    public static function getColorByUniversity($data, $universities)
     {
         $allColors = array();
         $counter = 0;
@@ -351,10 +351,39 @@ class AnalyticController extends Controller
             $allColors[$university] = $counter++;
         }
         $colors = array();
-        foreach($data as $key => $value)
+        $colors['university'] = array();
+        $colors['colors'] = array();
+        foreach($data as $key)
         {
-            array_push($colors, $allColors[$key]);
+            if($key != 0)
+            {
+                array_push($colors['university'],$key);
+                array_push($colors['colors'],$allColors[$key]);
+            }
+            //array_push($colors, $allColors[$key]);
         }
         return $colors;
+    }
+    
+    public static function getMaxUniverstities($array)
+    {
+        $allUniversities = array();
+        $allUniversities['university'] = array();
+        $allUniversities['colors'] = array();
+        foreach($array['university'] as $key)
+        {
+            if(!in_array($key, $allUniversities['university']))
+            {
+                $allUniversities['university'][$key] = 0;
+            }
+        }
+        foreach ($array['colors'] as $color)
+        {
+            if(!in_array($color, $allUniversities['colors']))
+            {
+                array_push($allUniversities['colors'], $color);
+            }
+        }
+        return $allUniversities;
     }
 }

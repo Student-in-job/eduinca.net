@@ -91,8 +91,9 @@ class ModelStatistic
      * @param array() $group Указываются столбцы группировки
      * @param array() $where Указываются в виде array($condition => $value) условия отбора данных из таблиц и их 
      * значения
+     * @param array() or string $order Сортировка
      */
-    protected function BuildCommand($attributes = null, $tables = null, $group = null, $where = null)
+    protected function BuildCommand($attributes = null, $tables = null, $group = null, $where = null, $order = null)
     {
         //var_dump($where);
         if(!is_null($attributes)){
@@ -122,6 +123,9 @@ class ModelStatistic
         }
         if(!is_null($group)){
             $this->_command->group($group);
+        }
+        if(!is_null($order)){
+            $this->_command->order($order);
         }
     }
     
@@ -246,8 +250,9 @@ class ModelStatistic
      * @param array $columns Столбцы для выборки и группировки
      * @param array $tables Соединение с таблицами
      * @param array $conditions Условия отбора всех строк
+     * @param array or string $order Сортировка
      */
-    protected function setCommonCount($columns, $tables = null, $conditions = null)
+    protected function setCommonCount($columns, $tables = null, $conditions = null, $order = null)
     {
         $group = null;
         $where = null;
@@ -264,7 +269,7 @@ class ModelStatistic
             $attributes = array('count(id_answer) as num');
         }
         $where = $this->TransformConditions($conditions);
-        $this->BuildCommand($attributes, $tables, $group, $where);
+        $this->BuildCommand($attributes, $tables, $group, $where, $order);
        // var_dump($where);die();
     }
     
@@ -301,9 +306,10 @@ class ModelStatistic
      * @param string $agregateColumn Столбец для которого считается среднее значение
      * @param array $columns Столбцы для выборки и группировки
      * @param array $tables Соединение с таблицами
+     * @param array or string $order Сортировка
      * @param array $conditions Условия отбора всех строк
      */
-    protected function setCommonAgregate($function ,$agregateColumn, $columns = null, $tables = null, $conditions = null)
+    protected function setCommonAgregate($function ,$agregateColumn, $columns = null, $tables = null, $conditions = null, $order = null)
     {
         $group = null;
         $where = null;
@@ -328,7 +334,7 @@ class ModelStatistic
             $attributes = array($func . '(' . $agregateColumn . ') as num');
         }
         $where = $this->TransformConditions($conditions);
-        $this->BuildCommand($attributes, $tables, $group, $where);
+        $this->BuildCommand($attributes, $tables, $group, $where, $order);
     }
 
 
@@ -352,7 +358,7 @@ class ModelStatistic
                 $attributes = array('university_id', $column);
             }
             $this->init();
-            $this->setCommonCount($attributes, null, $conditions);
+            $this->setCommonCount($attributes, null, $conditions, 'university_id');
             $records = $this->_command->queryAll();
             $data[$column] = $this->ToAssosiative($records, array('university_id', $column), 'num');
         }
@@ -375,7 +381,7 @@ class ModelStatistic
         foreach($columns as $column)
         {
             $this->init();
-            $this->setCommonCount($column, null, $filter);
+            $this->setCommonCount($column, null, $filter, 'university_id');
             $records = $this->_command->queryAll();
             $data[$column] = $this->ToAssosiative($records, $column, 'num', array('5' => 0, '4' => 0, '3' => 0, '2' => 0, '1' => 0));
         }
@@ -522,7 +528,7 @@ class ModelStatistic
     {
         $columns = array('labs_comment', 'university_id');
         $this->init();
-        $this->setCommonCount($columns, null, $conditions);
+        $this->setCommonCount($columns, null, $conditions, 'university_id');
         $records = $this->_command->queryAll();
         $templateArray = array('1' => 0, '2' => 0, '3' => 0, '4' => 0);
         $data = $this->ToAssosiative($records, array('university_id', 'labs_comment'), 'num', $templateArray);
@@ -538,7 +544,7 @@ class ModelStatistic
     {
         $columns = array('practice', 'university_id');
         $this->init();
-        $this->setCommonCount($columns, null, $conditions);
+        $this->setCommonCount($columns, null, $conditions, 'university_id');
         $records = $this->_command->queryAll();
         $templateArray = array('1' => 0, '0' => 0);
         $data = $this->ToAssosiative($records, array('university_id', 'practice'), 'num', $templateArray);
@@ -557,7 +563,7 @@ class ModelStatistic
         $avgColumn = 'practice_duration';
         $columns = array('university_id');
         $this->init();
-        $this->setCommonAgregate(AVG, $avgColumn ,$columns, null, $conditions);
+        $this->setCommonAgregate(AVG, $avgColumn ,$columns, null, $conditions, 'university_id');
         $records = $this->_command->queryAll();
         $templateArray = array();
         $data = $this->ToAssosiative($records, 'university_id', 'num', $templateArray);
@@ -573,13 +579,13 @@ class ModelStatistic
         if (isset($conditions))
             $conditions1 = $conditions;
         $conditions1['private_comments'] = 'Нет';
-        $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions1);
+        $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions1, 'university_id');
         $records = $this->_command->queryAll();
         $templateArray = array();
         $notParticipated = $this->ToAssosiative($records, 'university_id', 'num', $templateArray);
         
         $this->init();
-        $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions);
+        $this->setCommonAgregate(COUNT, $agregateColumn, $columns, null, $conditions, 'university_id');
         $records = $this->_command->queryAll();
         $total = $this->ToAssosiative($records, 'university_id', 'num', $templateArray);
         

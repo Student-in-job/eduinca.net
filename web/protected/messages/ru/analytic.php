@@ -71,8 +71,9 @@ return array(
     'methodic_answer1' => '1 - никогда',
     'educational_institute_info_teachers' => 'Информация об учебном заведении (преподаватели)',
     'educational_institute_info_students' => 'Информация об учебном заведении (студенты)',
-    'participated' => 'участвующие в программе',
-    'notparticipated' => 'неучаствующие в программе',
+    'participated' => 'участвующие в PBBZ',
+    'notparticipated' => 'неучаствующие в PBBZ',
     'by_words_teachers' => 'по словам преподавателей',
     'by_words_students' => 'по словам студентов',
+    'days' => 'дней',
 );

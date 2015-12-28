@@ -41,7 +41,7 @@ $this->widget('application.extensions.widgets.filters.Filter', array(
 $width = 50+count($teachersInvolved)*65+50;
 ?>
 <div class="span-20">
-<div style="width:65%;float:left;">
+<div style="width:70%;float:left;">
     <?php
         $header[0] = array('' => 1, '5 <br/> %' => 1, '4 <br/> %' => 1, '3 <br/> %' => 1, '2 <br/> %' => 1, '1 <br/> %' => 1);
         if(isset($teachersInvolved))
@@ -108,7 +108,7 @@ $width = 50+count($teachersInvolved)*65+50;
                 'axisName' => '%',
     ));?>
 </div>
-<div style="width:65%;float:left;">  
+<div style="width:70%;float:left;">  
     <?php
         if(isset($studentsInvolved))
         {

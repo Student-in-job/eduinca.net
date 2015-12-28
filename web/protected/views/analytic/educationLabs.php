@@ -134,9 +134,9 @@
     {
         $legend[$key] = $universities[$key];
     }
+    $colors = $this->getColorByUniversity(array_keys($practice_duration_teachers), $universities);
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $practice_duration_teachers,
-            //'xAxes' => $axes,
             'title' => Yii::t('analytic', 'practice_duration_teachers'),
             'legend' => $legend,
             'name' => 'draw45',
@@ -146,8 +146,8 @@
             'height' => 350,
             'legend_top' => 160,
             'legend_left' => $width - 285,
-            'axisName' => 'дней',
-            'colors' => $this->getColorByUniversity($practice_duration_teachers, $universities),
+            'axisName' => Yii::t('analytic','days'),
+            'colors' => $colors['colors'],
     ));
     $width = 50 + count($practice_duration_students)*50 + 350;
     $legend = array();
@@ -155,9 +155,9 @@
     {
         $legend[$key] = $universities[$key];
     }
+    $colors = $this->getColorByUniversity(array_keys($practice_duration_students), $universities);
     $this->widget('application.extensions.widgets.charts.BarChart', array(
             'data' => $practice_duration_students,
-            //'xAxes' => $axes,
             'title' => Yii::t('analytic', 'practice_duration_students'),
             'legend' => $legend,
             'name' => 'draw46',
@@ -167,7 +167,7 @@
             'height' => 350,
             'legend_top' => 160,
             'legend_left' => $width - 285,
-            'axisName' => 'дней',
-            'colors' => $this->getColorByUniversity($practice_duration_students, $universities),
+            'axisName' => Yii::t('analytic','days'),
+            'colors' => $colors['colors'],
     ));
 ?>

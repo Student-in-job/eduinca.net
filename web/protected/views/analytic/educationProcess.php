@@ -88,11 +88,14 @@
     <?php
         $axes = array();
         $legend = array();
-        $height = 80 + count($teachersMax['values'])*30 + 30;
+        $height = 80 + count($teachersMax['values'])*30 + 100;
         foreach($teachers as $question => $questionValue)
         {
             array_push($axes, $teachers_questions[$question]);
         }
+        $colors = $this->getColorByUniversity($teachersMax['keys'], $universities);
+        $maxUniversities = $this->getMaxUniverstities($colors);
+        //var_dump($teachersMax);die();
         $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
                 'data' => array('some' => $teachersMax['values']),
                 'xAxes' => $axes,
@@ -100,12 +103,16 @@
                 'height' => $height,
                 'margin_left' => 400,
                 'margin_top' => 80,
-                //'legend' => $legend,
+                'margin_bottom' => 100,
+                'legend' => $universities,
                 'title' => Yii::t('analytic', 'educational_institute_info_teachers'),
-                'colors' => $teachersMax['keys'],
+                'colors' => $colors['colors'],
                 'name' => 'draw21',
-                'legend_left' => 1060,
+                'legend_left' => 280,
+                'legend_top' => $height-80,
                 'axisName' => '%',
+                'additionalLegendData' => $maxUniversities['university'],
+                'additionalColors' => $maxUniversities['colors'],
     ));?>
 </div>
 <br/>
@@ -113,25 +120,30 @@
     <?php
         $axes = array();
         $legend = array();
-        $height = 80 + count($studentsMax['values'])*30 + 30;
+        $height = 80 + count($studentsMax['values'])*30 + 100;
         foreach($students as $question => $questionValue)
         {
             array_push($axes, Yii::t('analytic', $question));
         }
+        $colors = $this->getColorByUniversity($studentsMax['keys'], $universities);
+        $maxUniversities = $this->getMaxUniverstities($colors);
         $this->widget('application.extensions.widgets.charts.HorizontalBarChart', array(
                 'data' => array('some' => $studentsMax['values']),
-                //'data' => $studentsMax['values'],
                 'xAxes' => $axes,
                 'width' => 850,
                 'height' => $height,
                 'margin_left' => 400,
                 'margin_top' => 80,
-                //'legend' => $legend,
+                'margin_bottom' => 100,
+                'legend' => $universities,
                 'title' => Yii::t('analytic', 'educational_institute_info_students'),
-                'colors' => $studentsMax['keys'],
+                'colors' => $colors['colors'],
                 'name' => 'draw22',
-                'legend_left' => 1060,
+                'legend_left' => 280,
+                'legend_top' => $height-80,
                 'axisName' => '%',
+                'additionalLegendData' => $maxUniversities['university'],
+                'additionalColors' => $maxUniversities['colors'],
     ));?>
 </div>
 </div>

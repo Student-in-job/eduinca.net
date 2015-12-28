@@ -9,15 +9,27 @@ require_once Yii::app()->basePath . '/extensions/widgets/charts/Chart.php';
 
 class BarChart extends Chart
 {
-    public function run()
+    protected $_direction = DIRECTION_VERTICAL;
+    protected $_prefix = 'BarChart';
+
+    protected function DrawLegend()
     {
-        $file = YiiBase::getPathOfAlias("webroot") .  '/images/example.' . $this->name . 'BarChart.can.png'; 
-        if (file_exists($file))
-            unlink($file);
-        if ($this->legend_left == 0)
-            $this->legend_left = $this->width - $this->margin_right;
-        if($this->legend_top == 0)
-            $this->legend_top = $this->margin_top + 63;
-        $this->render('barChart');
+        /* Write the chart legend */ 
+        $this->_picture->drawLegend($this->legend_left,$this->legend_top,array("Style"=>LEGEND_BOX,"Mode"=>LEGEND_VERTICAL)); 
+    }
+    
+    protected function DrawChart() {
+        /* Draw the chart */ 
+        $settings = array(
+                "Gradient"=>TRUE,
+                "DisplayPos"=>LABEL_POS_INSIDE,
+                "DisplayValues"=>TRUE,
+                "DisplayR"=>0,
+                "DisplayG"=>0,
+                "DisplayB"=>0,
+                "DisplayShadow"=>TRUE,
+                "Surrounding"=>10
+        );
+        $this->_picture->drawBarChart($settings); 
     }
 }

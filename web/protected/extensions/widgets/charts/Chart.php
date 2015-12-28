@@ -6,7 +6,18 @@
  * and open the template in the editor.
  */
 
+require_once 'pChart/class/pData.class.php';
+require_once 'pChart/class/pDraw.class.php';
+require_once 'pChart/class/pImage.class.php';
+require_once 'pChart/class/pPie.class.php';
+
 class Chart extends CWidget{
+    
+    protected $_data;
+    protected $_picture;
+    protected $_direction;
+    protected $_prefix;
+    protected $_filename;
     
     public $data;
     public $xAxes;
@@ -25,7 +36,9 @@ class Chart extends CWidget{
     public $legend_top = 0;
     public $axisName = '';
     public $chartNum = 1;
-    
+    public $additionalLegendData;
+    public $additionalColors;
+        
     protected function InitPallete()
     {
         return array(
@@ -48,13 +61,23 @@ class Chart extends CWidget{
         );
     }
     
-    protected function ReturnPallete()
+    protected function ReturnPallete($additional = false)
     {
         $colors = $this->InitPallete();
         $pallete = array();
-        foreach($this->colors as $color)
+        if($additional)
         {
-            array_push($pallete, $colors[$color]);
+            foreach($this->additionalColors as $color)
+            {
+                array_push($pallete, $colors[$color]);
+            }
+        }
+        else
+        {
+            foreach($this->colors as $color)
+            {
+                array_push($pallete, $colors[$color]);
+            }
         }
         return $pallete;
     }
@@ -69,5 +92,122 @@ class Chart extends CWidget{
         {
             return $serie;
         }
+    }
+    
+    protected function SetData()
+    {
+        if (!is_null($this->colors))
+            $colors = $this->ReturnPallete();
+        else
+            $colors = $this->InitPallete();
+
+        $this->_data->Palette = $colors;
+        foreach($this->data as $serie => $data)
+        {
+            $this->_data->addPoints($data, $this->GetLegend($serie));
+        }
+        //$MyData->loadPalette("pChart/palettes/light.color", TRUE);
+        $this->_data->setAxisName(0,$this->axisName); 
+        $this->_data->addPoints($this->xAxes,"xAxes"); 
+        $this->_data->setAbscissa("xAxes");
+    }
+    
+    protected function DrawScale()
+    {
+        $this->_picture->drawScale(array(
+                "CycleBackground"=>TRUE,
+                "DrawSubTicks"=>TRUE,
+                "GridR"=>0,
+                "GridG"=>0,
+                "GridB"=>0,
+                "GridAlpha"=>10,
+                "LabelRotation"=>$this->rotation
+        ));
+    }
+    
+    protected function DrawAreaAndTitle()
+    {
+         /* Create the pChart object */
+        $this->_picture = new pImage($this->width,$this->height, $this->_data);
+        $this->_picture->drawGradientArea(0, 0, $this->width, $this->height,  $this->_direction, array(
+                "StartR"=>256,
+                "StartG"=>256,
+                "StartB"=>256,
+                "EndR"=>200,
+                "EndG"=>200,
+                "EndB"=>255,
+                "Alpha"=>100
+        ));
+        /* Set Font*/
+        $this->_picture->setFontProperties(array(
+                "FontName" => "mpdf/ttfonts/DejaVuSans.ttf",
+                "FontSize" => 10
+        )); 
+        
+        $this->_picture->drawText(round($this->width/2, 0),50,$this->title,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
+        
+        /* Draw the scale  */ 
+        $this->_picture->setGraphArea($this->margin_left, $this->margin_top ,$this->width-$this->margin_right,$this->height-$this->margin_bottom); 
+        $this->DrawScale(); 
+
+        /* Turn on shadow computing */  
+        $this->_picture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
+    }
+    
+    protected function DrawLegend(){}
+    
+    protected function DrawChart(){}
+        
+    public function GenerateChart()
+    {
+        $this->_filename = YiiBase::getPathOfAlias("webroot") . '/images/' . $this->name . '.' . $this->_prefix . '.png';
+        if (file_exists($this->_filename))
+            unlink($this->_filename);
+        if ($this->legend_left == 0)
+            $this->legend_left = $this->width - $this->margin_right;
+        if($this->legend_top == 0)
+            $this->legend_top = $this->margin_top + 63;
+        
+        $this->_data = new pData();
+        
+        $this->SetData();
+        $this->DrawAreaAndTitle();
+        $this->DrawChart();
+        if (isset($this->additionalLegendData))
+        {
+            $pData = new pData();
+            if (!is_null($this->additionalColors))
+                $colors = $this->ReturnPallete(TRUE);
+            else
+                $colors = $this->InitPallete();
+
+            $pData->Palette = $colors;
+            if(count($this->additionalLegendData)>0)
+            {
+                foreach($this->additionalLegendData as $serie => $data)
+                {
+                    $pData->addPoints($data, $this->GetLegend($serie));
+                }
+                $this->_picture->setDataSet($pData);
+                $this->DrawLegend();
+            }
+        }
+        else
+        {
+            $this->DrawLegend();
+        }
+        /* Render the picture (choose the best way) */
+        $this->_picture->render($this->_filename);
+    }
+    
+    public function run()
+    {
+        $this->render('chart');
+    }
+    
+    public function PrintChart()
+    {
+        $this->GenerateChart();
+        return '<img src="/images/' . $this->name . '.' . $this->_prefix . '.png" />';
     }
 }

@@ -30,7 +30,7 @@ class CodeController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index', 'view'),
+				'actions'=>array('index', 'view', 'updateCodes'),
 				'users'=>array('administrator'),
 			),
                         array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -66,7 +66,7 @@ class CodeController extends Controller
                     $model = SurveyInUniversity::model()->findByPk($id_survey_in_university);
                     if(!$model->HasCodes)
                     {
-                        $this->generateCodes($model);
+                        $this->updateCodes($model);
                     }
                 }
                 
@@ -92,6 +92,36 @@ class CodeController extends Controller
                         'id_survey_in_university' => $id_survey_in_university,
 		));
 	}
+        
+        public function actionUpdateCodes($id_survey_in_university = null, $date_till = null)
+	{
+                if($id_survey_in_university!=null)
+                {
+                    $model = SurveyInUniversity::model()->findByPk($id_survey_in_university);
+                    
+                    $codesTeacher = $this->countCodes(1,1, $id_survey_in_university);
+                    $codesStudent = $this->countCodes(2,1, $id_survey_in_university);
+                    $codesTeacherNotInvolved = $this->countCodes(1,2, $id_survey_in_university);
+                    $codesStudentNotInvolved = $this->countCodes(2,2, $id_survey_in_university);
+                    
+                    /*var_dump($codesTeacher);
+                    var_dump("<br/>");
+                    var_dump($codesStudent);
+                    var_dump("<br/>");
+                    var_dump($codesTeacherNotInvolved);
+                    var_dump("<br/>");
+                    var_dump($codesStudentNotInvolved);*/
+                    
+                   $this->updateCodes($model, $codesTeacher, $codesStudent, $codesTeacherNotInvolved, $codesStudentNotInvolved);
+                   
+                   $this->render('completed', array(
+                        'survey_id' => $model->getAttribute('survey_id')));
+                    
+                    
+                    //$this->updateCodes($model);
+                    
+                }
+        }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -129,14 +159,21 @@ class CodeController extends Controller
             return date('Y') . '-' . $password;
         }
       
-        protected function generateCodes($model)
+        protected function updateCodes($model, $codesTeacher = 0, $codesStudent = 0, $codesTeacherNotInvolved = 0, $codesStudentNotInvolved = 0)
         {
             $teacher_involved = $model->getAttribute('involved_teachers');
             $student_involved = $model->getAttribute('involved_students');
             $teacher_not_involved = $model->getAttribute('teachers_num') - $teacher_involved;
             $student_not_involved = $model->getAttribute('teachers_num') - $student_involved;
-          
-            for($iterator = 0; $iterator<$teacher_involved; $iterator++)
+            /*
+            var_dump($teacher_involved);
+                    var_dump("<br/>");
+                    var_dump($student_involved);
+                    var_dump("<br/>");
+                    var_dump($teacher_not_involved);
+                    var_dump("<br/>");
+                    var_dump($student_not_involved);die();*/
+            for($iterator = 0; $iterator<$teacher_involved - $codesTeacher; $iterator++)
             {
                 $code = new Code();
                 $code->setAttribute('code', $this->genPasswordTwo(4));
@@ -146,7 +183,7 @@ class CodeController extends Controller
                 $code->save();
             }
             
-            for($iterator = 0; $iterator<$student_involved; $iterator++)
+            for($iterator = 0; $iterator<$student_involved - $codesStudent; $iterator++)
             {
                 $code = new Code();
                 $code->setAttribute('code', $this->genPasswordTwo(4));
@@ -156,7 +193,7 @@ class CodeController extends Controller
                 $code->save();
             }
             
-            for($iterator = 0; $iterator<$teacher_not_involved; $iterator++)
+            for($iterator = 0; $iterator<$teacher_not_involved - $codesTeacherNotInvolved; $iterator++)
             {
                 $code = new Code();
                 $code->setAttribute('code', $this->genPasswordTwo(4));
@@ -166,7 +203,7 @@ class CodeController extends Controller
                 $code->save();
             }
             
-            for($iterator = 0; $iterator<$student_not_involved; $iterator++)
+            for($iterator = 0; $iterator<$student_not_involved - $codesStudentNotInvolved; $iterator++)
             {
                 $code = new Code();
                 $code->setAttribute('code', $this->genPasswordTwo(4));
@@ -174,6 +211,25 @@ class CodeController extends Controller
                 $code->setAttribute('person_type_id', 2);
                 $code->setAttribute('person_involved', 2);
                 $code->save();
+            }
+        }
+        
+        protected function countCodes($person_type_id = 1, $person_involved = 1, $id_survey_in_university = null)
+        {
+            if ($id_survey_in_university == null)
+            {
+                return 0;
+            }
+            else
+            {
+                $dbCriteria = new CDbCriteria();
+                $dbCriteria->compare("survey_in_university_id", $id_survey_in_university);
+                $dbCriteria->compare("person_type_id", $person_type_id);
+                $dbCriteria->compare("person_involved", $person_involved);
+                    
+                $codes = new CActiveDataProvider("Code", array('pagination' => false));
+                $codes->criteria = $dbCriteria;
+                return $codes->getItemCount();
             }
         }
 }

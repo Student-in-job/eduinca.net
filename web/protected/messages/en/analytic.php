@@ -71,8 +71,9 @@ return array(
     'methodic_answer1' => '1 - never',
     'educational_institute_info_teachers' => 'Information about educational institution (teachers)',
     'educational_institute_info_students' => 'Information about educational institution (students)',
-    'participated' => 'participated in program',
-    'notparticipated' => 'not participated in program',
+    'participated' => 'participated in PBBZ',
+    'notparticipated' => 'not participated in PBBZ',
     'by_words_teachers' => 'by words of teachers',
     'by_words_students' => 'by words of students',
+    'days' => 'days',
 );

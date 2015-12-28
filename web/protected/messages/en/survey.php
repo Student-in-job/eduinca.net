@@ -38,4 +38,6 @@ return array(
     'view_codes' => 'Access codes for survey',
     'generate_codes' => 'Create access codes for survey',
     'print' => 'Export to PDF',
+    'update_codes' => 'Update Codes',
+    'completed' => 'Your codes has been successfylly updated',
 );

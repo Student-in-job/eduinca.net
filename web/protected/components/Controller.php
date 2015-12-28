@@ -51,7 +51,7 @@ class Controller extends CController
         protected function GetArray($modelName, $key, $value, $dbCriteria = null)
         {
             $data = array();
-            $dataProvider = new CActiveDataProvider($modelName);
+            $dataProvider = new CActiveDataProvider($modelName, array('pagination' => false));
             if ($dbCriteria != null)
                 $dataProvider->setCriteria($dbCriteria);
             foreach($dataProvider->getData() as $activeRecord)

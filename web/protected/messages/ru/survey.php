@@ -38,4 +38,6 @@ return array(
     'view_codes' => 'Коды доступа к опросу',
     'generate_codes' => 'Создать коды для опроса',
     'print' => 'Вывести в PDF',
+    'update_codes' => 'Обновить коды',
+    'completed' => 'Ваши коды успешно обновлены',
 );
