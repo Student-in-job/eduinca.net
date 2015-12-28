@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	Yii::t('survey', 'surveys') => array('survey/index'),  
-	Yii::t('survey', 'survey_in_university') => array('surveyinuniversity/index', 'survey_id' => $survey_id),
+	Yii::t('survey', 'survey_in_university') => array('SurveyInUniversity/index', 'survey_id' => $survey_id),
         Yii::t('survey', 'codes'),
 );
 
