@@ -164,7 +164,7 @@ class CodeController extends Controller
             $teacher_involved = $model->getAttribute('involved_teachers');
             $student_involved = $model->getAttribute('involved_students');
             $teacher_not_involved = $model->getAttribute('teachers_num') - $teacher_involved;
-            $student_not_involved = $model->getAttribute('teachers_num') - $student_involved;
+            $student_not_involved = $model->getAttribute('students_num') - $student_involved;
             /*
             var_dump($teacher_involved);
                     var_dump("<br/>");
