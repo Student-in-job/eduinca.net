@@ -150,7 +150,7 @@ class SiteController extends Controller
                                         'university_id' => $surveyinuniversity->getAttribute('university_id'),
                                         'survey_id' => $surveyinuniversity->getAttribute('survey_id'),
                                         'code' => $code->getAttribute('id_code'),
-                                        'year' => date('Y', strtotime($survey->getAttribute('date_till')))
+                                        'year' => $survey->getAttribute('year')
                                 ));
                             }
                         }

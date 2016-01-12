@@ -185,12 +185,14 @@ class ModelStatistic
         {
             foreach($array as $item => $itemValue)
             {
+                unset($itemValue['']);
                 $sum = 0;
                 foreach($itemValue as $row => $rowValue)
                 {
                     $flag = is_array($rowValue);
                     if($flag)
                     {
+                        unset($rowValue['']);
                         $sum = 0;
                         foreach($rowValue as $key => $value)
                         {
